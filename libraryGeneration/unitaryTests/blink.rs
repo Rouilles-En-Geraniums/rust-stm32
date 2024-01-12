@@ -1,16 +1,18 @@
-mod our_library;
+mod our_library; // ou 'use' ?
 
 
 fn main() {
     
     //our_library::initRegister(GPIOA);
 
-    our_library::initGPIO(GREEN_LED_BUILTIN, OUTPUT);
+    let my_led = (GPIOA, 2);
+
+    our_library::initGPIO(my_led, OUTPUT);
 
     while (1){
-        our_library::digitalWrite(GREEN_LED_BUILTIN, HIGH)
+        our_library::digitalWrite(my_led, HIGH)
         our_library::wait(500); // ??????????
-        our_library::digitalWrite(GREEN_LED_BUILTIN, LOW)
+        our_library::digitalWrite(my_led, LOW)
         our_library::wait(500); // ??????????
         
     }

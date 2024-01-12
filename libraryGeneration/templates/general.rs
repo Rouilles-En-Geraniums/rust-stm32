@@ -3,6 +3,8 @@
 //const GREEN_LED: u8 = 12;
 //const GPIOA: u8 = adresse du GPIO A (=GPIO 1)
 
+const HIGH: u8 = 1;
+const LOW: u8 = 0;
 
 
 fn initRegister(name: u8){
