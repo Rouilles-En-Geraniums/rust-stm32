@@ -6,7 +6,7 @@
       "ADC1": {
         "base_address": "0x40012000",
         "registers": [
-          { "name": "SR", "offset": "0x00", "read": 1 },
+          { "name": "SR", "offset": "0x00", "read": 1, "write": 1 },
           { "name": "CR1", "offset": "0x04", "read": 1, "write": 1 },
           { "name": "CR2", "offset": "0x08", "read": 1, "write": 1 },
           { "name": "SMPR1", "offset": "0x0C", "read": 1, "write": 1 },
@@ -25,7 +25,7 @@
       "ADC2": {
         "base_address": "0x40012100",
         "registers": [
-          { "name": "SR", "offset": "0x00", "read": 1 },
+          { "name": "SR", "offset": "0x00", "read": 1, "write": 1 },
           { "name": "CR1", "offset": "0x04", "read": 1, "write": 1 },
           { "name": "CR2", "offset": "0x08", "read": 1, "write": 1 },
           { "name": "SMPR1", "offset": "0x0C", "read": 1, "write": 1 },
@@ -44,7 +44,7 @@
       "ADC3": {
         "base_address": "0x40012200",
         "registers": [
-          { "name": "SR", "offset": "0x00", "read": 1 },
+          { "name": "SR", "offset": "0x00", "read": 1, "write": 1 },
           { "name": "CR1", "offset": "0x04", "read": 1, "write": 1 },
           { "name": "CR2", "offset": "0x08", "read": 1, "write": 1 },
           { "name": "SMPR1", "offset": "0x0C", "read": 1, "write": 1 },
