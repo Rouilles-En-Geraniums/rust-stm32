@@ -4,7 +4,7 @@
   "licence": "GPL",
   "DAC": {
     "name" : "DAC",
-    "base_address": "0x40007400",
+    "address": "0x40007400",
     "registers": [
       { "name": "CR", "offset": "0x00", "read": 1, "write": 1},
       { "name": "SWTRIGR", "offset": "0x04", "read": 1, "write": 1 },
