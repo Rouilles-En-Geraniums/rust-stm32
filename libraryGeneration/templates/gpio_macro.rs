@@ -2,25 +2,17 @@
 
 // Global variables
 
-{% macro gen_GPIO_ADR(gpioAdr) -%}
-const GPIO_ADR : u32 = {{gpioAdr}} ; //0x40020000
+{% macro gen_GPIO_ADR(gpioName,gpioAdr) -%}
+const {{gpioName}}_ADR : u32 = {{gpioAdr}} ; //0x40020000
 {%- endmacro %}
 
-{% macro gen_GPIO_size(gpioSize) -%}
-const GPIO_size : u32 = {{gpioSize}} ; //0x400
-{%- endmacro %}
-
-{% macro gen_GPIO_position(gpioName, gpioPosition) -%}
-const {{gpioName}}_position : u8 = {{gpioPosition}} ;
-{%- endmacro %}
-
-{% macro gen_register_offset(registerName, registerOffset) -%}
-const {{registerName}}_offset : u32 = {{registerOffset}} ; //0x18
+{% macro gen_register_offset(gpioName, registerName, registerOffset) -%}
+const {{gpioName}}_{{registerName}}_offset : u32 = {{registerOffset}} ; //0x18
 {%- endmacro %}
 
 {% macro gen_GPIO_write(gpioName, registerName) -%}
 fn {{gpioName}}_{{registerName}}_write(value: u8){
-    GPIO_ADR + GPIO_size * {{gpioName}}_position + {{registerName}}_offset = value;
+    {{gpioName}}_ADR + {{gpioName}}_{{registerName}}_offset = value;
 }
 {%- endmacro %}
 

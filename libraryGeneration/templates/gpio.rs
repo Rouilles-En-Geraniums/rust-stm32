@@ -1,18 +1,17 @@
 {%- import "gpio_macro.rs" as gpiomacro %}
 
-{{gpiomacro.gen_GPIO_ADR(gpioAdr)}}
-
-{{gpiomacro.gen_GPIO_size(gpioSize)}}
 
 {%- for gpio in gpios %}
-{{gpiomacro.gen_GPIO_position(gpio.name, gpio.position)}}
-{%- endfor %}
-
-{%- for register in registers %}
-{{gpiomacro.gen_register_offset(register.name, register.offset)}}
+{{gpiomacro.gen_GPIO_ADR(gpio.name, gpio.address)}}
 {%- endfor %}
 
 {%- for gpio in gpios %}
+    {% for register in registers %}
+{{gpiomacro.gen_register_offset(gpio.name, register.name, register.offset)}}
+    {%- endfor %}
+{%- endfor %}
+
+{% for gpio in gpios %}
     {%- for register in registers %}
 {{gpiomacro.gen_GPIO_write(gpio.name, register.name)}}
     {%- endfor %}

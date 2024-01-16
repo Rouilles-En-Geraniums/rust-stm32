@@ -3,17 +3,15 @@ from jinja2 import Environment, FileSystemLoader
 
 
 data = {
-    "gpioAdr" : 0,
-    "gpioSize" : 200,
     "gpios" : [
-        {"name" : "A", "position" : 0},
-        {"name" : "B", "position" : 1},
-        {"name" : "C", "position" : 2},
-        {"name" : "D", "position" : 3},
-        {"name" : "E", "position" : 4},
-        {"name" : "F", "position" : 5},
-        {"name" : "G", "position" : 6},
-        {"name" : "H", "position" : 7}
+        {"name" : "GPIOA", "address" : 0},
+        {"name" : "GPIOB", "address" : 1},
+        {"name" : "GPIOC", "address" : 2},
+        {"name" : "GPIOD", "address" : 3},
+        {"name" : "GPIOE", "address" : 4},
+        {"name" : "GPIOF", "address" : 5},
+        {"name" : "GPIOG", "address" : 6},
+        {"name" : "GPIOH", "address" : 7}
     ],
     "registers" : [
         {"name" : "IDR", "offset" : "0x10", "read" : 1, "write" : 0},
