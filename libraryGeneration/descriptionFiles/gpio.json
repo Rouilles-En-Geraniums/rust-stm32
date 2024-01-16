@@ -2,88 +2,141 @@
     "component" : "GPIO",
     "arch" : "stm32",
     "licence" : "GPL",
-    "address" : "0x40020000",
-    "GPIO_size" : "0x400",
-
     "GPIOA" : {
-        "position" : 0,
+        "name": "GPIOA",
+        "address" : "0x40020000",
         "registers" : [
-            { 
-                "name" : "MODER",
-                "offset" : "0x00",
-                "read" : 1,
-                "write" : 1
-            },
-            { 
-                "name" : "OTYPER",
-                "offset" : "0x04",
-                "read" : 1,
-                "write" : 1
-            },
-            { 
-                "name" : "OSPEEDR",
-                "offset" : "0x08",
-                "read" : 1,
-                "write" : 1
-            },
-            { 
-                "name" : "OSPEEDR",
-                "offset" : "0x08",
-                "read" : 1,
-                "write" : 1
-            },
-            { 
-                "name" : "PUPDR",
-                "offset" : "0x0c",
-                "read" : 1,
-                "write" : 1
-            },
-            { 
-                "name" : "IDR",
-                "offset" : "0x10",
-                "read" : 1,
-                "write" : 0
-            },
-            { 
-                "name" : "ODR",
-                "offset" : "0x14",
-                "read" : 0,
-                "write" : 1
-            },
-            { 
-                "name" : "BSRR",
-                "offset" : "0x18",
-                "read" : 1,
-                "write" : 1
-            },
-            { 
-                "name" : "LCKR",
-                "offset" : "0x1c",
-                "read" : 1,
-                "write" : 1
-            },
-            { 
-                "name" : "AFRL",
-                "offset" : "0x20",
-                "read" : 1,
-                "write" : 1
-            },
-            { 
-                "name" : "AFRH",
-                "offset" : "0x24",
-                "read" : 1,
-                "write" : 1
-            }
-        ],
-    
-    
-        "built-in" : [
-            {
-                "name" : "GREEN_LED",
-                "pin" : 12
-            }
+            { "name" : "MODER","offset" : "0x00","read" : 1,"write" : 1},
+            { "name" : "OTYPER","offset" : "0x04","read" : 1,"write" : 1},
+            { "name" : "OSPEEDR","offset" : "0x08","read" : 1,"write" : 1},
+            { "name" : "OSPEEDR","offset" : "0x08","read" : 1,"write" : 1},
+            { "name" : "PUPDR","offset" : "0x0c","read" : 1,"write" : 1},
+            { "name" : "IDR","offset" : "0x10","read" : 1,"write" : 0},
+            { "name" : "ODR","offset" : "0x14","read" : 0,"write" : 1},
+            { "name" : "BSRR","offset" : "0x18","read" : 1,"write" : 1 },
+            { "name" : "LCKR","offset" : "0x1c","read" : 1,"write" : 1},
+            { "name" : "AFRL","offset" : "0x20","read" : 1,"write" : 1 },
+            { "name" : "AFRH","offset" : "0x24","read" : 1,"write" : 1}
         ]
-
+    },
+    "GPIOB" : {
+        "name": "GPIOB",
+        "address" : "0x40020400",
+        "registers" : [
+            { "name" : "MODER","offset" : "0x00","read" : 1,"write" : 1},
+            { "name" : "OTYPER","offset" : "0x04","read" : 1,"write" : 1},
+            { "name" : "OSPEEDR","offset" : "0x08","read" : 1,"write" : 1},
+            { "name" : "OSPEEDR","offset" : "0x08","read" : 1,"write" : 1},
+            { "name" : "PUPDR","offset" : "0x0c","read" : 1,"write" : 1},
+            { "name" : "IDR","offset" : "0x10","read" : 1,"write" : 0},
+            { "name" : "ODR","offset" : "0x14","read" : 0,"write" : 1},
+            { "name" : "BSRR","offset" : "0x18","read" : 1,"write" : 1 },
+            { "name" : "LCKR","offset" : "0x1c","read" : 1,"write" : 1},
+            { "name" : "AFRL","offset" : "0x20","read" : 1,"write" : 1 },
+            { "name" : "AFRH","offset" : "0x24","read" : 1,"write" : 1}
+        ]
+    },
+    "GPIOC" : {
+        "name": "GPIOC",
+        "address" : "0x40020800",
+        "registers" : [
+            { "name" : "MODER","offset" : "0x00","read" : 1,"write" : 1},
+            { "name" : "OTYPER","offset" : "0x04","read" : 1,"write" : 1},
+            { "name" : "OSPEEDR","offset" : "0x08","read" : 1,"write" : 1},
+            { "name" : "OSPEEDR","offset" : "0x08","read" : 1,"write" : 1},
+            { "name" : "PUPDR","offset" : "0x0c","read" : 1,"write" : 1},
+            { "name" : "IDR","offset" : "0x10","read" : 1,"write" : 0},
+            { "name" : "ODR","offset" : "0x14","read" : 0,"write" : 1},
+            { "name" : "BSRR","offset" : "0x18","read" : 1,"write" : 1 },
+            { "name" : "LCKR","offset" : "0x1c","read" : 1,"write" : 1},
+            { "name" : "AFRL","offset" : "0x20","read" : 1,"write" : 1 },
+            { "name" : "AFRH","offset" : "0x24","read" : 1,"write" : 1}
+        ]
+    },
+    "GPIOD" : {
+        "name": "GPIOD",
+        "address" : "0x4002C000",
+        "registers" : [
+            { "name" : "MODER","offset" : "0x00","read" : 1,"write" : 1},
+            { "name" : "OTYPER","offset" : "0x04","read" : 1,"write" : 1},
+            { "name" : "OSPEEDR","offset" : "0x08","read" : 1,"write" : 1},
+            { "name" : "OSPEEDR","offset" : "0x08","read" : 1,"write" : 1},
+            { "name" : "PUPDR","offset" : "0x0c","read" : 1,"write" : 1},
+            { "name" : "IDR","offset" : "0x10","read" : 1,"write" : 0},
+            { "name" : "ODR","offset" : "0x14","read" : 0,"write" : 1},
+            { "name" : "BSRR","offset" : "0x18","read" : 1,"write" : 1 },
+            { "name" : "LCKR","offset" : "0x1c","read" : 1,"write" : 1},
+            { "name" : "AFRL","offset" : "0x20","read" : 1,"write" : 1 },
+            { "name" : "AFRH","offset" : "0x24","read" : 1,"write" : 1}
+        ]
+    },
+    "GPIOE" : {
+        "name": "GPIOE",
+        "address" : "0x40020000",
+        "registers" : [
+            { "name" : "MODER","offset" : "0x00","read" : 1,"write" : 1},
+            { "name" : "OTYPER","offset" : "0x04","read" : 1,"write" : 1},
+            { "name" : "OSPEEDR","offset" : "0x08","read" : 1,"write" : 1},
+            { "name" : "OSPEEDR","offset" : "0x08","read" : 1,"write" : 1},
+            { "name" : "PUPDR","offset" : "0x0c","read" : 1,"write" : 1},
+            { "name" : "IDR","offset" : "0x10","read" : 1,"write" : 0},
+            { "name" : "ODR","offset" : "0x14","read" : 0,"write" : 1},
+            { "name" : "BSRR","offset" : "0x18","read" : 1,"write" : 1 },
+            { "name" : "LCKR","offset" : "0x1c","read" : 1,"write" : 1},
+            { "name" : "AFRL","offset" : "0x20","read" : 1,"write" : 1 },
+            { "name" : "AFRH","offset" : "0x24","read" : 1,"write" : 1}
+        ]
+    },
+    "GPIOF" : {
+        "name": "GPIOF",
+        "address" : "0x40020000",
+        "registers" : [
+            { "name" : "MODER","offset" : "0x00","read" : 1,"write" : 1},
+            { "name" : "OTYPER","offset" : "0x04","read" : 1,"write" : 1},
+            { "name" : "OSPEEDR","offset" : "0x08","read" : 1,"write" : 1},
+            { "name" : "OSPEEDR","offset" : "0x08","read" : 1,"write" : 1},
+            { "name" : "PUPDR","offset" : "0x0c","read" : 1,"write" : 1},
+            { "name" : "IDR","offset" : "0x10","read" : 1,"write" : 0},
+            { "name" : "ODR","offset" : "0x14","read" : 0,"write" : 1},
+            { "name" : "BSRR","offset" : "0x18","read" : 1,"write" : 1 },
+            { "name" : "LCKR","offset" : "0x1c","read" : 1,"write" : 1},
+            { "name" : "AFRL","offset" : "0x20","read" : 1,"write" : 1 },
+            { "name" : "AFRH","offset" : "0x24","read" : 1,"write" : 1}
+        ]
+    },
+    "GPIOG" : {
+        "name": "GPIOG",
+        "address" : "0x40020000",
+        "registers" : [
+            { "name" : "MODER","offset" : "0x00","read" : 1,"write" : 1},
+            { "name" : "OTYPER","offset" : "0x04","read" : 1,"write" : 1},
+            { "name" : "OSPEEDR","offset" : "0x08","read" : 1,"write" : 1},
+            { "name" : "OSPEEDR","offset" : "0x08","read" : 1,"write" : 1},
+            { "name" : "PUPDR","offset" : "0x0c","read" : 1,"write" : 1},
+            { "name" : "IDR","offset" : "0x10","read" : 1,"write" : 0},
+            { "name" : "ODR","offset" : "0x14","read" : 0,"write" : 1},
+            { "name" : "BSRR","offset" : "0x18","read" : 1,"write" : 1 },
+            { "name" : "LCKR","offset" : "0x1c","read" : 1,"write" : 1},
+            { "name" : "AFRL","offset" : "0x20","read" : 1,"write" : 1 },
+            { "name" : "AFRH","offset" : "0x24","read" : 1,"write" : 1}
+        ]
+    },
+    "GPIOH" : {
+        "name": "GPIOH",
+        "address" : "0x40020000",
+        "registers" : [
+            { "name" : "MODER","offset" : "0x00","read" : 1,"write" : 1},
+            { "name" : "OTYPER","offset" : "0x04","read" : 1,"write" : 1},
+            { "name" : "OSPEEDR","offset" : "0x08","read" : 1,"write" : 1},
+            { "name" : "OSPEEDR","offset" : "0x08","read" : 1,"write" : 1},
+            { "name" : "PUPDR","offset" : "0x0c","read" : 1,"write" : 1},
+            { "name" : "IDR","offset" : "0x10","read" : 1,"write" : 0},
+            { "name" : "ODR","offset" : "0x14","read" : 0,"write" : 1},
+            { "name" : "BSRR","offset" : "0x18","read" : 1,"write" : 1 },
+            { "name" : "LCKR","offset" : "0x1c","read" : 1,"write" : 1},
+            { "name" : "AFRL","offset" : "0x20","read" : 1,"write" : 1 },
+            { "name" : "AFRH","offset" : "0x24","read" : 1,"write" : 1}
+        ]
     }
 
 }
