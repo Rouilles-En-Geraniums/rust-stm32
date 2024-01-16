@@ -11,7 +11,7 @@ const GPIO_size : u32 = {{gpioSize}} ; //0x400
 {%- endmacro %}
 
 {% macro gen_GPIO_position(gpioName, gpioPosition) -%}
-const GPIO{{gpioName}}_position : u8 = {{gpioPosition}} ;
+const {{gpioName}}_position : u8 = {{gpioPosition}} ;
 {%- endmacro %}
 
 {% macro gen_register_offset(registerName, registerOffset) -%}
@@ -19,8 +19,8 @@ const {{registerName}}_offset : u32 = {{registerOffset}} ; //0x18
 {%- endmacro %}
 
 {% macro gen_GPIO_write(gpioName, registerName) -%}
-fn GPIO{{gpioName}}_{{registerName}}_write(value: u8){
-    GPIO_ADR + GPIO_size * GPIO{{gpioName}}_position + {{registerName}}_offset = value;
+fn {{gpioName}}_{{registerName}}_write(value: u8){
+    GPIO_ADR + GPIO_size * {{gpioName}}_position + {{registerName}}_offset = value;
 }
 {%- endmacro %}
 

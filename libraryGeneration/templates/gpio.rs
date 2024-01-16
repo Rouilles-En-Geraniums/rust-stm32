@@ -33,7 +33,7 @@ fn digitalWrite(pin: (char,u8), mode: u8){
     // pin = (A, 2), mode = 1
     match pin.0 {
         {%- for gpio in gpios %}
-        {{gpiomacro.gen_digital_write_switch_case(gpio.name)}}
+        {{gpiomacro.gen_digital_write_switch_case(gpio.name[-1])}}
         {%- endfor %}
         _ => err,
     }
