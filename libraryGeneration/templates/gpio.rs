@@ -1,23 +1,29 @@
-// il faut mettre l'équivalent de "volatile" partout
-const GPIO_ADR : u32 = $GPIO_ADR ; //0x40020000
-const GPIO_size : u32 = $GPIO_size ; //0x400
+{%- import "gpio_macro.rs" as gpiomacro %}
 
-const GPIOA_position : u8 = $GPIOA_position ; //0
-//const GPIO$(letter)_position : u8 = $(GPIO$(letter)_position) ;
+{{gpiomacro.gen_GPIO_ADR(gpioAdr)}}
 
-const BSRR_offset : u32 = $BSRR_offset  ; //0x18
+{{gpiomacro.gen_GPIO_size(gpioSize)}}
 
+{%- for gpio in gpios %}
+{{gpiomacro.gen_GPIO_position(gpio.name, gpio.position)}}
+{%- endfor %}
 
-fn GPIOA_BSRR_write(value: u8){
-    GPIO_ADR + GPIO_size * GPIOA_position + BSRR_offset = value;
-}
+{%- for register in registers %}
+{{gpiomacro.gen_register_offset(register.name, register.offset)}}
+{%- endfor %}
 
+{%- for gpio in gpios %}
+    {%- for register in registers %}
+{{gpiomacro.gen_GPIO_write(gpio.name, register.name)}}
+    {%- endfor %}
+{%- endfor %}
 
 
 fn initGPIO(pin: (char,u8), mode: u8){
     //GPIOD_MODER = REP_BITS(GPIOD_MODER, (GREEN_LED)*2, 2, GPIO_MODER_OUT) ;
     //GPIOD_OTYPER = GPIOD_OTYPER & ~( 1 << (GREEN_LED));
 }
+
 
 /**
  * pin = (GPIO : char, Pin : u8)
@@ -26,18 +32,10 @@ fn initGPIO(pin: (char,u8), mode: u8){
 fn digitalWrite(pin: (char,u8), mode: u8){
     // pin = (A, 2), mode = 1
     match pin.0 {
-        A => {
-            match mode{
-                HIGH => GPIOA_BSRR_write(1 << pin.1),
-                LOW => GPIOA_BSRR_write(1 << (pin.1 + 16)),
-                _ => error,
-            }
-        },
-        B => {
-
-        },
+        {%- for gpio in gpios %}
+        {{gpiomacro.gen_digital_write_switch_case(gpio.name)}}
+        {%- endfor %}
         _ => err,
     }
     
 }
-

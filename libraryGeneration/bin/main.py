@@ -1,9 +1,37 @@
 import sys
+from jinja2 import Environment, FileSystemLoader
+
+
+data = {
+    "gpioAdr" : 0,
+    "gpioSize" : 200,
+    "gpios" : [
+        {"name" : "A", "position" : 0},
+        {"name" : "B", "position" : 1},
+        {"name" : "C", "position" : 2},
+        {"name" : "D", "position" : 3},
+        {"name" : "E", "position" : 4},
+        {"name" : "F", "position" : 5},
+        {"name" : "G", "position" : 6},
+        {"name" : "H", "position" : 7}
+    ],
+    "registers" : [
+        {"name" : "IDR", "offset" : "0x10", "read" : 1, "write" : 0},
+        {"name" : "ODR", "offset" : "0x14", "read" : 1, "write" : 1},
+        {"name" : "BSRR", "offset" : "0x18", "read" : 0, "write" : 1}
+    ]
+}
+
+file_loader = FileSystemLoader('../templates/')
+env = Environment(loader=file_loader)
+t = env.get_template("gpio.rs")
+
+print(t.render(data))
 
 
 
-libname = sys.argv[1]
-inputfile = sys.argv[2]
+#libname = sys.argv[1]
+#inputfile = sys.argv[2]
 
 
 '''
