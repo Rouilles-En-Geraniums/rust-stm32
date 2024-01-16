@@ -1,73 +1,66 @@
 {
-    "component": "ADC",
-    "arch": "stm32",
-    "licence": "GPL",
-    "ADCs": {
-      "ADC1": {
-        "address": "0x40012000",
-        "registers": [
-          { "name": "SR", "offset": "0x00", "read": 1, "write": 1 },
-          { "name": "CR1", "offset": "0x04", "read": 1, "write": 1 },
-          { "name": "CR2", "offset": "0x08", "read": 1, "write": 1 },
-          { "name": "SMPR1", "offset": "0x0C", "read": 1, "write": 1 },
-          { "name": "SMPR2", "offset": "0x10", "read": 1, "write": 1 },
-          { "name": "JOFR1", "offset": "0x14", "read": 1, "write": 1 },
-          { "name": "HTR", "offset": "0x24", "read": 1, "write": 1 },
-          { "name": "LTR", "offset": "0x28", "read": 1, "write": 1 },
-          { "name": "SQR1", "offset": "0x2C", "read": 1, "write": 1 },
-          { "name": "SQR2", "offset": "0x30", "read": 1, "write": 1 },
-          { "name": "SQR3", "offset": "0x34", "read": 1, "write": 1 },
-          { "name": "JSQR", "offset": "0x38", "read": 1, "write": 1 },
-          { "name": "JDR1", "offset": "0x3C", "read": 1, "write": 0 },
-          { "name": "DR", "offset": "0x4C", "read": 1, "write": 0 }
-        ]
-      },
-      "ADC2": {
-        "address": "0x40012100",
-        "registers": [
-          { "name": "SR", "offset": "0x00", "read": 1, "write": 1 },
-          { "name": "CR1", "offset": "0x04", "read": 1, "write": 1 },
-          { "name": "CR2", "offset": "0x08", "read": 1, "write": 1 },
-          { "name": "SMPR1", "offset": "0x0C", "read": 1, "write": 1 },
-          { "name": "SMPR2", "offset": "0x10", "read": 1, "write": 1 },
-          { "name": "JOFR1", "offset": "0x14", "read": 1, "write": 1 },
-          { "name": "HTR", "offset": "0x24", "read": 1, "write": 1 },
-          { "name": "LTR", "offset": "0x28", "read": 1, "write": 1 },
-          { "name": "SQR1", "offset": "0x2C", "read": 1, "write": 1 },
-          { "name": "SQR2", "offset": "0x30", "read": 1, "write": 1 },
-          { "name": "SQR3", "offset": "0x34", "read": 1, "write": 1 },
-          { "name": "JSQR", "offset": "0x38", "read": 1, "write": 1 },
-          { "name": "JDR1", "offset": "0x3C", "read": 1, "write": 0 },
-          { "name": "DR", "offset": "0x4C", "read": 1, "write": 0 }
-        ]
-      },
-      "ADC3": {
-        "address": "0x40012200",
-        "registers": [
-          { "name": "SR", "offset": "0x00", "read": 1, "write": 1 },
-          { "name": "CR1", "offset": "0x04", "read": 1, "write": 1 },
-          { "name": "CR2", "offset": "0x08", "read": 1, "write": 1 },
-          { "name": "SMPR1", "offset": "0x0C", "read": 1, "write": 1 },
-          { "name": "SMPR2", "offset": "0x10", "read": 1, "write": 1 },
-          { "name": "JOFR1", "offset": "0x14", "read": 1, "write": 1 },
-          { "name": "HTR", "offset": "0x24", "read": 1, "write": 1 },
-          { "name": "LTR", "offset": "0x28", "read": 1, "write": 1 },
-          { "name": "SQR1", "offset": "0x2C", "read": 1, "write": 1 },
-          { "name": "SQR2", "offset": "0x30", "read": 1, "write": 1 },
-          { "name": "SQR3", "offset": "0x34", "read": 1, "write": 1 },
-          { "name": "JSQR", "offset": "0x38", "read": 1, "write": 1 },
-          { "name": "JDR1", "offset": "0x3C", "read": 1, "write": 0 },
-          { "name": "DR", "offset": "0x4C", "read": 1, "write": 0 }
-        ]
-      },
-      "ADCC": {
-        "address": "0x40012300",
-        "registers": [
-          { "name": "CSR", "offset": "0x00", "read": 1, "write": 0 },
-          { "name": "CCR", "offset": "0x04", "read": 1, "write": 1 },
-          { "name": "CDR", "offset": "0x08", "read": 1, "write": 1 }
-        ]
-      }
-    }
+  "component": "ADC",
+  "arch": "STM32F4",
+  "licence": "GPL",
+  "ADC1": {
+    "name" : "ADC1",
+    "address": "0x40012000",
+    "registers": [
+      { "name": "SR", "offset": "0x00", "read": 1, "write": 1 },
+      { "name": "CR1", "offset": "0x04", "read": 1, "write": 1 },
+      { "name": "CR2", "offset": "0x08", "read": 1, "write": 1 },
+      { "name": "SMPR1", "offset": "0x0C", "read": 1, "write": 1 },
+      { "name": "SMPR2", "offset": "0x10", "read": 1, "write": 1 },
+      { "name": "JOFR1", "offset": "0x14", "read": 1, "write": 1 },
+      { "name": "HTR", "offset": "0x24", "read": 1, "write": 1 },
+      { "name": "LTR", "offset": "0x28", "read": 1, "write": 1 },
+      { "name": "SQR1", "offset": "0x2C", "read": 1, "write": 1 },
+      { "name": "SQR2", "offset": "0x30", "read": 1, "write": 1 },
+      { "name": "SQR3", "offset": "0x34", "read": 1, "write": 1 },
+      { "name": "JSQR", "offset": "0x38", "read": 1, "write": 1 },
+      { "name": "JDR1", "offset": "0x3C", "read": 1, "write": 0 },
+      { "name": "DR", "offset": "0x4C", "read": 1, "write": 0 }
+    ]
+  },
+  "ADC2": {
+    "name" : "ADC2",
+    "address": "0x40012100",
+    "registers": [
+      { "name": "SR", "offset": "0x00", "read": 1, "write": 1 },
+      { "name": "CR1", "offset": "0x04", "read": 1, "write": 1 },
+      { "name": "CR2", "offset": "0x08", "read": 1, "write": 1 },
+      { "name": "SMPR1", "offset": "0x0C", "read": 1, "write": 1 },
+      { "name": "SMPR2", "offset": "0x10", "read": 1, "write": 1 },
+      { "name": "JOFR1", "offset": "0x14", "read": 1, "write": 1 },
+      { "name": "HTR", "offset": "0x24", "read": 1, "write": 1 },
+      { "name": "LTR", "offset": "0x28", "read": 1, "write": 1 },
+      { "name": "SQR1", "offset": "0x2C", "read": 1, "write": 1 },
+      { "name": "SQR2", "offset": "0x30", "read": 1, "write": 1 },
+      { "name": "SQR3", "offset": "0x34", "read": 1, "write": 1 },
+      { "name": "JSQR", "offset": "0x38", "read": 1, "write": 1 },
+      { "name": "JDR1", "offset": "0x3C", "read": 1, "write": 0 },
+      { "name": "DR", "offset": "0x4C", "read": 1, "write": 0 }
+    ]
+  },
+  "ADC3": {
+    "name" : "ADC3",
+    "address": "0x40012200",
+    "registers": [
+      { "name": "SR", "offset": "0x00", "read": 1, "write": 1 },
+      { "name": "CR1", "offset": "0x04", "read": 1, "write": 1 },
+      { "name": "CR2", "offset": "0x08", "read": 1, "write": 1 },
+      { "name": "SMPR1", "offset": "0x0C", "read": 1, "write": 1 },
+      { "name": "SMPR2", "offset": "0x10", "read": 1, "write": 1 },
+      { "name": "JOFR1", "offset": "0x14", "read": 1, "write": 1 },
+      { "name": "HTR", "offset": "0x24", "read": 1, "write": 1 },
+      { "name": "LTR", "offset": "0x28", "read": 1, "write": 1 },
+      { "name": "SQR1", "offset": "0x2C", "read": 1, "write": 1 },
+      { "name": "SQR2", "offset": "0x30", "read": 1, "write": 1 },
+      { "name": "SQR3", "offset": "0x34", "read": 1, "write": 1 },
+      { "name": "JSQR", "offset": "0x38", "read": 1, "write": 1 },
+      { "name": "JDR1", "offset": "0x3C", "read": 1, "write": 0 },
+      { "name": "DR", "offset": "0x4C", "read": 1, "write": 0 }
+    ]
   }
+}
   
