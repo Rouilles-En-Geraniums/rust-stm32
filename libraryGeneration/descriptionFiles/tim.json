@@ -4,7 +4,7 @@
   "licence": "GPL",
   "timers": {
     "TIM2": {
-      "base_address": "0x40000000",
+      "address": "0x40000000",
       "registers": [
         { "name": "CR1", "offset": "0x00", "read": 1, "write": 1 },
         { "name": "CR2", "offset": "0x04", "read": 1, "write": 1 },
@@ -28,7 +28,7 @@
       ]
     },
     "TIM3": {
-      "base_address": "0x40000400",
+      "ddress": "0x40000400",
       "registers": [
         { "name": "CR1", "offset": "0x00", "read": 1, "write": 1 },
         { "name": "CR2", "offset": "0x04", "read": 1, "write": 1 },
@@ -52,7 +52,7 @@
       ]
     },
     "TIM4": {
-      "base_address": "0x40000800",
+      "address": "0x40000800",
       "registers": [
         { "name": "CR1", "offset": "0x00", "read": 1, "write": 1 },
         { "name": "CR2", "offset": "0x04", "read": 1, "write": 1 },
@@ -76,7 +76,7 @@
       ]
     },
     "TIM5": {
-      "base_address": "0x40000C00",
+      "address": "0x40000C00",
       "registers": [
         { "name": "CR1", "offset": "0x00", "read": 1, "write": 1 },
         { "name": "CR2", "offset": "0x04", "read": 1, "write": 1 },

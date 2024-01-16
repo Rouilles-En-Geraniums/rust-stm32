@@ -4,7 +4,7 @@
   "licence": "<licence>",
   "<component>": {
     "<component#>": {
-      "base_address": "0x<adress>",
+      "address": "0x<adress>",
       "registers": [
         { "name": "<reg_name>", "offset": "0x<offset>", "read": [0,1], "write": [0,1] },
         { "name":"..."}

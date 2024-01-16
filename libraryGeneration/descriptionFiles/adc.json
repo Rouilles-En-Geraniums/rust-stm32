@@ -4,7 +4,7 @@
     "licence": "GPL",
     "ADCs": {
       "ADC1": {
-        "base_address": "0x40012000",
+        "address": "0x40012000",
         "registers": [
           { "name": "SR", "offset": "0x00", "read": 1, "write": 1 },
           { "name": "CR1", "offset": "0x04", "read": 1, "write": 1 },
@@ -23,7 +23,7 @@
         ]
       },
       "ADC2": {
-        "base_address": "0x40012100",
+        "address": "0x40012100",
         "registers": [
           { "name": "SR", "offset": "0x00", "read": 1, "write": 1 },
           { "name": "CR1", "offset": "0x04", "read": 1, "write": 1 },
@@ -42,7 +42,7 @@
         ]
       },
       "ADC3": {
-        "base_address": "0x40012200",
+        "address": "0x40012200",
         "registers": [
           { "name": "SR", "offset": "0x00", "read": 1, "write": 1 },
           { "name": "CR1", "offset": "0x04", "read": 1, "write": 1 },
@@ -61,7 +61,7 @@
         ]
       },
       "ADCC": {
-        "base_address": "0x40012300",
+        "address": "0x40012300",
         "registers": [
           { "name": "CSR", "offset": "0x00", "read": 1, "write": 0 },
           { "name": "CCR", "offset": "0x04", "read": 1, "write": 1 },
