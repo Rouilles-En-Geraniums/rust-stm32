@@ -1,21 +1,48 @@
 {%- import "gpio_macro.rs" as gpiomacro %}
 
 
-{%- for gpio in gpios %}
-{{gpiomacro.gen_GPIO_ADR(gpio.name, gpio.address)}}
+{%- for component in components %}
+{{gpiomacro.gen_addresses(component.name, component.address)}}
 {%- endfor %}
 
-{%- for gpio in gpios %}
-    {% for register in registers %}
-{{gpiomacro.gen_register_offset(gpio.name, register.name, register.offset)}}
-    {%- endfor %}
+{%- for component in components %}
+    {%- if exhaustive %}
+        {% for register in components.registers %}
+{{gpiomacro.gen_register_offset(component.name, register.name, register.offset)}}
+        {%- endfor %}
+    {% else %}
+        {% for register in registers %}
+{{gpiomacro.gen_register_offset(component.name, register.name, register.offset)}}
+        {%- endfor %}
+    {% endif %}
 {%- endfor %}
 
-{% for gpio in gpios %}
-    {%- for register in registers %}
-{{gpiomacro.gen_GPIO_write(gpio.name, register.name)}}
-    {%- endfor %}
+
+{%- for component in components %}
+    {%- if exhaustive %}
+        {% for register in components.registers %}
+{{gpiomacro.gen_register_write(component.name, register.name)}}
+        {%- endfor %}
+    {% else %}
+        {% for register in registers %}
+{{gpiomacro.gen_register_write(component.name, register.name)}}
+        {%- endfor %}
+    {% endif %}
 {%- endfor %}
+
+
+{%- for component in components %}
+    {%- if exhaustive %}
+        {% for register in components.registers %}
+{{gpiomacro.gen_register_read(component.name, register.name)}}
+        {%- endfor %}
+    {% else %}
+        {% for register in registers %}
+{{gpiomacro.gen_register_read(component.name, register.name)}}
+        {%- endfor %}
+    {% endif %}
+{%- endfor %}
+
 
 
 fn initGPIO(pin: (char,u8), mode: u8){
