@@ -1,0 +1,28 @@
+{
+  "exhaustive" : 0,
+  "component": "ADC",
+  "arch": "STM32F407",
+  "licence": "GPL",
+  "components": [
+    { "name" : "ADC1", "address": "0x40012000"},
+    { "name" : "ADC2", "address": "0x40012100" },
+    { "name" : "ADC3", "address": "0x40012200" }
+  ],
+  "registers" : [
+    { "name": "SR", "offset": "0x00", "read": 1, "write": 1 },
+    { "name": "CR1", "offset": "0x04", "read": 1, "write": 1 },
+    { "name": "CR2", "offset": "0x08", "read": 1, "write": 1 },
+    { "name": "SMPR1", "offset": "0x0C", "read": 1, "write": 1 },
+    { "name": "SMPR2", "offset": "0x10", "read": 1, "write": 1 },
+    { "name": "JOFR1", "offset": "0x14", "read": 1, "write": 1 },
+    { "name": "HTR", "offset": "0x24", "read": 1, "write": 1 },
+    { "name": "LTR", "offset": "0x28", "read": 1, "write": 1 },
+    { "name": "SQR1", "offset": "0x2C", "read": 1, "write": 1 },
+    { "name": "SQR2", "offset": "0x30", "read": 1, "write": 1 },
+    { "name": "SQR3", "offset": "0x34", "read": 1, "write": 1 },
+    { "name": "JSQR", "offset": "0x38", "read": 1, "write": 1 },
+    { "name": "JDR1", "offset": "0x3C", "read": 1, "write": 0 },
+    { "name": "DR", "offset": "0x4C", "read": 1, "write": 0 }
+  ]
+}
+  

@@ -1,0 +1,17 @@
+{
+  "exhaustive" : 0,
+  "component": "EXTI",
+  "arch": "STM32F407",
+  "licence": "GPL",
+  "components": [
+    { "name": "EXTI", "address": "0x40013C00"}
+  ],
+  "registers": [
+    { "name": "IMR","offset": "0x00","read": 1,"write": 1 },
+    { "name": "EMR","offset": "0x04","read": 1,"write": 1 },
+    { "name": "RTSR","offset": "0x08","read": 1,"write": 1 },
+    { "name": "FTSR","offset": "0x0C","read": 1,"write": 1 },
+    { "name": "SWIER","offset": "0x10","read": 1,"write": 1 },
+    { "name": "PR","offset": "0x14","read": 1,"write": 1 }
+  ]
+}
