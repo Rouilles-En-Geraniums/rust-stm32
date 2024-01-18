@@ -1,24 +1,21 @@
 import sys
 from jinja2 import Environment, FileSystemLoader
 
+import json
 
-data = {
-    "gpios" : [
-        {"name" : "GPIOA", "address" : 0},
-        {"name" : "GPIOB", "address" : 1},
-        {"name" : "GPIOC", "address" : 2},
-        {"name" : "GPIOD", "address" : 3},
-        {"name" : "GPIOE", "address" : 4},
-        {"name" : "GPIOF", "address" : 5},
-        {"name" : "GPIOG", "address" : 6},
-        {"name" : "GPIOH", "address" : 7}
-    ],
-    "registers" : [
-        {"name" : "IDR", "offset" : "0x10", "read" : 1, "write" : 0},
-        {"name" : "ODR", "offset" : "0x14", "read" : 1, "write" : 1},
-        {"name" : "BSRR", "offset" : "0x18", "read" : 0, "write" : 1}
-    ]
-}
+def generate_data_from_json(json_data):
+    data = {
+        "gpios": [{"name": gpio_name, "address": index} for index, (gpio_name, _) in enumerate(json_data.items()) if gpio_name.startswith("GPIO")],
+        "registers": {gpio_name: [{"name": register["name"], "offset": register["offset"], "read": register["read"], "write": register["write"]} for register in gpio_data.get("registers", [])] for gpio_name, gpio_data in json_data.items() if gpio_name.startswith("GPIO")}
+    }
+    return data
+
+with open('../descriptionFiles/gpio.json', 'r') as json_file:
+    json_data = json.load(json_file)
+
+data = generate_data_from_json(json_data)
+
+
 
 file_loader = FileSystemLoader('../templates/')
 env = Environment(loader=file_loader)
