@@ -1,19 +1,47 @@
 import sys
 from jinja2 import Environment, FileSystemLoader
 
+
 import json
 
+
 def generate_data_from_json(json_data):
-    data = {
-        "gpios": [{"name": gpio_name, "address": index} for index, (gpio_name, _) in enumerate(json_data.items()) if gpio_name.startswith("GPIO")],
-        "registers": {gpio_name: [{"name": register["name"], "offset": register["offset"], "read": register["read"], "write": register["write"]} for register in gpio_data.get("registers", [])] for gpio_name, gpio_data in json_data.items() if gpio_name.startswith("GPIO")}
-    }
+
+    if json_data["exhaustive"] : 
+        
+        data = {
+            "exhaustive": 1,
+            "components" : [{"name": component["name"],"address": component["address"],
+                            "registers": [{"name": register["name"], "offset": register["offset"], "read": register["read"], "write": register["write"]} 
+                            for register in json_data["registers"]]} for component in json_data["components"] ],
+        }
+    else :
+        data = {
+            "exhaustive": 0,
+            "components" : [{"name": component["name"],"address": component["address"]} for component in json_data["components"] ],
+            "registers": [{"name": register["name"], "offset": register["offset"], "read": register["read"], "write": register["write"]} for register in json_data["registers"]]
+        }
+
     return data
 
-with open('../descriptionFiles/gpio.json', 'r') as json_file:
-    json_data = json.load(json_file)
+if len(sys.argv) != 2:
+    print("Usage: python script.py <json_file_path>")
+    sys.exit(1)
+
+json_file_path = sys.argv[1]
+
+try:
+    with open(json_file_path, 'r') as json_file:
+        json_data = json.load(json_file)
+except FileNotFoundError:
+    print(f"Error: File '{json_file_path}' not found.")
+    sys.exit(1)
+except json.JSONDecodeError:
+    print(f"Error: Unable to parse JSON in file '{json_file_path}'.")
+    sys.exit(1)
 
 data = generate_data_from_json(json_data)
+
 
 
 
