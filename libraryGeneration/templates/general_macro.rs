@@ -16,14 +16,14 @@ const {{component}}_{{register}}_OFFSET : isize = {{offset}};
 // Functions
 
 {% macro gen_register_write(component, register) -%}
-fn {{component.lower()}}_{{register.lower()}}_write(value: u32) {
+pub fn {{component.lower()}}_{{register.lower()}}_write(value: u32) {
     unsafe { *{{component}}_ADR.byte_offset({{component}}_{{register}}_OFFSET) = value};
 }
 {%- endmacro %}
 
 
 {% macro gen_register_read(component, register) -%}
-fn {{component.lower()}}_{{register.lower()}}_read() -> u32 {
+pub fn {{component.lower()}}_{{register.lower()}}_read() -> u32 {
     unsafe { * {{component}}_ADR.byte_offset({{component}}_{{register}}_OFFSET)}
 }
 {%- endmacro %}
