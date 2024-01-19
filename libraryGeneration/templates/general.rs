@@ -8,7 +8,7 @@ const LOW: u8 = 0;
 
 {%- for component in components %}
     {%- if exhaustive %}
-        {% for register in components.registers %}
+        {% for register in component.registers %}
 {{gpiomacro.gen_register_offset(component.name, register.name, register.offset)}}
         {%- endfor %}
     {% else %}
@@ -21,7 +21,7 @@ const LOW: u8 = 0;
 
 {%- for component in components %}
     {%- if exhaustive %}
-        {% for register in components.registers %}
+        {% for register in component.registers %}
 {{gpiomacro.gen_register_write(component.name, register.name)}}
         {%- endfor %}
     {% else %}
@@ -34,7 +34,7 @@ const LOW: u8 = 0;
 
 {%- for component in components %}
     {%- if exhaustive %}
-        {% for register in components.registers %}
+        {% for register in component.registers %}
 {{gpiomacro.gen_register_read(component.name, register.name)}}
         {%- endfor %}
     {% else %}
