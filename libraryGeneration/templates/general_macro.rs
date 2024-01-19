@@ -2,13 +2,13 @@
 
 
 {% macro gen_addresses(component,address) -%}
-const {{component}}_ADR : u32 = {{address}} ;
+const {{component}}_ADR : *mut u32 = {{address}} as *mut u32;
 {%- endmacro %}
 
 
 
 {% macro gen_register_offset(component, register, offset) -%}
-const {{component}}_{{register}}_offset : u32 = {{offset}} ; //0x18
+const {{component}}_{{register}}_OFFSET : isize = {{offset}};
 {%- endmacro %}
 
 
@@ -16,14 +16,14 @@ const {{component}}_{{register}}_offset : u32 = {{offset}} ; //0x18
 // Functions
 
 {% macro gen_register_write(component, register) -%}
-fn {{component}}_{{register}}_write(value: u8) {
-    {{component}}_ADR + {{component}}_{{register}}_offset = value;
+fn {{component.lower()}}_{{register.lower()}}_write(value: u32) {
+    unsafe { *{{component}}_ADR.byte_offset({{component}}_{{register}}_OFFSET) = value};
 }
 {%- endmacro %}
 
 
 {% macro gen_register_read(component, register) -%}
-fn {{component}}_{{register}}_read(value: u8) {
-    {{component}}_ADR + {{component}}_{{register}}_offset = value;
+fn {{component.lower()}}_{{register.lower()}}_read() -> u32 {
+    unsafe { * {{component}}_ADR.byte_offset({{component}}_{{register}}_OFFSET)}
 }
 {%- endmacro %}
