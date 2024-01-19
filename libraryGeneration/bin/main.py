@@ -49,15 +49,18 @@ for i in range(1, len(sys.argv)):
 
     basenameComplete = os.path.basename(json_file_path)
     basename = os.path.splitext(basenameComplete)[0]  
-    output_file = os.path.join("..", "test", f"{basename}.rs")
 
+    output_directory = os.path.join("..", "test/rs_Gen")
+    os.makedirs(output_directory, exist_ok=True)
+
+    output_file = os.path.join(output_directory, f"{basename}.rs")
     with open(output_file, 'w') as output_file:
         t = env.get_template("general.rs")
         output_file.write(t.render(data))
 
     print(f"File '{basename}' generated successfully.")
 
-
+#python3 main.py "../descriptionFiles/stm32f407/gpio.json" "../descriptionFiles/stm32f407/dac.json" "../descriptionFiles/stm32f407/adc.json" "../descriptionFiles/stm32f407/tim.json"
 
 #libname = sys.argv[1]
 #inputfile = sys.argv[2]
