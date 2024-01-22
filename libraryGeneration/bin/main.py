@@ -33,7 +33,17 @@ def cmdlineParse():
     return args
 
 
-def generate_data_from_json(json_data):
+def generate_data_from_json(json_file_path):
+    try:
+        with open(json_file_path, 'r') as json_file:
+            json_data = json.load(json_file)
+    except FileNotFoundError:
+        print(f"Error: File '{json_file_path}' not found.")
+        sys.exit(1)
+    except json.JSONDecodeError:
+        print(f"Error: Unable to parse JSON in file '{json_file_path}'.")
+        sys.exit(2)
+
     if json_data["exhaustive"]:
         data = {
             "exhaustive": 1,
@@ -84,19 +94,8 @@ def main():
 
     # Generate all library files based on arguments
     for json_file_path in args.json:
-
-        try:
-            with open(json_file_path, 'r') as json_file:
-                json_data = json.load(json_file)
-        except FileNotFoundError:
-            print(f"Error: File '{json_file_path}' not found.")
-            sys.exit(1)
-        except json.JSONDecodeError:
-            print(f"Error: Unable to parse JSON in file '{json_file_path}'.")
-            sys.exit(2)
-
         # Read JSON data
-        data = generate_data_from_json(json_data)
+        data = generate_data_from_json(json_file_path)
 
         # Get the basename from JSON file name
         basename = os.path.splitext(os.path.basename(json_file_path))[0]
