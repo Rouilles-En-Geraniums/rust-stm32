@@ -1,121 +1,124 @@
 import sys
-from jinja2 import Environment, FileSystemLoader
 import os
-
 import json
+from jinja2 import Environment, FileSystemLoader
+from pathlib import Path
+import argparse
+
+
+def cmdlineParse():
+    # Argument line parser initialisation.
+    parser = argparse.ArgumentParser(
+        formatter_class=argparse.ArgumentDefaultsHelpFormatter
+    )
+
+    # Parser argument control section.
+    parser.add_argument("-o", "--outputdir",
+                        help="Output directory.",
+                        default="test/stm32rustlib",
+                        required=False)
+    parser.add_argument("-j", "--json",
+                        help="JSON files to parse",
+                        nargs='*',
+                        default=[])
+
+    args = parser.parse_args()
+
+    # Printing the input for DEBUG.
+    print("Given arguments:\n- Output Directory {}\n- JSON {}\n".format(
+            args.outputdir,
+            args.json
+            ))
+
+    return args
 
 
 def generate_data_from_json(json_data):
-
-    if json_data["exhaustive"] : 
-        
+    if json_data["exhaustive"]:
         data = {
             "exhaustive": 1,
-            "components": [{"name": component["name"],"address": component["address"],
-            "registers": [{"name": register["name"],"offset": register["offset"],"read": register["read"],"write": register["write"]}
-                for register in component["registers"]]}for component in json_data["components"]]
-}
-    else :
+            "components": [{"name": component["name"],
+                            "address": component["address"],
+                            "registers": [{"name": register["name"],
+                                           "offset": register["offset"],
+                                           "read": register["read"],
+                                           "write": register["write"]}
+                                           for register in component["registers"]]}
+                            for component in json_data["components"]]}
+    else:
         data = {
             "exhaustive": 0,
-            "components" : [{"name": component["name"],"address": component["address"]} for component in json_data["components"] ],
-            "registers": [{"name": register["name"], "offset": register["offset"], "read": register["read"], "write": register["write"]} for register in json_data["registers"]]
+            "components": [{"name": component["name"],
+                            "address": component["address"]}
+                            for component in json_data["components"]],
+            "registers": [{"name": register["name"],
+                           "offset": register["offset"],
+                           "read": register["read"],
+                           "write": register["write"]}
+                           for register in json_data["registers"]]
         }
 
     return data
 
-if len(sys.argv) < 2:
-    print("Usage: python main.py <json_file_path> [<json_file_path> ...]")
-    sys.exit(1)
+
+def main():
+
+    # Parse argument line
+    args = cmdlineParse()
+
+    # Initiate Jinja2 environment
+    file_loader = FileSystemLoader('../templates/')
+    env = Environment(loader=file_loader)
+
+    # Create directory
+    Path(args.outputdir).mkdir(parents=True, exist_ok=True)
+
+    # Generate various.rs file (global variables used across the library)
+    output_file_path = args.outputdir + "/various.rs"
+    with open(output_file_path, 'w') as output_file:
+        t = env.get_template("various.rs")
+        output_file.write(t.render())
+
+    # Debug
+    print("{} generated.".format(output_file_path))
+
+    # Generate all library files based on arguments
+    for json_file_path in args.json:
+
+        try:
+            with open(json_file_path, 'r') as json_file:
+                json_data = json.load(json_file)
+        except FileNotFoundError:
+            print(f"Error: File '{json_file_path}' not found.")
+            sys.exit(1)
+        except json.JSONDecodeError:
+            print(f"Error: Unable to parse JSON in file '{json_file_path}'.")
+            sys.exit(2)
+
+        # Read JSON data
+        data = generate_data_from_json(json_data)
+
+        # Get the basename from JSON file name
+        basename = os.path.splitext(os.path.basename(json_file_path))[0]
+
+        # Generate library file
+        output_file_path = args.outputdir+"/"+basename+".rs"
+        with open(output_file_path, 'w') as output_file:
+            # Generate general template content
+            #       (registers and read/write functions)
+            t = env.get_template("general.rs")
+            output_file.write(t.render(data))
+
+            # TODO: verify that the file exists
+            # Fetch corresponding template (utility functions)
+            t = env.get_template(basename+".rs")
+            output_file.write(t.render(data))
+
+            print("{} generated.".format(output_file_path))
+
+    # - s'inspirer de https://github.com/stm32-rs/stm32f4xx-hal pour
+    #    avoir une idée de quelles sections faire par la suite
 
 
-file_loader = FileSystemLoader('../templates/')
-env = Environment(loader=file_loader)
-
-for i in range(1, len(sys.argv)):
-    json_file_path = sys.argv[i]
-
-    try:
-        with open(json_file_path, 'r') as json_file:
-            json_data = json.load(json_file)
-    except FileNotFoundError:
-        print(f"Error: File '{json_file_path}' not found.")
-        sys.exit(1)
-    except json.JSONDecodeError:
-        print(f"Error: Unable to parse JSON in file '{json_file_path}'.")
-        sys.exit(1)
-
-    data = generate_data_from_json(json_data)
-
-    basenameComplete = os.path.basename(json_file_path)
-    basename = os.path.splitext(basenameComplete)[0]  
-
-    output_directory = os.path.join("..", "test/rs_Gen")
-    os.makedirs(output_directory, exist_ok=True)
-
-    output_file = os.path.join(output_directory, f"{basename}.rs")
-    with open(output_file, 'w') as output_file:
-        t = env.get_template("general.rs")
-        output_file.write(t.render(data))
-
-    print(f"File '{basename}' generated successfully.")
-
-#python3 main.py "../descriptionFiles/stm32f407/gpio.json" "../descriptionFiles/stm32f407/dac.json" "../descriptionFiles/stm32f407/adc.json" "../descriptionFiles/stm32f407/tim.json"
-
-#libname = sys.argv[1]
-#inputfile = sys.argv[2]
-
-
-'''
-créer un dossier $libname dans ../tests/ et y met tous les
-fichiers de libraire rust généré
-
-idéalement : un fichier par "type de registre", ex : 
-- gpio.rs
-- nvic.rs
-- adc.rs
-- rcc.rs 
-- etc...
-
-
-Dans ce fichier python :
-- une première section pour charger le fichier de description
-- déterminer quelles sections sont à générer
-- une section "généraliste" 
-- une section par "type de registre"
-- commencer avec uniquement une section pour le gpio (PoC)
-- s'inspirer de https://github.com/stm32-rs/stm32f4xx-hal pour
-    avoir une idée de quelles sections faire par la suite
-'''
-
-
-
-
-
-## Section Init
-
-'''
-importer le fichier de description
-variables etc..
-'''
-
-## Section généraliste
-
-'''
-initRegister()
-wait()
-...
-'''
-
-## Section GPIO
-
-'''
-initGPIO()
-digitalWrite()
-...
-'''
-
-## Section ?
-
-
-## Section "fin"
+if __name__ == "__main__":
+    main()

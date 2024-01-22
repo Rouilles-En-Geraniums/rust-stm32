@@ -1,11 +1,11 @@
 {%- import "gpio_macro.rs" as gpiomacro %}
 
-
+/*
 fn initGPIO(pin: (char,u8), mode: u8){
-    //GPIOD_MODER = REP_BITS(GPIOD_MODER, (GREEN_LED)*2, 2, GPIO_MODER_OUT) ;
-    //GPIOD_OTYPER = GPIOD_OTYPER & ~( 1 << (GREEN_LED));
+    GPIOD_MODER = REP_BITS(GPIOD_MODER, (GREEN_LED)*2, 2, GPIO_MODER_OUT) ;
+    GPIOD_OTYPER = GPIOD_OTYPER & ~( 1 << (GREEN_LED));
 }
-
+*/
 
 /**
  * pin = (GPIO : char, Pin : u8)

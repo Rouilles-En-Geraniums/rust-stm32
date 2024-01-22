@@ -1,6 +1,4 @@
 {%- import "general_macro.rs" as gpiomacro %}
-const HIGH: u8 = 1;
-const LOW: u8 = 0;
 
 {%- for component in components %}
 {{gpiomacro.gen_addresses(component.name, component.address)}}
@@ -44,21 +42,3 @@ const LOW: u8 = 0;
     {% endif %}
 {%- endfor %}
 
-
-
-
-fn initRegister(name: u8){
-    //RCC_AHB1ENR |= RCC_GPIODEN;
-}
-
-fn wait(t: u32){
-    // fonction blocante
-    // t en ms
-
-    //const ONE_SECOND: u32 = 30000000
-    let n = t/1000 * ONE_SECOND;
-
-    for i in 0..n {
-        NOP; // TODO ? maybe it is a macro
-    }
-} 
