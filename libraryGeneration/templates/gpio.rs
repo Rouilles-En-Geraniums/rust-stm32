@@ -17,7 +17,7 @@ fn digitalWrite(pin: (char,u8), mode: u8){
         {%- for component in components %}
         {{gpiomacro.gen_digital_write_switch_case(component.name[-1])}}
         {%- endfor %}
-        _ => err,
+        _ => (),
     }
     
 }

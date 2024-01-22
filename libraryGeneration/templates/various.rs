@@ -1,5 +1,5 @@
-const HIGH: u8 = 1;
-const LOW: u8 = 0;
+pub const HIGH: u8 = 1;
+pub const LOW: u8 = 0;
 
 
 /*

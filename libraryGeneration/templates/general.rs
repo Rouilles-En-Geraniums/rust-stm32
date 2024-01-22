@@ -1,4 +1,5 @@
 {%- import "general_macro.rs" as gpiomacro %}
+use crate::stm32rustlib::various;
 
 {%- for component in components %}
 {{gpiomacro.gen_addresses(component.name, component.address)}}
