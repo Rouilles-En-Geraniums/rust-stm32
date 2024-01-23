@@ -2,7 +2,7 @@
 
 use crate::stm32rustlib::various;
 
-{% include "general.rs" %}
+{% include "address.rs" %}
 
 /*
 fn initGPIO(pin: (char,u8), mode: u8){

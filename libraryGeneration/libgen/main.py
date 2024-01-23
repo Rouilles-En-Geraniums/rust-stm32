@@ -84,10 +84,13 @@ def main():
     Path(args.outputdir).mkdir(parents=True, exist_ok=True)
 
     # Generate various.rs file (global variables used across the library)
+    mod_file_path = args.outputdir + "/mod.rs"
     output_file_path = args.outputdir + "/various.rs"
     with open(output_file_path, 'w') as output_file:
         t = env.get_template("various.rs")
         output_file.write(t.render())
+    with open(mod_file_path, 'w') as mod_file:
+        mod_file.write("pub mod various\n")
 
     # Debug
     print("{} generated.".format(output_file_path))
@@ -109,6 +112,9 @@ def main():
             output_file.write(t.render(data))
 
             print("{} generated.".format(output_file_path))
+            
+        with open(mod_file_path, 'a') as mod_file:
+            mod_file.write("pub mod "+basename+"\n")
 
     # - s'inspirer de https://github.com/stm32-rs/stm32f4xx-hal pour
     #    avoir une idée de quelles sections faire par la suite

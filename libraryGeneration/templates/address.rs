@@ -1,4 +1,4 @@
-{%- import "general_macro.rs" as generalmacro %}
+{%- import "address_macro.rs" as generalmacro %}
 
 {%- for component in components %}
 {{generalmacro.gen_addresses(component.name, component.address)}}
