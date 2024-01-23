@@ -79,7 +79,7 @@ This rule lets you use OpenOCD with the Discovery board without root privilege.
 
 Create the file /etc/udev/rules.d/70-st-link.rules with the contents shown below.
 
->```# STM32F3DISCOVERY rev A/B - ST-LINK/V2
+```# STM32F3DISCOVERY rev A/B - ST-LINK/V2
 ATTRS{idVendor}=="0483", ATTRS{idProduct}=="3748", TAG+="uaccess"
 # STM32F3DISCOVERY rev C+ - ST-LINK/V2-1
 ATTRS{idVendor}=="0483", ATTRS{idProduct}=="374b", TAG+="uaccess"```
