@@ -1,5 +1,9 @@
 {%- import "gpio_macro.rs" as gpiomacro %}
 
+use crate::stm32rustlib::various;
+
+{% include "general.rs" %}
+
 /*
 fn initGPIO(pin: (char,u8), mode: u8){
     GPIOD_MODER = REP_BITS(GPIOD_MODER, (GREEN_LED)*2, 2, GPIO_MODER_OUT) ;
