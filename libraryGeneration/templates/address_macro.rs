@@ -18,7 +18,7 @@ const {{component}}_{{register}}_OFFSET : u32 = {{offset}};
 {% macro gen_register_write(component, register) -%}
 pub fn {{component.lower()}}_{{register.lower()}}_write(value: u32) {
     unsafe {
-        std::ptr::write_volatile( ({{component}}_ADR + {{component}}_{{register}}_OFFSET) as *mut u32, value)
+        write_volatile( ({{component}}_ADR + {{component}}_{{register}}_OFFSET) as *mut u32, value)
     };
 }
 {%- endmacro %}
@@ -27,7 +27,7 @@ pub fn {{component.lower()}}_{{register.lower()}}_write(value: u32) {
 {% macro gen_register_read(component, register) -%}
 pub fn {{component.lower()}}_{{register.lower()}}_read() -> u32 {
     unsafe {
-        std::ptr::read_volatile( ({{component}}_ADR + {{component}}_{{register}}_OFFSET) as *mut u32)
+        read_volatile( ({{component}}_ADR + {{component}}_{{register}}_OFFSET) as *mut u32)
     }
 }
 {%- endmacro %}

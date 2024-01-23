@@ -1,7 +1,6 @@
 {%- import "gpio_macro.rs" as gpiomacro %}
 
 use crate::stm32rustlib::various;
-
 {% include "address.rs" %}
 
 /*

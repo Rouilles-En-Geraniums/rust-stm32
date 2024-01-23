@@ -1,3 +1,7 @@
+extern crate core;
+use crate::core::ptr::write_volatile;
+use crate::core::ptr::read_volatile;
+
 pub const HIGH: u8 = 1;
 pub const LOW: u8 = 0;
 
