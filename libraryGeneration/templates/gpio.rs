@@ -15,7 +15,7 @@ fn initGPIO(pin: (char,u8), mode: u8){
  * pin = (GPIO : char, Pin : u8)
  * mode = HIGH/LOW
  */
-pub fn digitalWrite(pin: (char,u8), mode: u8){
+pub fn digital_write(pin: (char,u8), mode: u8){
     // pin = (A, 2), mode = 1
     match pin.0 {
         {%- for component in components %}
