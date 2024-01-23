@@ -4,7 +4,6 @@ extern crate core;
 use panic_halt as _;
 use cortex_m_rt::entry;
 
-
 use crate::core::ptr::write_volatile;
 use crate::core::ptr::read_volatile;
 
