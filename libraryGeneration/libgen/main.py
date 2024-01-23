@@ -103,13 +103,8 @@ def main():
         # Generate library file
         output_file_path = args.outputdir+"/"+basename+".rs"
         with open(output_file_path, 'w') as output_file:
-            # Generate general template content
-            #       (registers and read/write functions)
-            #t = env.get_template("general.rs")
-            #output_file.write(t.render(data))
-
             # TODO: verify that the file exists
-            # Fetch corresponding template (utility functions)
+            # Generate corresponding template
             t = env.get_template(basename+".rs")
             output_file.write(t.render(data))
 
