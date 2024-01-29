@@ -43,7 +43,8 @@ def check_json_validity(json_data):
     TOP_LEVEL_KEYS = ["version", "type", "hyperperiod", "tasks", "jobs"]
     VALID_TYPES = ["strict", "deadline", "cooperative", "preemptive"]
     TASKS_KEYS = ["id", "functionName"]  # "label" key is optionnal
-    JOBS_KEYS = ["taskId", "duration", "startTime"]
+    JOBS_KEYS = ["taskId", "duration", "startTime", "activations"] # modified later
+    PREEMPTIVE_ACTIVATION_KEYS = ["time", "duration"] # activation items in field "activations" (array)
 
     # check top level keys presence
     for key in TOP_LEVEL_KEYS:
@@ -52,26 +53,43 @@ def check_json_validity(json_data):
             sys.exit(MANDATORY_KEY_ABSENT)
 
     if json_data["type"] not in VALID_TYPES:
-        print(f"[ERROR] '{json['type']}' is not in valid type list : '{VALID_TYPES}'", file=sys.stderr)
+        print(f"[ERROR] '{json_data['type']}' is not in valid type list : '{VALID_TYPES}'", file=sys.stderr)
         sys.exit(UNEXPECTED_VALUE)
+
+    # remove/add jobs fields depending on the type of ordonnancing
+    jobs_keys = JOBS_KEYS.copy()
+    if json_data["type"] == "preemptive":
+        jobs_keys.remove("duration")
+        jobs_keys.remove("startTime")
+    else:
+        jobs_keys.remove("activations")
 
     # check tasks keys presence
     tasks = json_data["tasks"]
     for key in TASKS_KEYS:
         for task in tasks:
             if key not in task:
-                print(f"[ERROR] '{key}' not in task : '{task}'", file=sys.stderr)
+                print(f"[ERROR] field '{key}' not in task : '{task}'", file=sys.stderr)
                 sys.exit(MANDATORY_KEY_ABSENT)
 
     task_ids = [task["id"] for task in tasks]
 
     # check jobs (keys)
     jobs = json_data["jobs"]
-    for key in JOBS_KEYS:
+    for key in jobs_keys:
         for job in jobs:
             if key not in job:
-                print(f"[ERROR] '{key}' not in job : '{job}'", file=sys.stderr)
+                print(f"[ERROR] field '{key}' not in job : '{job}'", file=sys.stderr)
                 sys.exit(MANDATORY_KEY_ABSENT)
+
+    # for preemptive, check fields' in "activations" array
+    if json_data["type"] == "preemptive":
+        for key in PREEMPTIVE_ACTIVATION_KEYS:
+            for job in jobs:
+                for activation in job["activations"]:
+                    if key not in activation:
+                        print(f"[ERROR] field '{key}' not in activation : '{ativation}' in job : '{job}'", file=sys.stderr)
+                        sys.exit(MANDATORY_KEY_ABSENT)
 
     # check if taskId reference a previously declared task id's
     for job in jobs:
