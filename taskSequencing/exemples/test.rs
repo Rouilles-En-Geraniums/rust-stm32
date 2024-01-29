@@ -15,10 +15,6 @@ impl Sequencer {
     }
 }
 
-
-
-
-
 #[derive(Debug)]
 struct Task1 {
     label: String,
