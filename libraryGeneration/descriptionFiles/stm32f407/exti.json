@@ -13,5 +13,6 @@
     { "name": "FTSR","offset": "0x0C","read": 1,"write": 1 },
     { "name": "SWIER","offset": "0x10","read": 1,"write": 1 },
     { "name": "PR","offset": "0x14","read": 1,"write": 1 }
-  ]
+  ],
+  "constants" : []
 }

@@ -65,8 +65,12 @@ def generate_data_from_json(json_file_path):
                            "offset": register["offset"],
                            "read": register["read"],
                            "write": register["write"]}
-                           for register in json_data["registers"]]
-        }
+                           for register in json_data["registers"]],
+            "constants" : [{"name": constant["name"],    
+                            "value": constant["value"] }
+                               for  constant in json_data["constants"]]
+             }
+
 
     return data
 

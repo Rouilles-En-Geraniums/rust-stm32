@@ -100,5 +100,6 @@
         { "name": "OR", "offset": "0x50", "read": 1, "write": 1 }
       ]
     }
-  ]
+  ],
+  "constants" : []
 }

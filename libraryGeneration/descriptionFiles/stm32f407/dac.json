@@ -21,5 +21,6 @@
     { "name": "DOR1", "offset": "0x2C", "read": 1, "write": 0 },
     { "name": "DOR2", "offset": "0x30", "read": 1, "write": 0 },
     { "name": "SR", "offset": "0x34", "read": 1, "write": 0 }
-  ]
+  ],
+  "constants" : []
 }

@@ -23,6 +23,7 @@
     { "name": "JSQR", "offset": "0x38", "read": 1, "write": 1 },
     { "name": "JDR1", "offset": "0x3C", "read": 1, "write": 0 },
     { "name": "DR", "offset": "0x4C", "read": 1, "write": 0 }
-  ]
+  ],
+  "constants" : []
 }
   
