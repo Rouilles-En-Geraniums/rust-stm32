@@ -1,0 +1,34 @@
+{
+  "exhaustive" : 0,
+  "component": "RCC",
+  "arch": "STM32F407",
+  "licence": "GPL",
+  "components": [
+    { "name": "RCC", "address": "0x40023800"}
+  ],
+  "registers": [
+    { "name": "CR", "offset": "0x00", "read": 1, "write": 1 },
+    { "name": "PLLCFGR", "offset": "0x04", "read": 1, "write": 1 },
+    { "name": "CFGR", "offset": "0x08", "read": 1, "write": 1 },
+    { "name": "CIR", "offset": "0x0C", "read": 1, "write": 0 },
+    { "name": "AHB1RSTR", "offset": "0x10", "read": 1, "write": 1 },
+    { "name": "AHB2RSTR", "offset": "0x14", "read": 1, "write": 1 },
+    { "name": "AHB3RSTR", "offset": "0x18", "read": 1, "write": 1 },
+    { "name": "APB1RSTR", "offset": "0x20", "read": 1, "write": 1 },
+    { "name": "APB2RSTR", "offset": "0x24", "read": 1, "write": 1 },
+    { "name": "AHB1ENR", "offset": "0x30", "read": 1, "write": 1 },
+    { "name": "AHB2ENR", "offset": "0x34", "read": 1, "write": 1 },
+    { "name": "AHB3ENR", "offset": "0x38", "read": 1, "write": 1 },
+    { "name": "APB1ENR", "offset": "0x40", "read": 1, "write": 1 },
+    { "name": "APB2ENR", "offset": "0x44", "read": 1, "write": 1 },
+    { "name": "AHB1LPENR", "offset": "0x50", "read": 1, "write": 1 },
+    { "name": "AHB2LPENR", "offset": "0x54", "read": 1, "write": 1 },
+    { "name": "AHB3LPENR", "offset": "0x58", "read": 1, "write": 1 },
+    { "name": "APB1LPENR", "offset": "0x60", "read": 1, "write": 1 },
+    { "name": "APB2LPENR", "offset": "0x64", "read": 1, "write": 1 },
+    { "name": "BDCR", "offset": "0x70", "read": 1, "write": 1 },
+    { "name": "CSR", "offset": "0x74", "read": 1, "write": 0 },
+    { "name": "SSCGR", "offset": "0x80", "read": 1, "write": 1 },
+    { "name": "PLLISCFGR", "offset": "0x84", "read": 1, "write": 1 }
+  ]
+}

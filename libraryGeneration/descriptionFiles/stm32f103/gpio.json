@@ -1,0 +1,20 @@
+{
+    "exhaustive" : 0,
+    "component" : "GPIO",
+    "arch": "STM32F103",
+    "licence": "GPL",
+    "components" : [
+        {"name" : "GPIOA", "address": "0x40010800"},
+        {"name" : "GPIOB", "address": "0x40010C00"},
+        {"name" : "GPIOC", "address": "0x40011000"}
+    ],
+    "registers": [
+        { "name": "CRL", "offset": "0x00", "read": 1, "write": 1 },
+        { "name": "CRH", "offset": "0x04", "read": 1, "write": 1 },
+        { "name": "IDR", "offset": "0x08", "read": 1, "write": 1 },
+        { "name": "ODR", "offset": "0x0C", "read": 1, "write": 1 },
+        { "name": "BSRR", "offset": "0x10", "read": 1, "write": 1 },
+        { "name": "BRR", "offset": "0x14", "read": 1, "write": 1 },
+        { "name": "LCKR", "offset": "0x18", "read": 1, "write": 1 }
+    ]
+}

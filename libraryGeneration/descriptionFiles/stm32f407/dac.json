@@ -1,0 +1,25 @@
+{
+  "exhaustive" : 0,
+  "component": "DAC",
+  "arch": "STM32F407",
+  "licence": "GPL",
+  "components": [
+    { "name" : "DAC", "address": "0x40007400"}
+  ],
+  "registers": [
+    { "name": "CR", "offset": "0x00", "read": 1, "write": 1},
+    { "name": "SWTRIGR", "offset": "0x04", "read": 1, "write": 1 },
+    { "name": "DHR12R1", "offset": "0x08", "read": 1, "write": 1 },
+    { "name": "DHR12L1", "offset": "0x0C", "read": 1, "write": 1 },
+    { "name": "DHR8R1", "offset": "0x10", "read": 1, "write": 1 },
+    { "name": "DHR12R2", "offset": "0x14", "read": 1, "write": 1 },
+    { "name": "DHR12L2", "offset": "0x18", "read": 1, "write": 1 },
+    { "name": "DHR8R2", "offset": "0x1C", "read": 1, "write": 1 },
+    { "name": "DHR12RD", "offset": "0x20", "read": 1, "write": 1 },
+    { "name": "DHR12LD", "offset": "0x24", "read": 1, "write": 1 },
+    { "name": "DHR8RD", "offset": "0x28", "read": 1, "write": 1 },
+    { "name": "DOR1", "offset": "0x2C", "read": 1, "write": 0 },
+    { "name": "DOR2", "offset": "0x30", "read": 1, "write": 0 },
+    { "name": "SR", "offset": "0x34", "read": 1, "write": 0 }
+  ]
+}
