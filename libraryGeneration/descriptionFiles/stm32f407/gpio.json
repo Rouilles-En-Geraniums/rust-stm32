@@ -27,5 +27,18 @@
         { "name" : "LCKR","offset" : "0x1c","read" : 1,"write" : 1},
         { "name" : "AFRL","offset" : "0x20","read" : 1,"write" : 1 },
         { "name" : "AFRH","offset" : "0x24","read" : 1,"write" : 1}
+    ],
+    "constants" : [
+        { "name" : "GPIO_MODER_IN", "value" : "0b00" },
+        { "name" : "GPIO_MODER_OUT", "value" : "0b01" },
+        { "name" : "GPIO_MODER_ALT", "value" : "0b10" },
+        { "name" : "GPIO_MODER_ANA", "value" : "0b11" },
+        { "name" : "GPIO_OSPEEDR_LO", "value" : "0b00" },
+        { "name" : "GPIO_OSPEEDR_ME", "value" : "0b01" },
+        { "name" : "GPIO_OSPEEDR_HI", "value" : "0b10" },
+        { "name" : "GPIO_OSPEEDR_VH", "value" : "0b11" },
+        { "name" : "GPIO_PUPDR_NO", "value" : "0b00" },
+        { "name" : "GPIO_PUPDR_PU", "value" : "0b01" },
+        { "name" : "GPIO_PUPDR_PD", "value" : "0b10" }
     ]
 }

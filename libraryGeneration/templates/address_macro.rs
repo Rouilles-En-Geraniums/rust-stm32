@@ -12,6 +12,11 @@ const {{component}}_{{register}}_OFFSET : u32 = {{offset}};
 {%- endmacro %}
 
 
+{% macro gen_constants(name, value) -%}
+const {{name}} : u32 = {{value}};
+{%- endmacro %}
+
+
 
 // Functions
 
