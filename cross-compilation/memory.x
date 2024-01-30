@@ -1,7 +1,7 @@
 MEMORY
 {
-  FLASH : ORIGIN = 0x08000000, LENGTH = 1024K
-  RAM : ORIGIN = 0x20000000, LENGTH = 128K
+  FLASH (rx) : ORIGIN = 0x08000000, LENGTH = 1024K
+  RAM (rwx) : ORIGIN = 0x20000000, LENGTH = 128K
 }
 
 /* This is where the call stack will be allocated. */
@@ -22,10 +22,13 @@ MEMORY
    sources added the attribute `#[link_section = ".ram2bss"]` to the data
    you want to place there. */
 /* Note that the section will not be zero-initialized by the runtime! */
-/* SECTIONS {
-     .ram2bss (NOLOAD) : ALIGN(4) {
-       *(.ram2bss);
-       . = ALIGN(4);
-     } > RAM2
-   } INSERT AFTER .bss;
-*/
+
+
+
+SECTIONS {
+   .text : {
+      *(.text*)
+   } > RAM
+
+
+}

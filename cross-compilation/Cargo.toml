@@ -2,7 +2,7 @@
 authors = ["camsi6"]
 edition = "2018"
 readme = "README.md"
-name = "hello"
+name = "cross-compilation"
 version = "0.1.0"
 
 [dependencies]
@@ -26,7 +26,7 @@ panic-halt = "0.2.0"
 
 # this lets you use `cargo fix`!
 [[bin]]
-name = "hello"
+name = "cross-compilation"
 test = false
 bench = false
 
