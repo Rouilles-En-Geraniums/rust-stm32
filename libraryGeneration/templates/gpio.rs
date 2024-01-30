@@ -24,5 +24,14 @@ pub fn digital_write(pin: (char,u32), mode: u8){
         {%- endfor %}
         _ => (),
     }
-    
+}
+
+pub fn digital_read(pin: (char,u32)) -> u8 {
+    // pin = (A, 2), mode = 1
+    match pin.0 {
+        {%- for component in components %}
+        {{gpiomacro.gen_digital_read_switch_case(component.name[-1])}}
+        {%- endfor %}
+        _ => 2
+    }
 }

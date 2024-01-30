@@ -10,7 +10,15 @@
         },
 {%- endmacro %}
 
-{% macro f(a, b) -%}
+
+{%- macro gen_digital_read_switch_case(gpioName) -%}
+        '{{gpioName}}' => {
+            if (gpio{{gpioName.lower()}}_idr_read() & (1 << pin.1)) != 0 {
+                various::HIGH
+            } else {
+                various::LOW
+            }
+        },
 {%- endmacro %}
 
 
