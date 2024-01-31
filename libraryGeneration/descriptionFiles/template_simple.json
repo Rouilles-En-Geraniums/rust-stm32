@@ -1,0 +1,16 @@
+{
+  "exhaustive" : 0,
+  "component": "<component_name>",
+  "arch": "<arch_type>",
+  "licence": "<licence>",
+  "components": [
+    {"name" : "<name1>", "address": "0x<adress>"},
+    {"name" : "<name2>", "address": "0x<adress>"},
+    {"name" : "<name3>", "address": "0x<adress>"}
+  ],
+  "registers": [
+    { "name": "<reg_name>", "offset": "0x<offset>", "read": [0,1], "write": [0,1] },
+    { "name": "<reg_name>", "offset": "0x<offset>", "read": [0,1], "write": [0,1] },
+    { "name": "..."}
+  ]
+}
