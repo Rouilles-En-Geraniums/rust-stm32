@@ -38,7 +38,7 @@ const WAIT_DELAY: u32 = ((42 * 1000000) / WAIT_PSC) / 2;
 fn init_tim4() {
     tim::tim4_cr1_write(0);
     tim::tim4_psc_write(WAIT_PSC - 1);
-    tim::tim4_arr_write(100000);
+    tim::tim4_arr_write(1000000);
     tim::tim4_egr_write(tim::TIM_UG);
     tim::tim4_sr_write(0);
 }
@@ -62,12 +62,8 @@ fn main() -> ! {
         else{
             gpio::gpiod_bsrr_write(1 << (my_led.1 + 16));
         }
-           
-    // Wait for the timer to complete a full cycle
-    while tim::tim4_sr_read() & tim::TIM_UIF == 0 {}
-
-    // Clear the update event flag
-    tim::tim4_sr_write(0);   
+        
+    tim::tim4_sr_write(0);
         
     }
 }    
