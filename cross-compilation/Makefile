@@ -6,4 +6,4 @@ openocd :
 
 debug : 
 	cargo build --release 
-	gdb -ex "target remote :3333" -ex "monitor arm semihosting enable" -ex "load" target/thumbv7em-none-eabi/release/hello 
+	gdb -ex "target remote :3333" -ex "monitor arm semihosting enable" -ex "load" target/thumbv7em-none-eabi/release/cross-compilation 
