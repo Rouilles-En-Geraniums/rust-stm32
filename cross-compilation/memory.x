@@ -24,11 +24,3 @@ MEMORY
 /* Note that the section will not be zero-initialized by the runtime! */
 
 
-
-SECTIONS {
-   .text : {
-      *(.text*)
-   } > RAM
-
-
-}

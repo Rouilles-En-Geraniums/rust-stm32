@@ -92,3 +92,62 @@ ATTRS{idVendor}=="0483", ATTRS{idProduct}=="374b", TAG+="uaccess"
 
 >brew install openocd
 
+
+# Getting started 
+
+## Clone the repository 
+
+>git clone https://
+
+## Cross-compiling
+
+The next step is to cross compile the program for the desired target. Figure out what target architecture you are working with, the .cargo/config.toml contains multiple target that you can compile too, you just need to uncomment the right one.
+
+```
+[build]
+# Pick ONE of these compilation targets
+# target = "thumbv6m-none-eabi"    # Cortex-M0 and Cortex-M0+
+# target = "thumbv7m-none-eabi"    # Cortex-M3
+# target = "thumbv7em-none-eabi"   # Cortex-M4 and Cortex-M7 (no FPU)
+# target = "thumbv7em-none-eabihf" # Cortex-M4F and Cortex-M7F (with FPU)
+```
+
+The target is not automatically installed with the Rust toolchain, make sure you add it before cross compiling.
+
+Since the compilation target has been set as default in your .cargo/config.toml 
+
+The next step is to modify the memory region information in the memory.x file : 
+
+```
+/* Linker script for the STM32F407 */
+MEMORY
+{
+  /* NOTE 1 K = 1 KiBi = 1024 bytes */
+    FLASH (rx) : ORIGIN = 0x08000000, LENGTH = 1024K
+    RAM (rwx) : ORIGIN = 0x20000000, LENGTH = 128K
+}
+```
+You can now cross compile programs using **cargo build** 
+
+>cargo build --release
+
+The output binary will be located at target/thumbv7em-none-eabi/release/project-name, this file will be loaded on the chip next.
+
+
+# Debugging 
+
+Make sure to change you **openocd.cfg** file to connect the ST-LINK on the board. And change the project-file-name in the Makefile. 
+
+
+Run this command from the root : 
+
+>make openocd  
+
+And on another terminal in the root as well :
+
+>make debug
+
+Your program is now loaded. The semihosting is enabled if you are planning on communication and using the I/O of the host computer.
+
+
+
