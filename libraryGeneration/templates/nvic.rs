@@ -7,7 +7,7 @@ use crate::stm32rustlib::various;
 {%- include "address.rs" %}
 
 {%- for component in components -%}
-    {%- for register in registers -%}
+    {%- for register in registers %}
 {{nvicmacro.gen_nvic_set(component.name, register.name)}}
-    {%- endfor -%}
+    {%- endfor %}
 {%- endfor -%}
