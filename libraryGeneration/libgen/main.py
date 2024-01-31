@@ -54,7 +54,11 @@ def generate_data_from_json(json_file_path):
                                            "read": register["read"],
                                            "write": register["write"]}
                                            for register in component["registers"]]}
-                            for component in json_data["components"]]}
+                            for component in json_data["components"]],
+            "constants" : [{"name": constant["name"],    
+                            "value": constant["value"] }
+                               for  constant in json_data["constants"]]
+            }
     else:
         data = {
             "exhaustive": 0,
