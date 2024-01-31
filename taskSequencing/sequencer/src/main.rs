@@ -10,15 +10,15 @@ pub struct OrdoTask {
     pub task: Box<dyn Task>
 }
 
-pub struct Job <'a> {
-    pub task: &'a OrdoTask,
+pub struct Job{
+    pub task_index: usize,
     pub start: i32,
     pub duration: i32
 }
 
-pub struct Sequencer <'a> {
+pub struct Sequencer {
     pub tasks: Vec<OrdoTask>,
-    pub jobs: Vec<Job<'a>>
+    pub jobs: Vec<Job>
 }
 
 pub struct Task1 {
@@ -58,7 +58,8 @@ pub fn init_tasks<'a>(tasks: &mut Vec<OrdoTask>, jobs: Vec<Job<'a>>) -> () {
 }
 */
 
-pub fn init_tasks<'a>(tasks: &'a mut Vec<OrdoTask>, jobs: &'_ mut Vec<Job<'a>>) -> () {
+//TODO : renommer en construct_tasks
+pub fn init_tasks(tasks: &mut Vec<OrdoTask>, jobs: &'_ mut Vec<Job>) -> () {
     
     *tasks = vec![
         OrdoTask {name: String::from("Tache 1"), task: Box::new(Task1 {count: 12})},
@@ -67,28 +68,27 @@ pub fn init_tasks<'a>(tasks: &'a mut Vec<OrdoTask>, jobs: &'_ mut Vec<Job<'a>>) 
 
 
     *jobs = vec![
-        Job::<'a>{task: &tasks[1], duration: 10, start: 7}
+        Job{task_index: 0, duration: 10, start: 7}
     ];
-
-
 }
 
 fn main() {
     println!("Hello, world!");
 
     let mut tasks: Vec<OrdoTask> = vec![];
-    let mut jobs: Vec<Job<'_>> = vec![];
+    let mut jobs: Vec<Job> = vec![];
 
     init_tasks(&mut tasks, &mut jobs);
 
     //let sequencer: Sequencer = init_tasks();
-    for task in tasks.iter() {
+    for task in tasks.iter_mut() {
         println!("{}", task.name);
         task.task.init();
     }
 
     for job in jobs.iter() {
-        job.task.task.execute();
+        let task: &mut OrdoTask = &mut tasks[job.task_index];
+        task.task.execute();
     }
 
     //println!("{}", task.name);
