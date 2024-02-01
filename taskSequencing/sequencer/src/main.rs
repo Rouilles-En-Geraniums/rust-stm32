@@ -72,6 +72,17 @@ pub fn init_tasks(tasks: &mut Vec<OrdoTask>, jobs: &'_ mut Vec<Job>) -> () {
     ];
 }
 
+//wait until specified time, and then resets the timer
+fn await(time: i32){
+    //while (TIMX_CNT < time);
+    //TIMX_CNT = 0;
+
+    //solution alternative : appeler await avec un délai avant l'éxécution de la tache qui a ce temps pour s'éxécuter
+    //while ()
+    //TIMX_CCR1 = time
+    
+}
+
 fn main() {
     println!("Hello, world!");
 
@@ -86,9 +97,12 @@ fn main() {
         task.task.init();
     }
 
+    let mut time: i32 = 0;
     for job in jobs.iter() {
+        await(job.start - time);
         let task: &mut OrdoTask = &mut tasks[job.task_index];
         task.task.execute();
+        time = job.start;
     }
 
     //println!("{}", task.name);
