@@ -11,59 +11,117 @@ use crate::stm32rustlib::tim;
 
 pub mod stm32rustlib;
 
-// bit range macros
-fn mask(l: u32) -> u32 {
-    (1 << l) - 1
+extern crate alloc;
+use alloc::boxed::Box;
+
+
+//mod tasks;
+
+pub trait Task {
+    fn execute(&mut self) -> (); 
+    fn init(&mut self) -> () {}
 }
 
-fn get_bits(x: u32, i: u32, l: u32) -> u32 {
-    (x >> i) & mask(l)
+pub struct OrdoTask {
+    pub name: String,
+    pub task: Box<dyn Task>
 }
 
-fn rep_bits(x: u32, i: u32, l: u32, y: u32) -> u32 {
-    (x & !(mask(l) << i)) | (y << i)
+pub struct Job{
+    pub task_index: usize,
+    pub start: i32,
+    pub duration: i32
 }
 
-const GPIO_MODER_IN: u32 = 0b00;
-const GPIO_MODER_OUT: u32 = 0b01;
-const GPIO_PUPDR_NO: u32 = 0b00;
-const GPIO_PUPDR_PU: u32 = 0b01;
-const GPIO_PUPDR_PD: u32 = 0b10;
-
-const PRESSED: u8 = 1;
-const RELEASED: u8 = 0;
-const WAIT_PSC: u32 = 1000;
-const WAIT_DELAY: u32 = ((42 * 1000000) / WAIT_PSC) / 2;
-
-fn init_tim4() {
-    tim::tim4_cr1_write(0);
-    tim::tim4_psc_write(WAIT_PSC - 1);
-    tim::tim4_arr_write(1000000);
-    tim::tim4_egr_write(tim::TIM_UG);
-    tim::tim4_sr_write(0);
+pub struct Sequencer {
+    pub tasks: Vec<OrdoTask>,
+    pub jobs: Vec<Job>
 }
 
-#[entry]
-fn main() -> ! {
-    // RCC init
-    rcc::rcc_ahb1enr_write(rcc::rcc_ahb1enr_read() | (1 << 0)); // GPIO A
-    rcc::rcc_ahb1enr_write(rcc::rcc_ahb1enr_read() | (1 << 3)); // GPIO D
-    rcc::rcc_ahb1enr_write(rcc::rcc_ahb1enr_read() | (1 << 2));
-    let my_led = ('D', 13);
-    // GPIO init
-    gpio::gpiod_moder_write(rep_bits(gpio::gpiod_moder_read(), my_led.1*2, 2, GPIO_MODER_OUT));
-    //TIM  init 
-    init_tim4();
-    tim::tim4_cr1_write(tim::TIM_CEN);
-    loop {
-        if gpio::gpiod_odr_read() & (1<<my_led.1) == 0{
-            gpio::gpiod_bsrr_write(1 << my_led.1);
-        }
-        else{
-            gpio::gpiod_bsrr_write(1 << (my_led.1 + 16));
-        }
-        
-    tim::tim4_sr_write(0);
-        
+pub struct Task1 {
+    pub count: i32
+}
+
+impl Task for Task1 {
+    fn execute(&mut self) -> () {
+        //println!("I am Task 1. Count : {}", self.count);
     }
-}    
+}
+
+pub struct Task2 {}
+
+impl Task for Task2 {
+    fn execute(&mut self) -> () {
+        //println!("I am Task 2");
+    }
+}
+
+//réfléchir à la possibiltié laisser l'utilisateur écrire ordo_tab.rs lui-même, avec des helpers (add_task -> OrdoTask, add_job)
+
+
+
+/*
+pub fn init_tasks<'a>(tasks: &mut Vec<OrdoTask>, jobs: Vec<Job<'a>>) -> () {
+    
+    tasks = vec![
+        OrdoTask {name: String::from("Tache 1"), task: Box::new(Task1 {count: 12})},
+        OrdoTask {name: String::from("Tache 2"), task: Box::new(Task2 {})}
+    ]
+
+
+    jobs = vec![
+        Job::<'a>{task: &seq.tasks[1], duration: 10, start: 7}
+    ];
+}
+*/
+
+//TODO : renommer en construct_tasks
+pub fn init_tasks(tasks: &mut Vec<OrdoTask>, jobs: &'_ mut Vec<Job>) -> () {
+    
+    *tasks = vec![
+        OrdoTask {name: String::from("Tache 1"), task: Box::new(Task1 {count: 12})},
+        OrdoTask {name: String::from("Tache 2"), task: Box::new(Task2 {})}
+    ];
+
+
+    *jobs = vec![
+        Job{task_index: 0, duration: 10, start: 7}
+    ];
+}
+
+//wait until specified time, and then resets the timer
+fn await_(time: i32){
+    //while (TIMX_CNT < time);
+    //TIMX_CNT = 0;
+
+    //solution alternative : appeler await avec un délai avant l'éxécution de la tache qui a ce temps pour s'éxécuter
+    //while ()
+    //TIMX_CCR1 = time
+    
+}
+
+fn main() {
+    //println!("Hello, world!");
+
+    let mut tasks: Vec<OrdoTask> = vec![];
+    let mut jobs: Vec<Job> = vec![];
+
+    init_tasks(&mut tasks, &mut jobs);
+
+    //let sequencer: Sequencer = init_tasks();
+    for task in tasks.iter_mut() {
+        //println!("{}", task.name);
+        task.task.init();
+    }
+
+    let mut time: i32 = 0;
+    for job in jobs.iter() {
+        await_(job.start - time);
+        let task: &mut OrdoTask = &mut tasks[job.task_index];
+        task.task.execute();
+        time = job.start;
+    }
+
+    //println!("{}", task.name);
+    //(task.f)();
+}
