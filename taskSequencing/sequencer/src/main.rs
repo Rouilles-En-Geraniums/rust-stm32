@@ -63,7 +63,7 @@ pub fn init_tasks<'a>(tasks: &mut Vec<OrdoTask>, jobs: Vec<Job<'a>>) -> () {
 */
 
 //TODO : renommer en construct_tasks
-pub fn init_tasks(tasks: &mut Tasks, jobs: &'_ mut Jobs) -> () {
+pub fn init_tasks(seq: &mut Sequencer) -> () {
     
     *tasks = Box::new(    [
         OrdoTask {name: "Tache 1", task: Box::new(Task1 {count: 12})},
@@ -103,13 +103,17 @@ fn main() {
         task.task.init();
     }
 
-    let mut time: i32 = 0;
-    for job in jobs.iter() {
-        await_(job.start - time);
-        let task: &mut OrdoTask = &mut tasks[job.task_index];
-        task.task.execute();
-        time = job.start;
+    while (true){
+        let mut time: i32 = 0;
+        for job in jobs.iter() {
+            await_(job.start - time);
+            let task: &mut OrdoTask = &mut tasks[job.task_index];
+            task.task.execute();
+            time = job.start;
+        }
+
     }
+
 
     //println!("{}", task.name);
     //(task.f)();

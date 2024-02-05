@@ -13,8 +13,10 @@ pub mod stm32rustlib;
 
 extern crate alloc;
 use alloc::boxed::Box;
+use embedded_alloc::Heap as Heap;
 
-
+#[global_allocator]
+static HEAP: Heap = Heap::empty();
 
 //mod tasks;
 
@@ -34,8 +36,8 @@ pub struct Job{
     pub duration: i32
 }
 
-type Tasks = Box<[OrdoTask]>;
-type Jobs = Box<[Job]>;
+pub type Tasks = Box<[OrdoTask]>;
+pub type Jobs = Box<[Job]>;
 
 pub struct Sequencer {
     pub tasks: Tasks,
@@ -80,17 +82,15 @@ pub fn init_tasks<'a>(tasks: &mut Vec<OrdoTask>, jobs: Vec<Job<'a>>) -> () {
 */
 
 //TODO : renommer en construct_tasks
-pub fn init_tasks(tasks: &mut Tasks, jobs: &'_ mut Jobs) -> () {
+pub fn init_tasks(seq: &mut Sequencer) -> () {
     
-    *tasks = Box::new(    [
+    seq.tasks = Box::new(    [
         OrdoTask {name: "Tache 1", task: Box::new(Task1 {count: 12})},
         OrdoTask {name: "Tache 2", task: Box::new(Task2 {})}
     ]);
-    
 
 
-
-    *jobs = Box::new([
+    seq.jobs = Box::new([
         Job{task_index: 0, duration: 10, start: 7}
     ]);
 }
@@ -109,21 +109,20 @@ fn await_(time: i32){
 fn main() {
     //println!("Hello, world!");
 
-    let mut tasks: Tasks = Default::default();
-    let mut jobs: Jobs = Default::default();
+    let mut seq: Sequencer = Sequencer { tasks: Default::default(), jobs: Default::default() };
 
-    init_tasks(&mut tasks, &mut jobs);
+    init_tasks(&mut seq);
 
     //let sequencer: Sequencer = init_tasks();
-    for task in tasks.iter_mut() {
+    for task in seq.tasks.iter_mut() {
         //println!("{}", task.name);
         task.task.init();
     }
 
     let mut time: i32 = 0;
-    for job in jobs.iter() {
+    for job in seq.jobs.iter() {
         await_(job.start - time);
-        let task: &mut OrdoTask = &mut tasks[job.task_index];
+        let task: &mut OrdoTask = &mut seq.tasks[job.task_index];
         task.task.execute();
         time = job.start;
     }
