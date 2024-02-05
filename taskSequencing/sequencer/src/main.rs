@@ -7,7 +7,7 @@ pub trait Task {
 }
 
 pub struct OrdoTask {
-    pub name: String,
+    pub name: *const str,
     pub task: Box<dyn Task>
 }
 
@@ -31,7 +31,7 @@ pub struct Task1 {
 
 impl Task for Task1 {
     fn execute(&mut self) -> () {
-        println!("I am Task 1. Count : {}", self.count);
+        //println!("I am Task 1. Count : {}", self.count);
     }
 }
 
@@ -39,7 +39,7 @@ pub struct Task2 {}
 
 impl Task for Task2 {
     fn execute(&mut self) -> () {
-        println!("I am Task 2");
+        //println!("I am Task 2");
     }
 }
 
@@ -66,8 +66,8 @@ pub fn init_tasks<'a>(tasks: &mut Vec<OrdoTask>, jobs: Vec<Job<'a>>) -> () {
 pub fn init_tasks(tasks: &mut Tasks, jobs: &'_ mut Jobs) -> () {
     
     *tasks = Box::new(    [
-        OrdoTask {name: String::from("Tache 1"), task: Box::new(Task1 {count: 12})},
-        OrdoTask {name: String::from("Tache 2"), task: Box::new(Task2 {})}
+        OrdoTask {name: "Tache 1", task: Box::new(Task1 {count: 12})},
+        OrdoTask {name: "Tache 2", task: Box::new(Task2 {})}
     ]);
     
 
@@ -90,7 +90,7 @@ fn await_(time: i32){
 }
 
 fn main() {
-    println!("Hello, world!");
+    //println!("Hello, world!");
 
     let mut tasks: Tasks = Default::default();
     let mut jobs: Jobs = Default::default();

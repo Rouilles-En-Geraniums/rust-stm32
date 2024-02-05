@@ -15,6 +15,7 @@ extern crate alloc;
 use alloc::boxed::Box;
 
 
+
 //mod tasks;
 
 pub trait Task {
@@ -23,7 +24,7 @@ pub trait Task {
 }
 
 pub struct OrdoTask {
-    pub name: String,
+    pub name: *const str,
     pub task: Box<dyn Task>
 }
 
@@ -33,9 +34,12 @@ pub struct Job{
     pub duration: i32
 }
 
+type Tasks = Box<[OrdoTask]>;
+type Jobs = Box<[Job]>;
+
 pub struct Sequencer {
-    pub tasks: Vec<OrdoTask>,
-    pub jobs: Vec<Job>
+    pub tasks: Tasks,
+    pub jobs: Jobs
 }
 
 pub struct Task1 {
@@ -76,17 +80,19 @@ pub fn init_tasks<'a>(tasks: &mut Vec<OrdoTask>, jobs: Vec<Job<'a>>) -> () {
 */
 
 //TODO : renommer en construct_tasks
-pub fn init_tasks(tasks: &mut Vec<OrdoTask>, jobs: &'_ mut Vec<Job>) -> () {
+pub fn init_tasks(tasks: &mut Tasks, jobs: &'_ mut Jobs) -> () {
     
-    *tasks = vec![
-        OrdoTask {name: String::from("Tache 1"), task: Box::new(Task1 {count: 12})},
-        OrdoTask {name: String::from("Tache 2"), task: Box::new(Task2 {})}
-    ];
+    *tasks = Box::new(    [
+        OrdoTask {name: "Tache 1", task: Box::new(Task1 {count: 12})},
+        OrdoTask {name: "Tache 2", task: Box::new(Task2 {})}
+    ]);
+    
 
 
-    *jobs = vec![
+
+    *jobs = Box::new([
         Job{task_index: 0, duration: 10, start: 7}
-    ];
+    ]);
 }
 
 //wait until specified time, and then resets the timer
@@ -103,8 +109,8 @@ fn await_(time: i32){
 fn main() {
     //println!("Hello, world!");
 
-    let mut tasks: Vec<OrdoTask> = vec![];
-    let mut jobs: Vec<Job> = vec![];
+    let mut tasks: Tasks = Default::default();
+    let mut jobs: Jobs = Default::default();
 
     init_tasks(&mut tasks, &mut jobs);
 
