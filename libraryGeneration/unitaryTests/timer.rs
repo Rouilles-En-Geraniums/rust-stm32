@@ -37,7 +37,7 @@ fn main() -> ! {
 	// RCC init
     rcc::rcc_ahb1enr_write(rcc::rcc_ahb1enr_read() | (1 << 0)); //GPIO A
     rcc::rcc_ahb1enr_write(rcc::rcc_ahb1enr_read() | (1 << 3)); //GPIO D
-	rcc::rcc_apb1enr_write(rcc::rcc_ahb1enr_read() | (1 << 2)); //tim4en
+	rcc::rcc_apb1enr_write(rcc::rcc_apb1enr_read() | (1 << 2)); //tim4en
     
 	gpio::gpiod_moder_write(various::rep_bits(gpio::gpiod_moder_read(), my_led.1*2, 2, gpio::GPIO_MODER_OUT));
 	
