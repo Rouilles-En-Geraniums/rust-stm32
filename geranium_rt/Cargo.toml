@@ -1,0 +1,15 @@
+[package]
+authors = ["RouillesEnGeraniumTM"]
+edition = "2018"
+readme = "README.md"
+name = "geranium_rt"
+version = "0.1.0"
+
+[dependencies]
+cortex-m-semihosting = "0.3.3"
+
+[profile.dev]
+panic = "abort"
+
+[profile.release]
+panic = "abort"

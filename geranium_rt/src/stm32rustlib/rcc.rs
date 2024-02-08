@@ -43,24 +43,13 @@ pub const RCC_CR_PLLI2SON : u32 = 1 << 26;
 pub const RCC_CR_PLLI2SRDY : u32 = 1 << 27;
 pub const RCC_CR_PLLSAION : u32 = 1 << 28;
 pub const RCC_CR_PLLSAIRDY : u32 = 1 << 29;
-pub const RCC_PLL_PLLM0 : u32 = 1 << 0;
-pub const RCC_PLL_PLLM1 : u32 = 1 << 1;
-pub const RCC_PLL_PLLM2 : u32 = 1 << 2;
-pub const RCC_PLL_PLLM3 : u32 = 1 << 3;
-pub const RCC_PLL_PLLM4 : u32 = 1 << 4;
-pub const RCC_PLL_PLLM5 : u32 = 1 << 5;
-pub const RCC_PLL_PLLN : u32 = 1 << 6;
-pub const RCC_PLL_PLLP0 : u32 = 1 << 16;
-pub const RCC_PLL_PLLP1 : u32 = 1 << 17;
-pub const RCC_PLL_PLLSRC : u32 = 1 << 22;
-pub const RCC_PLL_PLLQ0 : u32 = 1 << 24;
-pub const RCC_PLL_PLLQ1 : u32 = 1 << 25;
-pub const RCC_PLL_PLLQ2 : u32 = 1 << 26;
-pub const RCC_PLL_PLLQ3 : u32 = 1 << 27;
-pub const RCC_CFGR_SW0 : u32 = 1 << 0;
-pub const RCC_CFGR_SW1 : u32 = 1 << 1;
-pub const RCC_CFGR_SWS0 : u32 = 1 << 2;
-pub const RCC_CFGR_SWS1 : u32 = 1 << 3;
+pub const RCC_PLLCFGR_PLLM : u32 = 1 << 0;
+pub const RCC_PLLCFGR_PLLN : u32 = 1 << 6;
+pub const RCC_PLLCFGR_PLLP : u32 = 1 << 16;
+pub const RCC_PLLCFGR_PLLSRC : u32 = 1 << 22;
+pub const RCC_PLLCFGR_PLLQ : u32 = 1 << 24;
+pub const RCC_CFGR_SW : u32 = 1 << 0;
+pub const RCC_CFGR_SWS : u32 = 1 << 2;
 pub const RCC_CFGR_HPRE : u32 = 1 << 4;
 pub const RCC_CFGR_PPRE1 : u32 = 1 << 10;
 pub const RCC_CFGR_PPRE2  : u32 = 1 << 13;
@@ -409,11 +398,4 @@ pub fn rcc_plliscfgr_read() -> u32 {
     unsafe {
         read_volatile( (RCC_ADR + RCC_PLLISCFGR_OFFSET) as *mut u32)
     }
-}
-    
-
-
-
-fn initRegister(name: u8){
-    //RCC_AHB1ENR |= RCC_GPIODEN;
 }

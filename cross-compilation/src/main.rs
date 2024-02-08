@@ -1,132 +1,63 @@
 #![no_std]
 #![no_main]
-extern crate core;
-use panic_halt as _;
-use cortex_m_rt::entry;
-use cortex_m_semihosting::hprintln;
+#![allow(unused_imports)]
+#![allow(non_snake_case)]
+#![allow(unused_variables)]
+#![allow(non_upper_case_globals)]
+#![allow(dead_code)]
 
-use crate::stm32rustlib::gpio;
-use crate::stm32rustlib::rcc;
-use crate::stm32rustlib::tim;
+extern crate geranium_rt;
+extern crate core;
+use core::arch::asm;
 
 pub mod stm32rustlib;
+use crate::stm32rustlib::adc::*;
+use crate::stm32rustlib::dac::*;
+use crate::stm32rustlib::exti::*;
+use crate::stm32rustlib::gpio::*;
+use crate::stm32rustlib::nvic::*;
+use crate::stm32rustlib::rcc::*;
+use crate::stm32rustlib::tim::*;
+use crate::stm32rustlib::various::*;
 
-extern crate alloc;
-use alloc::boxed::Box;
-use embedded_alloc::Heap as Heap;
+const APB1_CLK: u32 = 42_000_000;
 
-#[global_allocator]
-static HEAP: Heap = Heap::empty();
+#[no_mangle]
+fn mywait(t: u32) { // milliseconds
 
-//mod tasks;
+    let psc: u32 = APB1_CLK / 1000;
+    let period: u32 = t;
 
-pub trait Task {
-    fn execute(&mut self) -> (); 
-    fn init(&mut self) -> () {}
-}
+    rcc_apb1enr_write(rcc_apb1enr_read() | (1 << 2)); //tim4en
 
-pub struct OrdoTask {
-    pub name: *const str,
-    pub task: Box<dyn Task>
-}
-
-pub struct Job{
-    pub task_index: usize,
-    pub start: i32,
-    pub duration: i32
-}
-
-pub type Tasks = Box<[OrdoTask]>;
-pub type Jobs = Box<[Job]>;
-
-pub struct Sequencer {
-    pub tasks: Tasks,
-    pub jobs: Jobs
-}
-
-pub struct Task1 {
-    pub count: i32
-}
-
-impl Task for Task1 {
-    fn execute(&mut self) -> () {
-        //println!("I am Task 1. Count : {}", self.count);
-    }
-}
-
-pub struct Task2 {}
-
-impl Task for Task2 {
-    fn execute(&mut self) -> () {
-        //println!("I am Task 2");
-    }
-}
-
-//réfléchir à la possibiltié laisser l'utilisateur écrire ordo_tab.rs lui-même, avec des helpers (add_task -> OrdoTask, add_job)
-
-
-
-/*
-pub fn init_tasks<'a>(tasks: &mut Vec<OrdoTask>, jobs: Vec<Job<'a>>) -> () {
+    tim4_cr1_write(tim4_cr1_read() & !TIM_CEN);
+    tim4_psc_write(psc - 1);
+    tim4_arr_write(period);
+    tim4_egr_write(TIM_UG);
+    tim4_sr_write(0);
+    tim4_cr1_write(tim4_cr1_read() | TIM_CEN);
     
-    tasks = vec![
-        OrdoTask {name: String::from("Tache 1"), task: Box::new(Task1 {count: 12})},
-        OrdoTask {name: String::from("Tache 2"), task: Box::new(Task2 {})}
-    ]
+    while (tim4_sr_read() & TIM_UIF) == 0 {};
 
-
-    jobs = vec![
-        Job::<'a>{task: &seq.tasks[1], duration: 10, start: 7}
-    ];
-}
-*/
-
-//TODO : renommer en construct_tasks
-pub fn init_tasks(seq: &mut Sequencer) -> () {
-    
-    seq.tasks = Box::new(    [
-        OrdoTask {name: "Tache 1", task: Box::new(Task1 {count: 12})},
-        OrdoTask {name: "Tache 2", task: Box::new(Task2 {})}
-    ]);
-
-
-    seq.jobs = Box::new([
-        Job{task_index: 0, duration: 10, start: 7}
-    ]);
+    tim4_sr_write(0);
+    tim4_cr1_write(tim4_cr1_read() & !TIM_CEN);
 }
 
-//wait until specified time, and then resets the timer
-fn await_(time: i32){
-    //while (TIMX_CNT < time);
-    //TIMX_CNT = 0;
 
-    //solution alternative : appeler await avec un délai avant l'éxécution de la tache qui a ce temps pour s'éxécuter
-    //while ()
-    //TIMX_CCR1 = time
-    
-}
 
+
+#[no_mangle]
 fn main() {
-    //println!("Hello, world!");
-
-    let mut seq: Sequencer = Sequencer { tasks: Default::default(), jobs: Default::default() };
-
-    init_tasks(&mut seq);
-
-    //let sequencer: Sequencer = init_tasks();
-    for task in seq.tasks.iter_mut() {
-        //println!("{}", task.name);
-        task.task.init();
+    rcc_ahb1enr_write(rcc_ahb1enr_read() | (1 << 3)); //GPIO D
+    
+    let my_led = ('D', 12); // Built-in green led
+    gpiod_moder_write(rep_bits(gpiod_moder_read(), my_led.1*2, 2, GPIO_MODER_OUT));
+    
+    digital_write(my_led, LOW);
+    loop {
+        digital_write(my_led, LOW);
+        mywait(1000);
+        digital_write(my_led, HIGH);
+        mywait(1000);
     }
-
-    let mut time: i32 = 0;
-    for job in seq.jobs.iter() {
-        await_(job.start - time);
-        let task: &mut OrdoTask = &mut seq.tasks[job.task_index];
-        task.task.execute();
-        time = job.start;
-    }
-
-    //println!("{}", task.name);
-    //(task.f)();
 }

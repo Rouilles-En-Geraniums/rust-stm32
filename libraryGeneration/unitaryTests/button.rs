@@ -4,10 +4,8 @@ extern crate core;
 use panic_halt as _;
 use cortex_m_rt::entry;
 
-use crate::stm32rustlib::exti;
 use crate::stm32rustlib::gpio;
 use crate::stm32rustlib::rcc;
-use crate::stm32rustlib::tim;
 use crate::stm32rustlib::various;
 
 pub mod stm32rustlib;
@@ -20,17 +18,13 @@ fn main() -> ! {
     rcc::rcc_ahb1enr_write(rcc::rcc_ahb1enr_read() | (1 << 0)); //GPIO A
     rcc::rcc_ahb1enr_write(rcc::rcc_ahb1enr_read() | (1 << 3)); //GPIO D
     
-    let my_led = ('D', 12);
-    let my_but = ('A', 0);
-
+    let my_led = ('D', 12); // Built-in green led
+    let my_but = ('A', 0); // Built-in blue button
 
     gpio::gpiod_moder_write(various::rep_bits(gpio::gpiod_moder_read(), my_led.1*2, 2, gpio::GPIO_MODER_OUT));
 
     gpio::gpioa_moder_write(various::rep_bits(gpio::gpioa_moder_read(), my_but.1*2, 2, gpio::GPIO_MODER_IN));
     gpio::gpioa_pupdr_write(various::rep_bits(gpio::gpioa_pupdr_read(), my_but.1*2, 2, gpio::GPIO_PUPDR_PD));
-
-    //gpio::gpiod_moder_write(1 << (my_led.1*2));
-    // GPIOD_OTYPER = GPIOD_OTYPER & ~( 1 << (GREEN_LED));
 
     let mut bstate = RELEASED;
     gpio::digital_write(my_led, various::LOW);
