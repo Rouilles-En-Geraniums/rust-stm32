@@ -1,9 +1,29 @@
+TARGET = thumbv7m-none-eabi
 TARGET = thumbv7em-none-eabi
 OPENOCD_CFG = openocd.cfg 
+GDB = gdb
+GDB = arm-none-eabi-gdb
 
 openocd :
-	openocd -f $(OPENOCD_CFG) 
+	openocd -f $(OPENOCD_CFG) 	
 
-debug : 
+debug :
+	cargo clean
+	cargo build
+
+objdump :
+	cargo clean
+	cargo build
+	arm-none-eabi-objdump -h target/$(TARGET)/debug/app
+
+flashdebug :
+	cargo clean
+	cargo build
+	$(GDB) -q target/$(TARGET)/debug/app -ex "target remote :3333" -ex "load"
+
+flashrelease :
+	cargo clean
 	cargo build --release 
-	gdb -ex "target remote :3333" -ex "monitor arm semihosting enable" -ex "load" target/thumbv7em-none-eabi/release/cross-compilation
+	$(GDB) -q target/$(TARGET)/release/app -ex "target remote :3333" -ex "load"
+
+
