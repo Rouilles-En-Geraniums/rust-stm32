@@ -1,0 +1,50 @@
+{
+  "exhaustive" : 0,
+  "component": "SYSCFG",
+  "arch": "STM32F407",
+  "licence": "GPL",
+  "components": [
+    {"name" : "SYSCFG", "address": "0x40013800"}
+  ],
+  "registers": [
+    { "name": "MEMRMP", "offset": "0x00", "read": 1, "write": 1 },
+    { "name": "PMC", "offset": "0x04", "read": 1, "write": 1 },
+    { "name": "EXTICR1", "offset": "0x08", "read": 1, "write": 1 },
+    { "name": "EXTICR2", "offset": "0x0C", "read": 1, "write": 1 },
+    { "name": "EXTICR3", "offset": "0x10", "read": 1, "write": 1 },
+    { "name": "EXTICR4", "offset": "0x14", "read": 1, "write": 1 },
+    { "name": "CMPCR", "offset": "0x20", "read": 1, "write": 1 }
+
+  ],
+  "constants" : [
+    {"name" : "SYSCFG_MEMRMP_MEM_MODE", "value" : "1 << 0"},
+
+    {"name" : "SYSCFG_PMC_MII_RMII_SEL", "value" : "1 << 23"},
+
+    {"name" : "SYSCFG_EXTICR1_EXTI0", "value" : "1 << 0"},
+    {"name" : "SYSCFG_EXTICR1_EXTI1", "value" : "1 << 4"},
+    {"name" : "SYSCFG_EXTICR1_EXTI2", "value" : "1 << 8"},
+    {"name" : "SYSCFG_EXTICR1_EXTI3", "value" : "1 << 12"},
+    
+    {"name" : "SYSCFG_EXTICR2_EXTI4", "value" : "1 << 0"},
+    {"name" : "SYSCFG_EXTICR2_EXTI5", "value" : "1 << 4"},
+    {"name" : "SYSCFG_EXTICR2_EXTI6", "value" : "1 << 8"},
+    {"name" : "SYSCFG_EXTICR2_EXTI7", "value" : "1 << 12"},
+
+    {"name" : "SYSCFG_EXTICR3_EXTI8", "value" : "1 << 0"},
+    {"name" : "SYSCFG_EXTICR3_EXTI9", "value" : "1 << 4"},
+    {"name" : "SYSCFG_EXTICR3_EXTI10", "value" : "1 << 8"},
+    {"name" : "SYSCFG_EXTICR3_EXTI11", "value" : "1 << 12"},
+
+    {"name" : "SYSCFG_EXTICR4_EXTI12", "value" : "1 << 0"},
+    {"name" : "SYSCFG_EXTICR4_EXTI13", "value" : "1 << 4"},
+    {"name" : "SYSCFG_EXTICR4_EXTI14", "value" : "1 << 8"},
+    {"name" : "SYSCFG_EXTICR4_EXTI15", "value" : "1 << 12"},
+
+
+    {"name" : "SYSCFG_CMPCR_CMP_PD", "value" : "1 << 0"},
+    {"name" : "SYSCFG_CMPCR_READY", "value" : "1 << 8"}
+
+  ]
+
+}
