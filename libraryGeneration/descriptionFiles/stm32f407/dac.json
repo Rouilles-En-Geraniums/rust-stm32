@@ -22,5 +22,57 @@
     { "name": "DOR2", "offset": "0x30", "read": 1, "write": 0 },
     { "name": "SR", "offset": "0x34", "read": 1, "write": 0 }
   ],
-  "constants" : []
+  "constants" : [
+
+    {"name": "DAC_CR_EN", "value": "1 << 0"},
+    {"name": "DAC_CR_BOFF1", "value": "1 << 1"},
+    {"name": "DAC_CR_TEN1", "value": "1 << 2"},
+    {"name": "DAC_CR_TSEL1", "value": "1 << 3"},
+    {"name": "DAC_CR_WAVE1", "value": "1 << 6"},
+    {"name": "DAC_CR_MAMP1", "value": "1 << 8"},
+    {"name": "DAC_CR_DMAEN1", "value": "1 << 12"},
+    {"name": "DAC_CR_DMAUDRIE1", "value": "1 << 13"},
+    {"name": "DAC_CR_EN2", "value": "1 << 16"},
+    {"name": "DAC_CR_BOFF2", "value": "1 << 17"},
+    {"name": "DAC_CR_TEN2", "value": "1 << 18"},
+    {"name": "DAC_CR_TSEL2", "value": "1 << 19"},
+    {"name": "DAC_CR_WAVE2", "value": "1 << 22"},
+    {"name": "DAC_CR_MAMP2", "value": "1 << 24"},
+    {"name": "DAC_CR_DMAEN2", "value": "1 << 28"},
+    {"name": "DAC_CR_DMAUDRIE2", "value": "1 << 29"},
+
+    {"name": "DAC_SWTRIGR_SWTRIG1", "value": "1 << 0"},
+    {"name": "DAC_SWTRIGR_SWTRIG2", "value": "1 << 1"},
+
+    {"name": "DAC_DHR12R1_DACC1DHR", "value": "1 << 0"},
+
+    {"name": "DAC_DHR12L1_DACC1DHR", "value": "1 << 0"},
+
+    {"name": "DAC_DHR8R1_DACC2DHR", "value": "1 << 0"},
+
+    {"name": "DAC_DHR12R2_DACC2DHR", "value": "1 << 4"},
+
+    {"name": "DAC_DHR8R1_DACC2DHR", "value": "1 << 0"},
+
+    {"name": "DAC_DHR12RD_DACC1DHR", "value": "1 << 0"},
+    {"name": "DAC_DHR12RD_DACC2DHR", "value": "1 << 16"},
+    
+    {"name": "DAC_DHR12LD_DACC1DHR", "value": "1 << 4"},
+    {"name": "DAC_DHR12LD_DACC2DHR", "value": "1 << 16"},
+
+    {"name": "DAC_DHR8RD_DACC1DHR", "value": "1 << 0"},
+    {"name": "DAC_DHR8RD_DACC2DHR", "value": "1 << 8"},
+
+    {"name": "DAC_DOR1_DACC1DOR", "value": "1 << 0"},
+
+    {"name": "DAC_DOR2_DACC2DOR", "value": "1 << 0"},
+    
+    {"name": "DAC_SR_DMAUDR1", "value": "1 << 13"},
+    {"name": "DAC_SR_DMAUDR2", "value": "1 << 29"}
+    
+
+
+  
+    
+  ]
 }
