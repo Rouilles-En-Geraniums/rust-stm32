@@ -1,55 +1,63 @@
 #![no_std]
 #![no_main]
-extern crate core;
-use panic_halt as _;
-use cortex_m_rt::entry;
-use cortex_m_semihosting::hprintln;
+#![allow(unused_imports)]
+#![allow(non_snake_case)]
+#![allow(unused_variables)]
+#![allow(non_upper_case_globals)]
+#![allow(dead_code)]
 
-use crate::stm32rustlib::gpio;
-use crate::stm32rustlib::rcc;
-use crate::stm32rustlib::tim;
-use crate::stm32rustlib::various;
-use cortex_m::interrupt;
+extern crate geranium_rt;
+extern crate core;
+use core::arch::asm;
 
 pub mod stm32rustlib;
+use crate::stm32rustlib::adc::*;
+use crate::stm32rustlib::dac::*;
+use crate::stm32rustlib::exti::*;
+use crate::stm32rustlib::gpio::*;
+use crate::stm32rustlib::nvic::*;
+use crate::stm32rustlib::rcc::*;
+use crate::stm32rustlib::tim::*;
+use crate::stm32rustlib::various::*;
 
-const PSC: u32 = 1000;
-const PERIOD: u32 = (42 * 1000000) / PSC;
-const HALF_PERIOD: u32 = PERIOD / 2;
+const APB1_CLK: u32 = 42_000_000;
 
-const my_led: (char,u32) = ('D', 12);
+#[no_mangle]
+fn mywait(t: u32) { // milliseconds
 
-fn init_TIM4(){
-    tim::tim4_cr1_write(0);
+    let psc: u32 = APB1_CLK / 1000;
+    let period: u32 = t;
 
-	tim::tim4_cr1_write(tim::tim4_cr1_read() & !tim::TIM_CEN);
-    tim::tim4_psc_write(PSC - 1);
-    tim::tim4_arr_write(HALF_PERIOD);
-    tim::tim4_egr_write(tim::TIM_UG);
-    tim::tim4_sr_write(0);
+    rcc_apb1enr_write(rcc_apb1enr_read() | (1 << 2)); //tim4en
 
-    tim::tim4_cr1_write(tim::tim4_cr1_read() | tim::TIM_CEN)
+    tim4_cr1_write(tim4_cr1_read() & !TIM_CEN);
+    tim4_psc_write(psc - 1);
+    tim4_arr_write(period);
+    tim4_egr_write(TIM_UG);
+    tim4_sr_write(0);
+    tim4_cr1_write(tim4_cr1_read() | TIM_CEN);
+    
+    while (tim4_sr_read() & TIM_UIF) == 0 {};
+
+    tim4_sr_write(0);
+    tim4_cr1_write(tim4_cr1_read() & !TIM_CEN);
 }
 
 
-#[entry]
-fn main() -> ! {
-	// RCC init
-    rcc::rcc_ahb1enr_write(rcc::rcc_ahb1enr_read() | (1 << 0)); //GPIO A
-    rcc::rcc_ahb1enr_write(rcc::rcc_ahb1enr_read() | (1 << 3)); //GPIO D
-	rcc::rcc_apb1enr_write(rcc::rcc_apb1enr_read() | (1 << 2)); //tim4en
+
+
+#[no_mangle]
+fn main() {
+    rcc_ahb1enr_write(rcc_ahb1enr_read() | (1 << 3)); //GPIO D
     
-	gpio::gpiod_moder_write(various::rep_bits(gpio::gpiod_moder_read(), my_led.1*2, 2, gpio::GPIO_MODER_OUT));
-	
-	init_TIM4();
-	
-	loop {
-		while (tim::tim4_sr_read() & tim::TIM_UIF == 0) {}
-		if gpio::digital_read(my_led) == various::LOW {
-			gpio::digital_write(my_led, various::HIGH);
-		} else {
-            gpio::digital_write(my_led, various::LOW);
-		}
-		tim::tim4_sr_write(0);
-	}
+    let my_led = ('D', 12); // Built-in green led
+    gpiod_moder_write(rep_bits(gpiod_moder_read(), my_led.1*2, 2, GPIO_MODER_OUT));
+    
+    digital_write(my_led, LOW);
+    loop {
+        digital_write(my_led, LOW);
+        mywait(1000);
+        digital_write(my_led, HIGH);
+        mywait(1000);
+    }
 }
