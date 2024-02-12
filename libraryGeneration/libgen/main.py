@@ -30,7 +30,7 @@ def cmdlineParse():
     args = parser.parse_args()
 
     # Printing the input for DEBUG.
-    print("Given arguments:\n- Output Directory {}\n- JSON {}\n".format(
+    print("Given arguments:\n- Output Directory {}\n- JSON {}\n- Extra: {}\n".format(
             args.outputdir,
             args.json,
             args.extra
