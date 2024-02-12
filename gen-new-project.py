@@ -59,7 +59,7 @@ def main():
 
     # Src folder
     # main.rs
-    main_orig = "cross-compilation/src/main.rs"
+    main_orig = "app-template/src/main.rs"
     main_file = args.projectname + "/src/main.rs"
     shutil.copyfile(main_orig, main_file)
 
@@ -81,7 +81,7 @@ def main():
 
 
     # Makefile
-    makefile_orig = "cross-compilation/Makefile"
+    makefile_orig = "app-template/Makefile"
     makefile_file = args.projectname + "/Makefile"
     shutil.copyfile(makefile_orig, makefile_file)
 
@@ -95,19 +95,19 @@ def main():
 
 
     # Openocd
-    openocdcfg_orig = "cross-compilation/openocd.cfg"
+    openocdcfg_orig = "app-template/openocd.cfg"
     openocdcfg_file = args.projectname + "/openocd.cfg"
     shutil.copyfile(openocdcfg_orig, openocdcfg_file)
 
 
     # GDBinit
-    gdbinit_orig = "cross-compilation/gdbinit"
+    gdbinit_orig = "app-template/gdbinit"
     gdbinit_file = args.projectname + "/gdbinit"
     shutil.copyfile(gdbinit_orig, gdbinit_file)
 
-    
+
     # README
-    readme_orig = "cross-compilation/README.md"
+    readme_orig = "app-template/README.md"
     readme_file = args.projectname + "/README.md"
     shutil.copyfile(readme_orig, readme_file)
 

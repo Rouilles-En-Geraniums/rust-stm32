@@ -2,7 +2,7 @@
 authors = ["Rouilles-En-Geraniums"]
 edition = "2018"
 readme = "README.md"
-name = "cross-compilation"
+name = "app-template"
 version = "0.1.0"
 
 [dependencies]
