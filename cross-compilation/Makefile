@@ -24,6 +24,6 @@ flashdebug :
 flashrelease :
 	cargo clean
 	cargo build --release 
-	$(GDB) -q target/$(TARGET)/release/$(APP) -ex "target remote :3333" -ex "load"
+	$(GDB) -q target/$(TARGET)/release/$(APP) -ex "target remote :3333" -ex "load" -ex "c"
 
 
