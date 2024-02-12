@@ -29,6 +29,7 @@ Cargo.lock
 # test folders
 test/
 tests/
+app/
 
 
 

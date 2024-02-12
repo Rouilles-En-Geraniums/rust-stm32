@@ -4,6 +4,7 @@ import json
 from jinja2 import Environment, FileSystemLoader
 from pathlib import Path
 import argparse
+import shutil
 
 
 def cmdlineParse():
@@ -21,13 +22,18 @@ def cmdlineParse():
                         help="JSON files to parse",
                         nargs='*',
                         default=[])
+    parser.add_argument("-ex", "--extra",
+                        help="Additionnal files to be included in the library. Example: wait.rs",
+                        nargs='*',
+                        default=[])
 
     args = parser.parse_args()
 
     # Printing the input for DEBUG.
-    print("Given arguments:\n- Output Directory {}\n- JSON {}\n".format(
+    print("Given arguments:\n- Output Directory {}\n- JSON {}\n- Extra: {}\n".format(
             args.outputdir,
-            args.json
+            args.json,
+            args.extra
             ))
 
     return args
@@ -54,7 +60,11 @@ def generate_data_from_json(json_file_path):
                                            "read": register["read"],
                                            "write": register["write"]}
                                            for register in component["registers"]]}
-                            for component in json_data["components"]]}
+                            for component in json_data["components"]],
+            "constants" : [{"name": constant["name"],    
+                            "value": constant["value"] }
+                               for  constant in json_data["constants"]]
+            }
     else:
         data = {
             "exhaustive": 0,
@@ -65,8 +75,12 @@ def generate_data_from_json(json_file_path):
                            "offset": register["offset"],
                            "read": register["read"],
                            "write": register["write"]}
-                           for register in json_data["registers"]]
-        }
+                           for register in json_data["registers"]],
+            "constants" : [{"name": constant["name"],    
+                            "value": constant["value"] }
+                               for  constant in json_data["constants"]]
+             }
+
 
     return data
 
@@ -112,6 +126,17 @@ def main():
             output_file.write(t.render(data))
 
             print("{} generated.".format(output_file_path))
+            
+        with open(mod_file_path, 'a') as mod_file:
+            mod_file.write("pub mod "+basename+";\n")
+    
+    for extra_file_path in args.extra:
+        shutil.copy(extra_file_path, args.outputdir)
+
+        # Get the basename from extra file name
+        basename = os.path.splitext(os.path.basename(extra_file_path))[0]
+
+        print("{} generated.".format(basename))
             
         with open(mod_file_path, 'a') as mod_file:
             mod_file.write("pub mod "+basename+";\n")

@@ -16,6 +16,11 @@
     {% endif %}
 {%- endfor %}
 
+{%- for constant in constants %}
+{{generalmacro.gen_constants(constant.name, constant.value)}}
+{%- endfor %}
+
+
 
 {%- for component in components %}
     {%- if exhaustive %}

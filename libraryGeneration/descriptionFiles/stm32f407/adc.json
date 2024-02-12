@@ -23,6 +23,108 @@
     { "name": "JSQR", "offset": "0x38", "read": 1, "write": 1 },
     { "name": "JDR1", "offset": "0x3C", "read": 1, "write": 0 },
     { "name": "DR", "offset": "0x4C", "read": 1, "write": 0 }
+  ],
+  "constants" : [
+
+
+    {"name": "ADC_SR_AWD", "value": "1 << 16"},
+    {"name": "ADC_SR_EOC", "value": "1 << 17"},
+    {"name": "ADC_SR_JEOC", "value": "1 << 18"},
+    {"name": "ADC_SR_JSTRT", "value": "1 << 19"},
+    {"name": "ADC_SR_STRT", "value": "1 << 20"},
+    {"name": "ADC_SR_OVR", "value": "1 << 21"},
+
+
+    {"name": "ADC_CR1_AWDCH", "value": "1 << 0"},
+    {"name": "ADC_CR1_EOCIE", "value": "1 << 5"},
+    {"name": "ADC_CR1_AWDIE", "value": "1 << 6"},
+    {"name": "ADC_CR1_JEOCIE", "value": "1 << 7"},
+    {"name": "ADC_CR1_SCAN", "value": "1 << 8"},
+    {"name": "ADC_CR1_AWDSGL", "value": "1 << 9"},
+    {"name": "ADC_CR1_JAUTO", "value": "1 << 10"},
+    {"name": "ADC_CR1_DISCEN", "value": "1 << 11"},
+    {"name": "ADC_CR1_JDISCEN", "value": "1 << 12"},
+    {"name": "ADC_CR1_DISCNUM", "value": "1 << 13"},
+    {"name": "ADC_CR1_JAWDEN", "value": "1 << 22"},
+    {"name": "ADC_CR1_AWDEN", "value": "1 << 23"},
+    {"name": "ADC_CR1_OVRIE", "value": "1 << 26"},
+
+    {"name": "ADC_CR2_ADON", "value": "1 << 0"},
+    {"name": "ADC_CR2_CONT", "value": "1 << 1"},
+    {"name": "ADC_CR2_DMA", "value": "1 << 8"},
+    {"name": "ADC_CR2_DDS", "value": "1 << 9"},
+    {"name": "ADC_CR2_EOCS", "value": "1 << 10"},
+    {"name": "ADC_CR2_ALIGN", "value": "1 << 11"},
+    {"name": "ADC_CR2_JEXTSEL", "value": "1 << 16"},
+    {"name": "ADC_CR2_JEXTEN", "value": "1 << 20"},
+    {"name": "ADC_CR2_JSWSTART", "value": "1 << 22"},
+    {"name": "ADC_CR2_EXTSEL", "value": "1 << 24"},
+    {"name": "ADC_CR2_EXTSEN", "value": "1 << 28"},
+    {"name": "ADC_CR2_SWSTART", "value": "1 << 30"},
+
+    {"name": "ADC_SMPR1_SMP10", "value": "1 << 0"},
+    {"name": "ADC_SMPR1_SMP11", "value": "1 << 3"},
+    {"name": "ADC_SMPR1_SMP12", "value": "1 << 6"},
+    {"name": "ADC_SMPR1_SMP13", "value": "1 << 9"},
+    {"name": "ADC_SMPR1_SMP14", "value": "1 << 12"},
+    {"name": "ADC_SMPR1_SMP15_0", "value": "1 << 15"},
+    {"name": "ADC_SMPR1_SMP15", "value": "1 << 16"},
+    {"name": "ADC_SMPR1_SMP16", "value": "1 << 18"},
+    {"name": "ADC_SMPR1_SMP17", "value": "1 << 21"},
+    {"name": "ADC_SMPR1_SMP18", "value": "1 << 24"},
+
+    {"name": "ADC_SMPR2_SMP0", "value": "1 << 0"},
+    {"name": "ADC_SMPR2_SMP1", "value": "1 << 3"},
+    {"name": "ADC_SMPR2_SMP2", "value": "1 << 6"},
+    {"name": "ADC_SMPR2_SMP3", "value": "1 << 9"},
+    {"name": "ADC_SMPR2_SMP4", "value": "1 << 12"},
+    {"name": "ADC_SMPR2_SMP5_0", "value": "1 << 15"},
+    {"name": "ADC_SMPR2_SMP5", "value": "1 << 16"},
+    {"name": "ADC_SMPR2_SMP6", "value": "1 << 18"},
+    {"name": "ADC_SMPR2_SMP7", "value": "1 << 21"},
+    {"name": "ADC_SMPR2_SMP8", "value": "1 << 24"},
+    {"name": "ADC_SMPR2_SMP9", "value": "1 << 27"},
+
+    {"name": "ADC_JOFR1_JOFFSET1", "value": "1 << 0"},
+
+    {"name": "ADC_HTR_HT", "value": "1 << 0"},
+
+    {"name": "ADC_LTR_LT", "value": "1 << 0"},
+
+    {"name": "ADC_SQR1_SQ13", "value": "1 << 0"},
+    {"name": "ADC_SQR1_SQ14", "value": "1 << 5"},
+    {"name": "ADC_SQR1_SQ15", "value": "1 << 10"},
+    {"name": "ADC_SQR1_SQ15_0", "value": "1 << 15"},
+    {"name": "ADC_SQR1_SQ16", "value": "1 << 16"},
+    {"name": "ADC_SQR1_L", "value": "1 << 20"},
+
+    {"name": "ADC_SQR2_SQ7", "value": "1 << 0"},
+    {"name": "ADC_SQR2_SQ8", "value": "1 << 5"},
+    {"name": "ADC_SQR2_SQ9", "value": "1 << 10"},
+    {"name": "ADC_SQR2_SQ10_0", "value": "1 << 15"},
+    {"name": "ADC_SQR2_SQ10", "value": "1 << 16"},
+    {"name": "ADC_SQR2_SQ11", "value": "1 << 20"},
+    {"name": "ADC_SQR2_SQ12", "value": "1 << 25"},
+
+    {"name": "ADC_SQR3_SQ1", "value": "1 << 0"},
+    {"name": "ADC_SQR3_SQ2", "value": "1 << 5"},
+    {"name": "ADC_SQR3_SQ3", "value": "1 << 10"},
+    {"name": "ADC_SQR3_SQ4_0", "value": "1 << 15"},
+    {"name": "ADC_SQR3_SQ4", "value": "1 << 16"},
+    {"name": "ADC_SQR3_SQ5", "value": "1 << 20"},
+    {"name": "ADC_SQR3_SQ6", "value": "1 << 25"},
+
+    {"name": "ADC_JSQR_JSQ1", "value": "1 << 0"},
+    {"name": "ADC_JSQR_JSQ2", "value": "1 << 5"},
+    {"name": "ADC_JSQR_JSQ3", "value": "1 << 10"},
+    {"name": "ADC_JSQR_JSQ4_0", "value": "1 << 15"},
+    {"name": "ADC_JSQR_JSQ4", "value": "1 << 16"},
+    {"name": "ADC_JSQR_JL", "value": "1 << 20"},
+    
+    {"name": "ADC_JDR1_JDATA", "value": "1 << 0"},
+
+    {"name": "ADC_DR_DATA", "value": "1 << 0"}
+ 
   ]
 }
   

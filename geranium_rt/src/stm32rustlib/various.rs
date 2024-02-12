@@ -4,9 +4,7 @@ use crate::core::ptr::read_volatile;
 
 pub const HIGH: u8 = 1;
 pub const LOW: u8 = 0;
-pub const MODER: u8 = 0;
-pub const PUPDR: u8 = 1;
-pub const OSPEEDER: u8 = 2;
+
 pub fn mask(l: u32) -> u32 {
     (1 << (l))-1
 }
@@ -18,6 +16,8 @@ pub fn get_bits(x: u32, i:u32, l:u32) -> u32 {
 pub fn rep_bits(x: u32, i:u32, l:u32, y:u32) -> u32 {
     ((x)&!(mask(l)<<i))|((y)<<(i))
 }
+
+
 
 // Some FLASH variables
 pub const FLASH_ADR : u32 = 0x40023C00;
@@ -67,7 +67,6 @@ pub fn dbg_demcr_read() -> u32 {
 }
 
 // Some ITM variables
-pub const ITM_STIMULUS_PORT0 : u32 = 0xE0000000;
 pub const ITM_TRACE_EN : u32 = 0xE0000E00;
 pub const ITM_TRACE_EN_PORT0 : u32 = 1 << 0;
 pub fn itm_trace_en_write(value: u32) {

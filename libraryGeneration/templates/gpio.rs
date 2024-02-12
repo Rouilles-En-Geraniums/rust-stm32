@@ -1,6 +1,8 @@
 {%- import "gpio_macro.rs" as gpiomacro %}
-
-use crate::stm32rustlib::various;
+extern crate core;
+use crate::core::ptr::write_volatile;
+use crate::core::ptr::read_volatile;
+use crate::stm32rustlib::various::*;
 {% include "address.rs" %}
 
 /*
@@ -14,7 +16,7 @@ fn initGPIO(pin: (char,u8), mode: u8){
  * pin = (GPIO : char, Pin : u8)
  * mode = HIGH/LOW
  */
-pub fn digital_write(pin: (char,u8), mode: u8){
+pub fn digital_write(pin: (char,u32), mode: u8){
     // pin = (A, 2), mode = 1
     match pin.0 {
         {%- for component in components %}
@@ -22,5 +24,23 @@ pub fn digital_write(pin: (char,u8), mode: u8){
         {%- endfor %}
         _ => (),
     }
-    
+}
+
+pub fn digital_read(pin: (char,u32)) -> u8 {
+    // pin = (A, 2), mode = 1
+    match pin.0 {
+        {%- for component in components %}
+        {{gpiomacro.gen_digital_read_switch_case(component.name[-1])}}
+        {%- endfor %}
+        _ => 2
+    }
+}
+
+pub fn init_gpio(pin: (char, u32), types: u8, mode: u32) {
+    match pin.0 {
+        {%- for component in components %}
+        {{gpiomacro.gen_init_gpio_switch_case(component.name[-1])}}
+        {%- endfor %}
+        _ => (),
+    }
 }
