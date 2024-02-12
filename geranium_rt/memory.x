@@ -1,5 +1,4 @@
-/* Memory layout of the LM3S6965 microcontroller */
-/* 1K = 1 KiBi = 1024 bytes */
+/* Memory layout of the STM32f407G-DISC1 microcontroller */
 MEMORY
 {
   FLASH (rx) : ORIGIN = 0x08000000, LENGTH = 1024K
