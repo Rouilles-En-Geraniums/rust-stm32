@@ -111,42 +111,6 @@ def main():
     readme_orig = "cross-compilation/README.md"
     readme_file = args.projectname + "/README.md"
     shutil.copyfile(readme_orig, readme_file)
-        
-'''
-TARGET = thumbv7m-none-eabi
-TARGET = thumbv7em-none-eabi
-OPENOCD_CFG = openocd.cfg 
-GDB = gdb
-GDB = arm-none-eabi-gdb
-
-openocd :
-	openocd -f $(OPENOCD_CFG) 	
-
-debug :
-	cargo clean
-	cargo build
-
-objdump :
-	cargo clean
-	cargo build
-	arm-none-eabi-objdump -h target/$(TARGET)/debug/app
-
-flashdebug :
-	cargo clean
-	cargo build
-	$(GDB) -q target/$(TARGET)/debug/app -ex "target remote :3333" -ex "load"
-
-flashrelease :
-	cargo clean
-	cargo build --release 
-	$(GDB) -q target/$(TARGET)/release/app -ex "target remote :3333" -ex "load"
-
-'''
-
-        
-
-    # Create directory
-    #Path(args.projectname).mkdir(parents=True, exist_ok=True)
 
 
 if __name__ == "__main__":
