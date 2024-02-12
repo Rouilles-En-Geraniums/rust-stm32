@@ -2,7 +2,7 @@
 extern crate core;
 use crate::core::ptr::write_volatile;
 use crate::core::ptr::read_volatile;
-use crate::stm32rustlib::various;
+use crate::stm32rustlib::various::*;
 {% include "address.rs" %}
 
 /*
@@ -33,5 +33,14 @@ pub fn digital_read(pin: (char,u32)) -> u8 {
         {{gpiomacro.gen_digital_read_switch_case(component.name[-1])}}
         {%- endfor %}
         _ => 2
+    }
+}
+
+pub fn init_gpio(pin: (char, u32), types: u8, mode: u32) {
+    match pin.0 {
+        {%- for component in components %}
+        {{gpiomacro.gen_init_gpio_switch_case(component.name[-1])}}
+        {%- endfor %}
+        _ => (),
     }
 }
