@@ -1,7 +1,8 @@
-TARGET = thumbv7em-none-eabi
+TARGET =
 OPENOCD_CFG = openocd.cfg 
-GDB = gdb
-#GDB = arm-none-eabi-gdb
+GDB =
+APP =
+OBJDMP = arm-none-eabi-objdump
 
 openocd :
 	openocd -f $(OPENOCD_CFG) 	
@@ -13,16 +14,16 @@ debug :
 objdump :
 	cargo clean
 	cargo build
-	arm-none-eabi-objdump -h target/$(TARGET)/debug/cross-compilation
+	$(OBJDMP) -h target/$(TARGET)/debug/$(APP)
 
 flashdebug :
 	cargo clean
 	cargo build
-	$(GDB) -q target/$(TARGET)/debug/cross-compilation -ex "target remote :3333" -ex "load"
+	$(GDB) -q target/$(TARGET)/debug/$(APP) -command gdbinit
 
 flashrelease :
 	cargo clean
 	cargo build --release 
-	$(GDB) -q target/$(TARGET)/release/cross-compilation -ex "target remote :3333" -ex "load"
+	$(GDB) -q target/$(TARGET)/release/$(APP) -ex "target remote :3333" -ex "load" -ex "c"
 
 
