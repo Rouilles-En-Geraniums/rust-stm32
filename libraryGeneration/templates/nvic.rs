@@ -12,12 +12,8 @@ use crate::stm32rustlib::various;
     {%- endfor %}
 {%- endfor -%}
 
-{%- for constant in constants %}
-    {%- if constant.name == "NVIC_IRQ" %}
-pub fn nvic_handler_set(vector: u32, f: u32){
+pub fn nvic_handler_set(vector: u32, f: unsafe extern "C" fn()){
     unsafe {
-        write_volatile(({{constant.value}} + vector * 4) as *mut u32, f);
+        write_volatile( (NVIC_IRQ + vector * 4) as *mut u32, f as u32);
     }
 }
-    {%- endif -%}
-{%- endfor %}
