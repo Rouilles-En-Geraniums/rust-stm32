@@ -12,6 +12,12 @@ const EXTI_FTSR_OFFSET : u32 = 0x0C;
 const EXTI_SWIER_OFFSET : u32 = 0x10;
 const EXTI_PR_OFFSET : u32 = 0x14;
     
+pub const EXTI_IMR_MR : u32 = 1 << 0;
+pub const EXTI_EMR_MR : u32 = 1 << 0;
+pub const EXTI_RTSR_TR : u32 = 1 << 0;
+pub const EXTI_FTSR_TR : u32 = 1 << 0;
+pub const EXTI_SWIER_SWIER : u32 = 1 << 0;
+pub const EXTI_PR_PR : u32 = 1 << 0;
         
 pub fn exti_imr_write(value: u32) {
     unsafe {

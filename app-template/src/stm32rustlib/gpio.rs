@@ -2,7 +2,7 @@
 extern crate core;
 use crate::core::ptr::write_volatile;
 use crate::core::ptr::read_volatile;
-use crate::stm32rustlib::various;
+use crate::stm32rustlib::various::*;
 
 const GPIOA_ADR : u32 = 0x40020000;
 const GPIOB_ADR : u32 = 0x40020400;
@@ -1320,78 +1320,78 @@ pub fn digital_write(pin: (char,u32), mode: u8){
     match pin.0 {
         'A' => {
             match mode {
-                various::HIGH => gpioa_bsrr_write(1 << pin.1),
-                various::LOW => gpioa_bsrr_write(1 << (pin.1 + 16)),
+                HIGH => gpioa_bsrr_write(1 << pin.1),
+                LOW => gpioa_bsrr_write(1 << (pin.1 + 16)),
                 _ => (),
             }
         },
         'B' => {
             match mode {
-                various::HIGH => gpiob_bsrr_write(1 << pin.1),
-                various::LOW => gpiob_bsrr_write(1 << (pin.1 + 16)),
+                HIGH => gpiob_bsrr_write(1 << pin.1),
+                LOW => gpiob_bsrr_write(1 << (pin.1 + 16)),
                 _ => (),
             }
         },
         'C' => {
             match mode {
-                various::HIGH => gpioc_bsrr_write(1 << pin.1),
-                various::LOW => gpioc_bsrr_write(1 << (pin.1 + 16)),
+                HIGH => gpioc_bsrr_write(1 << pin.1),
+                LOW => gpioc_bsrr_write(1 << (pin.1 + 16)),
                 _ => (),
             }
         },
         'D' => {
             match mode {
-                various::HIGH => gpiod_bsrr_write(1 << pin.1),
-                various::LOW => gpiod_bsrr_write(1 << (pin.1 + 16)),
+                HIGH => gpiod_bsrr_write(1 << pin.1),
+                LOW => gpiod_bsrr_write(1 << (pin.1 + 16)),
                 _ => (),
             }
         },
         'E' => {
             match mode {
-                various::HIGH => gpioe_bsrr_write(1 << pin.1),
-                various::LOW => gpioe_bsrr_write(1 << (pin.1 + 16)),
+                HIGH => gpioe_bsrr_write(1 << pin.1),
+                LOW => gpioe_bsrr_write(1 << (pin.1 + 16)),
                 _ => (),
             }
         },
         'F' => {
             match mode {
-                various::HIGH => gpiof_bsrr_write(1 << pin.1),
-                various::LOW => gpiof_bsrr_write(1 << (pin.1 + 16)),
+                HIGH => gpiof_bsrr_write(1 << pin.1),
+                LOW => gpiof_bsrr_write(1 << (pin.1 + 16)),
                 _ => (),
             }
         },
         'G' => {
             match mode {
-                various::HIGH => gpiog_bsrr_write(1 << pin.1),
-                various::LOW => gpiog_bsrr_write(1 << (pin.1 + 16)),
+                HIGH => gpiog_bsrr_write(1 << pin.1),
+                LOW => gpiog_bsrr_write(1 << (pin.1 + 16)),
                 _ => (),
             }
         },
         'H' => {
             match mode {
-                various::HIGH => gpioh_bsrr_write(1 << pin.1),
-                various::LOW => gpioh_bsrr_write(1 << (pin.1 + 16)),
+                HIGH => gpioh_bsrr_write(1 << pin.1),
+                LOW => gpioh_bsrr_write(1 << (pin.1 + 16)),
                 _ => (),
             }
         },
         'I' => {
             match mode {
-                various::HIGH => gpioi_bsrr_write(1 << pin.1),
-                various::LOW => gpioi_bsrr_write(1 << (pin.1 + 16)),
+                HIGH => gpioi_bsrr_write(1 << pin.1),
+                LOW => gpioi_bsrr_write(1 << (pin.1 + 16)),
                 _ => (),
             }
         },
         'J' => {
             match mode {
-                various::HIGH => gpioj_bsrr_write(1 << pin.1),
-                various::LOW => gpioj_bsrr_write(1 << (pin.1 + 16)),
+                HIGH => gpioj_bsrr_write(1 << pin.1),
+                LOW => gpioj_bsrr_write(1 << (pin.1 + 16)),
                 _ => (),
             }
         },
         'K' => {
             match mode {
-                various::HIGH => gpiok_bsrr_write(1 << pin.1),
-                various::LOW => gpiok_bsrr_write(1 << (pin.1 + 16)),
+                HIGH => gpiok_bsrr_write(1 << pin.1),
+                LOW => gpiok_bsrr_write(1 << (pin.1 + 16)),
                 _ => (),
             }
         },
@@ -1404,81 +1404,637 @@ pub fn digital_read(pin: (char,u32)) -> u8 {
     match pin.0 {
         'A' => {
             if (gpioa_idr_read() & (1 << pin.1)) != 0 {
-                various::HIGH
+                HIGH
             } else {
-                various::LOW
+                LOW
             }
         },
         'B' => {
             if (gpiob_idr_read() & (1 << pin.1)) != 0 {
-                various::HIGH
+                HIGH
             } else {
-                various::LOW
+                LOW
             }
         },
         'C' => {
             if (gpioc_idr_read() & (1 << pin.1)) != 0 {
-                various::HIGH
+                HIGH
             } else {
-                various::LOW
+                LOW
             }
         },
         'D' => {
             if (gpiod_idr_read() & (1 << pin.1)) != 0 {
-                various::HIGH
+                HIGH
             } else {
-                various::LOW
+                LOW
             }
         },
         'E' => {
             if (gpioe_idr_read() & (1 << pin.1)) != 0 {
-                various::HIGH
+                HIGH
             } else {
-                various::LOW
+                LOW
             }
         },
         'F' => {
             if (gpiof_idr_read() & (1 << pin.1)) != 0 {
-                various::HIGH
+                HIGH
             } else {
-                various::LOW
+                LOW
             }
         },
         'G' => {
             if (gpiog_idr_read() & (1 << pin.1)) != 0 {
-                various::HIGH
+                HIGH
             } else {
-                various::LOW
+                LOW
             }
         },
         'H' => {
             if (gpioh_idr_read() & (1 << pin.1)) != 0 {
-                various::HIGH
+                HIGH
             } else {
-                various::LOW
+                LOW
             }
         },
         'I' => {
             if (gpioi_idr_read() & (1 << pin.1)) != 0 {
-                various::HIGH
+                HIGH
             } else {
-                various::LOW
+                LOW
             }
         },
         'J' => {
             if (gpioj_idr_read() & (1 << pin.1)) != 0 {
-                various::HIGH
+                HIGH
             } else {
-                various::LOW
+                LOW
             }
         },
         'K' => {
             if (gpiok_idr_read() & (1 << pin.1)) != 0 {
-                various::HIGH
+                HIGH
             } else {
-                various::LOW
+                LOW
             }
         },
         _ => 2
+    }
+}
+
+pub fn init_gpio(pin: (char, u32), types: u8, mode: u32) {
+    match pin.0 {
+        
+    'A' => {
+        match types {
+                MODER => match mode{
+                    GPIO_MODER_IN => {
+                        gpioa_moder_write(rep_bits(gpioa_moder_read(), pin.1*2, 2, GPIO_MODER_IN));
+                                },
+                    GPIO_MODER_OUT => {
+                        gpioa_moder_write(rep_bits(gpioa_moder_read(), pin.1*2, 2, GPIO_MODER_OUT));
+                    },
+                    GPIO_MODER_ALT => {
+                        gpioa_moder_write(rep_bits(gpioa_moder_read(), pin.1*2, 2, GPIO_MODER_ALT));
+                    },
+                    GPIO_MODER_ANA => {
+                        gpioa_moder_write(rep_bits(gpioa_moder_read(), pin.1*2, 2, GPIO_MODER_ANA));
+                    },
+                    _ => (),
+                }
+                PUPDR => match mode {
+                    GPIO_PUPDR_NO => {
+                        gpioa_pupdr_write(rep_bits(gpioa_pupdr_read(), pin.1*2, 2, GPIO_PUPDR_NO));
+                    },
+                    GPIO_PUPDR_PU => {
+                        gpioa_pupdr_write(rep_bits(gpioa_pupdr_read(), pin.1*2, 2, GPIO_PUPDR_PU));
+                    },
+                    GPIO_PUPDR_PD => {
+                        gpioa_pupdr_write(rep_bits(gpioa_pupdr_read(), pin.1*2, 2, GPIO_PUPDR_PD));
+                    },
+                    _ => (),
+
+                },
+                OSPEEDER => match mode {
+                    GPIO_OSPEEDR_LO => {
+                        gpioa_ospeedr_write(rep_bits(gpioa_ospeedr_read(), pin.1*2, 2, GPIO_OSPEEDR_LO));
+                    },
+                    GPIO_OSPEEDR_ME => {
+                        gpioa_ospeedr_write(rep_bits(gpioa_ospeedr_read(), pin.1*2, 2, GPIO_OSPEEDR_ME));
+                    },
+                    GPIO_OSPEEDR_HI => {
+                        gpioa_ospeedr_write(rep_bits(gpioa_ospeedr_read(), pin.1*2, 2, GPIO_OSPEEDR_HI));
+                    },
+                    GPIO_OSPEEDR_VH => {
+                        gpioa_ospeedr_write(rep_bits(gpioa_ospeedr_read(), pin.1*2, 2, GPIO_OSPEEDR_VH));
+                    },
+                    _ => (),
+                },
+                _ =>(),
+        }
+    },
+
+        
+    'B' => {
+        match types {
+                MODER => match mode{
+                    GPIO_MODER_IN => {
+                        gpiob_moder_write(rep_bits(gpiob_moder_read(), pin.1*2, 2, GPIO_MODER_IN));
+                                },
+                    GPIO_MODER_OUT => {
+                        gpiob_moder_write(rep_bits(gpiob_moder_read(), pin.1*2, 2, GPIO_MODER_OUT));
+                    },
+                    GPIO_MODER_ALT => {
+                        gpiob_moder_write(rep_bits(gpiob_moder_read(), pin.1*2, 2, GPIO_MODER_ALT));
+                    },
+                    GPIO_MODER_ANA => {
+                        gpiob_moder_write(rep_bits(gpiob_moder_read(), pin.1*2, 2, GPIO_MODER_ANA));
+                    },
+                    _ => (),
+                }
+                PUPDR => match mode {
+                    GPIO_PUPDR_NO => {
+                        gpiob_pupdr_write(rep_bits(gpiob_pupdr_read(), pin.1*2, 2, GPIO_PUPDR_NO));
+                    },
+                    GPIO_PUPDR_PU => {
+                        gpiob_pupdr_write(rep_bits(gpiob_pupdr_read(), pin.1*2, 2, GPIO_PUPDR_PU));
+                    },
+                    GPIO_PUPDR_PD => {
+                        gpiob_pupdr_write(rep_bits(gpiob_pupdr_read(), pin.1*2, 2, GPIO_PUPDR_PD));
+                    },
+                    _ => (),
+
+                },
+                OSPEEDER => match mode {
+                    GPIO_OSPEEDR_LO => {
+                        gpiob_ospeedr_write(rep_bits(gpiob_ospeedr_read(), pin.1*2, 2, GPIO_OSPEEDR_LO));
+                    },
+                    GPIO_OSPEEDR_ME => {
+                        gpiob_ospeedr_write(rep_bits(gpiob_ospeedr_read(), pin.1*2, 2, GPIO_OSPEEDR_ME));
+                    },
+                    GPIO_OSPEEDR_HI => {
+                        gpiob_ospeedr_write(rep_bits(gpiob_ospeedr_read(), pin.1*2, 2, GPIO_OSPEEDR_HI));
+                    },
+                    GPIO_OSPEEDR_VH => {
+                        gpiob_ospeedr_write(rep_bits(gpiob_ospeedr_read(), pin.1*2, 2, GPIO_OSPEEDR_VH));
+                    },
+                    _ => (),
+                },
+                _ =>(),
+        }
+    },
+
+        
+    'C' => {
+        match types {
+                MODER => match mode{
+                    GPIO_MODER_IN => {
+                        gpioc_moder_write(rep_bits(gpioc_moder_read(), pin.1*2, 2, GPIO_MODER_IN));
+                                },
+                    GPIO_MODER_OUT => {
+                        gpioc_moder_write(rep_bits(gpioc_moder_read(), pin.1*2, 2, GPIO_MODER_OUT));
+                    },
+                    GPIO_MODER_ALT => {
+                        gpioc_moder_write(rep_bits(gpioc_moder_read(), pin.1*2, 2, GPIO_MODER_ALT));
+                    },
+                    GPIO_MODER_ANA => {
+                        gpioc_moder_write(rep_bits(gpioc_moder_read(), pin.1*2, 2, GPIO_MODER_ANA));
+                    },
+                    _ => (),
+                }
+                PUPDR => match mode {
+                    GPIO_PUPDR_NO => {
+                        gpioc_pupdr_write(rep_bits(gpioc_pupdr_read(), pin.1*2, 2, GPIO_PUPDR_NO));
+                    },
+                    GPIO_PUPDR_PU => {
+                        gpioc_pupdr_write(rep_bits(gpioc_pupdr_read(), pin.1*2, 2, GPIO_PUPDR_PU));
+                    },
+                    GPIO_PUPDR_PD => {
+                        gpioc_pupdr_write(rep_bits(gpioc_pupdr_read(), pin.1*2, 2, GPIO_PUPDR_PD));
+                    },
+                    _ => (),
+
+                },
+                OSPEEDER => match mode {
+                    GPIO_OSPEEDR_LO => {
+                        gpioc_ospeedr_write(rep_bits(gpioc_ospeedr_read(), pin.1*2, 2, GPIO_OSPEEDR_LO));
+                    },
+                    GPIO_OSPEEDR_ME => {
+                        gpioc_ospeedr_write(rep_bits(gpioc_ospeedr_read(), pin.1*2, 2, GPIO_OSPEEDR_ME));
+                    },
+                    GPIO_OSPEEDR_HI => {
+                        gpioc_ospeedr_write(rep_bits(gpioc_ospeedr_read(), pin.1*2, 2, GPIO_OSPEEDR_HI));
+                    },
+                    GPIO_OSPEEDR_VH => {
+                        gpioc_ospeedr_write(rep_bits(gpioc_ospeedr_read(), pin.1*2, 2, GPIO_OSPEEDR_VH));
+                    },
+                    _ => (),
+                },
+                _ =>(),
+        }
+    },
+
+        
+    'D' => {
+        match types {
+                MODER => match mode{
+                    GPIO_MODER_IN => {
+                        gpiod_moder_write(rep_bits(gpiod_moder_read(), pin.1*2, 2, GPIO_MODER_IN));
+                                },
+                    GPIO_MODER_OUT => {
+                        gpiod_moder_write(rep_bits(gpiod_moder_read(), pin.1*2, 2, GPIO_MODER_OUT));
+                    },
+                    GPIO_MODER_ALT => {
+                        gpiod_moder_write(rep_bits(gpiod_moder_read(), pin.1*2, 2, GPIO_MODER_ALT));
+                    },
+                    GPIO_MODER_ANA => {
+                        gpiod_moder_write(rep_bits(gpiod_moder_read(), pin.1*2, 2, GPIO_MODER_ANA));
+                    },
+                    _ => (),
+                }
+                PUPDR => match mode {
+                    GPIO_PUPDR_NO => {
+                        gpiod_pupdr_write(rep_bits(gpiod_pupdr_read(), pin.1*2, 2, GPIO_PUPDR_NO));
+                    },
+                    GPIO_PUPDR_PU => {
+                        gpiod_pupdr_write(rep_bits(gpiod_pupdr_read(), pin.1*2, 2, GPIO_PUPDR_PU));
+                    },
+                    GPIO_PUPDR_PD => {
+                        gpiod_pupdr_write(rep_bits(gpiod_pupdr_read(), pin.1*2, 2, GPIO_PUPDR_PD));
+                    },
+                    _ => (),
+
+                },
+                OSPEEDER => match mode {
+                    GPIO_OSPEEDR_LO => {
+                        gpiod_ospeedr_write(rep_bits(gpiod_ospeedr_read(), pin.1*2, 2, GPIO_OSPEEDR_LO));
+                    },
+                    GPIO_OSPEEDR_ME => {
+                        gpiod_ospeedr_write(rep_bits(gpiod_ospeedr_read(), pin.1*2, 2, GPIO_OSPEEDR_ME));
+                    },
+                    GPIO_OSPEEDR_HI => {
+                        gpiod_ospeedr_write(rep_bits(gpiod_ospeedr_read(), pin.1*2, 2, GPIO_OSPEEDR_HI));
+                    },
+                    GPIO_OSPEEDR_VH => {
+                        gpiod_ospeedr_write(rep_bits(gpiod_ospeedr_read(), pin.1*2, 2, GPIO_OSPEEDR_VH));
+                    },
+                    _ => (),
+                },
+                _ =>(),
+        }
+    },
+
+        
+    'E' => {
+        match types {
+                MODER => match mode{
+                    GPIO_MODER_IN => {
+                        gpioe_moder_write(rep_bits(gpioe_moder_read(), pin.1*2, 2, GPIO_MODER_IN));
+                                },
+                    GPIO_MODER_OUT => {
+                        gpioe_moder_write(rep_bits(gpioe_moder_read(), pin.1*2, 2, GPIO_MODER_OUT));
+                    },
+                    GPIO_MODER_ALT => {
+                        gpioe_moder_write(rep_bits(gpioe_moder_read(), pin.1*2, 2, GPIO_MODER_ALT));
+                    },
+                    GPIO_MODER_ANA => {
+                        gpioe_moder_write(rep_bits(gpioe_moder_read(), pin.1*2, 2, GPIO_MODER_ANA));
+                    },
+                    _ => (),
+                }
+                PUPDR => match mode {
+                    GPIO_PUPDR_NO => {
+                        gpioe_pupdr_write(rep_bits(gpioe_pupdr_read(), pin.1*2, 2, GPIO_PUPDR_NO));
+                    },
+                    GPIO_PUPDR_PU => {
+                        gpioe_pupdr_write(rep_bits(gpioe_pupdr_read(), pin.1*2, 2, GPIO_PUPDR_PU));
+                    },
+                    GPIO_PUPDR_PD => {
+                        gpioe_pupdr_write(rep_bits(gpioe_pupdr_read(), pin.1*2, 2, GPIO_PUPDR_PD));
+                    },
+                    _ => (),
+
+                },
+                OSPEEDER => match mode {
+                    GPIO_OSPEEDR_LO => {
+                        gpioe_ospeedr_write(rep_bits(gpioe_ospeedr_read(), pin.1*2, 2, GPIO_OSPEEDR_LO));
+                    },
+                    GPIO_OSPEEDR_ME => {
+                        gpioe_ospeedr_write(rep_bits(gpioe_ospeedr_read(), pin.1*2, 2, GPIO_OSPEEDR_ME));
+                    },
+                    GPIO_OSPEEDR_HI => {
+                        gpioe_ospeedr_write(rep_bits(gpioe_ospeedr_read(), pin.1*2, 2, GPIO_OSPEEDR_HI));
+                    },
+                    GPIO_OSPEEDR_VH => {
+                        gpioe_ospeedr_write(rep_bits(gpioe_ospeedr_read(), pin.1*2, 2, GPIO_OSPEEDR_VH));
+                    },
+                    _ => (),
+                },
+                _ =>(),
+        }
+    },
+
+        
+    'F' => {
+        match types {
+                MODER => match mode{
+                    GPIO_MODER_IN => {
+                        gpiof_moder_write(rep_bits(gpiof_moder_read(), pin.1*2, 2, GPIO_MODER_IN));
+                                },
+                    GPIO_MODER_OUT => {
+                        gpiof_moder_write(rep_bits(gpiof_moder_read(), pin.1*2, 2, GPIO_MODER_OUT));
+                    },
+                    GPIO_MODER_ALT => {
+                        gpiof_moder_write(rep_bits(gpiof_moder_read(), pin.1*2, 2, GPIO_MODER_ALT));
+                    },
+                    GPIO_MODER_ANA => {
+                        gpiof_moder_write(rep_bits(gpiof_moder_read(), pin.1*2, 2, GPIO_MODER_ANA));
+                    },
+                    _ => (),
+                }
+                PUPDR => match mode {
+                    GPIO_PUPDR_NO => {
+                        gpiof_pupdr_write(rep_bits(gpiof_pupdr_read(), pin.1*2, 2, GPIO_PUPDR_NO));
+                    },
+                    GPIO_PUPDR_PU => {
+                        gpiof_pupdr_write(rep_bits(gpiof_pupdr_read(), pin.1*2, 2, GPIO_PUPDR_PU));
+                    },
+                    GPIO_PUPDR_PD => {
+                        gpiof_pupdr_write(rep_bits(gpiof_pupdr_read(), pin.1*2, 2, GPIO_PUPDR_PD));
+                    },
+                    _ => (),
+
+                },
+                OSPEEDER => match mode {
+                    GPIO_OSPEEDR_LO => {
+                        gpiof_ospeedr_write(rep_bits(gpiof_ospeedr_read(), pin.1*2, 2, GPIO_OSPEEDR_LO));
+                    },
+                    GPIO_OSPEEDR_ME => {
+                        gpiof_ospeedr_write(rep_bits(gpiof_ospeedr_read(), pin.1*2, 2, GPIO_OSPEEDR_ME));
+                    },
+                    GPIO_OSPEEDR_HI => {
+                        gpiof_ospeedr_write(rep_bits(gpiof_ospeedr_read(), pin.1*2, 2, GPIO_OSPEEDR_HI));
+                    },
+                    GPIO_OSPEEDR_VH => {
+                        gpiof_ospeedr_write(rep_bits(gpiof_ospeedr_read(), pin.1*2, 2, GPIO_OSPEEDR_VH));
+                    },
+                    _ => (),
+                },
+                _ =>(),
+        }
+    },
+
+        
+    'G' => {
+        match types {
+                MODER => match mode{
+                    GPIO_MODER_IN => {
+                        gpiog_moder_write(rep_bits(gpiog_moder_read(), pin.1*2, 2, GPIO_MODER_IN));
+                                },
+                    GPIO_MODER_OUT => {
+                        gpiog_moder_write(rep_bits(gpiog_moder_read(), pin.1*2, 2, GPIO_MODER_OUT));
+                    },
+                    GPIO_MODER_ALT => {
+                        gpiog_moder_write(rep_bits(gpiog_moder_read(), pin.1*2, 2, GPIO_MODER_ALT));
+                    },
+                    GPIO_MODER_ANA => {
+                        gpiog_moder_write(rep_bits(gpiog_moder_read(), pin.1*2, 2, GPIO_MODER_ANA));
+                    },
+                    _ => (),
+                }
+                PUPDR => match mode {
+                    GPIO_PUPDR_NO => {
+                        gpiog_pupdr_write(rep_bits(gpiog_pupdr_read(), pin.1*2, 2, GPIO_PUPDR_NO));
+                    },
+                    GPIO_PUPDR_PU => {
+                        gpiog_pupdr_write(rep_bits(gpiog_pupdr_read(), pin.1*2, 2, GPIO_PUPDR_PU));
+                    },
+                    GPIO_PUPDR_PD => {
+                        gpiog_pupdr_write(rep_bits(gpiog_pupdr_read(), pin.1*2, 2, GPIO_PUPDR_PD));
+                    },
+                    _ => (),
+
+                },
+                OSPEEDER => match mode {
+                    GPIO_OSPEEDR_LO => {
+                        gpiog_ospeedr_write(rep_bits(gpiog_ospeedr_read(), pin.1*2, 2, GPIO_OSPEEDR_LO));
+                    },
+                    GPIO_OSPEEDR_ME => {
+                        gpiog_ospeedr_write(rep_bits(gpiog_ospeedr_read(), pin.1*2, 2, GPIO_OSPEEDR_ME));
+                    },
+                    GPIO_OSPEEDR_HI => {
+                        gpiog_ospeedr_write(rep_bits(gpiog_ospeedr_read(), pin.1*2, 2, GPIO_OSPEEDR_HI));
+                    },
+                    GPIO_OSPEEDR_VH => {
+                        gpiog_ospeedr_write(rep_bits(gpiog_ospeedr_read(), pin.1*2, 2, GPIO_OSPEEDR_VH));
+                    },
+                    _ => (),
+                },
+                _ =>(),
+        }
+    },
+
+        
+    'H' => {
+        match types {
+                MODER => match mode{
+                    GPIO_MODER_IN => {
+                        gpioh_moder_write(rep_bits(gpioh_moder_read(), pin.1*2, 2, GPIO_MODER_IN));
+                                },
+                    GPIO_MODER_OUT => {
+                        gpioh_moder_write(rep_bits(gpioh_moder_read(), pin.1*2, 2, GPIO_MODER_OUT));
+                    },
+                    GPIO_MODER_ALT => {
+                        gpioh_moder_write(rep_bits(gpioh_moder_read(), pin.1*2, 2, GPIO_MODER_ALT));
+                    },
+                    GPIO_MODER_ANA => {
+                        gpioh_moder_write(rep_bits(gpioh_moder_read(), pin.1*2, 2, GPIO_MODER_ANA));
+                    },
+                    _ => (),
+                }
+                PUPDR => match mode {
+                    GPIO_PUPDR_NO => {
+                        gpioh_pupdr_write(rep_bits(gpioh_pupdr_read(), pin.1*2, 2, GPIO_PUPDR_NO));
+                    },
+                    GPIO_PUPDR_PU => {
+                        gpioh_pupdr_write(rep_bits(gpioh_pupdr_read(), pin.1*2, 2, GPIO_PUPDR_PU));
+                    },
+                    GPIO_PUPDR_PD => {
+                        gpioh_pupdr_write(rep_bits(gpioh_pupdr_read(), pin.1*2, 2, GPIO_PUPDR_PD));
+                    },
+                    _ => (),
+
+                },
+                OSPEEDER => match mode {
+                    GPIO_OSPEEDR_LO => {
+                        gpioh_ospeedr_write(rep_bits(gpioh_ospeedr_read(), pin.1*2, 2, GPIO_OSPEEDR_LO));
+                    },
+                    GPIO_OSPEEDR_ME => {
+                        gpioh_ospeedr_write(rep_bits(gpioh_ospeedr_read(), pin.1*2, 2, GPIO_OSPEEDR_ME));
+                    },
+                    GPIO_OSPEEDR_HI => {
+                        gpioh_ospeedr_write(rep_bits(gpioh_ospeedr_read(), pin.1*2, 2, GPIO_OSPEEDR_HI));
+                    },
+                    GPIO_OSPEEDR_VH => {
+                        gpioh_ospeedr_write(rep_bits(gpioh_ospeedr_read(), pin.1*2, 2, GPIO_OSPEEDR_VH));
+                    },
+                    _ => (),
+                },
+                _ =>(),
+        }
+    },
+
+        
+    'I' => {
+        match types {
+                MODER => match mode{
+                    GPIO_MODER_IN => {
+                        gpioi_moder_write(rep_bits(gpioi_moder_read(), pin.1*2, 2, GPIO_MODER_IN));
+                                },
+                    GPIO_MODER_OUT => {
+                        gpioi_moder_write(rep_bits(gpioi_moder_read(), pin.1*2, 2, GPIO_MODER_OUT));
+                    },
+                    GPIO_MODER_ALT => {
+                        gpioi_moder_write(rep_bits(gpioi_moder_read(), pin.1*2, 2, GPIO_MODER_ALT));
+                    },
+                    GPIO_MODER_ANA => {
+                        gpioi_moder_write(rep_bits(gpioi_moder_read(), pin.1*2, 2, GPIO_MODER_ANA));
+                    },
+                    _ => (),
+                }
+                PUPDR => match mode {
+                    GPIO_PUPDR_NO => {
+                        gpioi_pupdr_write(rep_bits(gpioi_pupdr_read(), pin.1*2, 2, GPIO_PUPDR_NO));
+                    },
+                    GPIO_PUPDR_PU => {
+                        gpioi_pupdr_write(rep_bits(gpioi_pupdr_read(), pin.1*2, 2, GPIO_PUPDR_PU));
+                    },
+                    GPIO_PUPDR_PD => {
+                        gpioi_pupdr_write(rep_bits(gpioi_pupdr_read(), pin.1*2, 2, GPIO_PUPDR_PD));
+                    },
+                    _ => (),
+
+                },
+                OSPEEDER => match mode {
+                    GPIO_OSPEEDR_LO => {
+                        gpioi_ospeedr_write(rep_bits(gpioi_ospeedr_read(), pin.1*2, 2, GPIO_OSPEEDR_LO));
+                    },
+                    GPIO_OSPEEDR_ME => {
+                        gpioi_ospeedr_write(rep_bits(gpioi_ospeedr_read(), pin.1*2, 2, GPIO_OSPEEDR_ME));
+                    },
+                    GPIO_OSPEEDR_HI => {
+                        gpioi_ospeedr_write(rep_bits(gpioi_ospeedr_read(), pin.1*2, 2, GPIO_OSPEEDR_HI));
+                    },
+                    GPIO_OSPEEDR_VH => {
+                        gpioi_ospeedr_write(rep_bits(gpioi_ospeedr_read(), pin.1*2, 2, GPIO_OSPEEDR_VH));
+                    },
+                    _ => (),
+                },
+                _ =>(),
+        }
+    },
+
+        
+    'J' => {
+        match types {
+                MODER => match mode{
+                    GPIO_MODER_IN => {
+                        gpioj_moder_write(rep_bits(gpioj_moder_read(), pin.1*2, 2, GPIO_MODER_IN));
+                                },
+                    GPIO_MODER_OUT => {
+                        gpioj_moder_write(rep_bits(gpioj_moder_read(), pin.1*2, 2, GPIO_MODER_OUT));
+                    },
+                    GPIO_MODER_ALT => {
+                        gpioj_moder_write(rep_bits(gpioj_moder_read(), pin.1*2, 2, GPIO_MODER_ALT));
+                    },
+                    GPIO_MODER_ANA => {
+                        gpioj_moder_write(rep_bits(gpioj_moder_read(), pin.1*2, 2, GPIO_MODER_ANA));
+                    },
+                    _ => (),
+                }
+                PUPDR => match mode {
+                    GPIO_PUPDR_NO => {
+                        gpioj_pupdr_write(rep_bits(gpioj_pupdr_read(), pin.1*2, 2, GPIO_PUPDR_NO));
+                    },
+                    GPIO_PUPDR_PU => {
+                        gpioj_pupdr_write(rep_bits(gpioj_pupdr_read(), pin.1*2, 2, GPIO_PUPDR_PU));
+                    },
+                    GPIO_PUPDR_PD => {
+                        gpioj_pupdr_write(rep_bits(gpioj_pupdr_read(), pin.1*2, 2, GPIO_PUPDR_PD));
+                    },
+                    _ => (),
+
+                },
+                OSPEEDER => match mode {
+                    GPIO_OSPEEDR_LO => {
+                        gpioj_ospeedr_write(rep_bits(gpioj_ospeedr_read(), pin.1*2, 2, GPIO_OSPEEDR_LO));
+                    },
+                    GPIO_OSPEEDR_ME => {
+                        gpioj_ospeedr_write(rep_bits(gpioj_ospeedr_read(), pin.1*2, 2, GPIO_OSPEEDR_ME));
+                    },
+                    GPIO_OSPEEDR_HI => {
+                        gpioj_ospeedr_write(rep_bits(gpioj_ospeedr_read(), pin.1*2, 2, GPIO_OSPEEDR_HI));
+                    },
+                    GPIO_OSPEEDR_VH => {
+                        gpioj_ospeedr_write(rep_bits(gpioj_ospeedr_read(), pin.1*2, 2, GPIO_OSPEEDR_VH));
+                    },
+                    _ => (),
+                },
+                _ =>(),
+        }
+    },
+
+        
+    'K' => {
+        match types {
+                MODER => match mode{
+                    GPIO_MODER_IN => {
+                        gpiok_moder_write(rep_bits(gpiok_moder_read(), pin.1*2, 2, GPIO_MODER_IN));
+                                },
+                    GPIO_MODER_OUT => {
+                        gpiok_moder_write(rep_bits(gpiok_moder_read(), pin.1*2, 2, GPIO_MODER_OUT));
+                    },
+                    GPIO_MODER_ALT => {
+                        gpiok_moder_write(rep_bits(gpiok_moder_read(), pin.1*2, 2, GPIO_MODER_ALT));
+                    },
+                    GPIO_MODER_ANA => {
+                        gpiok_moder_write(rep_bits(gpiok_moder_read(), pin.1*2, 2, GPIO_MODER_ANA));
+                    },
+                    _ => (),
+                }
+                PUPDR => match mode {
+                    GPIO_PUPDR_NO => {
+                        gpiok_pupdr_write(rep_bits(gpiok_pupdr_read(), pin.1*2, 2, GPIO_PUPDR_NO));
+                    },
+                    GPIO_PUPDR_PU => {
+                        gpiok_pupdr_write(rep_bits(gpiok_pupdr_read(), pin.1*2, 2, GPIO_PUPDR_PU));
+                    },
+                    GPIO_PUPDR_PD => {
+                        gpiok_pupdr_write(rep_bits(gpiok_pupdr_read(), pin.1*2, 2, GPIO_PUPDR_PD));
+                    },
+                    _ => (),
+
+                },
+                OSPEEDER => match mode {
+                    GPIO_OSPEEDR_LO => {
+                        gpiok_ospeedr_write(rep_bits(gpiok_ospeedr_read(), pin.1*2, 2, GPIO_OSPEEDR_LO));
+                    },
+                    GPIO_OSPEEDR_ME => {
+                        gpiok_ospeedr_write(rep_bits(gpiok_ospeedr_read(), pin.1*2, 2, GPIO_OSPEEDR_ME));
+                    },
+                    GPIO_OSPEEDR_HI => {
+                        gpiok_ospeedr_write(rep_bits(gpiok_ospeedr_read(), pin.1*2, 2, GPIO_OSPEEDR_HI));
+                    },
+                    GPIO_OSPEEDR_VH => {
+                        gpiok_ospeedr_write(rep_bits(gpiok_ospeedr_read(), pin.1*2, 2, GPIO_OSPEEDR_VH));
+                    },
+                    _ => (),
+                },
+                _ =>(),
+        }
+    },
+
+        _ => (),
     }
 }
