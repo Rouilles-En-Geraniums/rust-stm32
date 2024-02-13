@@ -11,6 +11,8 @@ use geranium_rt::stm32rustlib::wait::*;
 
 #[no_mangle]
 fn main() {
+    wait_init_timers();
+    
     rcc_ahb1enr_write(rcc_ahb1enr_read() | RCC_AHB1ENR_GPIODEN);
     
     let my_led = ('D', 12); // Built-in green led
