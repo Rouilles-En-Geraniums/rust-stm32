@@ -7,4 +7,5 @@ pub mod nvic;
 pub mod rcc;
 pub mod syscfg;
 pub mod tim;
+pub mod system;
 pub mod wait;
