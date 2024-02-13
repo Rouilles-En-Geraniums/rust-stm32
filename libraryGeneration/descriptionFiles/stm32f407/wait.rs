@@ -1,4 +1,3 @@
-use crate::stm32rustlib::various::*;
 use crate::stm32rustlib::rcc::*;
 use crate::stm32rustlib::tim::*;
 
@@ -50,7 +49,7 @@ pub fn timer_timeout(){
     tim2_cr1_write(tim2_cr1_read() & !TIM_CEN);
 }
 
-pub fn timer_isTimeout() -> bool {
+pub fn timer_is_timeout() -> bool {
     if (tim2_sr_read() & TIM_UIF) == 0 {
         false
     } else {

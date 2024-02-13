@@ -66,8 +66,8 @@ def main():
     main_file = args.projectname + "/src/main.rs"
     shutil.copyfile(main_orig, main_file)
 
-    # generate library and add it to src
-    os.system("(cd libraryGeneration/libgen && python3 main.py -j ../descriptionFiles/stm32f407/*.json -e ../descriptionFiles/stm32f407/*.rs -o ../../{}/src/stm32rustlib)".format(args.projectname))
+    # update geranium_rt library 
+    os.system("(cd libraryGeneration/libgen && python3 main.py -j ../descriptionFiles/stm32f407/*.json -e ../descriptionFiles/stm32f407/*.rs -o ../../geranium_rt/src/stm32rustlib)")
 
 
     # Cargo.toml

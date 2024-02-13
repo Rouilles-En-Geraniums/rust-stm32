@@ -1,7 +1,7 @@
 extern crate core;
 use crate::core::ptr::write_volatile;
 use crate::core::ptr::read_volatile;
-use crate::stm32rustlib::various;
+
 
 const RCC_ADR : u32 = 0x40023800;
         
@@ -156,15 +156,7 @@ pub const RCC_PPLI2SCFGR_PLLI2SR2 : u32 = 1 << 30;
 pub const RCC_PPLI2SCFGR_PLLI2SR1 : u32 = 1 << 29;
 pub const RCC_PPLI2SCFGR_PLLI2SR0 : u32 = 1 << 28;
 pub const RCC_PPLI2SCFGR_PLLI2SQ : u32 = 1 << 24;
-pub const RCC_PPLI2SCFGR_PLLI2SN8 : u32 = 1 << 14;
-pub const RCC_PPLI2SCFGR_PLLI2SN7 : u32 = 1 << 13;
-pub const RCC_PPLI2SCFGR_PLLI2SN6 : u32 = 1 << 12;
-pub const RCC_PPLI2SCFGR_PLLI2SN5 : u32 = 1 << 11;
-pub const RCC_PPLI2SCFGR_PLLI2SN4 : u32 = 1 << 10;
-pub const RCC_PPLI2SCFGR_PLLI2SN3 : u32 = 1 << 9;
-pub const RCC_PPLI2SCFGR_PLLI2SN2 : u32 = 1 << 8;
-pub const RCC_PPLI2SCFGR_PLLI2SN1 : u32 = 1 << 7;
-pub const RCC_PPLI2SCFGR_PLLI2SN0 : u32 = 1 << 6;
+pub const RCC_PPLI2SCFGR_PLLI2SN : u32 = 1 << 6;
 pub const RCC_PLLSAICFGR_PLLSAIR : u32 = 1 << 28;
 pub const RCC_PLLSAICFGR_PLLSAIQ : u32 = 1 << 24;
 pub const RCC_PLLSAICFGR_PLLSAIN : u32 = 1 << 6;
@@ -399,3 +391,10 @@ pub fn rcc_plliscfgr_read() -> u32 {
         read_volatile( (RCC_ADR + RCC_PLLISCFGR_OFFSET) as *mut u32)
     }
 }
+    
+
+
+
+//fn initRegister(name: u8){
+    //RCC_AHB1ENR |= RCC_GPIODEN;
+//}
