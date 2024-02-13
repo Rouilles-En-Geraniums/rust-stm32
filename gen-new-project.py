@@ -23,9 +23,12 @@ def cmdlineParse():
     parser.add_argument("-a", "--author",
                         help="project author",
                         default="TBDAuthor")
-    parser.add_argument("-gdb", "--gdb",
-                        help="Specify which GDB to use",
+    parser.add_argument("-g", "--gdb",
+                        help="Specify the GDB command to use",
                         default="gdb")
+    parser.add_argument("-p", "--openocdcfg",
+                        help="Specify the path of the openOCD config file to use",
+                        default="app-template/openocd.cfg")
 
     args = parser.parse_args()
 
@@ -95,7 +98,7 @@ def main():
 
 
     # Openocd
-    openocdcfg_orig = "app-template/openocd.cfg"
+    openocdcfg_orig = args.openocdcfg
     openocdcfg_file = args.projectname + "/openocd.cfg"
     shutil.copyfile(openocdcfg_orig, openocdcfg_file)
 
