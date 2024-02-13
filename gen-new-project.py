@@ -24,7 +24,7 @@ def cmdlineParse():
                         help="project author",
                         default="TBDAuthor")
     parser.add_argument("-gdb", "--gdb",
-                        help="New project name",
+                        help="Specify which GDB to use",
                         default="gdb")
 
     args = parser.parse_args()
