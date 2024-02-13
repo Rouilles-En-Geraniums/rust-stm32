@@ -70,47 +70,35 @@ impl Task for Task2 {
 
 //réfléchir à la possibiltié delaisser l'utilisateur écrire ordo_tab.rs lui-même, avec des helpers (add_task -> OrdoTask, add_job)
 
-
-
-/*
-pub fn init_tasks<'a>(tasks: &mut Vec<OrdoTask>, jobs: Vec<Job<'a>>) -> () {
-    
-    tasks = vec![
-        OrdoTask {name: String::from("Tache 1"), task: Box::new(Task1 {count: 12})},
-        OrdoTask {name: String::from("Tache 2"), task: Box::new(Task2 {})}
-    ]
-
-
-    jobs = vec![
-        Job::<'a>{task: &seq.tasks[1], duration: 10, start: 7}
-    ];
-}
-*/
-
-/*
-//TODO : renommer en construct_tasks
-pub fn init_tasks(seq: &mut Sequencer) -> () {
-    
-    seq.tasks = Box::new(    [
-        OrdoTask {name: "Tache 1", task: Box::new(Task1 {count: 12})},
-        OrdoTask {name: "Tache 2", task: Box::new(Task2 {})}
-    ]);
-
-
-    seq.jobs = Box::new([
-        Job{task_index: 0, duration: 10, start: 7}
-    ]);
-}
-
-*/
-
-//generated code section
-
 fn runTask(ordo_task: &mut OrdoTask, max_time: u32){
     timer_arm(max_time);
     ordo_task.task.execute();
     timer_timeout();
 }
+
+fn run_sequencer(ordo_tasks: &mut [OrdoTask], num_ordo_tasks: usize, jobs: &[Job], num_jobs: usize, hyperperiod: u32){
+    for task in ordo_tasks.iter_mut() {
+        //println!("{}", task.name);
+        task.task.init();
+    }
+
+    let mut i: usize = 0;
+    while i < jobs.len() - 1 {
+        let job = &jobs[i];
+        let next_job = &jobs[i + 1];
+        let ordo_task: &mut OrdoTask = &mut ordo_tasks[job.task_index];
+
+        runTask(ordo_task, next_job.start - job.start);
+
+        i += 1;
+    }
+    let job = &jobs[i];
+    let ordo_task: &mut OrdoTask = &mut ordo_tasks[job.task_index];
+
+    runTask(ordo_task, hyperperiod - job.start);
+}
+
+//generated code section
 
 pub struct Sequencer <'a> {
     pub tasks: [OrdoTask<'a> ; 2],
@@ -126,36 +114,20 @@ fn main() {
 
     let hyperperiod: u32 = 100;
 
-    let mut seq: Sequencer = Sequencer { tasks: [
+    let mut ordo_tasks = [
         OrdoTask {name: "Tache 1", task: &mut t1},
         OrdoTask {name: "Tache 2", task: &mut t2}
-    ], jobs: [
+    ];
+    let num_ordo_tasks = 2;
+
+    let jobs = [
         Job{task_index: 0, duration: 10, start: 7},
         Job{task_index: 0, duration: 10, start: 50},
         Job{task_index: 1, duration: 20, start: 20}
-    ] };
+    ];
+    let num_jobs = 3;
 
-
-    for task in seq.tasks.iter_mut() {
-        //println!("{}", task.name);
-        task.task.init();
-    }
-
-    let mut i: usize = 0;
-    while i < seq.jobs.len() - 1 {
-        let job = &seq.jobs[i];
-        let next_job = &seq.jobs[i + 1];
-        let ordo_task: &mut OrdoTask = &mut seq.tasks[job.task_index];
-
-        runTask(ordo_task, next_job.start - job.start);
-
-        i += 1;
-    }
-    let job = &seq.jobs[i];
-    let ordo_task: &mut OrdoTask = &mut seq.tasks[job.task_index];
-
-    runTask(ordo_task, hyperperiod - job.start);
-
+    run_sequencer(&mut ordo_tasks, num_ordo_tasks, &jobs, num_jobs, hyperperiod);
 
     /*
     let mut time: u32 = 0;
