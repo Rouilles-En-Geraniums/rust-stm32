@@ -1,7 +1,7 @@
 extern crate core;
 use crate::core::ptr::write_volatile;
 use crate::core::ptr::read_volatile;
-use crate::stm32rustlib::various;
+
 
 const TIM1_ADR : u32 = 0x40010000;
 const TIM8_ADR : u32 = 0x40010400;

@@ -1,5 +1,4 @@
 #![no_std]
-#![allow(unused_imports)]
 
 use core::panic::PanicInfo;
 use core::ptr;
