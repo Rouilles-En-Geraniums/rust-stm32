@@ -1,9 +1,7 @@
 #![no_std]
-#![allow(unused_imports)]
 
 use core::panic::PanicInfo;
 use core::ptr;
-use cortex_m_semihosting::hprintln;
 
 extern crate core;
 pub mod stm32rustlib;
@@ -219,6 +217,5 @@ pub extern "C" fn DefaultExceptionHandler() {
 
 #[panic_handler]
 fn panic(_panic: &PanicInfo<'_>) -> ! {
-    hprintln!("panic info : {}", _panic).unwrap();
     loop {}
 }
