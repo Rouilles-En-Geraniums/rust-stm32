@@ -16,13 +16,15 @@ def cmdlineParse():
     # Parser argument control section.
     parser.add_argument("-o", "--outputdir",
                         help="Output directory.",
-                        default="test/stm32rustlib",
-                        required=False)
+                        default="test")
+    parser.add_argument("-l", "--libraryname",
+                        help="Library name.",
+                        default="stm32rustlib")
     parser.add_argument("-j", "--json",
                         help="JSON files to parse",
                         nargs='*',
                         default=[])
-    parser.add_argument("-ex", "--extra",
+    parser.add_argument("-e", "--extra",
                         help="Additionnal files to be included in the library. Example: wait.rs",
                         nargs='*',
                         default=[])
@@ -30,8 +32,9 @@ def cmdlineParse():
     args = parser.parse_args()
 
     # Printing the input for DEBUG.
-    print("Given arguments:\n- Output Directory {}\n- JSON {}\n- Extra: {}\n".format(
+    print("Given arguments:\n- Output directory {}\n- Library name {}\n- JSON {}\n- Extra: {}\n".format(
             args.outputdir,
+            args.libraryname,
             args.json,
             args.extra
             ))
@@ -89,17 +92,19 @@ def main():
 
     # Parse argument line
     args = cmdlineParse()
+    output_dir_path = args.outputdir
+    library_dir_path = os.path.join(args.outputdir,args.libraryname)
 
     # Initiate Jinja2 environment
     file_loader = FileSystemLoader('../templates/')
     env = Environment(loader=file_loader)
 
     # Create directory
-    Path(args.outputdir).mkdir(parents=True, exist_ok=True)
+    Path(library_dir_path).mkdir(parents=True, exist_ok=True)
 
     # Generate various.rs file (global variables used across the library)
-    mod_file_path = args.outputdir + "/mod.rs"
-    output_file_path = args.outputdir + "/various.rs"
+    mod_file_path = os.path.join(output_dir_path, args.libraryname + ".rs")
+    output_file_path = library_dir_path + "/various.rs"
     with open(output_file_path, 'w') as output_file:
         t = env.get_template("various.rs")
         output_file.write(t.render())
@@ -118,7 +123,7 @@ def main():
         basename = os.path.splitext(os.path.basename(json_file_path))[0]
 
         # Generate library file
-        output_file_path = args.outputdir+"/"+basename+".rs"
+        output_file_path = library_dir_path+"/"+basename+".rs"
         with open(output_file_path, 'w') as output_file:
             # TODO: verify that the file exists
             # Generate corresponding template
@@ -131,7 +136,7 @@ def main():
             mod_file.write("pub mod "+basename+";\n")
     
     for extra_file_path in args.extra:
-        shutil.copy(extra_file_path, args.outputdir)
+        shutil.copy(extra_file_path, library_dir_path)
 
         # Get the basename from extra file name
         basename = os.path.splitext(os.path.basename(extra_file_path))[0]

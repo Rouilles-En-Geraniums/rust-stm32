@@ -67,7 +67,7 @@ def main():
     shutil.copyfile(main_orig, main_file)
 
     # update geranium_rt library 
-    os.system("(cd libraryGeneration/libgen && python3 main.py -j ../descriptionFiles/stm32f407/*.json -e ../descriptionFiles/stm32f407/*.rs -o ../../geranium_rt/src/stm32rustlib)")
+    os.system("(cd libraryGeneration/libgen && python3 main.py -j ../descriptionFiles/stm32f407/*.json -e ../descriptionFiles/stm32f407/*.rs -o ../../geranium_rt/src -l stm32rustlib)")
 
 
     # Cargo.toml
