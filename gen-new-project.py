@@ -29,6 +29,9 @@ def cmdlineParse():
     parser.add_argument("-p", "--openocdcfg",
                         help="Specify the path of the openOCD config file to use",
                         default="app-template/openocd.cfg")
+    parser.add_argument("-u","--updatelibrary",
+                        help="Specify whether or not to update the library crate",
+                        action=argparse.BooleanOptionalAction)
 
     args = parser.parse_args()
 
@@ -44,6 +47,8 @@ def main():
 
     # Parse argument line
     args = cmdlineParse()
+
+    print(args)
 
     # Create new project
     os.system("cargo new --bin {}".format(args.projectname))
@@ -66,8 +71,9 @@ def main():
     main_file = args.projectname + "/src/main.rs"
     shutil.copyfile(main_orig, main_file)
 
-    # update geranium_rt library 
-    os.system("(cd libraryGeneration/libgen && python3 main.py -j ../descriptionFiles/stm32f407/*.json -e ../descriptionFiles/stm32f407/*.rs -o ../../geranium_rt/src -l stm32rustlib)")
+    # Update geranium_rt library 
+    if (args.updatelibrary):
+        os.system("(cd libraryGeneration/libgen && python3 main.py -j ../descriptionFiles/stm32f407/*.json -e ../descriptionFiles/stm32f407/*.rs -o ../../geranium_rt/src -l stm32rustlib)")
 
 
     # Cargo.toml
