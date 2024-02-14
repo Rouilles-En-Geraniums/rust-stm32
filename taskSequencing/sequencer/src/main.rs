@@ -7,21 +7,11 @@
 #![allow(dead_code)]
 
 extern crate geranium_rt;
-extern crate core;
-use core::arch::asm;
 
-pub mod stm32rustlib;
-use stm32rustlib::wait;
-
-use crate::stm32rustlib::adc::*;
-use crate::stm32rustlib::dac::*;
-use crate::stm32rustlib::exti::*;
-use crate::stm32rustlib::gpio::*;
-use crate::stm32rustlib::nvic::*;
-use crate::stm32rustlib::rcc::*;
-use crate::stm32rustlib::tim::*;
-use crate::stm32rustlib::various::*;
-use crate::stm32rustlib::wait::*;
+use geranium_rt::stm32rustlib::gpio::*;
+use geranium_rt::stm32rustlib::rcc::*;
+use geranium_rt::stm32rustlib::various::*;
+use geranium_rt::stm32rustlib::wait::*;
 
 const APB1_CLK: u32 = 42_000_000;
 
@@ -71,31 +61,33 @@ impl Task for Task2 {
 //réfléchir à la possibiltié delaisser l'utilisateur écrire ordo_tab.rs lui-même, avec des helpers (add_task -> OrdoTask, add_job)
 
 fn runTask(ordo_task: &mut OrdoTask, max_time: u32){
-    timer_arm(max_time);
+    timer_arm_ms(max_time);
     ordo_task.task.execute();
     timer_timeout();
 }
 
-fn run_sequencer(ordo_tasks: &mut [OrdoTask], num_ordo_tasks: usize, jobs: &[Job], num_jobs: usize, hyperperiod: u32){
+fn run_sequencer(ordo_tasks: &mut [OrdoTask], num_ordo_tasks: usize, jobs: &[Job], num_jobs: usize, hyperperiod: u32) -> !{
     for task in ordo_tasks.iter_mut() {
         //println!("{}", task.name);
         task.task.init();
     }
 
-    let mut i: usize = 0;
-    while i < jobs.len() - 1 {
+    loop {
+        let mut i: usize = 0;
+        while i < jobs.len() - 1 {
+            let job = &jobs[i];
+            let next_job = &jobs[i + 1];
+            let ordo_task: &mut OrdoTask = &mut ordo_tasks[job.task_index];
+    
+            runTask(ordo_task, next_job.start - job.start);
+    
+            i += 1;
+        }
         let job = &jobs[i];
-        let next_job = &jobs[i + 1];
         let ordo_task: &mut OrdoTask = &mut ordo_tasks[job.task_index];
-
-        runTask(ordo_task, next_job.start - job.start);
-
-        i += 1;
+    
+        runTask(ordo_task, hyperperiod - job.start);
     }
-    let job = &jobs[i];
-    let ordo_task: &mut OrdoTask = &mut ordo_tasks[job.task_index];
-
-    runTask(ordo_task, hyperperiod - job.start);
 }
 
 //generated code section
