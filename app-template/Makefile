@@ -7,6 +7,9 @@ OBJDMP = arm-none-eabi-objdump
 openocd :
 	openocd -f $(OPENOCD_CFG) 	
 
+log :
+	tail -f stm32f4.log
+
 debug :
 	cargo clean
 	cargo build

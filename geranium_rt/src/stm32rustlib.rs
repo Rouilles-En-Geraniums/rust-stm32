@@ -8,5 +8,6 @@ pub mod nvic;
 pub mod rcc;
 pub mod syscfg;
 pub mod tim;
+pub mod geranium_print;
 pub mod system;
 pub mod wait;
