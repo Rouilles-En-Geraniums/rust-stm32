@@ -12,5 +12,9 @@
       ]
     },
     {}
+  ],
+  "constants" : [
+    { "name" : "<const_name>", "value" : "<value>"},
+    {}
   ]
 }

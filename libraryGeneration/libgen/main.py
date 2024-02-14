@@ -1,3 +1,36 @@
+####
+#	Rust on STM32 Project by Rouilles en GeraniumTM
+#	Copyright (C) 2024 Université de Toulouse :
+#   - Oussama Felfel - oussama.felfel@univ-tlse3.fr		
+#   - François Foltete - francois.foltete@univ-tlse3.fr		
+#   - Elana Courtines - elana.courtines@univ-tlse3.fr		
+#   - Teo Tinarrage - teo.tinarrage@univ-tlse3.fr		
+#   - Zineb Moubarik - zineb.moubarik@univ-tlse3.fr 
+#
+#  This library aims to provide the following :
+#   - a rust library generation tool to safely access memory ;
+#   - a support to flash STM32 boards ;
+#   - a task scheduling tool that generates the associated rust code.
+# 
+#  The development of this library has done as a Proof of Concept and
+#  is currently only tested for STM32F407-G DISC1 Boards.
+# 
+#  It is our hope that using this library to enable development on
+#  other boards will be facilitated.
+# 
+# 
+#	This program is free software: you can redistribute it and/or modify
+#	it under the terms of the GNU General Public License as published by
+#	the Free Software Foundation, either version 3 of the License, or
+#	(at your option) any later version.
+#
+#	This program is distributed in the hope that it will be useful,
+#	but WITHOUT ANY WARRANTY; without even the implied warranty of
+#	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#	GNU General Public License for more details.
+####
+
+
 import sys
 import os
 import json
@@ -30,14 +63,6 @@ def cmdlineParse():
                         default=[])
 
     args = parser.parse_args()
-
-    # Printing the input for DEBUG.
-    print("Given arguments:\n- Output directory {}\n- Library name {}\n- JSON {}\n- Extra: {}\n".format(
-            args.outputdir,
-            args.libraryname,
-            args.json,
-            args.extra
-            ))
 
     return args
 
@@ -92,8 +117,12 @@ def main():
 
     # Parse argument line
     args = cmdlineParse()
+
     output_dir_path = args.outputdir
-    library_dir_path = os.path.join(args.outputdir,args.libraryname)
+    library_name = args.libraryname
+    library_dir_path = os.path.join(output_dir_path,library_name)
+    json_files = args.json
+    extra_files = args.extra
 
     # Initiate Jinja2 environment
     file_loader = FileSystemLoader('../templates/')
@@ -103,7 +132,7 @@ def main():
     Path(library_dir_path).mkdir(parents=True, exist_ok=True)
 
     # Generate various.rs file (global variables used across the library)
-    mod_file_path = os.path.join(output_dir_path, args.libraryname + ".rs")
+    mod_file_path = os.path.join(output_dir_path, library_name + ".rs")
     output_file_path = library_dir_path + "/various.rs"
     with open(output_file_path, 'w') as output_file:
         t = env.get_template("various.rs")
@@ -115,7 +144,7 @@ def main():
     print("{} generated.".format(output_file_path))
 
     # Generate all library files based on arguments
-    for json_file_path in args.json:
+    for json_file_path in json_files:
         # Read JSON data
         data = generate_data_from_json(json_file_path)
 
@@ -135,20 +164,18 @@ def main():
         with open(mod_file_path, 'a') as mod_file:
             mod_file.write("pub mod "+basename+";\n")
     
-    for extra_file_path in args.extra:
+    print("")
+    
+    for extra_file_path in extra_files:
         shutil.copy(extra_file_path, library_dir_path)
 
         # Get the basename from extra file name
         basename = os.path.splitext(os.path.basename(extra_file_path))[0]
 
-        print("{} generated.".format(basename))
+        print("{} generated.".format(os.path.join(library_dir_path,basename)))
             
         with open(mod_file_path, 'a') as mod_file:
             mod_file.write("pub mod "+basename+";\n")
-
-    # - s'inspirer de https://github.com/stm32-rs/stm32f4xx-hal pour
-    #    avoir une idée de quelles sections faire par la suite
-
 
 if __name__ == "__main__":
     main()
