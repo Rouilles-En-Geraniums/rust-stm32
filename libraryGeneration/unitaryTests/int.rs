@@ -1,50 +1,41 @@
 #![no_std]
 #![no_main]
-#![allow(unused_imports)]
-#![allow(non_snake_case)]
-#![allow(unused_variables)]
-#![allow(non_upper_case_globals)]
-#![allow(dead_code)]
 
 extern crate geranium_rt;
 extern crate core;
+
+use geranium_rt::stm32rustlib::gpio::*;
+use geranium_rt::stm32rustlib::rcc::*;
+use geranium_rt::stm32rustlib::various::*;
+use geranium_rt::stm32rustlib::system::*;
+use geranium_rt::stm32rustlib::nvic::*;
+use geranium_rt::stm32rustlib::tim::*;
+
 use core::arch::asm;
 
-pub mod stm32rustlib;
-
-use crate::stm32rustlib::adc::*;
-use crate::stm32rustlib::dac::*;
-use crate::stm32rustlib::exti::*;
-use crate::stm32rustlib::gpio::*;
-use crate::stm32rustlib::nvic::*;
-use crate::stm32rustlib::rcc::*;
-use crate::stm32rustlib::tim::*;
-use crate::stm32rustlib::various::*;
-
-const APB1_CLK: u32 = 42_000_000;
 
 const PSC: u32 = 1000;
 const PERIOD: u32 = APB1_CLK / 1000; // TODO : define APB1_CLK
 const HALF_PERIOD: u32 = PERIOD / 2;
 
-const my_led: (char,u32) = ('D', 12);
+const MY_LED: (char,u32) = ('D', 12);
 
 #[no_mangle]
 pub unsafe extern "C" fn handle_TIM4() {
 	if (tim4_sr_read() & TIM_UIF) != 0 {
-		if digital_read(my_led) == LOW {
-			digital_write(my_led, HIGH);
+		if digital_read(MY_LED) == LOW {
+			digital_write(MY_LED, HIGH);
 		} else {
-            digital_write(my_led, LOW);
+            digital_write(MY_LED, LOW);
 		}
 	}
-	tim4_sr_write(tim4_sr_read() & !TIM_UIF);
+	tim4_sr_seti(!TIM_UIF);
 	nvic_icpr_set(TIM4 >> 5, TIM4);
 }
 
 
 #[no_mangle]
-fn init_TIM4_interrupt(){
+fn init_tim4_interrupt(){
 
     tim4_cr1_write(0);
 
@@ -78,20 +69,20 @@ fn init_TIM4_interrupt(){
 		asm!("CPSIE I");
 	}
 
-    tim4_cr1_write(tim4_cr1_read() | TIM_CEN)
+    tim4_cr1_seti(TIM_CEN)
 }
 
 
 
 #[no_mangle]
 fn main() {
-    rcc_ahb1enr_write(rcc_ahb1enr_read() | (1 << 0)); //GPIO A
-    rcc_ahb1enr_write(rcc_ahb1enr_read() | (1 << 3)); //GPIO D
-	rcc_apb1enr_write(rcc_ahb1enr_read() | (1 << 2)); //tim4en
+    rcc_ahb1enr_seti(RCC_AHB1ENR_GPIOAEN);
+    rcc_ahb1enr_seti(RCC_AHB1ENR_GPIODEN);
+    rcc_apb1enr_seti(RCC_APB1ENR_TIM4EN);
     
-    gpiod_moder_write(rep_bits(gpiod_moder_read(), my_led.1*2, 2, GPIO_MODER_OUT));
+    gpiod_moder_set(MY_LED.1*2, GPIO_MODER_OUT);
 
-	init_TIM4_interrupt();
+	init_tim4_interrupt();
 
     loop {
     }

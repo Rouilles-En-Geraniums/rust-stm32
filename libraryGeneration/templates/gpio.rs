@@ -35,12 +35,3 @@ pub fn digital_read(pin: (char,u32)) -> u8 {
         _ => 2
     }
 }
-
-pub fn init_gpio(pin: (char, u32), types: u8, mode: u32) {
-    match pin.0 {
-        {%- for component in components %}
-        {{gpiomacro.gen_init_gpio_switch_case(component.name[-1])}}
-        {%- endfor %}
-        _ => (),
-    }
-}

@@ -7,6 +7,8 @@ extern crate core;
 pub mod stm32rustlib;
 use crate::stm32rustlib::rcc::*;
 use crate::stm32rustlib::various::*;
+use crate::stm32rustlib::syscfg::*;
+use crate::stm32rustlib::gdb::*;
 
 
 pub union Vector {
@@ -112,94 +114,58 @@ pub unsafe extern "C" fn HandlerReset() -> ! {
 	//	168		42		84		8		336		2		7
     
 	// configure HSI clock
-	//RCC_CR |= RCC_CR_HSION;
-    rcc_cr_write(rcc_cr_read() | RCC_CR_HSION);
-	//while((RCC_CR & RCC_CR_HSIRDY) == 0);
+    rcc_cr_seti(RCC_CR_HSION);
     while (rcc_cr_read() & RCC_CR_HSIRDY) == 0 {}
-	//RCC_CFGR_SW_SET(RCC_CFGR, RCC_HSI);
-    rcc_cfgr_write(rep_bits(rcc_cfgr_read(),0,2,0b00));
-    
+    rcc_cfgr_set(0,0b00);
     
 	// configure HSE clock
-	//RCC_CR |= RCC_CR_HSEON;
-    rcc_cr_write(rcc_cr_read() | RCC_CR_HSEON);
-	//while((RCC_CR & RCC_CR_HSERDY) == 0);
+    rcc_cr_seti(RCC_CR_HSEON);
     while (rcc_cr_read() & RCC_CR_HSERDY) == 0 {}
     
 	// configure AHB and AHP[12]
-	//RCC_CFGGR_HPRE_SET(RCC_CFGR, RCC_HPRE_NODIV);
-    rcc_cfgr_write(rep_bits(rcc_cfgr_read(),4,4,0b0000));
-	//RCC_CFGGR_PPRE1_SET(RCC_CFGR, RCC_PPRE_DIV4);
-    rcc_cfgr_write(rep_bits(rcc_cfgr_read(),10,3,0b110));
-	//RCC_CFGGR_PPRE2_SET(RCC_CFGR, RCC_PPRE_DIV2);
-    rcc_cfgr_write(rep_bits(rcc_cfgr_read(),13,3,0b100));
+    rcc_cfgr_set(4,0b0000);
+    rcc_cfgr_set(10,0b110);
+    rcc_cfgr_set(13,0b100);
     
 	// configure PLL
-	//RCC_CR &= ~RCC_CR_PLLON;
-    rcc_cr_write(rcc_cr_read() & !RCC_CR_PLLON);
+    rcc_cr_seti(!RCC_CR_PLLON);
     let mut x : u32 = 0;
-	//RCC_PLLCFGR_M_SET(x, 8);
     x = rep_bits(x,0,5,8);
-	//RCC_PLLCFGR_N_SET(x, 336);
     x = rep_bits(x,6,9,336);
-	//RCC_PLLCFGR_P_SET(x, RCC_PLLP2);
     x = rep_bits(x,16,2,0);
-	//x |= RCC_PLLCFGR_SRC_HSE;
     x |= RCC_PLLCFGR_PLLSRC;
-	//RCC_PLLCFGR_Q_SET(x, 7);
     x = rep_bits(x,24,4,7);
-	//RCC_PLLCFGR = x;
     rcc_pllcfgr_write(x);
-	//RCC_CR |= RCC_CR_PLLON;
-    rcc_cr_write(rcc_cr_read() | RCC_CR_PLLON);
-	//while((RCC_CR & RCC_CR_PLLRDY) == 0);
+    rcc_cr_seti(RCC_CR_PLLON);
     while (rcc_cr_read() & RCC_CR_PLLRDY) == 0 {}
     
 	// configure flash
 	x = flash_acr_read();
 	x |= FLASH_ACR_DCEN;
 	x |= FLASH_ACR_ICEN;
-	//FLASH_ACR_LATENCY_SET(x, 5);
     x = rep_bits(x,FLASH_ACR_LATENCY,2,5);
-	//FLASH_ACR = x;
     flash_acr_write(x);
 	
 	// select PLL as SYSCLK
-	//RCC_CFGR_SW_SET(RCC_CFGR, RCC_PLL);
-    rcc_cfgr_write(rep_bits(rcc_cfgr_read(),0,2,0b10));
-    //while(RCC_CFGR_SWS_GET(RCC_CFGR) != RCC_PLL);
+    rcc_cfgr_set(0,0b10);
     while get_bits(rcc_cfgr_read(),2,2) != 0b10 {}   
-	//RCC_CR &= ~RCC_CR_HSION;
-    rcc_cr_write(rcc_cr_read() & !RCC_CR_HSION);
+    rcc_cr_seti(!RCC_CR_HSION);
 
 	// rmap SRAM at 0
-	//SYSCFG_MEMRMP = 0b11;
     syscfg_memrmp_write(0b11);
 
-    //uint32_t *p;
-	//uint32_t *q;
-    
 	// copy data from FLASH to RAM
-	//p = &_data_flash;
-	//for(q = &_data_begin; q < &_data_end;)
-	//		*q++ = *p++;
     let count1 = &_data_end as *const u8 as usize - &_data_begin as *const u8 as usize;
     ptr::copy_nonoverlapping(&_data_flash as *const u8, &mut _data_begin as *mut u8, count1);
     
 	// set to 0 BSS
-	//for(q = &_bss_begin; q < &_bss_end;)
-	//	*q++ = 0;
     let count2 = &_bss_end as *const u8 as usize - &_bss_begin as *const u8 as usize;
-    //let count2 = 1024;
     ptr::write_bytes(&mut _bss_begin as *mut u8, 0, count2);
 
 
 	// console configuration
-	//DBG_DEMCR |= DBG_DEMCR_TRCENA;
-    dbg_demcr_write(dbg_demcr_read() | DBG_DEMCR_TRCENA);
-	//ITM_TRACE_EN |= ITM_TRACE_EN_PORT0;
-    itm_trace_en_write(itm_trace_en_read() | ITM_TRACE_EN_PORT0);
-
+    dcb_demcr_seti(DCB_DEMCR_TRCENA);
+    itm_ter_seti(ITM_TRACE_EN_PORT0);
 
 	extern "Rust" {
         fn main() -> !;

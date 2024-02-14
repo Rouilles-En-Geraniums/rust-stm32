@@ -109,7 +109,22 @@ pub const FPU : u32 = 81;
 
 
     
+        
 
+
+
+
+
+
+    
+        
+
+
+
+
+
+
+    
 pub fn nvic_iser_set(vector: u32, value: u32) {
     unsafe {
         write_volatile( (NVIC_ADR + NVIC_ISER_OFFSET + (vector)*4 ) as *mut u32, value)
@@ -139,7 +154,9 @@ pub fn nvic_ipr_set(vector: u32, value: u32) {
     unsafe {
         write_volatile( (NVIC_ADR + NVIC_IPR_OFFSET + (vector)*4 ) as *mut u32, value)
     };
-}pub fn nvic_handler_set(vector: u32, f: unsafe extern "C" fn()){
+}
+
+pub fn nvic_handler_set(vector: u32, f: unsafe extern "C" fn()){
     unsafe {
         write_volatile( (NVIC_IRQ + vector * 4) as *mut u32, f as u32);
     }

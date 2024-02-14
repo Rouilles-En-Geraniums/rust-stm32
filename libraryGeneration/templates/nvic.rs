@@ -8,7 +8,7 @@ use crate::core::ptr::write_volatile;
     {%- for register in registers %}
 {{nvicmacro.gen_nvic_set(component.name, register.name)}}
     {%- endfor %}
-{%- endfor -%}
+{%- endfor %}
 
 pub fn nvic_handler_set(vector: u32, f: unsafe extern "C" fn()){
     unsafe {

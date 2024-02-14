@@ -1,10 +1,8 @@
 extern crate core;
-use core::format_args;
 use core::fmt::Write;
 use core::fmt::write;
 use core::fmt::Arguments;
 
-use crate::stm32rustlib::various::*;
 use crate::stm32rustlib::gdb::*;
 
 

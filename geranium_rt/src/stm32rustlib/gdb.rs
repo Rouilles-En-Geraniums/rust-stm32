@@ -1,7 +1,7 @@
 extern crate core;
 use crate::core::ptr::write_volatile;
 use crate::core::ptr::read_volatile;
-
+use crate::stm32rustlib::various::*;
 
 const ITM_ADR : u32 = 0xE0000000;
 const DWT_ADR : u32 = 0xE0001000;
@@ -1197,5 +1197,1287 @@ pub fn dcb_demcr_read() -> u32 {
     unsafe {
         read_volatile( (DCB_ADR + DCB_DEMCR_OFFSET) as *mut u32)
     }
+}
+    
+        
+pub fn itm_stimulus_port0_set(position: u32, value: u32) {
+    let size = 32 - value.leading_zeros();
+    itm_stimulus_port0_write(rep_bits(itm_stimulus_port0_read(), position, size, value));
+}
+pub fn itm_stimulus_port1_set(position: u32, value: u32) {
+    let size = 32 - value.leading_zeros();
+    itm_stimulus_port1_write(rep_bits(itm_stimulus_port1_read(), position, size, value));
+}
+pub fn itm_stimulus_port2_set(position: u32, value: u32) {
+    let size = 32 - value.leading_zeros();
+    itm_stimulus_port2_write(rep_bits(itm_stimulus_port2_read(), position, size, value));
+}
+pub fn itm_stimulus_port3_set(position: u32, value: u32) {
+    let size = 32 - value.leading_zeros();
+    itm_stimulus_port3_write(rep_bits(itm_stimulus_port3_read(), position, size, value));
+}
+pub fn itm_stimulus_port4_set(position: u32, value: u32) {
+    let size = 32 - value.leading_zeros();
+    itm_stimulus_port4_write(rep_bits(itm_stimulus_port4_read(), position, size, value));
+}
+pub fn itm_stimulus_port5_set(position: u32, value: u32) {
+    let size = 32 - value.leading_zeros();
+    itm_stimulus_port5_write(rep_bits(itm_stimulus_port5_read(), position, size, value));
+}
+pub fn itm_stimulus_port6_set(position: u32, value: u32) {
+    let size = 32 - value.leading_zeros();
+    itm_stimulus_port6_write(rep_bits(itm_stimulus_port6_read(), position, size, value));
+}
+pub fn itm_stimulus_port7_set(position: u32, value: u32) {
+    let size = 32 - value.leading_zeros();
+    itm_stimulus_port7_write(rep_bits(itm_stimulus_port7_read(), position, size, value));
+}
+pub fn itm_stimulus_port8_set(position: u32, value: u32) {
+    let size = 32 - value.leading_zeros();
+    itm_stimulus_port8_write(rep_bits(itm_stimulus_port8_read(), position, size, value));
+}
+pub fn itm_stimulus_port9_set(position: u32, value: u32) {
+    let size = 32 - value.leading_zeros();
+    itm_stimulus_port9_write(rep_bits(itm_stimulus_port9_read(), position, size, value));
+}
+pub fn itm_stimulus_port10_set(position: u32, value: u32) {
+    let size = 32 - value.leading_zeros();
+    itm_stimulus_port10_write(rep_bits(itm_stimulus_port10_read(), position, size, value));
+}
+pub fn itm_stimulus_port11_set(position: u32, value: u32) {
+    let size = 32 - value.leading_zeros();
+    itm_stimulus_port11_write(rep_bits(itm_stimulus_port11_read(), position, size, value));
+}
+pub fn itm_stimulus_port12_set(position: u32, value: u32) {
+    let size = 32 - value.leading_zeros();
+    itm_stimulus_port12_write(rep_bits(itm_stimulus_port12_read(), position, size, value));
+}
+pub fn itm_stimulus_port13_set(position: u32, value: u32) {
+    let size = 32 - value.leading_zeros();
+    itm_stimulus_port13_write(rep_bits(itm_stimulus_port13_read(), position, size, value));
+}
+pub fn itm_stimulus_port14_set(position: u32, value: u32) {
+    let size = 32 - value.leading_zeros();
+    itm_stimulus_port14_write(rep_bits(itm_stimulus_port14_read(), position, size, value));
+}
+pub fn itm_stimulus_port15_set(position: u32, value: u32) {
+    let size = 32 - value.leading_zeros();
+    itm_stimulus_port15_write(rep_bits(itm_stimulus_port15_read(), position, size, value));
+}
+pub fn itm_stimulus_port16_set(position: u32, value: u32) {
+    let size = 32 - value.leading_zeros();
+    itm_stimulus_port16_write(rep_bits(itm_stimulus_port16_read(), position, size, value));
+}
+pub fn itm_stimulus_port17_set(position: u32, value: u32) {
+    let size = 32 - value.leading_zeros();
+    itm_stimulus_port17_write(rep_bits(itm_stimulus_port17_read(), position, size, value));
+}
+pub fn itm_stimulus_port18_set(position: u32, value: u32) {
+    let size = 32 - value.leading_zeros();
+    itm_stimulus_port18_write(rep_bits(itm_stimulus_port18_read(), position, size, value));
+}
+pub fn itm_stimulus_port19_set(position: u32, value: u32) {
+    let size = 32 - value.leading_zeros();
+    itm_stimulus_port19_write(rep_bits(itm_stimulus_port19_read(), position, size, value));
+}
+pub fn itm_stimulus_port20_set(position: u32, value: u32) {
+    let size = 32 - value.leading_zeros();
+    itm_stimulus_port20_write(rep_bits(itm_stimulus_port20_read(), position, size, value));
+}
+pub fn itm_stimulus_port21_set(position: u32, value: u32) {
+    let size = 32 - value.leading_zeros();
+    itm_stimulus_port21_write(rep_bits(itm_stimulus_port21_read(), position, size, value));
+}
+pub fn itm_stimulus_port22_set(position: u32, value: u32) {
+    let size = 32 - value.leading_zeros();
+    itm_stimulus_port22_write(rep_bits(itm_stimulus_port22_read(), position, size, value));
+}
+pub fn itm_stimulus_port23_set(position: u32, value: u32) {
+    let size = 32 - value.leading_zeros();
+    itm_stimulus_port23_write(rep_bits(itm_stimulus_port23_read(), position, size, value));
+}
+pub fn itm_stimulus_port24_set(position: u32, value: u32) {
+    let size = 32 - value.leading_zeros();
+    itm_stimulus_port24_write(rep_bits(itm_stimulus_port24_read(), position, size, value));
+}
+pub fn itm_stimulus_port25_set(position: u32, value: u32) {
+    let size = 32 - value.leading_zeros();
+    itm_stimulus_port25_write(rep_bits(itm_stimulus_port25_read(), position, size, value));
+}
+pub fn itm_stimulus_port26_set(position: u32, value: u32) {
+    let size = 32 - value.leading_zeros();
+    itm_stimulus_port26_write(rep_bits(itm_stimulus_port26_read(), position, size, value));
+}
+pub fn itm_stimulus_port27_set(position: u32, value: u32) {
+    let size = 32 - value.leading_zeros();
+    itm_stimulus_port27_write(rep_bits(itm_stimulus_port27_read(), position, size, value));
+}
+pub fn itm_stimulus_port28_set(position: u32, value: u32) {
+    let size = 32 - value.leading_zeros();
+    itm_stimulus_port28_write(rep_bits(itm_stimulus_port28_read(), position, size, value));
+}
+pub fn itm_stimulus_port29_set(position: u32, value: u32) {
+    let size = 32 - value.leading_zeros();
+    itm_stimulus_port29_write(rep_bits(itm_stimulus_port29_read(), position, size, value));
+}
+pub fn itm_stimulus_port30_set(position: u32, value: u32) {
+    let size = 32 - value.leading_zeros();
+    itm_stimulus_port30_write(rep_bits(itm_stimulus_port30_read(), position, size, value));
+}
+pub fn itm_stimulus_port31_set(position: u32, value: u32) {
+    let size = 32 - value.leading_zeros();
+    itm_stimulus_port31_write(rep_bits(itm_stimulus_port31_read(), position, size, value));
+}
+pub fn itm_ter_set(position: u32, value: u32) {
+    let size = 32 - value.leading_zeros();
+    itm_ter_write(rep_bits(itm_ter_read(), position, size, value));
+}
+pub fn itm_tpr_set(position: u32, value: u32) {
+    let size = 32 - value.leading_zeros();
+    itm_tpr_write(rep_bits(itm_tpr_read(), position, size, value));
+}
+pub fn itm_tcr_set(position: u32, value: u32) {
+    let size = 32 - value.leading_zeros();
+    itm_tcr_write(rep_bits(itm_tcr_read(), position, size, value));
+}
+
+
+    
+        
+pub fn dwt_ctrl_set(position: u32, value: u32) {
+    let size = 32 - value.leading_zeros();
+    dwt_ctrl_write(rep_bits(dwt_ctrl_read(), position, size, value));
+}
+pub fn dwt_cyccnt_set(position: u32, value: u32) {
+    let size = 32 - value.leading_zeros();
+    dwt_cyccnt_write(rep_bits(dwt_cyccnt_read(), position, size, value));
+}
+pub fn dwt_cpicnt_set(position: u32, value: u32) {
+    let size = 32 - value.leading_zeros();
+    dwt_cpicnt_write(rep_bits(dwt_cpicnt_read(), position, size, value));
+}
+pub fn dwt_exccnt_set(position: u32, value: u32) {
+    let size = 32 - value.leading_zeros();
+    dwt_exccnt_write(rep_bits(dwt_exccnt_read(), position, size, value));
+}
+pub fn dwt_sleepcnt_set(position: u32, value: u32) {
+    let size = 32 - value.leading_zeros();
+    dwt_sleepcnt_write(rep_bits(dwt_sleepcnt_read(), position, size, value));
+}
+pub fn dwt_lsucnt_set(position: u32, value: u32) {
+    let size = 32 - value.leading_zeros();
+    dwt_lsucnt_write(rep_bits(dwt_lsucnt_read(), position, size, value));
+}
+pub fn dwt_foldcnt_set(position: u32, value: u32) {
+    let size = 32 - value.leading_zeros();
+    dwt_foldcnt_write(rep_bits(dwt_foldcnt_read(), position, size, value));
+}
+
+pub fn dwt_comp0_set(position: u32, value: u32) {
+    let size = 32 - value.leading_zeros();
+    dwt_comp0_write(rep_bits(dwt_comp0_read(), position, size, value));
+}
+pub fn dwt_mask0_set(position: u32, value: u32) {
+    let size = 32 - value.leading_zeros();
+    dwt_mask0_write(rep_bits(dwt_mask0_read(), position, size, value));
+}
+pub fn dwt_function0_set(position: u32, value: u32) {
+    let size = 32 - value.leading_zeros();
+    dwt_function0_write(rep_bits(dwt_function0_read(), position, size, value));
+}
+pub fn dwt_comp1_set(position: u32, value: u32) {
+    let size = 32 - value.leading_zeros();
+    dwt_comp1_write(rep_bits(dwt_comp1_read(), position, size, value));
+}
+pub fn dwt_mask1_set(position: u32, value: u32) {
+    let size = 32 - value.leading_zeros();
+    dwt_mask1_write(rep_bits(dwt_mask1_read(), position, size, value));
+}
+pub fn dwt_function1_set(position: u32, value: u32) {
+    let size = 32 - value.leading_zeros();
+    dwt_function1_write(rep_bits(dwt_function1_read(), position, size, value));
+}
+pub fn dwt_comp2_set(position: u32, value: u32) {
+    let size = 32 - value.leading_zeros();
+    dwt_comp2_write(rep_bits(dwt_comp2_read(), position, size, value));
+}
+pub fn dwt_mask2_set(position: u32, value: u32) {
+    let size = 32 - value.leading_zeros();
+    dwt_mask2_write(rep_bits(dwt_mask2_read(), position, size, value));
+}
+pub fn dwt_function2_set(position: u32, value: u32) {
+    let size = 32 - value.leading_zeros();
+    dwt_function2_write(rep_bits(dwt_function2_read(), position, size, value));
+}
+pub fn dwt_comp3_set(position: u32, value: u32) {
+    let size = 32 - value.leading_zeros();
+    dwt_comp3_write(rep_bits(dwt_comp3_read(), position, size, value));
+}
+pub fn dwt_mask3_set(position: u32, value: u32) {
+    let size = 32 - value.leading_zeros();
+    dwt_mask3_write(rep_bits(dwt_mask3_read(), position, size, value));
+}
+pub fn dwt_function3_set(position: u32, value: u32) {
+    let size = 32 - value.leading_zeros();
+    dwt_function3_write(rep_bits(dwt_function3_read(), position, size, value));
+}
+pub fn dwt_comp4_set(position: u32, value: u32) {
+    let size = 32 - value.leading_zeros();
+    dwt_comp4_write(rep_bits(dwt_comp4_read(), position, size, value));
+}
+pub fn dwt_mask4_set(position: u32, value: u32) {
+    let size = 32 - value.leading_zeros();
+    dwt_mask4_write(rep_bits(dwt_mask4_read(), position, size, value));
+}
+pub fn dwt_function4_set(position: u32, value: u32) {
+    let size = 32 - value.leading_zeros();
+    dwt_function4_write(rep_bits(dwt_function4_read(), position, size, value));
+}
+pub fn dwt_comp5_set(position: u32, value: u32) {
+    let size = 32 - value.leading_zeros();
+    dwt_comp5_write(rep_bits(dwt_comp5_read(), position, size, value));
+}
+pub fn dwt_mask5_set(position: u32, value: u32) {
+    let size = 32 - value.leading_zeros();
+    dwt_mask5_write(rep_bits(dwt_mask5_read(), position, size, value));
+}
+pub fn dwt_function5_set(position: u32, value: u32) {
+    let size = 32 - value.leading_zeros();
+    dwt_function5_write(rep_bits(dwt_function5_read(), position, size, value));
+}
+pub fn dwt_comp6_set(position: u32, value: u32) {
+    let size = 32 - value.leading_zeros();
+    dwt_comp6_write(rep_bits(dwt_comp6_read(), position, size, value));
+}
+pub fn dwt_mask6_set(position: u32, value: u32) {
+    let size = 32 - value.leading_zeros();
+    dwt_mask6_write(rep_bits(dwt_mask6_read(), position, size, value));
+}
+pub fn dwt_function6_set(position: u32, value: u32) {
+    let size = 32 - value.leading_zeros();
+    dwt_function6_write(rep_bits(dwt_function6_read(), position, size, value));
+}
+pub fn dwt_comp7_set(position: u32, value: u32) {
+    let size = 32 - value.leading_zeros();
+    dwt_comp7_write(rep_bits(dwt_comp7_read(), position, size, value));
+}
+pub fn dwt_mask7_set(position: u32, value: u32) {
+    let size = 32 - value.leading_zeros();
+    dwt_mask7_write(rep_bits(dwt_mask7_read(), position, size, value));
+}
+pub fn dwt_function7_set(position: u32, value: u32) {
+    let size = 32 - value.leading_zeros();
+    dwt_function7_write(rep_bits(dwt_function7_read(), position, size, value));
+}
+pub fn dwt_comp8_set(position: u32, value: u32) {
+    let size = 32 - value.leading_zeros();
+    dwt_comp8_write(rep_bits(dwt_comp8_read(), position, size, value));
+}
+pub fn dwt_mask8_set(position: u32, value: u32) {
+    let size = 32 - value.leading_zeros();
+    dwt_mask8_write(rep_bits(dwt_mask8_read(), position, size, value));
+}
+pub fn dwt_function8_set(position: u32, value: u32) {
+    let size = 32 - value.leading_zeros();
+    dwt_function8_write(rep_bits(dwt_function8_read(), position, size, value));
+}
+pub fn dwt_comp9_set(position: u32, value: u32) {
+    let size = 32 - value.leading_zeros();
+    dwt_comp9_write(rep_bits(dwt_comp9_read(), position, size, value));
+}
+pub fn dwt_mask9_set(position: u32, value: u32) {
+    let size = 32 - value.leading_zeros();
+    dwt_mask9_write(rep_bits(dwt_mask9_read(), position, size, value));
+}
+pub fn dwt_function9_set(position: u32, value: u32) {
+    let size = 32 - value.leading_zeros();
+    dwt_function9_write(rep_bits(dwt_function9_read(), position, size, value));
+}
+pub fn dwt_comp10_set(position: u32, value: u32) {
+    let size = 32 - value.leading_zeros();
+    dwt_comp10_write(rep_bits(dwt_comp10_read(), position, size, value));
+}
+pub fn dwt_mask10_set(position: u32, value: u32) {
+    let size = 32 - value.leading_zeros();
+    dwt_mask10_write(rep_bits(dwt_mask10_read(), position, size, value));
+}
+pub fn dwt_function10_set(position: u32, value: u32) {
+    let size = 32 - value.leading_zeros();
+    dwt_function10_write(rep_bits(dwt_function10_read(), position, size, value));
+}
+pub fn dwt_comp11_set(position: u32, value: u32) {
+    let size = 32 - value.leading_zeros();
+    dwt_comp11_write(rep_bits(dwt_comp11_read(), position, size, value));
+}
+pub fn dwt_mask11_set(position: u32, value: u32) {
+    let size = 32 - value.leading_zeros();
+    dwt_mask11_write(rep_bits(dwt_mask11_read(), position, size, value));
+}
+pub fn dwt_function11_set(position: u32, value: u32) {
+    let size = 32 - value.leading_zeros();
+    dwt_function11_write(rep_bits(dwt_function11_read(), position, size, value));
+}
+pub fn dwt_comp12_set(position: u32, value: u32) {
+    let size = 32 - value.leading_zeros();
+    dwt_comp12_write(rep_bits(dwt_comp12_read(), position, size, value));
+}
+pub fn dwt_mask12_set(position: u32, value: u32) {
+    let size = 32 - value.leading_zeros();
+    dwt_mask12_write(rep_bits(dwt_mask12_read(), position, size, value));
+}
+pub fn dwt_function12_set(position: u32, value: u32) {
+    let size = 32 - value.leading_zeros();
+    dwt_function12_write(rep_bits(dwt_function12_read(), position, size, value));
+}
+pub fn dwt_comp13_set(position: u32, value: u32) {
+    let size = 32 - value.leading_zeros();
+    dwt_comp13_write(rep_bits(dwt_comp13_read(), position, size, value));
+}
+pub fn dwt_mask13_set(position: u32, value: u32) {
+    let size = 32 - value.leading_zeros();
+    dwt_mask13_write(rep_bits(dwt_mask13_read(), position, size, value));
+}
+pub fn dwt_function13_set(position: u32, value: u32) {
+    let size = 32 - value.leading_zeros();
+    dwt_function13_write(rep_bits(dwt_function13_read(), position, size, value));
+}
+pub fn dwt_comp14_set(position: u32, value: u32) {
+    let size = 32 - value.leading_zeros();
+    dwt_comp14_write(rep_bits(dwt_comp14_read(), position, size, value));
+}
+pub fn dwt_mask14_set(position: u32, value: u32) {
+    let size = 32 - value.leading_zeros();
+    dwt_mask14_write(rep_bits(dwt_mask14_read(), position, size, value));
+}
+pub fn dwt_function14_set(position: u32, value: u32) {
+    let size = 32 - value.leading_zeros();
+    dwt_function14_write(rep_bits(dwt_function14_read(), position, size, value));
+}
+pub fn dwt_comp15_set(position: u32, value: u32) {
+    let size = 32 - value.leading_zeros();
+    dwt_comp15_write(rep_bits(dwt_comp15_read(), position, size, value));
+}
+pub fn dwt_mask15_set(position: u32, value: u32) {
+    let size = 32 - value.leading_zeros();
+    dwt_mask15_write(rep_bits(dwt_mask15_read(), position, size, value));
+}
+pub fn dwt_function15_set(position: u32, value: u32) {
+    let size = 32 - value.leading_zeros();
+    dwt_function15_write(rep_bits(dwt_function15_read(), position, size, value));
+}
+
+    
+        
+pub fn fpb_ctrl_set(position: u32, value: u32) {
+    let size = 32 - value.leading_zeros();
+    fpb_ctrl_write(rep_bits(fpb_ctrl_read(), position, size, value));
+}
+pub fn fpb_remap_set(position: u32, value: u32) {
+    let size = 32 - value.leading_zeros();
+    fpb_remap_write(rep_bits(fpb_remap_read(), position, size, value));
+}
+pub fn fpb_comp_set(position: u32, value: u32) {
+    let size = 32 - value.leading_zeros();
+    fpb_comp_write(rep_bits(fpb_comp_read(), position, size, value));
+}
+
+    
+        
+
+    
+        
+pub fn dcb_dhcsr_set(position: u32, value: u32) {
+    let size = 32 - value.leading_zeros();
+    dcb_dhcsr_write(rep_bits(dcb_dhcsr_read(), position, size, value));
+}
+
+pub fn dcb_dcrdr_set(position: u32, value: u32) {
+    let size = 32 - value.leading_zeros();
+    dcb_dcrdr_write(rep_bits(dcb_dcrdr_read(), position, size, value));
+}
+pub fn dcb_demcr_set(position: u32, value: u32) {
+    let size = 32 - value.leading_zeros();
+    dcb_demcr_write(rep_bits(dcb_demcr_read(), position, size, value));
+}
+    
+        
+pub fn itm_stimulus_port0_seti(value: u32) {
+    match value.count_ones() {
+        1 => itm_stimulus_port0_write(itm_stimulus_port0_read() | value),
+        31 => itm_stimulus_port0_write(itm_stimulus_port0_read() & value),
+        _ => (),
+    }
+
+    
+}
+pub fn itm_stimulus_port1_seti(value: u32) {
+    match value.count_ones() {
+        1 => itm_stimulus_port1_write(itm_stimulus_port1_read() | value),
+        31 => itm_stimulus_port1_write(itm_stimulus_port1_read() & value),
+        _ => (),
+    }
+
+    
+}
+pub fn itm_stimulus_port2_seti(value: u32) {
+    match value.count_ones() {
+        1 => itm_stimulus_port2_write(itm_stimulus_port2_read() | value),
+        31 => itm_stimulus_port2_write(itm_stimulus_port2_read() & value),
+        _ => (),
+    }
+
+    
+}
+pub fn itm_stimulus_port3_seti(value: u32) {
+    match value.count_ones() {
+        1 => itm_stimulus_port3_write(itm_stimulus_port3_read() | value),
+        31 => itm_stimulus_port3_write(itm_stimulus_port3_read() & value),
+        _ => (),
+    }
+
+    
+}
+pub fn itm_stimulus_port4_seti(value: u32) {
+    match value.count_ones() {
+        1 => itm_stimulus_port4_write(itm_stimulus_port4_read() | value),
+        31 => itm_stimulus_port4_write(itm_stimulus_port4_read() & value),
+        _ => (),
+    }
+
+    
+}
+pub fn itm_stimulus_port5_seti(value: u32) {
+    match value.count_ones() {
+        1 => itm_stimulus_port5_write(itm_stimulus_port5_read() | value),
+        31 => itm_stimulus_port5_write(itm_stimulus_port5_read() & value),
+        _ => (),
+    }
+
+    
+}
+pub fn itm_stimulus_port6_seti(value: u32) {
+    match value.count_ones() {
+        1 => itm_stimulus_port6_write(itm_stimulus_port6_read() | value),
+        31 => itm_stimulus_port6_write(itm_stimulus_port6_read() & value),
+        _ => (),
+    }
+
+    
+}
+pub fn itm_stimulus_port7_seti(value: u32) {
+    match value.count_ones() {
+        1 => itm_stimulus_port7_write(itm_stimulus_port7_read() | value),
+        31 => itm_stimulus_port7_write(itm_stimulus_port7_read() & value),
+        _ => (),
+    }
+
+    
+}
+pub fn itm_stimulus_port8_seti(value: u32) {
+    match value.count_ones() {
+        1 => itm_stimulus_port8_write(itm_stimulus_port8_read() | value),
+        31 => itm_stimulus_port8_write(itm_stimulus_port8_read() & value),
+        _ => (),
+    }
+
+    
+}
+pub fn itm_stimulus_port9_seti(value: u32) {
+    match value.count_ones() {
+        1 => itm_stimulus_port9_write(itm_stimulus_port9_read() | value),
+        31 => itm_stimulus_port9_write(itm_stimulus_port9_read() & value),
+        _ => (),
+    }
+
+    
+}
+pub fn itm_stimulus_port10_seti(value: u32) {
+    match value.count_ones() {
+        1 => itm_stimulus_port10_write(itm_stimulus_port10_read() | value),
+        31 => itm_stimulus_port10_write(itm_stimulus_port10_read() & value),
+        _ => (),
+    }
+
+    
+}
+pub fn itm_stimulus_port11_seti(value: u32) {
+    match value.count_ones() {
+        1 => itm_stimulus_port11_write(itm_stimulus_port11_read() | value),
+        31 => itm_stimulus_port11_write(itm_stimulus_port11_read() & value),
+        _ => (),
+    }
+
+    
+}
+pub fn itm_stimulus_port12_seti(value: u32) {
+    match value.count_ones() {
+        1 => itm_stimulus_port12_write(itm_stimulus_port12_read() | value),
+        31 => itm_stimulus_port12_write(itm_stimulus_port12_read() & value),
+        _ => (),
+    }
+
+    
+}
+pub fn itm_stimulus_port13_seti(value: u32) {
+    match value.count_ones() {
+        1 => itm_stimulus_port13_write(itm_stimulus_port13_read() | value),
+        31 => itm_stimulus_port13_write(itm_stimulus_port13_read() & value),
+        _ => (),
+    }
+
+    
+}
+pub fn itm_stimulus_port14_seti(value: u32) {
+    match value.count_ones() {
+        1 => itm_stimulus_port14_write(itm_stimulus_port14_read() | value),
+        31 => itm_stimulus_port14_write(itm_stimulus_port14_read() & value),
+        _ => (),
+    }
+
+    
+}
+pub fn itm_stimulus_port15_seti(value: u32) {
+    match value.count_ones() {
+        1 => itm_stimulus_port15_write(itm_stimulus_port15_read() | value),
+        31 => itm_stimulus_port15_write(itm_stimulus_port15_read() & value),
+        _ => (),
+    }
+
+    
+}
+pub fn itm_stimulus_port16_seti(value: u32) {
+    match value.count_ones() {
+        1 => itm_stimulus_port16_write(itm_stimulus_port16_read() | value),
+        31 => itm_stimulus_port16_write(itm_stimulus_port16_read() & value),
+        _ => (),
+    }
+
+    
+}
+pub fn itm_stimulus_port17_seti(value: u32) {
+    match value.count_ones() {
+        1 => itm_stimulus_port17_write(itm_stimulus_port17_read() | value),
+        31 => itm_stimulus_port17_write(itm_stimulus_port17_read() & value),
+        _ => (),
+    }
+
+    
+}
+pub fn itm_stimulus_port18_seti(value: u32) {
+    match value.count_ones() {
+        1 => itm_stimulus_port18_write(itm_stimulus_port18_read() | value),
+        31 => itm_stimulus_port18_write(itm_stimulus_port18_read() & value),
+        _ => (),
+    }
+
+    
+}
+pub fn itm_stimulus_port19_seti(value: u32) {
+    match value.count_ones() {
+        1 => itm_stimulus_port19_write(itm_stimulus_port19_read() | value),
+        31 => itm_stimulus_port19_write(itm_stimulus_port19_read() & value),
+        _ => (),
+    }
+
+    
+}
+pub fn itm_stimulus_port20_seti(value: u32) {
+    match value.count_ones() {
+        1 => itm_stimulus_port20_write(itm_stimulus_port20_read() | value),
+        31 => itm_stimulus_port20_write(itm_stimulus_port20_read() & value),
+        _ => (),
+    }
+
+    
+}
+pub fn itm_stimulus_port21_seti(value: u32) {
+    match value.count_ones() {
+        1 => itm_stimulus_port21_write(itm_stimulus_port21_read() | value),
+        31 => itm_stimulus_port21_write(itm_stimulus_port21_read() & value),
+        _ => (),
+    }
+
+    
+}
+pub fn itm_stimulus_port22_seti(value: u32) {
+    match value.count_ones() {
+        1 => itm_stimulus_port22_write(itm_stimulus_port22_read() | value),
+        31 => itm_stimulus_port22_write(itm_stimulus_port22_read() & value),
+        _ => (),
+    }
+
+    
+}
+pub fn itm_stimulus_port23_seti(value: u32) {
+    match value.count_ones() {
+        1 => itm_stimulus_port23_write(itm_stimulus_port23_read() | value),
+        31 => itm_stimulus_port23_write(itm_stimulus_port23_read() & value),
+        _ => (),
+    }
+
+    
+}
+pub fn itm_stimulus_port24_seti(value: u32) {
+    match value.count_ones() {
+        1 => itm_stimulus_port24_write(itm_stimulus_port24_read() | value),
+        31 => itm_stimulus_port24_write(itm_stimulus_port24_read() & value),
+        _ => (),
+    }
+
+    
+}
+pub fn itm_stimulus_port25_seti(value: u32) {
+    match value.count_ones() {
+        1 => itm_stimulus_port25_write(itm_stimulus_port25_read() | value),
+        31 => itm_stimulus_port25_write(itm_stimulus_port25_read() & value),
+        _ => (),
+    }
+
+    
+}
+pub fn itm_stimulus_port26_seti(value: u32) {
+    match value.count_ones() {
+        1 => itm_stimulus_port26_write(itm_stimulus_port26_read() | value),
+        31 => itm_stimulus_port26_write(itm_stimulus_port26_read() & value),
+        _ => (),
+    }
+
+    
+}
+pub fn itm_stimulus_port27_seti(value: u32) {
+    match value.count_ones() {
+        1 => itm_stimulus_port27_write(itm_stimulus_port27_read() | value),
+        31 => itm_stimulus_port27_write(itm_stimulus_port27_read() & value),
+        _ => (),
+    }
+
+    
+}
+pub fn itm_stimulus_port28_seti(value: u32) {
+    match value.count_ones() {
+        1 => itm_stimulus_port28_write(itm_stimulus_port28_read() | value),
+        31 => itm_stimulus_port28_write(itm_stimulus_port28_read() & value),
+        _ => (),
+    }
+
+    
+}
+pub fn itm_stimulus_port29_seti(value: u32) {
+    match value.count_ones() {
+        1 => itm_stimulus_port29_write(itm_stimulus_port29_read() | value),
+        31 => itm_stimulus_port29_write(itm_stimulus_port29_read() & value),
+        _ => (),
+    }
+
+    
+}
+pub fn itm_stimulus_port30_seti(value: u32) {
+    match value.count_ones() {
+        1 => itm_stimulus_port30_write(itm_stimulus_port30_read() | value),
+        31 => itm_stimulus_port30_write(itm_stimulus_port30_read() & value),
+        _ => (),
+    }
+
+    
+}
+pub fn itm_stimulus_port31_seti(value: u32) {
+    match value.count_ones() {
+        1 => itm_stimulus_port31_write(itm_stimulus_port31_read() | value),
+        31 => itm_stimulus_port31_write(itm_stimulus_port31_read() & value),
+        _ => (),
+    }
+
+    
+}
+pub fn itm_ter_seti(value: u32) {
+    match value.count_ones() {
+        1 => itm_ter_write(itm_ter_read() | value),
+        31 => itm_ter_write(itm_ter_read() & value),
+        _ => (),
+    }
+
+    
+}
+pub fn itm_tpr_seti(value: u32) {
+    match value.count_ones() {
+        1 => itm_tpr_write(itm_tpr_read() | value),
+        31 => itm_tpr_write(itm_tpr_read() & value),
+        _ => (),
+    }
+
+    
+}
+pub fn itm_tcr_seti(value: u32) {
+    match value.count_ones() {
+        1 => itm_tcr_write(itm_tcr_read() | value),
+        31 => itm_tcr_write(itm_tcr_read() & value),
+        _ => (),
+    }
+
+    
+}
+
+
+    
+        
+pub fn dwt_ctrl_seti(value: u32) {
+    match value.count_ones() {
+        1 => dwt_ctrl_write(dwt_ctrl_read() | value),
+        31 => dwt_ctrl_write(dwt_ctrl_read() & value),
+        _ => (),
+    }
+
+    
+}
+pub fn dwt_cyccnt_seti(value: u32) {
+    match value.count_ones() {
+        1 => dwt_cyccnt_write(dwt_cyccnt_read() | value),
+        31 => dwt_cyccnt_write(dwt_cyccnt_read() & value),
+        _ => (),
+    }
+
+    
+}
+pub fn dwt_cpicnt_seti(value: u32) {
+    match value.count_ones() {
+        1 => dwt_cpicnt_write(dwt_cpicnt_read() | value),
+        31 => dwt_cpicnt_write(dwt_cpicnt_read() & value),
+        _ => (),
+    }
+
+    
+}
+pub fn dwt_exccnt_seti(value: u32) {
+    match value.count_ones() {
+        1 => dwt_exccnt_write(dwt_exccnt_read() | value),
+        31 => dwt_exccnt_write(dwt_exccnt_read() & value),
+        _ => (),
+    }
+
+    
+}
+pub fn dwt_sleepcnt_seti(value: u32) {
+    match value.count_ones() {
+        1 => dwt_sleepcnt_write(dwt_sleepcnt_read() | value),
+        31 => dwt_sleepcnt_write(dwt_sleepcnt_read() & value),
+        _ => (),
+    }
+
+    
+}
+pub fn dwt_lsucnt_seti(value: u32) {
+    match value.count_ones() {
+        1 => dwt_lsucnt_write(dwt_lsucnt_read() | value),
+        31 => dwt_lsucnt_write(dwt_lsucnt_read() & value),
+        _ => (),
+    }
+
+    
+}
+pub fn dwt_foldcnt_seti(value: u32) {
+    match value.count_ones() {
+        1 => dwt_foldcnt_write(dwt_foldcnt_read() | value),
+        31 => dwt_foldcnt_write(dwt_foldcnt_read() & value),
+        _ => (),
+    }
+
+    
+}
+
+pub fn dwt_comp0_seti(value: u32) {
+    match value.count_ones() {
+        1 => dwt_comp0_write(dwt_comp0_read() | value),
+        31 => dwt_comp0_write(dwt_comp0_read() & value),
+        _ => (),
+    }
+
+    
+}
+pub fn dwt_mask0_seti(value: u32) {
+    match value.count_ones() {
+        1 => dwt_mask0_write(dwt_mask0_read() | value),
+        31 => dwt_mask0_write(dwt_mask0_read() & value),
+        _ => (),
+    }
+
+    
+}
+pub fn dwt_function0_seti(value: u32) {
+    match value.count_ones() {
+        1 => dwt_function0_write(dwt_function0_read() | value),
+        31 => dwt_function0_write(dwt_function0_read() & value),
+        _ => (),
+    }
+
+    
+}
+pub fn dwt_comp1_seti(value: u32) {
+    match value.count_ones() {
+        1 => dwt_comp1_write(dwt_comp1_read() | value),
+        31 => dwt_comp1_write(dwt_comp1_read() & value),
+        _ => (),
+    }
+
+    
+}
+pub fn dwt_mask1_seti(value: u32) {
+    match value.count_ones() {
+        1 => dwt_mask1_write(dwt_mask1_read() | value),
+        31 => dwt_mask1_write(dwt_mask1_read() & value),
+        _ => (),
+    }
+
+    
+}
+pub fn dwt_function1_seti(value: u32) {
+    match value.count_ones() {
+        1 => dwt_function1_write(dwt_function1_read() | value),
+        31 => dwt_function1_write(dwt_function1_read() & value),
+        _ => (),
+    }
+
+    
+}
+pub fn dwt_comp2_seti(value: u32) {
+    match value.count_ones() {
+        1 => dwt_comp2_write(dwt_comp2_read() | value),
+        31 => dwt_comp2_write(dwt_comp2_read() & value),
+        _ => (),
+    }
+
+    
+}
+pub fn dwt_mask2_seti(value: u32) {
+    match value.count_ones() {
+        1 => dwt_mask2_write(dwt_mask2_read() | value),
+        31 => dwt_mask2_write(dwt_mask2_read() & value),
+        _ => (),
+    }
+
+    
+}
+pub fn dwt_function2_seti(value: u32) {
+    match value.count_ones() {
+        1 => dwt_function2_write(dwt_function2_read() | value),
+        31 => dwt_function2_write(dwt_function2_read() & value),
+        _ => (),
+    }
+
+    
+}
+pub fn dwt_comp3_seti(value: u32) {
+    match value.count_ones() {
+        1 => dwt_comp3_write(dwt_comp3_read() | value),
+        31 => dwt_comp3_write(dwt_comp3_read() & value),
+        _ => (),
+    }
+
+    
+}
+pub fn dwt_mask3_seti(value: u32) {
+    match value.count_ones() {
+        1 => dwt_mask3_write(dwt_mask3_read() | value),
+        31 => dwt_mask3_write(dwt_mask3_read() & value),
+        _ => (),
+    }
+
+    
+}
+pub fn dwt_function3_seti(value: u32) {
+    match value.count_ones() {
+        1 => dwt_function3_write(dwt_function3_read() | value),
+        31 => dwt_function3_write(dwt_function3_read() & value),
+        _ => (),
+    }
+
+    
+}
+pub fn dwt_comp4_seti(value: u32) {
+    match value.count_ones() {
+        1 => dwt_comp4_write(dwt_comp4_read() | value),
+        31 => dwt_comp4_write(dwt_comp4_read() & value),
+        _ => (),
+    }
+
+    
+}
+pub fn dwt_mask4_seti(value: u32) {
+    match value.count_ones() {
+        1 => dwt_mask4_write(dwt_mask4_read() | value),
+        31 => dwt_mask4_write(dwt_mask4_read() & value),
+        _ => (),
+    }
+
+    
+}
+pub fn dwt_function4_seti(value: u32) {
+    match value.count_ones() {
+        1 => dwt_function4_write(dwt_function4_read() | value),
+        31 => dwt_function4_write(dwt_function4_read() & value),
+        _ => (),
+    }
+
+    
+}
+pub fn dwt_comp5_seti(value: u32) {
+    match value.count_ones() {
+        1 => dwt_comp5_write(dwt_comp5_read() | value),
+        31 => dwt_comp5_write(dwt_comp5_read() & value),
+        _ => (),
+    }
+
+    
+}
+pub fn dwt_mask5_seti(value: u32) {
+    match value.count_ones() {
+        1 => dwt_mask5_write(dwt_mask5_read() | value),
+        31 => dwt_mask5_write(dwt_mask5_read() & value),
+        _ => (),
+    }
+
+    
+}
+pub fn dwt_function5_seti(value: u32) {
+    match value.count_ones() {
+        1 => dwt_function5_write(dwt_function5_read() | value),
+        31 => dwt_function5_write(dwt_function5_read() & value),
+        _ => (),
+    }
+
+    
+}
+pub fn dwt_comp6_seti(value: u32) {
+    match value.count_ones() {
+        1 => dwt_comp6_write(dwt_comp6_read() | value),
+        31 => dwt_comp6_write(dwt_comp6_read() & value),
+        _ => (),
+    }
+
+    
+}
+pub fn dwt_mask6_seti(value: u32) {
+    match value.count_ones() {
+        1 => dwt_mask6_write(dwt_mask6_read() | value),
+        31 => dwt_mask6_write(dwt_mask6_read() & value),
+        _ => (),
+    }
+
+    
+}
+pub fn dwt_function6_seti(value: u32) {
+    match value.count_ones() {
+        1 => dwt_function6_write(dwt_function6_read() | value),
+        31 => dwt_function6_write(dwt_function6_read() & value),
+        _ => (),
+    }
+
+    
+}
+pub fn dwt_comp7_seti(value: u32) {
+    match value.count_ones() {
+        1 => dwt_comp7_write(dwt_comp7_read() | value),
+        31 => dwt_comp7_write(dwt_comp7_read() & value),
+        _ => (),
+    }
+
+    
+}
+pub fn dwt_mask7_seti(value: u32) {
+    match value.count_ones() {
+        1 => dwt_mask7_write(dwt_mask7_read() | value),
+        31 => dwt_mask7_write(dwt_mask7_read() & value),
+        _ => (),
+    }
+
+    
+}
+pub fn dwt_function7_seti(value: u32) {
+    match value.count_ones() {
+        1 => dwt_function7_write(dwt_function7_read() | value),
+        31 => dwt_function7_write(dwt_function7_read() & value),
+        _ => (),
+    }
+
+    
+}
+pub fn dwt_comp8_seti(value: u32) {
+    match value.count_ones() {
+        1 => dwt_comp8_write(dwt_comp8_read() | value),
+        31 => dwt_comp8_write(dwt_comp8_read() & value),
+        _ => (),
+    }
+
+    
+}
+pub fn dwt_mask8_seti(value: u32) {
+    match value.count_ones() {
+        1 => dwt_mask8_write(dwt_mask8_read() | value),
+        31 => dwt_mask8_write(dwt_mask8_read() & value),
+        _ => (),
+    }
+
+    
+}
+pub fn dwt_function8_seti(value: u32) {
+    match value.count_ones() {
+        1 => dwt_function8_write(dwt_function8_read() | value),
+        31 => dwt_function8_write(dwt_function8_read() & value),
+        _ => (),
+    }
+
+    
+}
+pub fn dwt_comp9_seti(value: u32) {
+    match value.count_ones() {
+        1 => dwt_comp9_write(dwt_comp9_read() | value),
+        31 => dwt_comp9_write(dwt_comp9_read() & value),
+        _ => (),
+    }
+
+    
+}
+pub fn dwt_mask9_seti(value: u32) {
+    match value.count_ones() {
+        1 => dwt_mask9_write(dwt_mask9_read() | value),
+        31 => dwt_mask9_write(dwt_mask9_read() & value),
+        _ => (),
+    }
+
+    
+}
+pub fn dwt_function9_seti(value: u32) {
+    match value.count_ones() {
+        1 => dwt_function9_write(dwt_function9_read() | value),
+        31 => dwt_function9_write(dwt_function9_read() & value),
+        _ => (),
+    }
+
+    
+}
+pub fn dwt_comp10_seti(value: u32) {
+    match value.count_ones() {
+        1 => dwt_comp10_write(dwt_comp10_read() | value),
+        31 => dwt_comp10_write(dwt_comp10_read() & value),
+        _ => (),
+    }
+
+    
+}
+pub fn dwt_mask10_seti(value: u32) {
+    match value.count_ones() {
+        1 => dwt_mask10_write(dwt_mask10_read() | value),
+        31 => dwt_mask10_write(dwt_mask10_read() & value),
+        _ => (),
+    }
+
+    
+}
+pub fn dwt_function10_seti(value: u32) {
+    match value.count_ones() {
+        1 => dwt_function10_write(dwt_function10_read() | value),
+        31 => dwt_function10_write(dwt_function10_read() & value),
+        _ => (),
+    }
+
+    
+}
+pub fn dwt_comp11_seti(value: u32) {
+    match value.count_ones() {
+        1 => dwt_comp11_write(dwt_comp11_read() | value),
+        31 => dwt_comp11_write(dwt_comp11_read() & value),
+        _ => (),
+    }
+
+    
+}
+pub fn dwt_mask11_seti(value: u32) {
+    match value.count_ones() {
+        1 => dwt_mask11_write(dwt_mask11_read() | value),
+        31 => dwt_mask11_write(dwt_mask11_read() & value),
+        _ => (),
+    }
+
+    
+}
+pub fn dwt_function11_seti(value: u32) {
+    match value.count_ones() {
+        1 => dwt_function11_write(dwt_function11_read() | value),
+        31 => dwt_function11_write(dwt_function11_read() & value),
+        _ => (),
+    }
+
+    
+}
+pub fn dwt_comp12_seti(value: u32) {
+    match value.count_ones() {
+        1 => dwt_comp12_write(dwt_comp12_read() | value),
+        31 => dwt_comp12_write(dwt_comp12_read() & value),
+        _ => (),
+    }
+
+    
+}
+pub fn dwt_mask12_seti(value: u32) {
+    match value.count_ones() {
+        1 => dwt_mask12_write(dwt_mask12_read() | value),
+        31 => dwt_mask12_write(dwt_mask12_read() & value),
+        _ => (),
+    }
+
+    
+}
+pub fn dwt_function12_seti(value: u32) {
+    match value.count_ones() {
+        1 => dwt_function12_write(dwt_function12_read() | value),
+        31 => dwt_function12_write(dwt_function12_read() & value),
+        _ => (),
+    }
+
+    
+}
+pub fn dwt_comp13_seti(value: u32) {
+    match value.count_ones() {
+        1 => dwt_comp13_write(dwt_comp13_read() | value),
+        31 => dwt_comp13_write(dwt_comp13_read() & value),
+        _ => (),
+    }
+
+    
+}
+pub fn dwt_mask13_seti(value: u32) {
+    match value.count_ones() {
+        1 => dwt_mask13_write(dwt_mask13_read() | value),
+        31 => dwt_mask13_write(dwt_mask13_read() & value),
+        _ => (),
+    }
+
+    
+}
+pub fn dwt_function13_seti(value: u32) {
+    match value.count_ones() {
+        1 => dwt_function13_write(dwt_function13_read() | value),
+        31 => dwt_function13_write(dwt_function13_read() & value),
+        _ => (),
+    }
+
+    
+}
+pub fn dwt_comp14_seti(value: u32) {
+    match value.count_ones() {
+        1 => dwt_comp14_write(dwt_comp14_read() | value),
+        31 => dwt_comp14_write(dwt_comp14_read() & value),
+        _ => (),
+    }
+
+    
+}
+pub fn dwt_mask14_seti(value: u32) {
+    match value.count_ones() {
+        1 => dwt_mask14_write(dwt_mask14_read() | value),
+        31 => dwt_mask14_write(dwt_mask14_read() & value),
+        _ => (),
+    }
+
+    
+}
+pub fn dwt_function14_seti(value: u32) {
+    match value.count_ones() {
+        1 => dwt_function14_write(dwt_function14_read() | value),
+        31 => dwt_function14_write(dwt_function14_read() & value),
+        _ => (),
+    }
+
+    
+}
+pub fn dwt_comp15_seti(value: u32) {
+    match value.count_ones() {
+        1 => dwt_comp15_write(dwt_comp15_read() | value),
+        31 => dwt_comp15_write(dwt_comp15_read() & value),
+        _ => (),
+    }
+
+    
+}
+pub fn dwt_mask15_seti(value: u32) {
+    match value.count_ones() {
+        1 => dwt_mask15_write(dwt_mask15_read() | value),
+        31 => dwt_mask15_write(dwt_mask15_read() & value),
+        _ => (),
+    }
+
+    
+}
+pub fn dwt_function15_seti(value: u32) {
+    match value.count_ones() {
+        1 => dwt_function15_write(dwt_function15_read() | value),
+        31 => dwt_function15_write(dwt_function15_read() & value),
+        _ => (),
+    }
+
+    
+}
+
+    
+        
+pub fn fpb_ctrl_seti(value: u32) {
+    match value.count_ones() {
+        1 => fpb_ctrl_write(fpb_ctrl_read() | value),
+        31 => fpb_ctrl_write(fpb_ctrl_read() & value),
+        _ => (),
+    }
+
+    
+}
+pub fn fpb_remap_seti(value: u32) {
+    match value.count_ones() {
+        1 => fpb_remap_write(fpb_remap_read() | value),
+        31 => fpb_remap_write(fpb_remap_read() & value),
+        _ => (),
+    }
+
+    
+}
+pub fn fpb_comp_seti(value: u32) {
+    match value.count_ones() {
+        1 => fpb_comp_write(fpb_comp_read() | value),
+        31 => fpb_comp_write(fpb_comp_read() & value),
+        _ => (),
+    }
+
+    
+}
+
+    
+        
+
+    
+        
+pub fn dcb_dhcsr_seti(value: u32) {
+    match value.count_ones() {
+        1 => dcb_dhcsr_write(dcb_dhcsr_read() | value),
+        31 => dcb_dhcsr_write(dcb_dhcsr_read() & value),
+        _ => (),
+    }
+
+    
+}
+
+pub fn dcb_dcrdr_seti(value: u32) {
+    match value.count_ones() {
+        1 => dcb_dcrdr_write(dcb_dcrdr_read() | value),
+        31 => dcb_dcrdr_write(dcb_dcrdr_read() & value),
+        _ => (),
+    }
+
+    
+}
+pub fn dcb_demcr_seti(value: u32) {
+    match value.count_ones() {
+        1 => dcb_demcr_write(dcb_demcr_read() | value),
+        31 => dcb_demcr_write(dcb_demcr_read() & value),
+        _ => (),
+    }
+
+    
 }
     

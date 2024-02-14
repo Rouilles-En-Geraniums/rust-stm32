@@ -1,7 +1,7 @@
 extern crate core;
 use crate::core::ptr::write_volatile;
 use crate::core::ptr::read_volatile;
-
+use crate::stm32rustlib::various::*;
 
 const ADC1_ADR : u32 = 0x40012000;
 const ADC2_ADR : u32 = 0x40012100;
@@ -544,4 +544,496 @@ pub fn adc3_dr_read() -> u32 {
         read_volatile( (ADC3_ADR + ADC3_DR_OFFSET) as *mut u32)
     }
 }
+    
+        
+pub fn adc1_sr_set(position: u32, value: u32) {
+    let size = 32 - value.leading_zeros();
+    adc1_sr_write(rep_bits(adc1_sr_read(), position, size, value));
+}
+pub fn adc1_cr1_set(position: u32, value: u32) {
+    let size = 32 - value.leading_zeros();
+    adc1_cr1_write(rep_bits(adc1_cr1_read(), position, size, value));
+}
+pub fn adc1_cr2_set(position: u32, value: u32) {
+    let size = 32 - value.leading_zeros();
+    adc1_cr2_write(rep_bits(adc1_cr2_read(), position, size, value));
+}
+pub fn adc1_smpr1_set(position: u32, value: u32) {
+    let size = 32 - value.leading_zeros();
+    adc1_smpr1_write(rep_bits(adc1_smpr1_read(), position, size, value));
+}
+pub fn adc1_smpr2_set(position: u32, value: u32) {
+    let size = 32 - value.leading_zeros();
+    adc1_smpr2_write(rep_bits(adc1_smpr2_read(), position, size, value));
+}
+pub fn adc1_jofr1_set(position: u32, value: u32) {
+    let size = 32 - value.leading_zeros();
+    adc1_jofr1_write(rep_bits(adc1_jofr1_read(), position, size, value));
+}
+pub fn adc1_htr_set(position: u32, value: u32) {
+    let size = 32 - value.leading_zeros();
+    adc1_htr_write(rep_bits(adc1_htr_read(), position, size, value));
+}
+pub fn adc1_ltr_set(position: u32, value: u32) {
+    let size = 32 - value.leading_zeros();
+    adc1_ltr_write(rep_bits(adc1_ltr_read(), position, size, value));
+}
+pub fn adc1_sqr1_set(position: u32, value: u32) {
+    let size = 32 - value.leading_zeros();
+    adc1_sqr1_write(rep_bits(adc1_sqr1_read(), position, size, value));
+}
+pub fn adc1_sqr2_set(position: u32, value: u32) {
+    let size = 32 - value.leading_zeros();
+    adc1_sqr2_write(rep_bits(adc1_sqr2_read(), position, size, value));
+}
+pub fn adc1_sqr3_set(position: u32, value: u32) {
+    let size = 32 - value.leading_zeros();
+    adc1_sqr3_write(rep_bits(adc1_sqr3_read(), position, size, value));
+}
+pub fn adc1_jsqr_set(position: u32, value: u32) {
+    let size = 32 - value.leading_zeros();
+    adc1_jsqr_write(rep_bits(adc1_jsqr_read(), position, size, value));
+}
+
+
+    
+        
+pub fn adc2_sr_set(position: u32, value: u32) {
+    let size = 32 - value.leading_zeros();
+    adc2_sr_write(rep_bits(adc2_sr_read(), position, size, value));
+}
+pub fn adc2_cr1_set(position: u32, value: u32) {
+    let size = 32 - value.leading_zeros();
+    adc2_cr1_write(rep_bits(adc2_cr1_read(), position, size, value));
+}
+pub fn adc2_cr2_set(position: u32, value: u32) {
+    let size = 32 - value.leading_zeros();
+    adc2_cr2_write(rep_bits(adc2_cr2_read(), position, size, value));
+}
+pub fn adc2_smpr1_set(position: u32, value: u32) {
+    let size = 32 - value.leading_zeros();
+    adc2_smpr1_write(rep_bits(adc2_smpr1_read(), position, size, value));
+}
+pub fn adc2_smpr2_set(position: u32, value: u32) {
+    let size = 32 - value.leading_zeros();
+    adc2_smpr2_write(rep_bits(adc2_smpr2_read(), position, size, value));
+}
+pub fn adc2_jofr1_set(position: u32, value: u32) {
+    let size = 32 - value.leading_zeros();
+    adc2_jofr1_write(rep_bits(adc2_jofr1_read(), position, size, value));
+}
+pub fn adc2_htr_set(position: u32, value: u32) {
+    let size = 32 - value.leading_zeros();
+    adc2_htr_write(rep_bits(adc2_htr_read(), position, size, value));
+}
+pub fn adc2_ltr_set(position: u32, value: u32) {
+    let size = 32 - value.leading_zeros();
+    adc2_ltr_write(rep_bits(adc2_ltr_read(), position, size, value));
+}
+pub fn adc2_sqr1_set(position: u32, value: u32) {
+    let size = 32 - value.leading_zeros();
+    adc2_sqr1_write(rep_bits(adc2_sqr1_read(), position, size, value));
+}
+pub fn adc2_sqr2_set(position: u32, value: u32) {
+    let size = 32 - value.leading_zeros();
+    adc2_sqr2_write(rep_bits(adc2_sqr2_read(), position, size, value));
+}
+pub fn adc2_sqr3_set(position: u32, value: u32) {
+    let size = 32 - value.leading_zeros();
+    adc2_sqr3_write(rep_bits(adc2_sqr3_read(), position, size, value));
+}
+pub fn adc2_jsqr_set(position: u32, value: u32) {
+    let size = 32 - value.leading_zeros();
+    adc2_jsqr_write(rep_bits(adc2_jsqr_read(), position, size, value));
+}
+
+
+    
+        
+pub fn adc3_sr_set(position: u32, value: u32) {
+    let size = 32 - value.leading_zeros();
+    adc3_sr_write(rep_bits(adc3_sr_read(), position, size, value));
+}
+pub fn adc3_cr1_set(position: u32, value: u32) {
+    let size = 32 - value.leading_zeros();
+    adc3_cr1_write(rep_bits(adc3_cr1_read(), position, size, value));
+}
+pub fn adc3_cr2_set(position: u32, value: u32) {
+    let size = 32 - value.leading_zeros();
+    adc3_cr2_write(rep_bits(adc3_cr2_read(), position, size, value));
+}
+pub fn adc3_smpr1_set(position: u32, value: u32) {
+    let size = 32 - value.leading_zeros();
+    adc3_smpr1_write(rep_bits(adc3_smpr1_read(), position, size, value));
+}
+pub fn adc3_smpr2_set(position: u32, value: u32) {
+    let size = 32 - value.leading_zeros();
+    adc3_smpr2_write(rep_bits(adc3_smpr2_read(), position, size, value));
+}
+pub fn adc3_jofr1_set(position: u32, value: u32) {
+    let size = 32 - value.leading_zeros();
+    adc3_jofr1_write(rep_bits(adc3_jofr1_read(), position, size, value));
+}
+pub fn adc3_htr_set(position: u32, value: u32) {
+    let size = 32 - value.leading_zeros();
+    adc3_htr_write(rep_bits(adc3_htr_read(), position, size, value));
+}
+pub fn adc3_ltr_set(position: u32, value: u32) {
+    let size = 32 - value.leading_zeros();
+    adc3_ltr_write(rep_bits(adc3_ltr_read(), position, size, value));
+}
+pub fn adc3_sqr1_set(position: u32, value: u32) {
+    let size = 32 - value.leading_zeros();
+    adc3_sqr1_write(rep_bits(adc3_sqr1_read(), position, size, value));
+}
+pub fn adc3_sqr2_set(position: u32, value: u32) {
+    let size = 32 - value.leading_zeros();
+    adc3_sqr2_write(rep_bits(adc3_sqr2_read(), position, size, value));
+}
+pub fn adc3_sqr3_set(position: u32, value: u32) {
+    let size = 32 - value.leading_zeros();
+    adc3_sqr3_write(rep_bits(adc3_sqr3_read(), position, size, value));
+}
+pub fn adc3_jsqr_set(position: u32, value: u32) {
+    let size = 32 - value.leading_zeros();
+    adc3_jsqr_write(rep_bits(adc3_jsqr_read(), position, size, value));
+}
+
+
+    
+        
+pub fn adc1_sr_seti(value: u32) {
+    match value.count_ones() {
+        1 => adc1_sr_write(adc1_sr_read() | value),
+        31 => adc1_sr_write(adc1_sr_read() & value),
+        _ => (),
+    }
+
+    
+}
+pub fn adc1_cr1_seti(value: u32) {
+    match value.count_ones() {
+        1 => adc1_cr1_write(adc1_cr1_read() | value),
+        31 => adc1_cr1_write(adc1_cr1_read() & value),
+        _ => (),
+    }
+
+    
+}
+pub fn adc1_cr2_seti(value: u32) {
+    match value.count_ones() {
+        1 => adc1_cr2_write(adc1_cr2_read() | value),
+        31 => adc1_cr2_write(adc1_cr2_read() & value),
+        _ => (),
+    }
+
+    
+}
+pub fn adc1_smpr1_seti(value: u32) {
+    match value.count_ones() {
+        1 => adc1_smpr1_write(adc1_smpr1_read() | value),
+        31 => adc1_smpr1_write(adc1_smpr1_read() & value),
+        _ => (),
+    }
+
+    
+}
+pub fn adc1_smpr2_seti(value: u32) {
+    match value.count_ones() {
+        1 => adc1_smpr2_write(adc1_smpr2_read() | value),
+        31 => adc1_smpr2_write(adc1_smpr2_read() & value),
+        _ => (),
+    }
+
+    
+}
+pub fn adc1_jofr1_seti(value: u32) {
+    match value.count_ones() {
+        1 => adc1_jofr1_write(adc1_jofr1_read() | value),
+        31 => adc1_jofr1_write(adc1_jofr1_read() & value),
+        _ => (),
+    }
+
+    
+}
+pub fn adc1_htr_seti(value: u32) {
+    match value.count_ones() {
+        1 => adc1_htr_write(adc1_htr_read() | value),
+        31 => adc1_htr_write(adc1_htr_read() & value),
+        _ => (),
+    }
+
+    
+}
+pub fn adc1_ltr_seti(value: u32) {
+    match value.count_ones() {
+        1 => adc1_ltr_write(adc1_ltr_read() | value),
+        31 => adc1_ltr_write(adc1_ltr_read() & value),
+        _ => (),
+    }
+
+    
+}
+pub fn adc1_sqr1_seti(value: u32) {
+    match value.count_ones() {
+        1 => adc1_sqr1_write(adc1_sqr1_read() | value),
+        31 => adc1_sqr1_write(adc1_sqr1_read() & value),
+        _ => (),
+    }
+
+    
+}
+pub fn adc1_sqr2_seti(value: u32) {
+    match value.count_ones() {
+        1 => adc1_sqr2_write(adc1_sqr2_read() | value),
+        31 => adc1_sqr2_write(adc1_sqr2_read() & value),
+        _ => (),
+    }
+
+    
+}
+pub fn adc1_sqr3_seti(value: u32) {
+    match value.count_ones() {
+        1 => adc1_sqr3_write(adc1_sqr3_read() | value),
+        31 => adc1_sqr3_write(adc1_sqr3_read() & value),
+        _ => (),
+    }
+
+    
+}
+pub fn adc1_jsqr_seti(value: u32) {
+    match value.count_ones() {
+        1 => adc1_jsqr_write(adc1_jsqr_read() | value),
+        31 => adc1_jsqr_write(adc1_jsqr_read() & value),
+        _ => (),
+    }
+
+    
+}
+
+
+    
+        
+pub fn adc2_sr_seti(value: u32) {
+    match value.count_ones() {
+        1 => adc2_sr_write(adc2_sr_read() | value),
+        31 => adc2_sr_write(adc2_sr_read() & value),
+        _ => (),
+    }
+
+    
+}
+pub fn adc2_cr1_seti(value: u32) {
+    match value.count_ones() {
+        1 => adc2_cr1_write(adc2_cr1_read() | value),
+        31 => adc2_cr1_write(adc2_cr1_read() & value),
+        _ => (),
+    }
+
+    
+}
+pub fn adc2_cr2_seti(value: u32) {
+    match value.count_ones() {
+        1 => adc2_cr2_write(adc2_cr2_read() | value),
+        31 => adc2_cr2_write(adc2_cr2_read() & value),
+        _ => (),
+    }
+
+    
+}
+pub fn adc2_smpr1_seti(value: u32) {
+    match value.count_ones() {
+        1 => adc2_smpr1_write(adc2_smpr1_read() | value),
+        31 => adc2_smpr1_write(adc2_smpr1_read() & value),
+        _ => (),
+    }
+
+    
+}
+pub fn adc2_smpr2_seti(value: u32) {
+    match value.count_ones() {
+        1 => adc2_smpr2_write(adc2_smpr2_read() | value),
+        31 => adc2_smpr2_write(adc2_smpr2_read() & value),
+        _ => (),
+    }
+
+    
+}
+pub fn adc2_jofr1_seti(value: u32) {
+    match value.count_ones() {
+        1 => adc2_jofr1_write(adc2_jofr1_read() | value),
+        31 => adc2_jofr1_write(adc2_jofr1_read() & value),
+        _ => (),
+    }
+
+    
+}
+pub fn adc2_htr_seti(value: u32) {
+    match value.count_ones() {
+        1 => adc2_htr_write(adc2_htr_read() | value),
+        31 => adc2_htr_write(adc2_htr_read() & value),
+        _ => (),
+    }
+
+    
+}
+pub fn adc2_ltr_seti(value: u32) {
+    match value.count_ones() {
+        1 => adc2_ltr_write(adc2_ltr_read() | value),
+        31 => adc2_ltr_write(adc2_ltr_read() & value),
+        _ => (),
+    }
+
+    
+}
+pub fn adc2_sqr1_seti(value: u32) {
+    match value.count_ones() {
+        1 => adc2_sqr1_write(adc2_sqr1_read() | value),
+        31 => adc2_sqr1_write(adc2_sqr1_read() & value),
+        _ => (),
+    }
+
+    
+}
+pub fn adc2_sqr2_seti(value: u32) {
+    match value.count_ones() {
+        1 => adc2_sqr2_write(adc2_sqr2_read() | value),
+        31 => adc2_sqr2_write(adc2_sqr2_read() & value),
+        _ => (),
+    }
+
+    
+}
+pub fn adc2_sqr3_seti(value: u32) {
+    match value.count_ones() {
+        1 => adc2_sqr3_write(adc2_sqr3_read() | value),
+        31 => adc2_sqr3_write(adc2_sqr3_read() & value),
+        _ => (),
+    }
+
+    
+}
+pub fn adc2_jsqr_seti(value: u32) {
+    match value.count_ones() {
+        1 => adc2_jsqr_write(adc2_jsqr_read() | value),
+        31 => adc2_jsqr_write(adc2_jsqr_read() & value),
+        _ => (),
+    }
+
+    
+}
+
+
+    
+        
+pub fn adc3_sr_seti(value: u32) {
+    match value.count_ones() {
+        1 => adc3_sr_write(adc3_sr_read() | value),
+        31 => adc3_sr_write(adc3_sr_read() & value),
+        _ => (),
+    }
+
+    
+}
+pub fn adc3_cr1_seti(value: u32) {
+    match value.count_ones() {
+        1 => adc3_cr1_write(adc3_cr1_read() | value),
+        31 => adc3_cr1_write(adc3_cr1_read() & value),
+        _ => (),
+    }
+
+    
+}
+pub fn adc3_cr2_seti(value: u32) {
+    match value.count_ones() {
+        1 => adc3_cr2_write(adc3_cr2_read() | value),
+        31 => adc3_cr2_write(adc3_cr2_read() & value),
+        _ => (),
+    }
+
+    
+}
+pub fn adc3_smpr1_seti(value: u32) {
+    match value.count_ones() {
+        1 => adc3_smpr1_write(adc3_smpr1_read() | value),
+        31 => adc3_smpr1_write(adc3_smpr1_read() & value),
+        _ => (),
+    }
+
+    
+}
+pub fn adc3_smpr2_seti(value: u32) {
+    match value.count_ones() {
+        1 => adc3_smpr2_write(adc3_smpr2_read() | value),
+        31 => adc3_smpr2_write(adc3_smpr2_read() & value),
+        _ => (),
+    }
+
+    
+}
+pub fn adc3_jofr1_seti(value: u32) {
+    match value.count_ones() {
+        1 => adc3_jofr1_write(adc3_jofr1_read() | value),
+        31 => adc3_jofr1_write(adc3_jofr1_read() & value),
+        _ => (),
+    }
+
+    
+}
+pub fn adc3_htr_seti(value: u32) {
+    match value.count_ones() {
+        1 => adc3_htr_write(adc3_htr_read() | value),
+        31 => adc3_htr_write(adc3_htr_read() & value),
+        _ => (),
+    }
+
+    
+}
+pub fn adc3_ltr_seti(value: u32) {
+    match value.count_ones() {
+        1 => adc3_ltr_write(adc3_ltr_read() | value),
+        31 => adc3_ltr_write(adc3_ltr_read() & value),
+        _ => (),
+    }
+
+    
+}
+pub fn adc3_sqr1_seti(value: u32) {
+    match value.count_ones() {
+        1 => adc3_sqr1_write(adc3_sqr1_read() | value),
+        31 => adc3_sqr1_write(adc3_sqr1_read() & value),
+        _ => (),
+    }
+
+    
+}
+pub fn adc3_sqr2_seti(value: u32) {
+    match value.count_ones() {
+        1 => adc3_sqr2_write(adc3_sqr2_read() | value),
+        31 => adc3_sqr2_write(adc3_sqr2_read() & value),
+        _ => (),
+    }
+
+    
+}
+pub fn adc3_sqr3_seti(value: u32) {
+    match value.count_ones() {
+        1 => adc3_sqr3_write(adc3_sqr3_read() | value),
+        31 => adc3_sqr3_write(adc3_sqr3_read() & value),
+        _ => (),
+    }
+
+    
+}
+pub fn adc3_jsqr_seti(value: u32) {
+    match value.count_ones() {
+        1 => adc3_jsqr_write(adc3_jsqr_read() | value),
+        31 => adc3_jsqr_write(adc3_jsqr_read() & value),
+        _ => (),
+    }
+
+    
+}
+
+
     

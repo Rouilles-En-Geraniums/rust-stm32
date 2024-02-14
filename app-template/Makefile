@@ -5,6 +5,7 @@ APP =
 OBJDMP = arm-none-eabi-objdump
 
 openocd :
+	rm -f stm32f4.log
 	openocd -f $(OPENOCD_CFG) 	
 
 log :
