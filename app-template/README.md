@@ -72,6 +72,21 @@ ATTRS{idVendor}=="0483", ATTRS{idProduct}=="374b", TAG+="uaccess"
 ```
 
 
+#### Windows 
+
+- Download the openocd toolchain from : https://gnutoolchains.com/arm-eabi/openocd/
+
+  Extract the folder, place it where you want it to be installed, and add its installation location to your PATH. This may require a reboot.
+
+- Download the STM32 STLink Driver Software and install it : https://www.st.com/en/development-tools/stsw-link009.html#get-software
+
+  Downloading this driver requires submitting your email address and waiting until you receieve the email (may take up to 5mins). Extract and follow the instructions once downloaded.
+
+  This Driver is necessary for openocd to access your STM32 Board through USB, as it will not be recognized otherwise.
+
+- You need GDB Multiarch? How
+
+
 #### MacOs
 >brew install armmbed/formulae/arm-none-eabi-gcc
 
