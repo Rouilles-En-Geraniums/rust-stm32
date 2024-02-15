@@ -1,12 +1,12 @@
 TARGET =
-OPENOCD_CFG = openocd.cfg 
+OPENOCD_CFG = openocd.cfg
 GDB =
 APP =
 OBJDMP = arm-none-eabi-objdump
 
 openocd :
 	rm -f stm32f4.log
-	openocd -f $(OPENOCD_CFG) 	
+	openocd -f $(OPENOCD_CFG)
 
 log :
 	tail -f stm32f4.log
@@ -27,7 +27,7 @@ flashdebug :
 
 flashrelease :
 	cargo clean
-	cargo build --release 
+	cargo build --release
 	$(GDB) -q target/$(TARGET)/release/$(APP) -ex "target remote :3333" -ex "load" -ex "c"
 
 

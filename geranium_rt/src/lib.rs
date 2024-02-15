@@ -2,24 +2,24 @@
 /**
  *	Rust on STM32 Project by Rouilles en GeraniumTM
  *	Copyright (C) 2024 Université de Toulouse :
- *   - Oussama Felfel - oussama.felfel@univ-tlse3.fr		
- *   - François Foltete - francois.foltete@univ-tlse3.fr		
- *   - Elana Courtines - elana.courtines@univ-tlse3.fr		
- *   - Teo Tinarrage - teo.tinarrage@univ-tlse3.fr		
- *   - Zineb Moubarik - zineb.moubarik@univ-tlse3.fr 
+ *   - Oussama Felfel - oussama.felfel@univ-tlse3.fr
+ *   - François Foltete - francois.foltete@univ-tlse3.fr
+ *   - Elana Courtines - elana.courtines@univ-tlse3.fr
+ *   - Teo Tinarrage - teo.tinarrage@univ-tlse3.fr
+ *   - Zineb Moubarik - zineb.moubarik@univ-tlse3.fr
  *
  *  This library aims to provide the following :
  *   - a rust library generation tool to safely access memory ;
  *   - a support to flash STM32 boards ;
  *   - a task scheduling tool that generates the associated rust code.
- * 
+ *
  *  The development of this library has done as a Proof of Concept and
  *  is currently only tested for STM32F407-G DISC1 Boards.
- * 
+ *
  *  It is our hope that using this library to enable development on
  *  other boards will be facilitated.
- * 
- * 
+ *
+ *
  *	This program is free software: you can redistribute it and/or modify
  *	it under the terms of the GNU General Public License as published by
  *	the Free Software Foundation, either version 3 of the License, or
@@ -82,7 +82,7 @@ pub static EXCEPTIONS: [Vector; 14] = [
 #[link_section = ".vector_table.custom_exceptions"]
 #[no_mangle]
 pub static CUSTOM_EXCEPTIONS: [Vector; 44] = [
-    Vector { handler: DefaultExceptionHandler }, // 16 
+    Vector { handler: DefaultExceptionHandler }, // 16
     Vector { handler: DefaultExceptionHandler }, // 17
     Vector { handler: DefaultExceptionHandler }, // 18
     Vector { handler: DefaultExceptionHandler }, // 19
@@ -136,7 +136,7 @@ pub static RESET_VECTOR: unsafe extern "C" fn() -> ! = HandlerReset;
 
 // Reset Handler  first (and only) thing called when rebooting or starting up
 #[no_mangle]
-pub unsafe extern "C" fn HandlerReset() -> ! {    
+pub unsafe extern "C" fn HandlerReset() -> ! {
 	// configure clock
 	// HSI clock = 16 MHz
 	// HSE_VALUE <- 8 000 000 (8MHz - crystal frequency)
@@ -144,21 +144,21 @@ pub unsafe extern "C" fn HandlerReset() -> ! {
 	// MCK = (HS[EI]_CK / PLL_M) * PLL_N / PLL_P
 	//	MCK		APB1	APB2	PLL_M	PLL_N	PLL_P	PLL_Q
 	//	168		42		84		8		336		2		7
-    
+
 	// configure HSI clock
     rcc_cr_seti(RCC_CR_HSION);
     while (rcc_cr_read() & RCC_CR_HSIRDY) == 0 {}
     rcc_cfgr_set(0,0b00);
-    
+
 	// configure HSE clock
     rcc_cr_seti(RCC_CR_HSEON);
     while (rcc_cr_read() & RCC_CR_HSERDY) == 0 {}
-    
+
 	// configure AHB and AHP[12]
     rcc_cfgr_set(4,0b0000);
     rcc_cfgr_set(10,0b110);
     rcc_cfgr_set(13,0b100);
-    
+
 	// configure PLL
     rcc_cr_seti(!RCC_CR_PLLON);
     let mut x : u32 = 0;
@@ -170,17 +170,17 @@ pub unsafe extern "C" fn HandlerReset() -> ! {
     rcc_pllcfgr_write(x);
     rcc_cr_seti(RCC_CR_PLLON);
     while (rcc_cr_read() & RCC_CR_PLLRDY) == 0 {}
-    
+
 	// configure flash
 	x = flash_acr_read();
 	x |= FLASH_ACR_DCEN;
 	x |= FLASH_ACR_ICEN;
     x = rep_bits(x,FLASH_ACR_LATENCY,2,5);
     flash_acr_write(x);
-	
+
 	// select PLL as SYSCLK
     rcc_cfgr_set(0,0b10);
-    while get_bits(rcc_cfgr_read(),2,2) != 0b10 {}   
+    while get_bits(rcc_cfgr_read(),2,2) != 0b10 {}
     rcc_cr_seti(!RCC_CR_HSION);
 
 	// rmap SRAM at 0
@@ -189,7 +189,7 @@ pub unsafe extern "C" fn HandlerReset() -> ! {
 	// copy data from FLASH to RAM
     let count1 = &_data_end as *const u8 as usize - &_data_begin as *const u8 as usize;
     ptr::copy_nonoverlapping(&_data_flash as *const u8, &mut _data_begin as *mut u8, count1);
-    
+
 	// set to 0 BSS
     let count2 = &_bss_end as *const u8 as usize - &_bss_begin as *const u8 as usize;
     ptr::write_bytes(&mut _bss_begin as *mut u8, 0, count2);

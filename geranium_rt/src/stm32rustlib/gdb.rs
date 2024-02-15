@@ -1,24 +1,24 @@
 /**
  *	Rust on STM32 Project by Rouilles en GeraniumTM
  *	Copyright (C) 2024 Université de Toulouse :
- *   - Oussama Felfel - oussama.felfel@univ-tlse3.fr		
- *   - François Foltete - francois.foltete@univ-tlse3.fr		
- *   - Elana Courtines - elana.courtines@univ-tlse3.fr		
- *   - Teo Tinarrage - teo.tinarrage@univ-tlse3.fr		
- *   - Zineb Moubarik - zineb.moubarik@univ-tlse3.fr 
+ *   - Oussama Felfel - oussama.felfel@univ-tlse3.fr
+ *   - François Foltete - francois.foltete@univ-tlse3.fr
+ *   - Elana Courtines - elana.courtines@univ-tlse3.fr
+ *   - Teo Tinarrage - teo.tinarrage@univ-tlse3.fr
+ *   - Zineb Moubarik - zineb.moubarik@univ-tlse3.fr
  *
  *  This library aims to provide the following :
  *   - a rust library generation tool to safely access memory ;
  *   - a support to flash STM32 boards ;
  *   - a task scheduling tool that generates the associated rust code.
- * 
+ *
  *  The development of this library has done as a Proof of Concept and
  *  is currently only tested for STM32F407-G DISC1 Boards.
- * 
+ *
  *  It is our hope that using this library to enable development on
  *  other boards will be facilitated.
- * 
- * 
+ *
+ *
  *	This program is free software: you can redistribute it and/or modify
  *	it under the terms of the GNU General Public License as published by
  *	the Free Software Foundation, either version 3 of the License, or
@@ -1640,7 +1640,7 @@ pub fn itm_stimulus_port0_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn itm_stimulus_port1_seti(value: u32) {
     match value.count_ones() {
@@ -1649,7 +1649,7 @@ pub fn itm_stimulus_port1_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn itm_stimulus_port2_seti(value: u32) {
     match value.count_ones() {
@@ -1658,7 +1658,7 @@ pub fn itm_stimulus_port2_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn itm_stimulus_port3_seti(value: u32) {
     match value.count_ones() {
@@ -1667,7 +1667,7 @@ pub fn itm_stimulus_port3_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn itm_stimulus_port4_seti(value: u32) {
     match value.count_ones() {
@@ -1676,7 +1676,7 @@ pub fn itm_stimulus_port4_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn itm_stimulus_port5_seti(value: u32) {
     match value.count_ones() {
@@ -1685,7 +1685,7 @@ pub fn itm_stimulus_port5_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn itm_stimulus_port6_seti(value: u32) {
     match value.count_ones() {
@@ -1694,7 +1694,7 @@ pub fn itm_stimulus_port6_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn itm_stimulus_port7_seti(value: u32) {
     match value.count_ones() {
@@ -1703,7 +1703,7 @@ pub fn itm_stimulus_port7_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn itm_stimulus_port8_seti(value: u32) {
     match value.count_ones() {
@@ -1712,7 +1712,7 @@ pub fn itm_stimulus_port8_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn itm_stimulus_port9_seti(value: u32) {
     match value.count_ones() {
@@ -1721,7 +1721,7 @@ pub fn itm_stimulus_port9_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn itm_stimulus_port10_seti(value: u32) {
     match value.count_ones() {
@@ -1730,7 +1730,7 @@ pub fn itm_stimulus_port10_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn itm_stimulus_port11_seti(value: u32) {
     match value.count_ones() {
@@ -1739,7 +1739,7 @@ pub fn itm_stimulus_port11_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn itm_stimulus_port12_seti(value: u32) {
     match value.count_ones() {
@@ -1748,7 +1748,7 @@ pub fn itm_stimulus_port12_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn itm_stimulus_port13_seti(value: u32) {
     match value.count_ones() {
@@ -1757,7 +1757,7 @@ pub fn itm_stimulus_port13_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn itm_stimulus_port14_seti(value: u32) {
     match value.count_ones() {
@@ -1766,7 +1766,7 @@ pub fn itm_stimulus_port14_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn itm_stimulus_port15_seti(value: u32) {
     match value.count_ones() {
@@ -1775,7 +1775,7 @@ pub fn itm_stimulus_port15_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn itm_stimulus_port16_seti(value: u32) {
     match value.count_ones() {
@@ -1784,7 +1784,7 @@ pub fn itm_stimulus_port16_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn itm_stimulus_port17_seti(value: u32) {
     match value.count_ones() {
@@ -1793,7 +1793,7 @@ pub fn itm_stimulus_port17_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn itm_stimulus_port18_seti(value: u32) {
     match value.count_ones() {
@@ -1802,7 +1802,7 @@ pub fn itm_stimulus_port18_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn itm_stimulus_port19_seti(value: u32) {
     match value.count_ones() {
@@ -1811,7 +1811,7 @@ pub fn itm_stimulus_port19_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn itm_stimulus_port20_seti(value: u32) {
     match value.count_ones() {
@@ -1820,7 +1820,7 @@ pub fn itm_stimulus_port20_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn itm_stimulus_port21_seti(value: u32) {
     match value.count_ones() {
@@ -1829,7 +1829,7 @@ pub fn itm_stimulus_port21_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn itm_stimulus_port22_seti(value: u32) {
     match value.count_ones() {
@@ -1838,7 +1838,7 @@ pub fn itm_stimulus_port22_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn itm_stimulus_port23_seti(value: u32) {
     match value.count_ones() {
@@ -1847,7 +1847,7 @@ pub fn itm_stimulus_port23_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn itm_stimulus_port24_seti(value: u32) {
     match value.count_ones() {
@@ -1856,7 +1856,7 @@ pub fn itm_stimulus_port24_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn itm_stimulus_port25_seti(value: u32) {
     match value.count_ones() {
@@ -1865,7 +1865,7 @@ pub fn itm_stimulus_port25_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn itm_stimulus_port26_seti(value: u32) {
     match value.count_ones() {
@@ -1874,7 +1874,7 @@ pub fn itm_stimulus_port26_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn itm_stimulus_port27_seti(value: u32) {
     match value.count_ones() {
@@ -1883,7 +1883,7 @@ pub fn itm_stimulus_port27_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn itm_stimulus_port28_seti(value: u32) {
     match value.count_ones() {
@@ -1892,7 +1892,7 @@ pub fn itm_stimulus_port28_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn itm_stimulus_port29_seti(value: u32) {
     match value.count_ones() {
@@ -1901,7 +1901,7 @@ pub fn itm_stimulus_port29_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn itm_stimulus_port30_seti(value: u32) {
     match value.count_ones() {
@@ -1910,7 +1910,7 @@ pub fn itm_stimulus_port30_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn itm_stimulus_port31_seti(value: u32) {
     match value.count_ones() {
@@ -1919,7 +1919,7 @@ pub fn itm_stimulus_port31_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn itm_ter_seti(value: u32) {
     match value.count_ones() {
@@ -1928,7 +1928,7 @@ pub fn itm_ter_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn itm_tpr_seti(value: u32) {
     match value.count_ones() {
@@ -1937,7 +1937,7 @@ pub fn itm_tpr_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn itm_tcr_seti(value: u32) {
     match value.count_ones() {
@@ -1946,7 +1946,7 @@ pub fn itm_tcr_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 
 
@@ -1959,7 +1959,7 @@ pub fn dwt_ctrl_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn dwt_cyccnt_seti(value: u32) {
     match value.count_ones() {
@@ -1968,7 +1968,7 @@ pub fn dwt_cyccnt_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn dwt_cpicnt_seti(value: u32) {
     match value.count_ones() {
@@ -1977,7 +1977,7 @@ pub fn dwt_cpicnt_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn dwt_exccnt_seti(value: u32) {
     match value.count_ones() {
@@ -1986,7 +1986,7 @@ pub fn dwt_exccnt_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn dwt_sleepcnt_seti(value: u32) {
     match value.count_ones() {
@@ -1995,7 +1995,7 @@ pub fn dwt_sleepcnt_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn dwt_lsucnt_seti(value: u32) {
     match value.count_ones() {
@@ -2004,7 +2004,7 @@ pub fn dwt_lsucnt_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn dwt_foldcnt_seti(value: u32) {
     match value.count_ones() {
@@ -2013,7 +2013,7 @@ pub fn dwt_foldcnt_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 
 pub fn dwt_comp0_seti(value: u32) {
@@ -2023,7 +2023,7 @@ pub fn dwt_comp0_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn dwt_mask0_seti(value: u32) {
     match value.count_ones() {
@@ -2032,7 +2032,7 @@ pub fn dwt_mask0_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn dwt_function0_seti(value: u32) {
     match value.count_ones() {
@@ -2041,7 +2041,7 @@ pub fn dwt_function0_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn dwt_comp1_seti(value: u32) {
     match value.count_ones() {
@@ -2050,7 +2050,7 @@ pub fn dwt_comp1_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn dwt_mask1_seti(value: u32) {
     match value.count_ones() {
@@ -2059,7 +2059,7 @@ pub fn dwt_mask1_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn dwt_function1_seti(value: u32) {
     match value.count_ones() {
@@ -2068,7 +2068,7 @@ pub fn dwt_function1_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn dwt_comp2_seti(value: u32) {
     match value.count_ones() {
@@ -2077,7 +2077,7 @@ pub fn dwt_comp2_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn dwt_mask2_seti(value: u32) {
     match value.count_ones() {
@@ -2086,7 +2086,7 @@ pub fn dwt_mask2_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn dwt_function2_seti(value: u32) {
     match value.count_ones() {
@@ -2095,7 +2095,7 @@ pub fn dwt_function2_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn dwt_comp3_seti(value: u32) {
     match value.count_ones() {
@@ -2104,7 +2104,7 @@ pub fn dwt_comp3_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn dwt_mask3_seti(value: u32) {
     match value.count_ones() {
@@ -2113,7 +2113,7 @@ pub fn dwt_mask3_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn dwt_function3_seti(value: u32) {
     match value.count_ones() {
@@ -2122,7 +2122,7 @@ pub fn dwt_function3_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn dwt_comp4_seti(value: u32) {
     match value.count_ones() {
@@ -2131,7 +2131,7 @@ pub fn dwt_comp4_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn dwt_mask4_seti(value: u32) {
     match value.count_ones() {
@@ -2140,7 +2140,7 @@ pub fn dwt_mask4_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn dwt_function4_seti(value: u32) {
     match value.count_ones() {
@@ -2149,7 +2149,7 @@ pub fn dwt_function4_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn dwt_comp5_seti(value: u32) {
     match value.count_ones() {
@@ -2158,7 +2158,7 @@ pub fn dwt_comp5_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn dwt_mask5_seti(value: u32) {
     match value.count_ones() {
@@ -2167,7 +2167,7 @@ pub fn dwt_mask5_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn dwt_function5_seti(value: u32) {
     match value.count_ones() {
@@ -2176,7 +2176,7 @@ pub fn dwt_function5_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn dwt_comp6_seti(value: u32) {
     match value.count_ones() {
@@ -2185,7 +2185,7 @@ pub fn dwt_comp6_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn dwt_mask6_seti(value: u32) {
     match value.count_ones() {
@@ -2194,7 +2194,7 @@ pub fn dwt_mask6_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn dwt_function6_seti(value: u32) {
     match value.count_ones() {
@@ -2203,7 +2203,7 @@ pub fn dwt_function6_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn dwt_comp7_seti(value: u32) {
     match value.count_ones() {
@@ -2212,7 +2212,7 @@ pub fn dwt_comp7_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn dwt_mask7_seti(value: u32) {
     match value.count_ones() {
@@ -2221,7 +2221,7 @@ pub fn dwt_mask7_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn dwt_function7_seti(value: u32) {
     match value.count_ones() {
@@ -2230,7 +2230,7 @@ pub fn dwt_function7_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn dwt_comp8_seti(value: u32) {
     match value.count_ones() {
@@ -2239,7 +2239,7 @@ pub fn dwt_comp8_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn dwt_mask8_seti(value: u32) {
     match value.count_ones() {
@@ -2248,7 +2248,7 @@ pub fn dwt_mask8_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn dwt_function8_seti(value: u32) {
     match value.count_ones() {
@@ -2257,7 +2257,7 @@ pub fn dwt_function8_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn dwt_comp9_seti(value: u32) {
     match value.count_ones() {
@@ -2266,7 +2266,7 @@ pub fn dwt_comp9_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn dwt_mask9_seti(value: u32) {
     match value.count_ones() {
@@ -2275,7 +2275,7 @@ pub fn dwt_mask9_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn dwt_function9_seti(value: u32) {
     match value.count_ones() {
@@ -2284,7 +2284,7 @@ pub fn dwt_function9_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn dwt_comp10_seti(value: u32) {
     match value.count_ones() {
@@ -2293,7 +2293,7 @@ pub fn dwt_comp10_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn dwt_mask10_seti(value: u32) {
     match value.count_ones() {
@@ -2302,7 +2302,7 @@ pub fn dwt_mask10_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn dwt_function10_seti(value: u32) {
     match value.count_ones() {
@@ -2311,7 +2311,7 @@ pub fn dwt_function10_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn dwt_comp11_seti(value: u32) {
     match value.count_ones() {
@@ -2320,7 +2320,7 @@ pub fn dwt_comp11_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn dwt_mask11_seti(value: u32) {
     match value.count_ones() {
@@ -2329,7 +2329,7 @@ pub fn dwt_mask11_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn dwt_function11_seti(value: u32) {
     match value.count_ones() {
@@ -2338,7 +2338,7 @@ pub fn dwt_function11_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn dwt_comp12_seti(value: u32) {
     match value.count_ones() {
@@ -2347,7 +2347,7 @@ pub fn dwt_comp12_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn dwt_mask12_seti(value: u32) {
     match value.count_ones() {
@@ -2356,7 +2356,7 @@ pub fn dwt_mask12_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn dwt_function12_seti(value: u32) {
     match value.count_ones() {
@@ -2365,7 +2365,7 @@ pub fn dwt_function12_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn dwt_comp13_seti(value: u32) {
     match value.count_ones() {
@@ -2374,7 +2374,7 @@ pub fn dwt_comp13_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn dwt_mask13_seti(value: u32) {
     match value.count_ones() {
@@ -2383,7 +2383,7 @@ pub fn dwt_mask13_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn dwt_function13_seti(value: u32) {
     match value.count_ones() {
@@ -2392,7 +2392,7 @@ pub fn dwt_function13_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn dwt_comp14_seti(value: u32) {
     match value.count_ones() {
@@ -2401,7 +2401,7 @@ pub fn dwt_comp14_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn dwt_mask14_seti(value: u32) {
     match value.count_ones() {
@@ -2410,7 +2410,7 @@ pub fn dwt_mask14_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn dwt_function14_seti(value: u32) {
     match value.count_ones() {
@@ -2419,7 +2419,7 @@ pub fn dwt_function14_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn dwt_comp15_seti(value: u32) {
     match value.count_ones() {
@@ -2428,7 +2428,7 @@ pub fn dwt_comp15_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn dwt_mask15_seti(value: u32) {
     match value.count_ones() {
@@ -2437,7 +2437,7 @@ pub fn dwt_mask15_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn dwt_function15_seti(value: u32) {
     match value.count_ones() {
@@ -2446,7 +2446,7 @@ pub fn dwt_function15_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 
     
@@ -2458,7 +2458,7 @@ pub fn fpb_ctrl_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn fpb_remap_seti(value: u32) {
     match value.count_ones() {
@@ -2467,7 +2467,7 @@ pub fn fpb_remap_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn fpb_comp_seti(value: u32) {
     match value.count_ones() {
@@ -2476,7 +2476,7 @@ pub fn fpb_comp_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 
     
@@ -2491,7 +2491,7 @@ pub fn dcb_dhcsr_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 
 pub fn dcb_dcrdr_seti(value: u32) {
@@ -2501,7 +2501,7 @@ pub fn dcb_dcrdr_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn dcb_demcr_seti(value: u32) {
     match value.count_ones() {
@@ -2510,6 +2510,6 @@ pub fn dcb_demcr_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
     

@@ -53,6 +53,6 @@ pub fn {{component.lower()}}_{{register.lower()}}_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 {%- endmacro %}

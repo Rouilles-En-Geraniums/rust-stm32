@@ -1,24 +1,24 @@
 ####
 #	Rust on STM32 Project by Rouilles en GeraniumTM
 #	Copyright (C) 2024 Université de Toulouse :
-#   - Oussama Felfel - oussama.felfel@univ-tlse3.fr		
-#   - François Foltete - francois.foltete@univ-tlse3.fr		
-#   - Elana Courtines - elana.courtines@univ-tlse3.fr		
-#   - Teo Tinarrage - teo.tinarrage@univ-tlse3.fr		
-#   - Zineb Moubarik - zineb.moubarik@univ-tlse3.fr 
+#   - Oussama Felfel - oussama.felfel@univ-tlse3.fr
+#   - François Foltete - francois.foltete@univ-tlse3.fr
+#   - Elana Courtines - elana.courtines@univ-tlse3.fr
+#   - Teo Tinarrage - teo.tinarrage@univ-tlse3.fr
+#   - Zineb Moubarik - zineb.moubarik@univ-tlse3.fr
 #
 #  This library aims to provide the following :
 #   - a rust library generation tool to safely access memory ;
 #   - a support to flash STM32 boards ;
 #   - a task scheduling tool that generates the associated rust code.
-# 
+#
 #  The development of this library has done as a Proof of Concept and
 #  is currently only tested for STM32F407-G DISC1 Boards.
-# 
+#
 #  It is our hope that using this library to enable development on
 #  other boards will be facilitated.
-# 
-# 
+#
+#
 #	This program is free software: you can redistribute it and/or modify
 #	it under the terms of the GNU General Public License as published by
 #	the Free Software Foundation, either version 3 of the License, or
@@ -37,6 +37,7 @@ import json
 from jinja2 import Environment, FileSystemLoader
 from pathlib import Path
 import argparse
+import glob
 import shutil
 
 
@@ -89,7 +90,7 @@ def generate_data_from_json(json_file_path):
                                            "write": register["write"]}
                                            for register in component["registers"]]}
                             for component in json_data["components"]],
-            "constants" : [{"name": constant["name"],    
+            "constants" : [{"name": constant["name"],
                             "value": constant["value"] }
                                for  constant in json_data["constants"]]
             }
@@ -104,7 +105,7 @@ def generate_data_from_json(json_file_path):
                            "read": register["read"],
                            "write": register["write"]}
                            for register in json_data["registers"]],
-            "constants" : [{"name": constant["name"],    
+            "constants" : [{"name": constant["name"],
                             "value": constant["value"] }
                                for  constant in json_data["constants"]]
              }
@@ -121,8 +122,19 @@ def main():
     output_dir_path = args.outputdir
     library_name = args.libraryname
     library_dir_path = os.path.join(output_dir_path,library_name)
-    json_files = args.json
-    extra_files = args.extra
+    json_files = []
+    for file in args.json:
+        if glob.escape(file) != file:
+            json_files.extend(glob.glob(file))
+        else:
+            json_files.append(file)
+
+    extra_files = []
+    for file in args.extra:
+        if glob.escape(file) != file:
+            extra_files.extend(glob.glob(file))
+        else:
+            extra_files.append(file)
 
     # Initiate Jinja2 environment
     file_loader = FileSystemLoader('../templates/')
@@ -160,12 +172,12 @@ def main():
             output_file.write(t.render(data))
 
             print("{} generated.".format(output_file_path))
-            
+
         with open(mod_file_path, 'a') as mod_file:
             mod_file.write("pub mod "+basename+";\n")
-    
+
     print("")
-    
+
     for extra_file_path in extra_files:
         shutil.copy(extra_file_path, library_dir_path)
 
@@ -173,7 +185,7 @@ def main():
         basename = os.path.splitext(os.path.basename(extra_file_path))[0]
 
         print("{} generated.".format(os.path.join(library_dir_path,basename)))
-            
+
         with open(mod_file_path, 'a') as mod_file:
             mod_file.write("pub mod "+basename+";\n")
 

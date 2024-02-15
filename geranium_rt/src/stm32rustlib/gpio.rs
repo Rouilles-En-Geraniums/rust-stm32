@@ -1,24 +1,24 @@
 /**
  *	Rust on STM32 Project by Rouilles en GeraniumTM
  *	Copyright (C) 2024 Université de Toulouse :
- *   - Oussama Felfel - oussama.felfel@univ-tlse3.fr		
- *   - François Foltete - francois.foltete@univ-tlse3.fr		
- *   - Elana Courtines - elana.courtines@univ-tlse3.fr		
- *   - Teo Tinarrage - teo.tinarrage@univ-tlse3.fr		
- *   - Zineb Moubarik - zineb.moubarik@univ-tlse3.fr 
+ *   - Oussama Felfel - oussama.felfel@univ-tlse3.fr
+ *   - François Foltete - francois.foltete@univ-tlse3.fr
+ *   - Elana Courtines - elana.courtines@univ-tlse3.fr
+ *   - Teo Tinarrage - teo.tinarrage@univ-tlse3.fr
+ *   - Zineb Moubarik - zineb.moubarik@univ-tlse3.fr
  *
  *  This library aims to provide the following :
  *   - a rust library generation tool to safely access memory ;
  *   - a support to flash STM32 boards ;
  *   - a task scheduling tool that generates the associated rust code.
- * 
+ *
  *  The development of this library has done as a Proof of Concept and
  *  is currently only tested for STM32F407-G DISC1 Boards.
- * 
+ *
  *  It is our hope that using this library to enable development on
  *  other boards will be facilitated.
- * 
- * 
+ *
+ *
  *	This program is free software: you can redistribute it and/or modify
  *	it under the terms of the GNU General Public License as published by
  *	the Free Software Foundation, either version 3 of the License, or
@@ -1802,7 +1802,7 @@ pub fn gpioa_moder_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn gpioa_otyper_seti(value: u32) {
     match value.count_ones() {
@@ -1811,7 +1811,7 @@ pub fn gpioa_otyper_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn gpioa_ospeedr_seti(value: u32) {
     match value.count_ones() {
@@ -1820,7 +1820,7 @@ pub fn gpioa_ospeedr_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn gpioa_pupdr_seti(value: u32) {
     match value.count_ones() {
@@ -1829,7 +1829,7 @@ pub fn gpioa_pupdr_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn gpioa_idr_seti(value: u32) {
     match value.count_ones() {
@@ -1838,7 +1838,7 @@ pub fn gpioa_idr_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn gpioa_odr_seti(value: u32) {
     match value.count_ones() {
@@ -1847,7 +1847,7 @@ pub fn gpioa_odr_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn gpioa_bsrr_seti(value: u32) {
     match value.count_ones() {
@@ -1856,7 +1856,7 @@ pub fn gpioa_bsrr_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn gpioa_lckr_seti(value: u32) {
     match value.count_ones() {
@@ -1865,7 +1865,7 @@ pub fn gpioa_lckr_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn gpioa_afrl_seti(value: u32) {
     match value.count_ones() {
@@ -1874,7 +1874,7 @@ pub fn gpioa_afrl_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn gpioa_afrh_seti(value: u32) {
     match value.count_ones() {
@@ -1883,7 +1883,7 @@ pub fn gpioa_afrh_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
     
         
@@ -1894,7 +1894,7 @@ pub fn gpiob_moder_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn gpiob_otyper_seti(value: u32) {
     match value.count_ones() {
@@ -1903,7 +1903,7 @@ pub fn gpiob_otyper_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn gpiob_ospeedr_seti(value: u32) {
     match value.count_ones() {
@@ -1912,7 +1912,7 @@ pub fn gpiob_ospeedr_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn gpiob_pupdr_seti(value: u32) {
     match value.count_ones() {
@@ -1921,7 +1921,7 @@ pub fn gpiob_pupdr_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn gpiob_idr_seti(value: u32) {
     match value.count_ones() {
@@ -1930,7 +1930,7 @@ pub fn gpiob_idr_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn gpiob_odr_seti(value: u32) {
     match value.count_ones() {
@@ -1939,7 +1939,7 @@ pub fn gpiob_odr_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn gpiob_bsrr_seti(value: u32) {
     match value.count_ones() {
@@ -1948,7 +1948,7 @@ pub fn gpiob_bsrr_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn gpiob_lckr_seti(value: u32) {
     match value.count_ones() {
@@ -1957,7 +1957,7 @@ pub fn gpiob_lckr_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn gpiob_afrl_seti(value: u32) {
     match value.count_ones() {
@@ -1966,7 +1966,7 @@ pub fn gpiob_afrl_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn gpiob_afrh_seti(value: u32) {
     match value.count_ones() {
@@ -1975,7 +1975,7 @@ pub fn gpiob_afrh_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
     
         
@@ -1986,7 +1986,7 @@ pub fn gpioc_moder_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn gpioc_otyper_seti(value: u32) {
     match value.count_ones() {
@@ -1995,7 +1995,7 @@ pub fn gpioc_otyper_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn gpioc_ospeedr_seti(value: u32) {
     match value.count_ones() {
@@ -2004,7 +2004,7 @@ pub fn gpioc_ospeedr_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn gpioc_pupdr_seti(value: u32) {
     match value.count_ones() {
@@ -2013,7 +2013,7 @@ pub fn gpioc_pupdr_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn gpioc_idr_seti(value: u32) {
     match value.count_ones() {
@@ -2022,7 +2022,7 @@ pub fn gpioc_idr_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn gpioc_odr_seti(value: u32) {
     match value.count_ones() {
@@ -2031,7 +2031,7 @@ pub fn gpioc_odr_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn gpioc_bsrr_seti(value: u32) {
     match value.count_ones() {
@@ -2040,7 +2040,7 @@ pub fn gpioc_bsrr_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn gpioc_lckr_seti(value: u32) {
     match value.count_ones() {
@@ -2049,7 +2049,7 @@ pub fn gpioc_lckr_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn gpioc_afrl_seti(value: u32) {
     match value.count_ones() {
@@ -2058,7 +2058,7 @@ pub fn gpioc_afrl_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn gpioc_afrh_seti(value: u32) {
     match value.count_ones() {
@@ -2067,7 +2067,7 @@ pub fn gpioc_afrh_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
     
         
@@ -2078,7 +2078,7 @@ pub fn gpiod_moder_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn gpiod_otyper_seti(value: u32) {
     match value.count_ones() {
@@ -2087,7 +2087,7 @@ pub fn gpiod_otyper_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn gpiod_ospeedr_seti(value: u32) {
     match value.count_ones() {
@@ -2096,7 +2096,7 @@ pub fn gpiod_ospeedr_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn gpiod_pupdr_seti(value: u32) {
     match value.count_ones() {
@@ -2105,7 +2105,7 @@ pub fn gpiod_pupdr_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn gpiod_idr_seti(value: u32) {
     match value.count_ones() {
@@ -2114,7 +2114,7 @@ pub fn gpiod_idr_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn gpiod_odr_seti(value: u32) {
     match value.count_ones() {
@@ -2123,7 +2123,7 @@ pub fn gpiod_odr_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn gpiod_bsrr_seti(value: u32) {
     match value.count_ones() {
@@ -2132,7 +2132,7 @@ pub fn gpiod_bsrr_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn gpiod_lckr_seti(value: u32) {
     match value.count_ones() {
@@ -2141,7 +2141,7 @@ pub fn gpiod_lckr_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn gpiod_afrl_seti(value: u32) {
     match value.count_ones() {
@@ -2150,7 +2150,7 @@ pub fn gpiod_afrl_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn gpiod_afrh_seti(value: u32) {
     match value.count_ones() {
@@ -2159,7 +2159,7 @@ pub fn gpiod_afrh_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
     
         
@@ -2170,7 +2170,7 @@ pub fn gpioe_moder_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn gpioe_otyper_seti(value: u32) {
     match value.count_ones() {
@@ -2179,7 +2179,7 @@ pub fn gpioe_otyper_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn gpioe_ospeedr_seti(value: u32) {
     match value.count_ones() {
@@ -2188,7 +2188,7 @@ pub fn gpioe_ospeedr_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn gpioe_pupdr_seti(value: u32) {
     match value.count_ones() {
@@ -2197,7 +2197,7 @@ pub fn gpioe_pupdr_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn gpioe_idr_seti(value: u32) {
     match value.count_ones() {
@@ -2206,7 +2206,7 @@ pub fn gpioe_idr_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn gpioe_odr_seti(value: u32) {
     match value.count_ones() {
@@ -2215,7 +2215,7 @@ pub fn gpioe_odr_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn gpioe_bsrr_seti(value: u32) {
     match value.count_ones() {
@@ -2224,7 +2224,7 @@ pub fn gpioe_bsrr_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn gpioe_lckr_seti(value: u32) {
     match value.count_ones() {
@@ -2233,7 +2233,7 @@ pub fn gpioe_lckr_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn gpioe_afrl_seti(value: u32) {
     match value.count_ones() {
@@ -2242,7 +2242,7 @@ pub fn gpioe_afrl_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn gpioe_afrh_seti(value: u32) {
     match value.count_ones() {
@@ -2251,7 +2251,7 @@ pub fn gpioe_afrh_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
     
         
@@ -2262,7 +2262,7 @@ pub fn gpiof_moder_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn gpiof_otyper_seti(value: u32) {
     match value.count_ones() {
@@ -2271,7 +2271,7 @@ pub fn gpiof_otyper_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn gpiof_ospeedr_seti(value: u32) {
     match value.count_ones() {
@@ -2280,7 +2280,7 @@ pub fn gpiof_ospeedr_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn gpiof_pupdr_seti(value: u32) {
     match value.count_ones() {
@@ -2289,7 +2289,7 @@ pub fn gpiof_pupdr_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn gpiof_idr_seti(value: u32) {
     match value.count_ones() {
@@ -2298,7 +2298,7 @@ pub fn gpiof_idr_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn gpiof_odr_seti(value: u32) {
     match value.count_ones() {
@@ -2307,7 +2307,7 @@ pub fn gpiof_odr_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn gpiof_bsrr_seti(value: u32) {
     match value.count_ones() {
@@ -2316,7 +2316,7 @@ pub fn gpiof_bsrr_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn gpiof_lckr_seti(value: u32) {
     match value.count_ones() {
@@ -2325,7 +2325,7 @@ pub fn gpiof_lckr_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn gpiof_afrl_seti(value: u32) {
     match value.count_ones() {
@@ -2334,7 +2334,7 @@ pub fn gpiof_afrl_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn gpiof_afrh_seti(value: u32) {
     match value.count_ones() {
@@ -2343,7 +2343,7 @@ pub fn gpiof_afrh_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
     
         
@@ -2354,7 +2354,7 @@ pub fn gpiog_moder_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn gpiog_otyper_seti(value: u32) {
     match value.count_ones() {
@@ -2363,7 +2363,7 @@ pub fn gpiog_otyper_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn gpiog_ospeedr_seti(value: u32) {
     match value.count_ones() {
@@ -2372,7 +2372,7 @@ pub fn gpiog_ospeedr_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn gpiog_pupdr_seti(value: u32) {
     match value.count_ones() {
@@ -2381,7 +2381,7 @@ pub fn gpiog_pupdr_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn gpiog_idr_seti(value: u32) {
     match value.count_ones() {
@@ -2390,7 +2390,7 @@ pub fn gpiog_idr_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn gpiog_odr_seti(value: u32) {
     match value.count_ones() {
@@ -2399,7 +2399,7 @@ pub fn gpiog_odr_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn gpiog_bsrr_seti(value: u32) {
     match value.count_ones() {
@@ -2408,7 +2408,7 @@ pub fn gpiog_bsrr_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn gpiog_lckr_seti(value: u32) {
     match value.count_ones() {
@@ -2417,7 +2417,7 @@ pub fn gpiog_lckr_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn gpiog_afrl_seti(value: u32) {
     match value.count_ones() {
@@ -2426,7 +2426,7 @@ pub fn gpiog_afrl_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn gpiog_afrh_seti(value: u32) {
     match value.count_ones() {
@@ -2435,7 +2435,7 @@ pub fn gpiog_afrh_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
     
         
@@ -2446,7 +2446,7 @@ pub fn gpioh_moder_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn gpioh_otyper_seti(value: u32) {
     match value.count_ones() {
@@ -2455,7 +2455,7 @@ pub fn gpioh_otyper_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn gpioh_ospeedr_seti(value: u32) {
     match value.count_ones() {
@@ -2464,7 +2464,7 @@ pub fn gpioh_ospeedr_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn gpioh_pupdr_seti(value: u32) {
     match value.count_ones() {
@@ -2473,7 +2473,7 @@ pub fn gpioh_pupdr_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn gpioh_idr_seti(value: u32) {
     match value.count_ones() {
@@ -2482,7 +2482,7 @@ pub fn gpioh_idr_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn gpioh_odr_seti(value: u32) {
     match value.count_ones() {
@@ -2491,7 +2491,7 @@ pub fn gpioh_odr_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn gpioh_bsrr_seti(value: u32) {
     match value.count_ones() {
@@ -2500,7 +2500,7 @@ pub fn gpioh_bsrr_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn gpioh_lckr_seti(value: u32) {
     match value.count_ones() {
@@ -2509,7 +2509,7 @@ pub fn gpioh_lckr_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn gpioh_afrl_seti(value: u32) {
     match value.count_ones() {
@@ -2518,7 +2518,7 @@ pub fn gpioh_afrl_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn gpioh_afrh_seti(value: u32) {
     match value.count_ones() {
@@ -2527,7 +2527,7 @@ pub fn gpioh_afrh_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
     
         
@@ -2538,7 +2538,7 @@ pub fn gpioi_moder_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn gpioi_otyper_seti(value: u32) {
     match value.count_ones() {
@@ -2547,7 +2547,7 @@ pub fn gpioi_otyper_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn gpioi_ospeedr_seti(value: u32) {
     match value.count_ones() {
@@ -2556,7 +2556,7 @@ pub fn gpioi_ospeedr_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn gpioi_pupdr_seti(value: u32) {
     match value.count_ones() {
@@ -2565,7 +2565,7 @@ pub fn gpioi_pupdr_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn gpioi_idr_seti(value: u32) {
     match value.count_ones() {
@@ -2574,7 +2574,7 @@ pub fn gpioi_idr_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn gpioi_odr_seti(value: u32) {
     match value.count_ones() {
@@ -2583,7 +2583,7 @@ pub fn gpioi_odr_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn gpioi_bsrr_seti(value: u32) {
     match value.count_ones() {
@@ -2592,7 +2592,7 @@ pub fn gpioi_bsrr_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn gpioi_lckr_seti(value: u32) {
     match value.count_ones() {
@@ -2601,7 +2601,7 @@ pub fn gpioi_lckr_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn gpioi_afrl_seti(value: u32) {
     match value.count_ones() {
@@ -2610,7 +2610,7 @@ pub fn gpioi_afrl_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn gpioi_afrh_seti(value: u32) {
     match value.count_ones() {
@@ -2619,7 +2619,7 @@ pub fn gpioi_afrh_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
     
         
@@ -2630,7 +2630,7 @@ pub fn gpioj_moder_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn gpioj_otyper_seti(value: u32) {
     match value.count_ones() {
@@ -2639,7 +2639,7 @@ pub fn gpioj_otyper_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn gpioj_ospeedr_seti(value: u32) {
     match value.count_ones() {
@@ -2648,7 +2648,7 @@ pub fn gpioj_ospeedr_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn gpioj_pupdr_seti(value: u32) {
     match value.count_ones() {
@@ -2657,7 +2657,7 @@ pub fn gpioj_pupdr_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn gpioj_idr_seti(value: u32) {
     match value.count_ones() {
@@ -2666,7 +2666,7 @@ pub fn gpioj_idr_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn gpioj_odr_seti(value: u32) {
     match value.count_ones() {
@@ -2675,7 +2675,7 @@ pub fn gpioj_odr_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn gpioj_bsrr_seti(value: u32) {
     match value.count_ones() {
@@ -2684,7 +2684,7 @@ pub fn gpioj_bsrr_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn gpioj_lckr_seti(value: u32) {
     match value.count_ones() {
@@ -2693,7 +2693,7 @@ pub fn gpioj_lckr_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn gpioj_afrl_seti(value: u32) {
     match value.count_ones() {
@@ -2702,7 +2702,7 @@ pub fn gpioj_afrl_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn gpioj_afrh_seti(value: u32) {
     match value.count_ones() {
@@ -2711,7 +2711,7 @@ pub fn gpioj_afrh_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
     
         
@@ -2722,7 +2722,7 @@ pub fn gpiok_moder_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn gpiok_otyper_seti(value: u32) {
     match value.count_ones() {
@@ -2731,7 +2731,7 @@ pub fn gpiok_otyper_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn gpiok_ospeedr_seti(value: u32) {
     match value.count_ones() {
@@ -2740,7 +2740,7 @@ pub fn gpiok_ospeedr_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn gpiok_pupdr_seti(value: u32) {
     match value.count_ones() {
@@ -2749,7 +2749,7 @@ pub fn gpiok_pupdr_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn gpiok_idr_seti(value: u32) {
     match value.count_ones() {
@@ -2758,7 +2758,7 @@ pub fn gpiok_idr_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn gpiok_odr_seti(value: u32) {
     match value.count_ones() {
@@ -2767,7 +2767,7 @@ pub fn gpiok_odr_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn gpiok_bsrr_seti(value: u32) {
     match value.count_ones() {
@@ -2776,7 +2776,7 @@ pub fn gpiok_bsrr_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn gpiok_lckr_seti(value: u32) {
     match value.count_ones() {
@@ -2785,7 +2785,7 @@ pub fn gpiok_lckr_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn gpiok_afrl_seti(value: u32) {
     match value.count_ones() {
@@ -2794,7 +2794,7 @@ pub fn gpiok_afrl_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn gpiok_afrh_seti(value: u32) {
     match value.count_ones() {
@@ -2803,7 +2803,7 @@ pub fn gpiok_afrh_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
     
 

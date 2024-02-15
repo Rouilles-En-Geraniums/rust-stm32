@@ -10,10 +10,10 @@ This project offers a method for cross-compiling Rust programs specifically for 
 
 Install rust by following the instructions at [rustc](https://rustup.rs)
 
-In a bare metal environement, we can not load the standard library. To prevent rust from loading the library use **no_std**. 
+In a bare metal environement, we can not load the standard library. To prevent rust from loading the library use **no_std**.
 
 Or you can install cargo no-std-check which ensure thet your library does not link to **libstd** :
- 
+
 > cargo no-std-check
 
 Then run this command on a crate to build it's lib target without access to **std** :
@@ -24,11 +24,11 @@ Then run this command on a crate to build it's lib target without access to **st
 
 Make sure you have a compiler version equal or newer than 1.31.
 
->rustc -V 
+>rustc -V
 
-To add cross-compilation for ARM cortex-M arcitectures choose your target : 
+To add cross-compilation for ARM cortex-M arcitectures choose your target :
 
-Cortex-M4 and M7 : 
+Cortex-M4 and M7 :
 >rustup target add thumbv7em-none-eabi
 
 Install your target, and if it differs from the one mentioned in the tutorial, search for the appropriate one.
@@ -37,29 +37,29 @@ Install your target, and if it differs from the one mentioned in the tutorial, s
 
 Cargo-binutils is a collection of Cargo subcommands that make it easy to use the LLVM tools that are shipped with the Rust toolchain
 
->cargo install cargo-binutils 
+>cargo install cargo-binutils
 
 >rustup component add llvm-tools-preview
 
 ### OS-Specific Instrucions
 
-##### Ubuntu 
+##### Ubuntu
 >sudo apt-get install openocd
 
->sudo apt-get install gdb-architecture 
+>sudo apt-get install gdb-architecture
 
-Or 
+Or
 >sudo apt-get install gdb
 
 ##### Fedora
 >sudo dnf install openocd
 
->sudo dnf install gdb-architecture 
+>sudo dnf install gdb-architecture
 
-Or 
+Or
 >sudo dnf install gdb
 
-## udev rules 
+## udev rules
 This rule lets you use OpenOCD with the Discovery board without root privilege.
 
 Create the file /etc/udev/rules.d/70-st-link.rules with the contents shown below.
@@ -68,7 +68,7 @@ Create the file /etc/udev/rules.d/70-st-link.rules with the contents shown below
 # STM32F3DISCOVERY rev A/B - ST-LINK/V2
 ATTRS{idVendor}=="0483", ATTRS{idProduct}=="3748", TAG+="uaccess"
 # STM32F3DISCOVERY rev C+ - ST-LINK/V2-1
-ATTRS{idVendor}=="0483", ATTRS{idProduct}=="374b", TAG+="uaccess" 
+ATTRS{idVendor}=="0483", ATTRS{idProduct}=="374b", TAG+="uaccess"
 ```
 
 
@@ -78,9 +78,9 @@ ATTRS{idVendor}=="0483", ATTRS{idProduct}=="374b", TAG+="uaccess"
 >brew install openocd
 
 
-# Getting started 
+# Getting started
 
-## Clone the repository 
+## Clone the repository
 
 >git clone git@github.com:Rouilles-En-Geraniums/rust-stm32.git
 
@@ -98,11 +98,11 @@ The next step is to cross compile the program for the desired target. Figure out
 
 The target is not automatically installed with the Rust toolchain, make sure you add it before cross compiling.
 
-Since the compilation target has been set as default in your .cargo/config.toml 
+Since the compilation target has been set as default in your .cargo/config.toml
 
 ### Linker script
 
-The next step is to modify the memory region information in the memory.x file : 
+The next step is to modify the memory region information in the memory.x file :
 
 ```
 /* Linker script for the STM32F407 */
@@ -117,7 +117,7 @@ MEMORY
 
 Modify the file to match the microcontroller you are currently using. To identify the supported target for OpenOCD, refer to the following link. [target](https://github.com/analogdevicesinc/openocd/tree/master/tcl/target)
 
-## Final steps... 
+## Final steps...
 Import geranium_rt
 
 
@@ -125,23 +125,23 @@ Import geranium_rt
 explain plus make sure handle_TIM is always respected
 
 
-You can now cross compile programs using **cargo build** 
+You can now cross compile programs using **cargo build**
 
->cargo build --release   #mode not debug 
+>cargo build --release   #mode not debug
 
->cargo build 
+>cargo build
 
 The output binary will be located at target/thumbv7em-none-eabi/release/project-name, this file will be loaded on the chip next.
 
 
-# Debugging 
+# Debugging
 
-Make sure to change you **openocd.cfg** file to connect the ST-LINK on the board. And change the project-file-name in the Makefile. 
+Make sure to change you **openocd.cfg** file to connect the ST-LINK on the board. And change the project-file-name in the Makefile.
 
 
-Run this command from the root : 
+Run this command from the root :
 
->make openocd  
+>make openocd
 
 And on another terminal in the root as well :
 

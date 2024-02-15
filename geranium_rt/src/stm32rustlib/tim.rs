@@ -1,24 +1,24 @@
 /**
  *	Rust on STM32 Project by Rouilles en GeraniumTM
  *	Copyright (C) 2024 Université de Toulouse :
- *   - Oussama Felfel - oussama.felfel@univ-tlse3.fr		
- *   - François Foltete - francois.foltete@univ-tlse3.fr		
- *   - Elana Courtines - elana.courtines@univ-tlse3.fr		
- *   - Teo Tinarrage - teo.tinarrage@univ-tlse3.fr		
- *   - Zineb Moubarik - zineb.moubarik@univ-tlse3.fr 
+ *   - Oussama Felfel - oussama.felfel@univ-tlse3.fr
+ *   - François Foltete - francois.foltete@univ-tlse3.fr
+ *   - Elana Courtines - elana.courtines@univ-tlse3.fr
+ *   - Teo Tinarrage - teo.tinarrage@univ-tlse3.fr
+ *   - Zineb Moubarik - zineb.moubarik@univ-tlse3.fr
  *
  *  This library aims to provide the following :
  *   - a rust library generation tool to safely access memory ;
  *   - a support to flash STM32 boards ;
  *   - a task scheduling tool that generates the associated rust code.
- * 
+ *
  *  The development of this library has done as a Proof of Concept and
  *  is currently only tested for STM32F407-G DISC1 Boards.
- * 
+ *
  *  It is our hope that using this library to enable development on
  *  other boards will be facilitated.
- * 
- * 
+ *
+ *
  *	This program is free software: you can redistribute it and/or modify
  *	it under the terms of the GNU General Public License as published by
  *	the Free Software Foundation, either version 3 of the License, or
@@ -3183,7 +3183,7 @@ pub fn tim1_cr1_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn tim1_cr2_seti(value: u32) {
     match value.count_ones() {
@@ -3192,7 +3192,7 @@ pub fn tim1_cr2_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn tim1_smcr_seti(value: u32) {
     match value.count_ones() {
@@ -3201,7 +3201,7 @@ pub fn tim1_smcr_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn tim1_dier_seti(value: u32) {
     match value.count_ones() {
@@ -3210,7 +3210,7 @@ pub fn tim1_dier_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn tim1_sr_seti(value: u32) {
     match value.count_ones() {
@@ -3219,7 +3219,7 @@ pub fn tim1_sr_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 
 pub fn tim1_ccmr1_seti(value: u32) {
@@ -3229,7 +3229,7 @@ pub fn tim1_ccmr1_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn tim1_ccmr2_seti(value: u32) {
     match value.count_ones() {
@@ -3238,7 +3238,7 @@ pub fn tim1_ccmr2_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn tim1_ccer_seti(value: u32) {
     match value.count_ones() {
@@ -3247,7 +3247,7 @@ pub fn tim1_ccer_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn tim1_cnt_seti(value: u32) {
     match value.count_ones() {
@@ -3256,7 +3256,7 @@ pub fn tim1_cnt_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn tim1_psc_seti(value: u32) {
     match value.count_ones() {
@@ -3265,7 +3265,7 @@ pub fn tim1_psc_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn tim1_arr_seti(value: u32) {
     match value.count_ones() {
@@ -3274,7 +3274,7 @@ pub fn tim1_arr_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn tim1_ccr1_seti(value: u32) {
     match value.count_ones() {
@@ -3283,7 +3283,7 @@ pub fn tim1_ccr1_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn tim1_ccr2_seti(value: u32) {
     match value.count_ones() {
@@ -3292,7 +3292,7 @@ pub fn tim1_ccr2_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn tim1_ccr3_seti(value: u32) {
     match value.count_ones() {
@@ -3301,7 +3301,7 @@ pub fn tim1_ccr3_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn tim1_ccr4_seti(value: u32) {
     match value.count_ones() {
@@ -3310,7 +3310,7 @@ pub fn tim1_ccr4_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn tim1_btdr_seti(value: u32) {
     match value.count_ones() {
@@ -3319,7 +3319,7 @@ pub fn tim1_btdr_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn tim1_dcr_seti(value: u32) {
     match value.count_ones() {
@@ -3328,7 +3328,7 @@ pub fn tim1_dcr_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn tim1_dmar_seti(value: u32) {
     match value.count_ones() {
@@ -3337,7 +3337,7 @@ pub fn tim1_dmar_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
     
         
@@ -3348,7 +3348,7 @@ pub fn tim8_cr1_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn tim8_cr2_seti(value: u32) {
     match value.count_ones() {
@@ -3357,7 +3357,7 @@ pub fn tim8_cr2_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn tim8_smcr_seti(value: u32) {
     match value.count_ones() {
@@ -3366,7 +3366,7 @@ pub fn tim8_smcr_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn tim8_dier_seti(value: u32) {
     match value.count_ones() {
@@ -3375,7 +3375,7 @@ pub fn tim8_dier_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn tim8_sr_seti(value: u32) {
     match value.count_ones() {
@@ -3384,7 +3384,7 @@ pub fn tim8_sr_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 
 pub fn tim8_ccmr1_seti(value: u32) {
@@ -3394,7 +3394,7 @@ pub fn tim8_ccmr1_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn tim8_ccmr2_seti(value: u32) {
     match value.count_ones() {
@@ -3403,7 +3403,7 @@ pub fn tim8_ccmr2_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn tim8_ccer_seti(value: u32) {
     match value.count_ones() {
@@ -3412,7 +3412,7 @@ pub fn tim8_ccer_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn tim8_cnt_seti(value: u32) {
     match value.count_ones() {
@@ -3421,7 +3421,7 @@ pub fn tim8_cnt_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn tim8_psc_seti(value: u32) {
     match value.count_ones() {
@@ -3430,7 +3430,7 @@ pub fn tim8_psc_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn tim8_arr_seti(value: u32) {
     match value.count_ones() {
@@ -3439,7 +3439,7 @@ pub fn tim8_arr_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn tim8_ccr1_seti(value: u32) {
     match value.count_ones() {
@@ -3448,7 +3448,7 @@ pub fn tim8_ccr1_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn tim8_ccr2_seti(value: u32) {
     match value.count_ones() {
@@ -3457,7 +3457,7 @@ pub fn tim8_ccr2_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn tim8_ccr3_seti(value: u32) {
     match value.count_ones() {
@@ -3466,7 +3466,7 @@ pub fn tim8_ccr3_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn tim8_ccr4_seti(value: u32) {
     match value.count_ones() {
@@ -3475,7 +3475,7 @@ pub fn tim8_ccr4_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn tim8_btdr_seti(value: u32) {
     match value.count_ones() {
@@ -3484,7 +3484,7 @@ pub fn tim8_btdr_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn tim8_dcr_seti(value: u32) {
     match value.count_ones() {
@@ -3493,7 +3493,7 @@ pub fn tim8_dcr_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn tim8_dmar_seti(value: u32) {
     match value.count_ones() {
@@ -3502,7 +3502,7 @@ pub fn tim8_dmar_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
     
         
@@ -3513,7 +3513,7 @@ pub fn tim2_cr1_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn tim2_cr2_seti(value: u32) {
     match value.count_ones() {
@@ -3522,7 +3522,7 @@ pub fn tim2_cr2_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn tim2_smcr_seti(value: u32) {
     match value.count_ones() {
@@ -3531,7 +3531,7 @@ pub fn tim2_smcr_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn tim2_dier_seti(value: u32) {
     match value.count_ones() {
@@ -3540,7 +3540,7 @@ pub fn tim2_dier_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn tim2_sr_seti(value: u32) {
     match value.count_ones() {
@@ -3549,7 +3549,7 @@ pub fn tim2_sr_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 
 pub fn tim2_ccmr1_seti(value: u32) {
@@ -3559,7 +3559,7 @@ pub fn tim2_ccmr1_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn tim2_ccmr2_seti(value: u32) {
     match value.count_ones() {
@@ -3568,7 +3568,7 @@ pub fn tim2_ccmr2_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn tim2_ccer_seti(value: u32) {
     match value.count_ones() {
@@ -3577,7 +3577,7 @@ pub fn tim2_ccer_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn tim2_cnt_seti(value: u32) {
     match value.count_ones() {
@@ -3586,7 +3586,7 @@ pub fn tim2_cnt_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn tim2_psc_seti(value: u32) {
     match value.count_ones() {
@@ -3595,7 +3595,7 @@ pub fn tim2_psc_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn tim2_arr_seti(value: u32) {
     match value.count_ones() {
@@ -3604,7 +3604,7 @@ pub fn tim2_arr_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn tim2_ccr1_seti(value: u32) {
     match value.count_ones() {
@@ -3613,7 +3613,7 @@ pub fn tim2_ccr1_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn tim2_ccr2_seti(value: u32) {
     match value.count_ones() {
@@ -3622,7 +3622,7 @@ pub fn tim2_ccr2_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn tim2_ccr3_seti(value: u32) {
     match value.count_ones() {
@@ -3631,7 +3631,7 @@ pub fn tim2_ccr3_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn tim2_ccr4_seti(value: u32) {
     match value.count_ones() {
@@ -3640,7 +3640,7 @@ pub fn tim2_ccr4_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn tim2_dcr_seti(value: u32) {
     match value.count_ones() {
@@ -3649,7 +3649,7 @@ pub fn tim2_dcr_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn tim2_dmar_seti(value: u32) {
     match value.count_ones() {
@@ -3658,7 +3658,7 @@ pub fn tim2_dmar_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn tim2_or_seti(value: u32) {
     match value.count_ones() {
@@ -3667,7 +3667,7 @@ pub fn tim2_or_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
     
         
@@ -3678,7 +3678,7 @@ pub fn tim3_cr1_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn tim3_cr2_seti(value: u32) {
     match value.count_ones() {
@@ -3687,7 +3687,7 @@ pub fn tim3_cr2_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn tim3_smcr_seti(value: u32) {
     match value.count_ones() {
@@ -3696,7 +3696,7 @@ pub fn tim3_smcr_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn tim3_dier_seti(value: u32) {
     match value.count_ones() {
@@ -3705,7 +3705,7 @@ pub fn tim3_dier_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn tim3_sr_seti(value: u32) {
     match value.count_ones() {
@@ -3714,7 +3714,7 @@ pub fn tim3_sr_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 
 pub fn tim3_ccmr1_seti(value: u32) {
@@ -3724,7 +3724,7 @@ pub fn tim3_ccmr1_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn tim3_ccmr2_seti(value: u32) {
     match value.count_ones() {
@@ -3733,7 +3733,7 @@ pub fn tim3_ccmr2_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn tim3_ccer_seti(value: u32) {
     match value.count_ones() {
@@ -3742,7 +3742,7 @@ pub fn tim3_ccer_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn tim3_cnt_seti(value: u32) {
     match value.count_ones() {
@@ -3751,7 +3751,7 @@ pub fn tim3_cnt_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn tim3_psc_seti(value: u32) {
     match value.count_ones() {
@@ -3760,7 +3760,7 @@ pub fn tim3_psc_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn tim3_arr_seti(value: u32) {
     match value.count_ones() {
@@ -3769,7 +3769,7 @@ pub fn tim3_arr_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn tim3_ccr1_seti(value: u32) {
     match value.count_ones() {
@@ -3778,7 +3778,7 @@ pub fn tim3_ccr1_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn tim3_ccr2_seti(value: u32) {
     match value.count_ones() {
@@ -3787,7 +3787,7 @@ pub fn tim3_ccr2_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn tim3_ccr3_seti(value: u32) {
     match value.count_ones() {
@@ -3796,7 +3796,7 @@ pub fn tim3_ccr3_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn tim3_ccr4_seti(value: u32) {
     match value.count_ones() {
@@ -3805,7 +3805,7 @@ pub fn tim3_ccr4_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn tim3_dcr_seti(value: u32) {
     match value.count_ones() {
@@ -3814,7 +3814,7 @@ pub fn tim3_dcr_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn tim3_dmar_seti(value: u32) {
     match value.count_ones() {
@@ -3823,7 +3823,7 @@ pub fn tim3_dmar_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
     
         
@@ -3834,7 +3834,7 @@ pub fn tim4_cr1_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn tim4_cr2_seti(value: u32) {
     match value.count_ones() {
@@ -3843,7 +3843,7 @@ pub fn tim4_cr2_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn tim4_smcr_seti(value: u32) {
     match value.count_ones() {
@@ -3852,7 +3852,7 @@ pub fn tim4_smcr_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn tim4_dier_seti(value: u32) {
     match value.count_ones() {
@@ -3861,7 +3861,7 @@ pub fn tim4_dier_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn tim4_sr_seti(value: u32) {
     match value.count_ones() {
@@ -3870,7 +3870,7 @@ pub fn tim4_sr_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 
 pub fn tim4_ccmr1_seti(value: u32) {
@@ -3880,7 +3880,7 @@ pub fn tim4_ccmr1_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn tim4_ccmr2_seti(value: u32) {
     match value.count_ones() {
@@ -3889,7 +3889,7 @@ pub fn tim4_ccmr2_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn tim4_ccer_seti(value: u32) {
     match value.count_ones() {
@@ -3898,7 +3898,7 @@ pub fn tim4_ccer_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn tim4_cnt_seti(value: u32) {
     match value.count_ones() {
@@ -3907,7 +3907,7 @@ pub fn tim4_cnt_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn tim4_psc_seti(value: u32) {
     match value.count_ones() {
@@ -3916,7 +3916,7 @@ pub fn tim4_psc_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn tim4_arr_seti(value: u32) {
     match value.count_ones() {
@@ -3925,7 +3925,7 @@ pub fn tim4_arr_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn tim4_ccr1_seti(value: u32) {
     match value.count_ones() {
@@ -3934,7 +3934,7 @@ pub fn tim4_ccr1_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn tim4_ccr2_seti(value: u32) {
     match value.count_ones() {
@@ -3943,7 +3943,7 @@ pub fn tim4_ccr2_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn tim4_ccr3_seti(value: u32) {
     match value.count_ones() {
@@ -3952,7 +3952,7 @@ pub fn tim4_ccr3_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn tim4_ccr4_seti(value: u32) {
     match value.count_ones() {
@@ -3961,7 +3961,7 @@ pub fn tim4_ccr4_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn tim4_dcr_seti(value: u32) {
     match value.count_ones() {
@@ -3970,7 +3970,7 @@ pub fn tim4_dcr_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn tim4_dmar_seti(value: u32) {
     match value.count_ones() {
@@ -3979,7 +3979,7 @@ pub fn tim4_dmar_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
     
         
@@ -3990,7 +3990,7 @@ pub fn tim5_cr1_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn tim5_cr2_seti(value: u32) {
     match value.count_ones() {
@@ -3999,7 +3999,7 @@ pub fn tim5_cr2_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn tim5_smcr_seti(value: u32) {
     match value.count_ones() {
@@ -4008,7 +4008,7 @@ pub fn tim5_smcr_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn tim5_dier_seti(value: u32) {
     match value.count_ones() {
@@ -4017,7 +4017,7 @@ pub fn tim5_dier_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn tim5_sr_seti(value: u32) {
     match value.count_ones() {
@@ -4026,7 +4026,7 @@ pub fn tim5_sr_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 
 pub fn tim5_ccmr1_seti(value: u32) {
@@ -4036,7 +4036,7 @@ pub fn tim5_ccmr1_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn tim5_ccmr2_seti(value: u32) {
     match value.count_ones() {
@@ -4045,7 +4045,7 @@ pub fn tim5_ccmr2_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn tim5_ccer_seti(value: u32) {
     match value.count_ones() {
@@ -4054,7 +4054,7 @@ pub fn tim5_ccer_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn tim5_cnt_seti(value: u32) {
     match value.count_ones() {
@@ -4063,7 +4063,7 @@ pub fn tim5_cnt_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn tim5_psc_seti(value: u32) {
     match value.count_ones() {
@@ -4072,7 +4072,7 @@ pub fn tim5_psc_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn tim5_arr_seti(value: u32) {
     match value.count_ones() {
@@ -4081,7 +4081,7 @@ pub fn tim5_arr_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn tim5_ccr1_seti(value: u32) {
     match value.count_ones() {
@@ -4090,7 +4090,7 @@ pub fn tim5_ccr1_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn tim5_ccr2_seti(value: u32) {
     match value.count_ones() {
@@ -4099,7 +4099,7 @@ pub fn tim5_ccr2_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn tim5_ccr3_seti(value: u32) {
     match value.count_ones() {
@@ -4108,7 +4108,7 @@ pub fn tim5_ccr3_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn tim5_ccr4_seti(value: u32) {
     match value.count_ones() {
@@ -4117,7 +4117,7 @@ pub fn tim5_ccr4_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn tim5_dcr_seti(value: u32) {
     match value.count_ones() {
@@ -4126,7 +4126,7 @@ pub fn tim5_dcr_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn tim5_dmar_seti(value: u32) {
     match value.count_ones() {
@@ -4135,7 +4135,7 @@ pub fn tim5_dmar_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn tim5_or_seti(value: u32) {
     match value.count_ones() {
@@ -4144,7 +4144,7 @@ pub fn tim5_or_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
     
         
@@ -4155,7 +4155,7 @@ pub fn tim9_cr1_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn tim9_smcr_seti(value: u32) {
     match value.count_ones() {
@@ -4164,7 +4164,7 @@ pub fn tim9_smcr_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn tim9_dier_seti(value: u32) {
     match value.count_ones() {
@@ -4173,7 +4173,7 @@ pub fn tim9_dier_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn tim9_sr_seti(value: u32) {
     match value.count_ones() {
@@ -4182,7 +4182,7 @@ pub fn tim9_sr_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 
 pub fn tim9_ccmr1_seti(value: u32) {
@@ -4192,7 +4192,7 @@ pub fn tim9_ccmr1_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn tim9_ccer_seti(value: u32) {
     match value.count_ones() {
@@ -4201,7 +4201,7 @@ pub fn tim9_ccer_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn tim9_cnt_seti(value: u32) {
     match value.count_ones() {
@@ -4210,7 +4210,7 @@ pub fn tim9_cnt_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn tim9_psc_seti(value: u32) {
     match value.count_ones() {
@@ -4219,7 +4219,7 @@ pub fn tim9_psc_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn tim9_arr_seti(value: u32) {
     match value.count_ones() {
@@ -4228,7 +4228,7 @@ pub fn tim9_arr_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn tim9_ccr1_seti(value: u32) {
     match value.count_ones() {
@@ -4237,7 +4237,7 @@ pub fn tim9_ccr1_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn tim9_ccr2_seti(value: u32) {
     match value.count_ones() {
@@ -4246,7 +4246,7 @@ pub fn tim9_ccr2_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
     
         
@@ -4257,7 +4257,7 @@ pub fn tim12_cr1_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn tim12_smcr_seti(value: u32) {
     match value.count_ones() {
@@ -4266,7 +4266,7 @@ pub fn tim12_smcr_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn tim12_dier_seti(value: u32) {
     match value.count_ones() {
@@ -4275,7 +4275,7 @@ pub fn tim12_dier_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn tim12_sr_seti(value: u32) {
     match value.count_ones() {
@@ -4284,7 +4284,7 @@ pub fn tim12_sr_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 
 pub fn tim12_ccmr1_seti(value: u32) {
@@ -4294,7 +4294,7 @@ pub fn tim12_ccmr1_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn tim12_ccer_seti(value: u32) {
     match value.count_ones() {
@@ -4303,7 +4303,7 @@ pub fn tim12_ccer_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn tim12_cnt_seti(value: u32) {
     match value.count_ones() {
@@ -4312,7 +4312,7 @@ pub fn tim12_cnt_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn tim12_psc_seti(value: u32) {
     match value.count_ones() {
@@ -4321,7 +4321,7 @@ pub fn tim12_psc_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn tim12_arr_seti(value: u32) {
     match value.count_ones() {
@@ -4330,7 +4330,7 @@ pub fn tim12_arr_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn tim12_ccr1_seti(value: u32) {
     match value.count_ones() {
@@ -4339,7 +4339,7 @@ pub fn tim12_ccr1_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn tim12_ccr2_seti(value: u32) {
     match value.count_ones() {
@@ -4348,7 +4348,7 @@ pub fn tim12_ccr2_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
     
         
@@ -4359,7 +4359,7 @@ pub fn tim10_cr1_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn tim10_dier_seti(value: u32) {
     match value.count_ones() {
@@ -4368,7 +4368,7 @@ pub fn tim10_dier_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn tim10_sr_seti(value: u32) {
     match value.count_ones() {
@@ -4377,7 +4377,7 @@ pub fn tim10_sr_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 
 pub fn tim10_ccmr1_seti(value: u32) {
@@ -4387,7 +4387,7 @@ pub fn tim10_ccmr1_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn tim10_ccer_seti(value: u32) {
     match value.count_ones() {
@@ -4396,7 +4396,7 @@ pub fn tim10_ccer_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn tim10_cnt_seti(value: u32) {
     match value.count_ones() {
@@ -4405,7 +4405,7 @@ pub fn tim10_cnt_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn tim10_psc_seti(value: u32) {
     match value.count_ones() {
@@ -4414,7 +4414,7 @@ pub fn tim10_psc_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn tim10_arr_seti(value: u32) {
     match value.count_ones() {
@@ -4423,7 +4423,7 @@ pub fn tim10_arr_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn tim10_ccr1_seti(value: u32) {
     match value.count_ones() {
@@ -4432,7 +4432,7 @@ pub fn tim10_ccr1_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn tim10_or_seti(value: u32) {
     match value.count_ones() {
@@ -4441,7 +4441,7 @@ pub fn tim10_or_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
     
         
@@ -4452,7 +4452,7 @@ pub fn tim11_cr1_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn tim11_dier_seti(value: u32) {
     match value.count_ones() {
@@ -4461,7 +4461,7 @@ pub fn tim11_dier_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn tim11_sr_seti(value: u32) {
     match value.count_ones() {
@@ -4470,7 +4470,7 @@ pub fn tim11_sr_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 
 pub fn tim11_ccmr1_seti(value: u32) {
@@ -4480,7 +4480,7 @@ pub fn tim11_ccmr1_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn tim11_ccer_seti(value: u32) {
     match value.count_ones() {
@@ -4489,7 +4489,7 @@ pub fn tim11_ccer_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn tim11_cnt_seti(value: u32) {
     match value.count_ones() {
@@ -4498,7 +4498,7 @@ pub fn tim11_cnt_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn tim11_psc_seti(value: u32) {
     match value.count_ones() {
@@ -4507,7 +4507,7 @@ pub fn tim11_psc_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn tim11_arr_seti(value: u32) {
     match value.count_ones() {
@@ -4516,7 +4516,7 @@ pub fn tim11_arr_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn tim11_ccr1_seti(value: u32) {
     match value.count_ones() {
@@ -4525,7 +4525,7 @@ pub fn tim11_ccr1_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn tim11_or_seti(value: u32) {
     match value.count_ones() {
@@ -4534,7 +4534,7 @@ pub fn tim11_or_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
     
         
@@ -4545,7 +4545,7 @@ pub fn tim13_cr1_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn tim13_dier_seti(value: u32) {
     match value.count_ones() {
@@ -4554,7 +4554,7 @@ pub fn tim13_dier_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn tim13_sr_seti(value: u32) {
     match value.count_ones() {
@@ -4563,7 +4563,7 @@ pub fn tim13_sr_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 
 pub fn tim13_ccmr1_seti(value: u32) {
@@ -4573,7 +4573,7 @@ pub fn tim13_ccmr1_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn tim13_ccer_seti(value: u32) {
     match value.count_ones() {
@@ -4582,7 +4582,7 @@ pub fn tim13_ccer_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn tim13_cnt_seti(value: u32) {
     match value.count_ones() {
@@ -4591,7 +4591,7 @@ pub fn tim13_cnt_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn tim13_psc_seti(value: u32) {
     match value.count_ones() {
@@ -4600,7 +4600,7 @@ pub fn tim13_psc_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn tim13_arr_seti(value: u32) {
     match value.count_ones() {
@@ -4609,7 +4609,7 @@ pub fn tim13_arr_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn tim13_ccr1_seti(value: u32) {
     match value.count_ones() {
@@ -4618,7 +4618,7 @@ pub fn tim13_ccr1_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn tim13_or_seti(value: u32) {
     match value.count_ones() {
@@ -4627,7 +4627,7 @@ pub fn tim13_or_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
     
         
@@ -4638,7 +4638,7 @@ pub fn tim14_cr1_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn tim14_dier_seti(value: u32) {
     match value.count_ones() {
@@ -4647,7 +4647,7 @@ pub fn tim14_dier_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn tim14_sr_seti(value: u32) {
     match value.count_ones() {
@@ -4656,7 +4656,7 @@ pub fn tim14_sr_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 
 pub fn tim14_ccmr1_seti(value: u32) {
@@ -4666,7 +4666,7 @@ pub fn tim14_ccmr1_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn tim14_ccer_seti(value: u32) {
     match value.count_ones() {
@@ -4675,7 +4675,7 @@ pub fn tim14_ccer_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn tim14_cnt_seti(value: u32) {
     match value.count_ones() {
@@ -4684,7 +4684,7 @@ pub fn tim14_cnt_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn tim14_psc_seti(value: u32) {
     match value.count_ones() {
@@ -4693,7 +4693,7 @@ pub fn tim14_psc_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn tim14_arr_seti(value: u32) {
     match value.count_ones() {
@@ -4702,7 +4702,7 @@ pub fn tim14_arr_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn tim14_ccr1_seti(value: u32) {
     match value.count_ones() {
@@ -4711,7 +4711,7 @@ pub fn tim14_ccr1_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn tim14_or_seti(value: u32) {
     match value.count_ones() {
@@ -4720,7 +4720,7 @@ pub fn tim14_or_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
     
         
@@ -4731,7 +4731,7 @@ pub fn tim6_cr1_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn tim6_cr2_seti(value: u32) {
     match value.count_ones() {
@@ -4740,7 +4740,7 @@ pub fn tim6_cr2_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn tim6_dier_seti(value: u32) {
     match value.count_ones() {
@@ -4749,7 +4749,7 @@ pub fn tim6_dier_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn tim6_sr_seti(value: u32) {
     match value.count_ones() {
@@ -4758,7 +4758,7 @@ pub fn tim6_sr_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 
 pub fn tim6_cnt_seti(value: u32) {
@@ -4768,7 +4768,7 @@ pub fn tim6_cnt_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn tim6_psc_seti(value: u32) {
     match value.count_ones() {
@@ -4777,7 +4777,7 @@ pub fn tim6_psc_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn tim6_arr_seti(value: u32) {
     match value.count_ones() {
@@ -4786,7 +4786,7 @@ pub fn tim6_arr_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
     
         
@@ -4797,7 +4797,7 @@ pub fn tim7_cr1_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn tim7_cr2_seti(value: u32) {
     match value.count_ones() {
@@ -4806,7 +4806,7 @@ pub fn tim7_cr2_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn tim7_dier_seti(value: u32) {
     match value.count_ones() {
@@ -4815,7 +4815,7 @@ pub fn tim7_dier_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn tim7_sr_seti(value: u32) {
     match value.count_ones() {
@@ -4824,7 +4824,7 @@ pub fn tim7_sr_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 
 pub fn tim7_cnt_seti(value: u32) {
@@ -4834,7 +4834,7 @@ pub fn tim7_cnt_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn tim7_psc_seti(value: u32) {
     match value.count_ones() {
@@ -4843,7 +4843,7 @@ pub fn tim7_psc_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
 pub fn tim7_arr_seti(value: u32) {
     match value.count_ones() {
@@ -4852,6 +4852,6 @@ pub fn tim7_arr_seti(value: u32) {
         _ => (),
     }
 
-    
+
 }
     
