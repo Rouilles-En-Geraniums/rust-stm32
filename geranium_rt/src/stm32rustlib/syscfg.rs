@@ -140,32 +140,25 @@ pub fn syscfg_cmpcr_read() -> u32 {
 }
     
         
-pub fn syscfg_memrmp_set(position: u32, value: u32) {
-    let size = 32 - value.leading_zeros();
+pub fn syscfg_memrmp_set(position: u32, size: u32, value: u32) {
     syscfg_memrmp_write(rep_bits(syscfg_memrmp_read(), position, size, value));
 }
-pub fn syscfg_pmc_set(position: u32, value: u32) {
-    let size = 32 - value.leading_zeros();
+pub fn syscfg_pmc_set(position: u32, size: u32, value: u32) {
     syscfg_pmc_write(rep_bits(syscfg_pmc_read(), position, size, value));
 }
-pub fn syscfg_exticr1_set(position: u32, value: u32) {
-    let size = 32 - value.leading_zeros();
+pub fn syscfg_exticr1_set(position: u32, size: u32, value: u32) {
     syscfg_exticr1_write(rep_bits(syscfg_exticr1_read(), position, size, value));
 }
-pub fn syscfg_exticr2_set(position: u32, value: u32) {
-    let size = 32 - value.leading_zeros();
+pub fn syscfg_exticr2_set(position: u32, size: u32, value: u32) {
     syscfg_exticr2_write(rep_bits(syscfg_exticr2_read(), position, size, value));
 }
-pub fn syscfg_exticr3_set(position: u32, value: u32) {
-    let size = 32 - value.leading_zeros();
+pub fn syscfg_exticr3_set(position: u32, size: u32, value: u32) {
     syscfg_exticr3_write(rep_bits(syscfg_exticr3_read(), position, size, value));
 }
-pub fn syscfg_exticr4_set(position: u32, value: u32) {
-    let size = 32 - value.leading_zeros();
+pub fn syscfg_exticr4_set(position: u32, size: u32, value: u32) {
     syscfg_exticr4_write(rep_bits(syscfg_exticr4_read(), position, size, value));
 }
-pub fn syscfg_cmpcr_set(position: u32, value: u32) {
-    let size = 32 - value.leading_zeros();
+pub fn syscfg_cmpcr_set(position: u32, size: u32, value: u32) {
     syscfg_cmpcr_write(rep_bits(syscfg_cmpcr_read(), position, size, value));
 }
     
@@ -174,63 +167,42 @@ pub fn syscfg_memrmp_seti(value: u32) {
     match value.count_ones() {
         1 => syscfg_memrmp_write(syscfg_memrmp_read() | value),
         31 => syscfg_memrmp_write(syscfg_memrmp_read() & value),
-        _ => (),
-    }
-
-
+        _ => (),}
 }
 pub fn syscfg_pmc_seti(value: u32) {
     match value.count_ones() {
         1 => syscfg_pmc_write(syscfg_pmc_read() | value),
         31 => syscfg_pmc_write(syscfg_pmc_read() & value),
-        _ => (),
-    }
-
-
+        _ => (),}
 }
 pub fn syscfg_exticr1_seti(value: u32) {
     match value.count_ones() {
         1 => syscfg_exticr1_write(syscfg_exticr1_read() | value),
         31 => syscfg_exticr1_write(syscfg_exticr1_read() & value),
-        _ => (),
-    }
-
-
+        _ => (),}
 }
 pub fn syscfg_exticr2_seti(value: u32) {
     match value.count_ones() {
         1 => syscfg_exticr2_write(syscfg_exticr2_read() | value),
         31 => syscfg_exticr2_write(syscfg_exticr2_read() & value),
-        _ => (),
-    }
-
-
+        _ => (),}
 }
 pub fn syscfg_exticr3_seti(value: u32) {
     match value.count_ones() {
         1 => syscfg_exticr3_write(syscfg_exticr3_read() | value),
         31 => syscfg_exticr3_write(syscfg_exticr3_read() & value),
-        _ => (),
-    }
-
-
+        _ => (),}
 }
 pub fn syscfg_exticr4_seti(value: u32) {
     match value.count_ones() {
         1 => syscfg_exticr4_write(syscfg_exticr4_read() | value),
         31 => syscfg_exticr4_write(syscfg_exticr4_read() & value),
-        _ => (),
-    }
-
-
+        _ => (),}
 }
 pub fn syscfg_cmpcr_seti(value: u32) {
     match value.count_ones() {
         1 => syscfg_cmpcr_write(syscfg_cmpcr_read() | value),
         31 => syscfg_cmpcr_write(syscfg_cmpcr_read() & value),
-        _ => (),
-    }
-
-
+        _ => (),}
 }
     

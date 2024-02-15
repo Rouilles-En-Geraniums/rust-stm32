@@ -148,16 +148,16 @@ pub unsafe extern "C" fn HandlerReset() -> ! {
 	// configure HSI clock
     rcc_cr_seti(RCC_CR_HSION);
     while (rcc_cr_read() & RCC_CR_HSIRDY) == 0 {}
-    rcc_cfgr_set(0,0b00);
+    rcc_cfgr_set(0,2,0b00);
 
 	// configure HSE clock
     rcc_cr_seti(RCC_CR_HSEON);
     while (rcc_cr_read() & RCC_CR_HSERDY) == 0 {}
 
 	// configure AHB and AHP[12]
-    rcc_cfgr_set(4,0b0000);
-    rcc_cfgr_set(10,0b110);
-    rcc_cfgr_set(13,0b100);
+    rcc_cfgr_set(4,4,0b0000);
+    rcc_cfgr_set(10,3,0b110);
+    rcc_cfgr_set(13,3,0b100);
 
 	// configure PLL
     rcc_cr_seti(!RCC_CR_PLLON);
@@ -179,7 +179,7 @@ pub unsafe extern "C" fn HandlerReset() -> ! {
     flash_acr_write(x);
 
 	// select PLL as SYSCLK
-    rcc_cfgr_set(0,0b10);
+    rcc_cfgr_set(0,2,0b10);
     while get_bits(rcc_cfgr_read(),2,2) != 0b10 {}
     rcc_cr_seti(!RCC_CR_HSION);
 

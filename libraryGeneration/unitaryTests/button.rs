@@ -54,10 +54,10 @@ fn main() {
     let my_led = ('D', 12); // Built-in green led
     let my_but = ('A', 0); // Built-in blue button
 
-    gpiod_moder_set(my_led.1*2, GPIO_MODER_OUT);
+    gpiod_moder_set(my_led.1*2, 2, GPIO_MODER_OUT);
 
-    gpioa_moder_set(my_but.1*2, GPIO_MODER_IN);
-    gpioa_pupdr_set(my_but.1*2, GPIO_PUPDR_PD);
+    gpioa_moder_set(my_but.1*2, 2, GPIO_MODER_IN);
+    gpioa_pupdr_set(my_but.1*2, 2, GPIO_PUPDR_PD);
 
     let mut bstate = RELEASED;
     digital_write(my_led, LOW);

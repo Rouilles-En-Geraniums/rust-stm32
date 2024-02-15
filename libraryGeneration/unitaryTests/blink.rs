@@ -51,7 +51,7 @@ fn main() {
     let my_led = ('D', 12); // Built-in green led
 
     // Initialize the LED
-    gpiod_moder_set(my_led.1*2, GPIO_MODER_OUT);
+    gpiod_moder_set(my_led.1*2, 2, GPIO_MODER_OUT);
 
     // Set it to LOW by default
     digital_write(my_led, LOW);

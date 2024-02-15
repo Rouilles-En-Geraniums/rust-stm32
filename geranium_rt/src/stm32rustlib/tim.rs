@@ -2406,772 +2406,590 @@ pub fn tim7_arr_read() -> u32 {
 }
     
         
-pub fn tim1_cr1_set(position: u32, value: u32) {
-    let size = 32 - value.leading_zeros();
+pub fn tim1_cr1_set(position: u32, size: u32, value: u32) {
     tim1_cr1_write(rep_bits(tim1_cr1_read(), position, size, value));
 }
-pub fn tim1_cr2_set(position: u32, value: u32) {
-    let size = 32 - value.leading_zeros();
+pub fn tim1_cr2_set(position: u32, size: u32, value: u32) {
     tim1_cr2_write(rep_bits(tim1_cr2_read(), position, size, value));
 }
-pub fn tim1_smcr_set(position: u32, value: u32) {
-    let size = 32 - value.leading_zeros();
+pub fn tim1_smcr_set(position: u32, size: u32, value: u32) {
     tim1_smcr_write(rep_bits(tim1_smcr_read(), position, size, value));
 }
-pub fn tim1_dier_set(position: u32, value: u32) {
-    let size = 32 - value.leading_zeros();
+pub fn tim1_dier_set(position: u32, size: u32, value: u32) {
     tim1_dier_write(rep_bits(tim1_dier_read(), position, size, value));
 }
-pub fn tim1_sr_set(position: u32, value: u32) {
-    let size = 32 - value.leading_zeros();
+pub fn tim1_sr_set(position: u32, size: u32, value: u32) {
     tim1_sr_write(rep_bits(tim1_sr_read(), position, size, value));
 }
 
-pub fn tim1_ccmr1_set(position: u32, value: u32) {
-    let size = 32 - value.leading_zeros();
+pub fn tim1_ccmr1_set(position: u32, size: u32, value: u32) {
     tim1_ccmr1_write(rep_bits(tim1_ccmr1_read(), position, size, value));
 }
-pub fn tim1_ccmr2_set(position: u32, value: u32) {
-    let size = 32 - value.leading_zeros();
+pub fn tim1_ccmr2_set(position: u32, size: u32, value: u32) {
     tim1_ccmr2_write(rep_bits(tim1_ccmr2_read(), position, size, value));
 }
-pub fn tim1_ccer_set(position: u32, value: u32) {
-    let size = 32 - value.leading_zeros();
+pub fn tim1_ccer_set(position: u32, size: u32, value: u32) {
     tim1_ccer_write(rep_bits(tim1_ccer_read(), position, size, value));
 }
-pub fn tim1_cnt_set(position: u32, value: u32) {
-    let size = 32 - value.leading_zeros();
+pub fn tim1_cnt_set(position: u32, size: u32, value: u32) {
     tim1_cnt_write(rep_bits(tim1_cnt_read(), position, size, value));
 }
-pub fn tim1_psc_set(position: u32, value: u32) {
-    let size = 32 - value.leading_zeros();
+pub fn tim1_psc_set(position: u32, size: u32, value: u32) {
     tim1_psc_write(rep_bits(tim1_psc_read(), position, size, value));
 }
-pub fn tim1_arr_set(position: u32, value: u32) {
-    let size = 32 - value.leading_zeros();
+pub fn tim1_arr_set(position: u32, size: u32, value: u32) {
     tim1_arr_write(rep_bits(tim1_arr_read(), position, size, value));
 }
-pub fn tim1_ccr1_set(position: u32, value: u32) {
-    let size = 32 - value.leading_zeros();
+pub fn tim1_ccr1_set(position: u32, size: u32, value: u32) {
     tim1_ccr1_write(rep_bits(tim1_ccr1_read(), position, size, value));
 }
-pub fn tim1_ccr2_set(position: u32, value: u32) {
-    let size = 32 - value.leading_zeros();
+pub fn tim1_ccr2_set(position: u32, size: u32, value: u32) {
     tim1_ccr2_write(rep_bits(tim1_ccr2_read(), position, size, value));
 }
-pub fn tim1_ccr3_set(position: u32, value: u32) {
-    let size = 32 - value.leading_zeros();
+pub fn tim1_ccr3_set(position: u32, size: u32, value: u32) {
     tim1_ccr3_write(rep_bits(tim1_ccr3_read(), position, size, value));
 }
-pub fn tim1_ccr4_set(position: u32, value: u32) {
-    let size = 32 - value.leading_zeros();
+pub fn tim1_ccr4_set(position: u32, size: u32, value: u32) {
     tim1_ccr4_write(rep_bits(tim1_ccr4_read(), position, size, value));
 }
-pub fn tim1_btdr_set(position: u32, value: u32) {
-    let size = 32 - value.leading_zeros();
+pub fn tim1_btdr_set(position: u32, size: u32, value: u32) {
     tim1_btdr_write(rep_bits(tim1_btdr_read(), position, size, value));
 }
-pub fn tim1_dcr_set(position: u32, value: u32) {
-    let size = 32 - value.leading_zeros();
+pub fn tim1_dcr_set(position: u32, size: u32, value: u32) {
     tim1_dcr_write(rep_bits(tim1_dcr_read(), position, size, value));
 }
-pub fn tim1_dmar_set(position: u32, value: u32) {
-    let size = 32 - value.leading_zeros();
+pub fn tim1_dmar_set(position: u32, size: u32, value: u32) {
     tim1_dmar_write(rep_bits(tim1_dmar_read(), position, size, value));
 }
     
         
-pub fn tim8_cr1_set(position: u32, value: u32) {
-    let size = 32 - value.leading_zeros();
+pub fn tim8_cr1_set(position: u32, size: u32, value: u32) {
     tim8_cr1_write(rep_bits(tim8_cr1_read(), position, size, value));
 }
-pub fn tim8_cr2_set(position: u32, value: u32) {
-    let size = 32 - value.leading_zeros();
+pub fn tim8_cr2_set(position: u32, size: u32, value: u32) {
     tim8_cr2_write(rep_bits(tim8_cr2_read(), position, size, value));
 }
-pub fn tim8_smcr_set(position: u32, value: u32) {
-    let size = 32 - value.leading_zeros();
+pub fn tim8_smcr_set(position: u32, size: u32, value: u32) {
     tim8_smcr_write(rep_bits(tim8_smcr_read(), position, size, value));
 }
-pub fn tim8_dier_set(position: u32, value: u32) {
-    let size = 32 - value.leading_zeros();
+pub fn tim8_dier_set(position: u32, size: u32, value: u32) {
     tim8_dier_write(rep_bits(tim8_dier_read(), position, size, value));
 }
-pub fn tim8_sr_set(position: u32, value: u32) {
-    let size = 32 - value.leading_zeros();
+pub fn tim8_sr_set(position: u32, size: u32, value: u32) {
     tim8_sr_write(rep_bits(tim8_sr_read(), position, size, value));
 }
 
-pub fn tim8_ccmr1_set(position: u32, value: u32) {
-    let size = 32 - value.leading_zeros();
+pub fn tim8_ccmr1_set(position: u32, size: u32, value: u32) {
     tim8_ccmr1_write(rep_bits(tim8_ccmr1_read(), position, size, value));
 }
-pub fn tim8_ccmr2_set(position: u32, value: u32) {
-    let size = 32 - value.leading_zeros();
+pub fn tim8_ccmr2_set(position: u32, size: u32, value: u32) {
     tim8_ccmr2_write(rep_bits(tim8_ccmr2_read(), position, size, value));
 }
-pub fn tim8_ccer_set(position: u32, value: u32) {
-    let size = 32 - value.leading_zeros();
+pub fn tim8_ccer_set(position: u32, size: u32, value: u32) {
     tim8_ccer_write(rep_bits(tim8_ccer_read(), position, size, value));
 }
-pub fn tim8_cnt_set(position: u32, value: u32) {
-    let size = 32 - value.leading_zeros();
+pub fn tim8_cnt_set(position: u32, size: u32, value: u32) {
     tim8_cnt_write(rep_bits(tim8_cnt_read(), position, size, value));
 }
-pub fn tim8_psc_set(position: u32, value: u32) {
-    let size = 32 - value.leading_zeros();
+pub fn tim8_psc_set(position: u32, size: u32, value: u32) {
     tim8_psc_write(rep_bits(tim8_psc_read(), position, size, value));
 }
-pub fn tim8_arr_set(position: u32, value: u32) {
-    let size = 32 - value.leading_zeros();
+pub fn tim8_arr_set(position: u32, size: u32, value: u32) {
     tim8_arr_write(rep_bits(tim8_arr_read(), position, size, value));
 }
-pub fn tim8_ccr1_set(position: u32, value: u32) {
-    let size = 32 - value.leading_zeros();
+pub fn tim8_ccr1_set(position: u32, size: u32, value: u32) {
     tim8_ccr1_write(rep_bits(tim8_ccr1_read(), position, size, value));
 }
-pub fn tim8_ccr2_set(position: u32, value: u32) {
-    let size = 32 - value.leading_zeros();
+pub fn tim8_ccr2_set(position: u32, size: u32, value: u32) {
     tim8_ccr2_write(rep_bits(tim8_ccr2_read(), position, size, value));
 }
-pub fn tim8_ccr3_set(position: u32, value: u32) {
-    let size = 32 - value.leading_zeros();
+pub fn tim8_ccr3_set(position: u32, size: u32, value: u32) {
     tim8_ccr3_write(rep_bits(tim8_ccr3_read(), position, size, value));
 }
-pub fn tim8_ccr4_set(position: u32, value: u32) {
-    let size = 32 - value.leading_zeros();
+pub fn tim8_ccr4_set(position: u32, size: u32, value: u32) {
     tim8_ccr4_write(rep_bits(tim8_ccr4_read(), position, size, value));
 }
-pub fn tim8_btdr_set(position: u32, value: u32) {
-    let size = 32 - value.leading_zeros();
+pub fn tim8_btdr_set(position: u32, size: u32, value: u32) {
     tim8_btdr_write(rep_bits(tim8_btdr_read(), position, size, value));
 }
-pub fn tim8_dcr_set(position: u32, value: u32) {
-    let size = 32 - value.leading_zeros();
+pub fn tim8_dcr_set(position: u32, size: u32, value: u32) {
     tim8_dcr_write(rep_bits(tim8_dcr_read(), position, size, value));
 }
-pub fn tim8_dmar_set(position: u32, value: u32) {
-    let size = 32 - value.leading_zeros();
+pub fn tim8_dmar_set(position: u32, size: u32, value: u32) {
     tim8_dmar_write(rep_bits(tim8_dmar_read(), position, size, value));
 }
     
         
-pub fn tim2_cr1_set(position: u32, value: u32) {
-    let size = 32 - value.leading_zeros();
+pub fn tim2_cr1_set(position: u32, size: u32, value: u32) {
     tim2_cr1_write(rep_bits(tim2_cr1_read(), position, size, value));
 }
-pub fn tim2_cr2_set(position: u32, value: u32) {
-    let size = 32 - value.leading_zeros();
+pub fn tim2_cr2_set(position: u32, size: u32, value: u32) {
     tim2_cr2_write(rep_bits(tim2_cr2_read(), position, size, value));
 }
-pub fn tim2_smcr_set(position: u32, value: u32) {
-    let size = 32 - value.leading_zeros();
+pub fn tim2_smcr_set(position: u32, size: u32, value: u32) {
     tim2_smcr_write(rep_bits(tim2_smcr_read(), position, size, value));
 }
-pub fn tim2_dier_set(position: u32, value: u32) {
-    let size = 32 - value.leading_zeros();
+pub fn tim2_dier_set(position: u32, size: u32, value: u32) {
     tim2_dier_write(rep_bits(tim2_dier_read(), position, size, value));
 }
-pub fn tim2_sr_set(position: u32, value: u32) {
-    let size = 32 - value.leading_zeros();
+pub fn tim2_sr_set(position: u32, size: u32, value: u32) {
     tim2_sr_write(rep_bits(tim2_sr_read(), position, size, value));
 }
 
-pub fn tim2_ccmr1_set(position: u32, value: u32) {
-    let size = 32 - value.leading_zeros();
+pub fn tim2_ccmr1_set(position: u32, size: u32, value: u32) {
     tim2_ccmr1_write(rep_bits(tim2_ccmr1_read(), position, size, value));
 }
-pub fn tim2_ccmr2_set(position: u32, value: u32) {
-    let size = 32 - value.leading_zeros();
+pub fn tim2_ccmr2_set(position: u32, size: u32, value: u32) {
     tim2_ccmr2_write(rep_bits(tim2_ccmr2_read(), position, size, value));
 }
-pub fn tim2_ccer_set(position: u32, value: u32) {
-    let size = 32 - value.leading_zeros();
+pub fn tim2_ccer_set(position: u32, size: u32, value: u32) {
     tim2_ccer_write(rep_bits(tim2_ccer_read(), position, size, value));
 }
-pub fn tim2_cnt_set(position: u32, value: u32) {
-    let size = 32 - value.leading_zeros();
+pub fn tim2_cnt_set(position: u32, size: u32, value: u32) {
     tim2_cnt_write(rep_bits(tim2_cnt_read(), position, size, value));
 }
-pub fn tim2_psc_set(position: u32, value: u32) {
-    let size = 32 - value.leading_zeros();
+pub fn tim2_psc_set(position: u32, size: u32, value: u32) {
     tim2_psc_write(rep_bits(tim2_psc_read(), position, size, value));
 }
-pub fn tim2_arr_set(position: u32, value: u32) {
-    let size = 32 - value.leading_zeros();
+pub fn tim2_arr_set(position: u32, size: u32, value: u32) {
     tim2_arr_write(rep_bits(tim2_arr_read(), position, size, value));
 }
-pub fn tim2_ccr1_set(position: u32, value: u32) {
-    let size = 32 - value.leading_zeros();
+pub fn tim2_ccr1_set(position: u32, size: u32, value: u32) {
     tim2_ccr1_write(rep_bits(tim2_ccr1_read(), position, size, value));
 }
-pub fn tim2_ccr2_set(position: u32, value: u32) {
-    let size = 32 - value.leading_zeros();
+pub fn tim2_ccr2_set(position: u32, size: u32, value: u32) {
     tim2_ccr2_write(rep_bits(tim2_ccr2_read(), position, size, value));
 }
-pub fn tim2_ccr3_set(position: u32, value: u32) {
-    let size = 32 - value.leading_zeros();
+pub fn tim2_ccr3_set(position: u32, size: u32, value: u32) {
     tim2_ccr3_write(rep_bits(tim2_ccr3_read(), position, size, value));
 }
-pub fn tim2_ccr4_set(position: u32, value: u32) {
-    let size = 32 - value.leading_zeros();
+pub fn tim2_ccr4_set(position: u32, size: u32, value: u32) {
     tim2_ccr4_write(rep_bits(tim2_ccr4_read(), position, size, value));
 }
-pub fn tim2_dcr_set(position: u32, value: u32) {
-    let size = 32 - value.leading_zeros();
+pub fn tim2_dcr_set(position: u32, size: u32, value: u32) {
     tim2_dcr_write(rep_bits(tim2_dcr_read(), position, size, value));
 }
-pub fn tim2_dmar_set(position: u32, value: u32) {
-    let size = 32 - value.leading_zeros();
+pub fn tim2_dmar_set(position: u32, size: u32, value: u32) {
     tim2_dmar_write(rep_bits(tim2_dmar_read(), position, size, value));
 }
-pub fn tim2_or_set(position: u32, value: u32) {
-    let size = 32 - value.leading_zeros();
+pub fn tim2_or_set(position: u32, size: u32, value: u32) {
     tim2_or_write(rep_bits(tim2_or_read(), position, size, value));
 }
     
         
-pub fn tim3_cr1_set(position: u32, value: u32) {
-    let size = 32 - value.leading_zeros();
+pub fn tim3_cr1_set(position: u32, size: u32, value: u32) {
     tim3_cr1_write(rep_bits(tim3_cr1_read(), position, size, value));
 }
-pub fn tim3_cr2_set(position: u32, value: u32) {
-    let size = 32 - value.leading_zeros();
+pub fn tim3_cr2_set(position: u32, size: u32, value: u32) {
     tim3_cr2_write(rep_bits(tim3_cr2_read(), position, size, value));
 }
-pub fn tim3_smcr_set(position: u32, value: u32) {
-    let size = 32 - value.leading_zeros();
+pub fn tim3_smcr_set(position: u32, size: u32, value: u32) {
     tim3_smcr_write(rep_bits(tim3_smcr_read(), position, size, value));
 }
-pub fn tim3_dier_set(position: u32, value: u32) {
-    let size = 32 - value.leading_zeros();
+pub fn tim3_dier_set(position: u32, size: u32, value: u32) {
     tim3_dier_write(rep_bits(tim3_dier_read(), position, size, value));
 }
-pub fn tim3_sr_set(position: u32, value: u32) {
-    let size = 32 - value.leading_zeros();
+pub fn tim3_sr_set(position: u32, size: u32, value: u32) {
     tim3_sr_write(rep_bits(tim3_sr_read(), position, size, value));
 }
 
-pub fn tim3_ccmr1_set(position: u32, value: u32) {
-    let size = 32 - value.leading_zeros();
+pub fn tim3_ccmr1_set(position: u32, size: u32, value: u32) {
     tim3_ccmr1_write(rep_bits(tim3_ccmr1_read(), position, size, value));
 }
-pub fn tim3_ccmr2_set(position: u32, value: u32) {
-    let size = 32 - value.leading_zeros();
+pub fn tim3_ccmr2_set(position: u32, size: u32, value: u32) {
     tim3_ccmr2_write(rep_bits(tim3_ccmr2_read(), position, size, value));
 }
-pub fn tim3_ccer_set(position: u32, value: u32) {
-    let size = 32 - value.leading_zeros();
+pub fn tim3_ccer_set(position: u32, size: u32, value: u32) {
     tim3_ccer_write(rep_bits(tim3_ccer_read(), position, size, value));
 }
-pub fn tim3_cnt_set(position: u32, value: u32) {
-    let size = 32 - value.leading_zeros();
+pub fn tim3_cnt_set(position: u32, size: u32, value: u32) {
     tim3_cnt_write(rep_bits(tim3_cnt_read(), position, size, value));
 }
-pub fn tim3_psc_set(position: u32, value: u32) {
-    let size = 32 - value.leading_zeros();
+pub fn tim3_psc_set(position: u32, size: u32, value: u32) {
     tim3_psc_write(rep_bits(tim3_psc_read(), position, size, value));
 }
-pub fn tim3_arr_set(position: u32, value: u32) {
-    let size = 32 - value.leading_zeros();
+pub fn tim3_arr_set(position: u32, size: u32, value: u32) {
     tim3_arr_write(rep_bits(tim3_arr_read(), position, size, value));
 }
-pub fn tim3_ccr1_set(position: u32, value: u32) {
-    let size = 32 - value.leading_zeros();
+pub fn tim3_ccr1_set(position: u32, size: u32, value: u32) {
     tim3_ccr1_write(rep_bits(tim3_ccr1_read(), position, size, value));
 }
-pub fn tim3_ccr2_set(position: u32, value: u32) {
-    let size = 32 - value.leading_zeros();
+pub fn tim3_ccr2_set(position: u32, size: u32, value: u32) {
     tim3_ccr2_write(rep_bits(tim3_ccr2_read(), position, size, value));
 }
-pub fn tim3_ccr3_set(position: u32, value: u32) {
-    let size = 32 - value.leading_zeros();
+pub fn tim3_ccr3_set(position: u32, size: u32, value: u32) {
     tim3_ccr3_write(rep_bits(tim3_ccr3_read(), position, size, value));
 }
-pub fn tim3_ccr4_set(position: u32, value: u32) {
-    let size = 32 - value.leading_zeros();
+pub fn tim3_ccr4_set(position: u32, size: u32, value: u32) {
     tim3_ccr4_write(rep_bits(tim3_ccr4_read(), position, size, value));
 }
-pub fn tim3_dcr_set(position: u32, value: u32) {
-    let size = 32 - value.leading_zeros();
+pub fn tim3_dcr_set(position: u32, size: u32, value: u32) {
     tim3_dcr_write(rep_bits(tim3_dcr_read(), position, size, value));
 }
-pub fn tim3_dmar_set(position: u32, value: u32) {
-    let size = 32 - value.leading_zeros();
+pub fn tim3_dmar_set(position: u32, size: u32, value: u32) {
     tim3_dmar_write(rep_bits(tim3_dmar_read(), position, size, value));
 }
     
         
-pub fn tim4_cr1_set(position: u32, value: u32) {
-    let size = 32 - value.leading_zeros();
+pub fn tim4_cr1_set(position: u32, size: u32, value: u32) {
     tim4_cr1_write(rep_bits(tim4_cr1_read(), position, size, value));
 }
-pub fn tim4_cr2_set(position: u32, value: u32) {
-    let size = 32 - value.leading_zeros();
+pub fn tim4_cr2_set(position: u32, size: u32, value: u32) {
     tim4_cr2_write(rep_bits(tim4_cr2_read(), position, size, value));
 }
-pub fn tim4_smcr_set(position: u32, value: u32) {
-    let size = 32 - value.leading_zeros();
+pub fn tim4_smcr_set(position: u32, size: u32, value: u32) {
     tim4_smcr_write(rep_bits(tim4_smcr_read(), position, size, value));
 }
-pub fn tim4_dier_set(position: u32, value: u32) {
-    let size = 32 - value.leading_zeros();
+pub fn tim4_dier_set(position: u32, size: u32, value: u32) {
     tim4_dier_write(rep_bits(tim4_dier_read(), position, size, value));
 }
-pub fn tim4_sr_set(position: u32, value: u32) {
-    let size = 32 - value.leading_zeros();
+pub fn tim4_sr_set(position: u32, size: u32, value: u32) {
     tim4_sr_write(rep_bits(tim4_sr_read(), position, size, value));
 }
 
-pub fn tim4_ccmr1_set(position: u32, value: u32) {
-    let size = 32 - value.leading_zeros();
+pub fn tim4_ccmr1_set(position: u32, size: u32, value: u32) {
     tim4_ccmr1_write(rep_bits(tim4_ccmr1_read(), position, size, value));
 }
-pub fn tim4_ccmr2_set(position: u32, value: u32) {
-    let size = 32 - value.leading_zeros();
+pub fn tim4_ccmr2_set(position: u32, size: u32, value: u32) {
     tim4_ccmr2_write(rep_bits(tim4_ccmr2_read(), position, size, value));
 }
-pub fn tim4_ccer_set(position: u32, value: u32) {
-    let size = 32 - value.leading_zeros();
+pub fn tim4_ccer_set(position: u32, size: u32, value: u32) {
     tim4_ccer_write(rep_bits(tim4_ccer_read(), position, size, value));
 }
-pub fn tim4_cnt_set(position: u32, value: u32) {
-    let size = 32 - value.leading_zeros();
+pub fn tim4_cnt_set(position: u32, size: u32, value: u32) {
     tim4_cnt_write(rep_bits(tim4_cnt_read(), position, size, value));
 }
-pub fn tim4_psc_set(position: u32, value: u32) {
-    let size = 32 - value.leading_zeros();
+pub fn tim4_psc_set(position: u32, size: u32, value: u32) {
     tim4_psc_write(rep_bits(tim4_psc_read(), position, size, value));
 }
-pub fn tim4_arr_set(position: u32, value: u32) {
-    let size = 32 - value.leading_zeros();
+pub fn tim4_arr_set(position: u32, size: u32, value: u32) {
     tim4_arr_write(rep_bits(tim4_arr_read(), position, size, value));
 }
-pub fn tim4_ccr1_set(position: u32, value: u32) {
-    let size = 32 - value.leading_zeros();
+pub fn tim4_ccr1_set(position: u32, size: u32, value: u32) {
     tim4_ccr1_write(rep_bits(tim4_ccr1_read(), position, size, value));
 }
-pub fn tim4_ccr2_set(position: u32, value: u32) {
-    let size = 32 - value.leading_zeros();
+pub fn tim4_ccr2_set(position: u32, size: u32, value: u32) {
     tim4_ccr2_write(rep_bits(tim4_ccr2_read(), position, size, value));
 }
-pub fn tim4_ccr3_set(position: u32, value: u32) {
-    let size = 32 - value.leading_zeros();
+pub fn tim4_ccr3_set(position: u32, size: u32, value: u32) {
     tim4_ccr3_write(rep_bits(tim4_ccr3_read(), position, size, value));
 }
-pub fn tim4_ccr4_set(position: u32, value: u32) {
-    let size = 32 - value.leading_zeros();
+pub fn tim4_ccr4_set(position: u32, size: u32, value: u32) {
     tim4_ccr4_write(rep_bits(tim4_ccr4_read(), position, size, value));
 }
-pub fn tim4_dcr_set(position: u32, value: u32) {
-    let size = 32 - value.leading_zeros();
+pub fn tim4_dcr_set(position: u32, size: u32, value: u32) {
     tim4_dcr_write(rep_bits(tim4_dcr_read(), position, size, value));
 }
-pub fn tim4_dmar_set(position: u32, value: u32) {
-    let size = 32 - value.leading_zeros();
+pub fn tim4_dmar_set(position: u32, size: u32, value: u32) {
     tim4_dmar_write(rep_bits(tim4_dmar_read(), position, size, value));
 }
     
         
-pub fn tim5_cr1_set(position: u32, value: u32) {
-    let size = 32 - value.leading_zeros();
+pub fn tim5_cr1_set(position: u32, size: u32, value: u32) {
     tim5_cr1_write(rep_bits(tim5_cr1_read(), position, size, value));
 }
-pub fn tim5_cr2_set(position: u32, value: u32) {
-    let size = 32 - value.leading_zeros();
+pub fn tim5_cr2_set(position: u32, size: u32, value: u32) {
     tim5_cr2_write(rep_bits(tim5_cr2_read(), position, size, value));
 }
-pub fn tim5_smcr_set(position: u32, value: u32) {
-    let size = 32 - value.leading_zeros();
+pub fn tim5_smcr_set(position: u32, size: u32, value: u32) {
     tim5_smcr_write(rep_bits(tim5_smcr_read(), position, size, value));
 }
-pub fn tim5_dier_set(position: u32, value: u32) {
-    let size = 32 - value.leading_zeros();
+pub fn tim5_dier_set(position: u32, size: u32, value: u32) {
     tim5_dier_write(rep_bits(tim5_dier_read(), position, size, value));
 }
-pub fn tim5_sr_set(position: u32, value: u32) {
-    let size = 32 - value.leading_zeros();
+pub fn tim5_sr_set(position: u32, size: u32, value: u32) {
     tim5_sr_write(rep_bits(tim5_sr_read(), position, size, value));
 }
 
-pub fn tim5_ccmr1_set(position: u32, value: u32) {
-    let size = 32 - value.leading_zeros();
+pub fn tim5_ccmr1_set(position: u32, size: u32, value: u32) {
     tim5_ccmr1_write(rep_bits(tim5_ccmr1_read(), position, size, value));
 }
-pub fn tim5_ccmr2_set(position: u32, value: u32) {
-    let size = 32 - value.leading_zeros();
+pub fn tim5_ccmr2_set(position: u32, size: u32, value: u32) {
     tim5_ccmr2_write(rep_bits(tim5_ccmr2_read(), position, size, value));
 }
-pub fn tim5_ccer_set(position: u32, value: u32) {
-    let size = 32 - value.leading_zeros();
+pub fn tim5_ccer_set(position: u32, size: u32, value: u32) {
     tim5_ccer_write(rep_bits(tim5_ccer_read(), position, size, value));
 }
-pub fn tim5_cnt_set(position: u32, value: u32) {
-    let size = 32 - value.leading_zeros();
+pub fn tim5_cnt_set(position: u32, size: u32, value: u32) {
     tim5_cnt_write(rep_bits(tim5_cnt_read(), position, size, value));
 }
-pub fn tim5_psc_set(position: u32, value: u32) {
-    let size = 32 - value.leading_zeros();
+pub fn tim5_psc_set(position: u32, size: u32, value: u32) {
     tim5_psc_write(rep_bits(tim5_psc_read(), position, size, value));
 }
-pub fn tim5_arr_set(position: u32, value: u32) {
-    let size = 32 - value.leading_zeros();
+pub fn tim5_arr_set(position: u32, size: u32, value: u32) {
     tim5_arr_write(rep_bits(tim5_arr_read(), position, size, value));
 }
-pub fn tim5_ccr1_set(position: u32, value: u32) {
-    let size = 32 - value.leading_zeros();
+pub fn tim5_ccr1_set(position: u32, size: u32, value: u32) {
     tim5_ccr1_write(rep_bits(tim5_ccr1_read(), position, size, value));
 }
-pub fn tim5_ccr2_set(position: u32, value: u32) {
-    let size = 32 - value.leading_zeros();
+pub fn tim5_ccr2_set(position: u32, size: u32, value: u32) {
     tim5_ccr2_write(rep_bits(tim5_ccr2_read(), position, size, value));
 }
-pub fn tim5_ccr3_set(position: u32, value: u32) {
-    let size = 32 - value.leading_zeros();
+pub fn tim5_ccr3_set(position: u32, size: u32, value: u32) {
     tim5_ccr3_write(rep_bits(tim5_ccr3_read(), position, size, value));
 }
-pub fn tim5_ccr4_set(position: u32, value: u32) {
-    let size = 32 - value.leading_zeros();
+pub fn tim5_ccr4_set(position: u32, size: u32, value: u32) {
     tim5_ccr4_write(rep_bits(tim5_ccr4_read(), position, size, value));
 }
-pub fn tim5_dcr_set(position: u32, value: u32) {
-    let size = 32 - value.leading_zeros();
+pub fn tim5_dcr_set(position: u32, size: u32, value: u32) {
     tim5_dcr_write(rep_bits(tim5_dcr_read(), position, size, value));
 }
-pub fn tim5_dmar_set(position: u32, value: u32) {
-    let size = 32 - value.leading_zeros();
+pub fn tim5_dmar_set(position: u32, size: u32, value: u32) {
     tim5_dmar_write(rep_bits(tim5_dmar_read(), position, size, value));
 }
-pub fn tim5_or_set(position: u32, value: u32) {
-    let size = 32 - value.leading_zeros();
+pub fn tim5_or_set(position: u32, size: u32, value: u32) {
     tim5_or_write(rep_bits(tim5_or_read(), position, size, value));
 }
     
         
-pub fn tim9_cr1_set(position: u32, value: u32) {
-    let size = 32 - value.leading_zeros();
+pub fn tim9_cr1_set(position: u32, size: u32, value: u32) {
     tim9_cr1_write(rep_bits(tim9_cr1_read(), position, size, value));
 }
-pub fn tim9_smcr_set(position: u32, value: u32) {
-    let size = 32 - value.leading_zeros();
+pub fn tim9_smcr_set(position: u32, size: u32, value: u32) {
     tim9_smcr_write(rep_bits(tim9_smcr_read(), position, size, value));
 }
-pub fn tim9_dier_set(position: u32, value: u32) {
-    let size = 32 - value.leading_zeros();
+pub fn tim9_dier_set(position: u32, size: u32, value: u32) {
     tim9_dier_write(rep_bits(tim9_dier_read(), position, size, value));
 }
-pub fn tim9_sr_set(position: u32, value: u32) {
-    let size = 32 - value.leading_zeros();
+pub fn tim9_sr_set(position: u32, size: u32, value: u32) {
     tim9_sr_write(rep_bits(tim9_sr_read(), position, size, value));
 }
 
-pub fn tim9_ccmr1_set(position: u32, value: u32) {
-    let size = 32 - value.leading_zeros();
+pub fn tim9_ccmr1_set(position: u32, size: u32, value: u32) {
     tim9_ccmr1_write(rep_bits(tim9_ccmr1_read(), position, size, value));
 }
-pub fn tim9_ccer_set(position: u32, value: u32) {
-    let size = 32 - value.leading_zeros();
+pub fn tim9_ccer_set(position: u32, size: u32, value: u32) {
     tim9_ccer_write(rep_bits(tim9_ccer_read(), position, size, value));
 }
-pub fn tim9_cnt_set(position: u32, value: u32) {
-    let size = 32 - value.leading_zeros();
+pub fn tim9_cnt_set(position: u32, size: u32, value: u32) {
     tim9_cnt_write(rep_bits(tim9_cnt_read(), position, size, value));
 }
-pub fn tim9_psc_set(position: u32, value: u32) {
-    let size = 32 - value.leading_zeros();
+pub fn tim9_psc_set(position: u32, size: u32, value: u32) {
     tim9_psc_write(rep_bits(tim9_psc_read(), position, size, value));
 }
-pub fn tim9_arr_set(position: u32, value: u32) {
-    let size = 32 - value.leading_zeros();
+pub fn tim9_arr_set(position: u32, size: u32, value: u32) {
     tim9_arr_write(rep_bits(tim9_arr_read(), position, size, value));
 }
-pub fn tim9_ccr1_set(position: u32, value: u32) {
-    let size = 32 - value.leading_zeros();
+pub fn tim9_ccr1_set(position: u32, size: u32, value: u32) {
     tim9_ccr1_write(rep_bits(tim9_ccr1_read(), position, size, value));
 }
-pub fn tim9_ccr2_set(position: u32, value: u32) {
-    let size = 32 - value.leading_zeros();
+pub fn tim9_ccr2_set(position: u32, size: u32, value: u32) {
     tim9_ccr2_write(rep_bits(tim9_ccr2_read(), position, size, value));
 }
     
         
-pub fn tim12_cr1_set(position: u32, value: u32) {
-    let size = 32 - value.leading_zeros();
+pub fn tim12_cr1_set(position: u32, size: u32, value: u32) {
     tim12_cr1_write(rep_bits(tim12_cr1_read(), position, size, value));
 }
-pub fn tim12_smcr_set(position: u32, value: u32) {
-    let size = 32 - value.leading_zeros();
+pub fn tim12_smcr_set(position: u32, size: u32, value: u32) {
     tim12_smcr_write(rep_bits(tim12_smcr_read(), position, size, value));
 }
-pub fn tim12_dier_set(position: u32, value: u32) {
-    let size = 32 - value.leading_zeros();
+pub fn tim12_dier_set(position: u32, size: u32, value: u32) {
     tim12_dier_write(rep_bits(tim12_dier_read(), position, size, value));
 }
-pub fn tim12_sr_set(position: u32, value: u32) {
-    let size = 32 - value.leading_zeros();
+pub fn tim12_sr_set(position: u32, size: u32, value: u32) {
     tim12_sr_write(rep_bits(tim12_sr_read(), position, size, value));
 }
 
-pub fn tim12_ccmr1_set(position: u32, value: u32) {
-    let size = 32 - value.leading_zeros();
+pub fn tim12_ccmr1_set(position: u32, size: u32, value: u32) {
     tim12_ccmr1_write(rep_bits(tim12_ccmr1_read(), position, size, value));
 }
-pub fn tim12_ccer_set(position: u32, value: u32) {
-    let size = 32 - value.leading_zeros();
+pub fn tim12_ccer_set(position: u32, size: u32, value: u32) {
     tim12_ccer_write(rep_bits(tim12_ccer_read(), position, size, value));
 }
-pub fn tim12_cnt_set(position: u32, value: u32) {
-    let size = 32 - value.leading_zeros();
+pub fn tim12_cnt_set(position: u32, size: u32, value: u32) {
     tim12_cnt_write(rep_bits(tim12_cnt_read(), position, size, value));
 }
-pub fn tim12_psc_set(position: u32, value: u32) {
-    let size = 32 - value.leading_zeros();
+pub fn tim12_psc_set(position: u32, size: u32, value: u32) {
     tim12_psc_write(rep_bits(tim12_psc_read(), position, size, value));
 }
-pub fn tim12_arr_set(position: u32, value: u32) {
-    let size = 32 - value.leading_zeros();
+pub fn tim12_arr_set(position: u32, size: u32, value: u32) {
     tim12_arr_write(rep_bits(tim12_arr_read(), position, size, value));
 }
-pub fn tim12_ccr1_set(position: u32, value: u32) {
-    let size = 32 - value.leading_zeros();
+pub fn tim12_ccr1_set(position: u32, size: u32, value: u32) {
     tim12_ccr1_write(rep_bits(tim12_ccr1_read(), position, size, value));
 }
-pub fn tim12_ccr2_set(position: u32, value: u32) {
-    let size = 32 - value.leading_zeros();
+pub fn tim12_ccr2_set(position: u32, size: u32, value: u32) {
     tim12_ccr2_write(rep_bits(tim12_ccr2_read(), position, size, value));
 }
     
         
-pub fn tim10_cr1_set(position: u32, value: u32) {
-    let size = 32 - value.leading_zeros();
+pub fn tim10_cr1_set(position: u32, size: u32, value: u32) {
     tim10_cr1_write(rep_bits(tim10_cr1_read(), position, size, value));
 }
-pub fn tim10_dier_set(position: u32, value: u32) {
-    let size = 32 - value.leading_zeros();
+pub fn tim10_dier_set(position: u32, size: u32, value: u32) {
     tim10_dier_write(rep_bits(tim10_dier_read(), position, size, value));
 }
-pub fn tim10_sr_set(position: u32, value: u32) {
-    let size = 32 - value.leading_zeros();
+pub fn tim10_sr_set(position: u32, size: u32, value: u32) {
     tim10_sr_write(rep_bits(tim10_sr_read(), position, size, value));
 }
 
-pub fn tim10_ccmr1_set(position: u32, value: u32) {
-    let size = 32 - value.leading_zeros();
+pub fn tim10_ccmr1_set(position: u32, size: u32, value: u32) {
     tim10_ccmr1_write(rep_bits(tim10_ccmr1_read(), position, size, value));
 }
-pub fn tim10_ccer_set(position: u32, value: u32) {
-    let size = 32 - value.leading_zeros();
+pub fn tim10_ccer_set(position: u32, size: u32, value: u32) {
     tim10_ccer_write(rep_bits(tim10_ccer_read(), position, size, value));
 }
-pub fn tim10_cnt_set(position: u32, value: u32) {
-    let size = 32 - value.leading_zeros();
+pub fn tim10_cnt_set(position: u32, size: u32, value: u32) {
     tim10_cnt_write(rep_bits(tim10_cnt_read(), position, size, value));
 }
-pub fn tim10_psc_set(position: u32, value: u32) {
-    let size = 32 - value.leading_zeros();
+pub fn tim10_psc_set(position: u32, size: u32, value: u32) {
     tim10_psc_write(rep_bits(tim10_psc_read(), position, size, value));
 }
-pub fn tim10_arr_set(position: u32, value: u32) {
-    let size = 32 - value.leading_zeros();
+pub fn tim10_arr_set(position: u32, size: u32, value: u32) {
     tim10_arr_write(rep_bits(tim10_arr_read(), position, size, value));
 }
-pub fn tim10_ccr1_set(position: u32, value: u32) {
-    let size = 32 - value.leading_zeros();
+pub fn tim10_ccr1_set(position: u32, size: u32, value: u32) {
     tim10_ccr1_write(rep_bits(tim10_ccr1_read(), position, size, value));
 }
-pub fn tim10_or_set(position: u32, value: u32) {
-    let size = 32 - value.leading_zeros();
+pub fn tim10_or_set(position: u32, size: u32, value: u32) {
     tim10_or_write(rep_bits(tim10_or_read(), position, size, value));
 }
     
         
-pub fn tim11_cr1_set(position: u32, value: u32) {
-    let size = 32 - value.leading_zeros();
+pub fn tim11_cr1_set(position: u32, size: u32, value: u32) {
     tim11_cr1_write(rep_bits(tim11_cr1_read(), position, size, value));
 }
-pub fn tim11_dier_set(position: u32, value: u32) {
-    let size = 32 - value.leading_zeros();
+pub fn tim11_dier_set(position: u32, size: u32, value: u32) {
     tim11_dier_write(rep_bits(tim11_dier_read(), position, size, value));
 }
-pub fn tim11_sr_set(position: u32, value: u32) {
-    let size = 32 - value.leading_zeros();
+pub fn tim11_sr_set(position: u32, size: u32, value: u32) {
     tim11_sr_write(rep_bits(tim11_sr_read(), position, size, value));
 }
 
-pub fn tim11_ccmr1_set(position: u32, value: u32) {
-    let size = 32 - value.leading_zeros();
+pub fn tim11_ccmr1_set(position: u32, size: u32, value: u32) {
     tim11_ccmr1_write(rep_bits(tim11_ccmr1_read(), position, size, value));
 }
-pub fn tim11_ccer_set(position: u32, value: u32) {
-    let size = 32 - value.leading_zeros();
+pub fn tim11_ccer_set(position: u32, size: u32, value: u32) {
     tim11_ccer_write(rep_bits(tim11_ccer_read(), position, size, value));
 }
-pub fn tim11_cnt_set(position: u32, value: u32) {
-    let size = 32 - value.leading_zeros();
+pub fn tim11_cnt_set(position: u32, size: u32, value: u32) {
     tim11_cnt_write(rep_bits(tim11_cnt_read(), position, size, value));
 }
-pub fn tim11_psc_set(position: u32, value: u32) {
-    let size = 32 - value.leading_zeros();
+pub fn tim11_psc_set(position: u32, size: u32, value: u32) {
     tim11_psc_write(rep_bits(tim11_psc_read(), position, size, value));
 }
-pub fn tim11_arr_set(position: u32, value: u32) {
-    let size = 32 - value.leading_zeros();
+pub fn tim11_arr_set(position: u32, size: u32, value: u32) {
     tim11_arr_write(rep_bits(tim11_arr_read(), position, size, value));
 }
-pub fn tim11_ccr1_set(position: u32, value: u32) {
-    let size = 32 - value.leading_zeros();
+pub fn tim11_ccr1_set(position: u32, size: u32, value: u32) {
     tim11_ccr1_write(rep_bits(tim11_ccr1_read(), position, size, value));
 }
-pub fn tim11_or_set(position: u32, value: u32) {
-    let size = 32 - value.leading_zeros();
+pub fn tim11_or_set(position: u32, size: u32, value: u32) {
     tim11_or_write(rep_bits(tim11_or_read(), position, size, value));
 }
     
         
-pub fn tim13_cr1_set(position: u32, value: u32) {
-    let size = 32 - value.leading_zeros();
+pub fn tim13_cr1_set(position: u32, size: u32, value: u32) {
     tim13_cr1_write(rep_bits(tim13_cr1_read(), position, size, value));
 }
-pub fn tim13_dier_set(position: u32, value: u32) {
-    let size = 32 - value.leading_zeros();
+pub fn tim13_dier_set(position: u32, size: u32, value: u32) {
     tim13_dier_write(rep_bits(tim13_dier_read(), position, size, value));
 }
-pub fn tim13_sr_set(position: u32, value: u32) {
-    let size = 32 - value.leading_zeros();
+pub fn tim13_sr_set(position: u32, size: u32, value: u32) {
     tim13_sr_write(rep_bits(tim13_sr_read(), position, size, value));
 }
 
-pub fn tim13_ccmr1_set(position: u32, value: u32) {
-    let size = 32 - value.leading_zeros();
+pub fn tim13_ccmr1_set(position: u32, size: u32, value: u32) {
     tim13_ccmr1_write(rep_bits(tim13_ccmr1_read(), position, size, value));
 }
-pub fn tim13_ccer_set(position: u32, value: u32) {
-    let size = 32 - value.leading_zeros();
+pub fn tim13_ccer_set(position: u32, size: u32, value: u32) {
     tim13_ccer_write(rep_bits(tim13_ccer_read(), position, size, value));
 }
-pub fn tim13_cnt_set(position: u32, value: u32) {
-    let size = 32 - value.leading_zeros();
+pub fn tim13_cnt_set(position: u32, size: u32, value: u32) {
     tim13_cnt_write(rep_bits(tim13_cnt_read(), position, size, value));
 }
-pub fn tim13_psc_set(position: u32, value: u32) {
-    let size = 32 - value.leading_zeros();
+pub fn tim13_psc_set(position: u32, size: u32, value: u32) {
     tim13_psc_write(rep_bits(tim13_psc_read(), position, size, value));
 }
-pub fn tim13_arr_set(position: u32, value: u32) {
-    let size = 32 - value.leading_zeros();
+pub fn tim13_arr_set(position: u32, size: u32, value: u32) {
     tim13_arr_write(rep_bits(tim13_arr_read(), position, size, value));
 }
-pub fn tim13_ccr1_set(position: u32, value: u32) {
-    let size = 32 - value.leading_zeros();
+pub fn tim13_ccr1_set(position: u32, size: u32, value: u32) {
     tim13_ccr1_write(rep_bits(tim13_ccr1_read(), position, size, value));
 }
-pub fn tim13_or_set(position: u32, value: u32) {
-    let size = 32 - value.leading_zeros();
+pub fn tim13_or_set(position: u32, size: u32, value: u32) {
     tim13_or_write(rep_bits(tim13_or_read(), position, size, value));
 }
     
         
-pub fn tim14_cr1_set(position: u32, value: u32) {
-    let size = 32 - value.leading_zeros();
+pub fn tim14_cr1_set(position: u32, size: u32, value: u32) {
     tim14_cr1_write(rep_bits(tim14_cr1_read(), position, size, value));
 }
-pub fn tim14_dier_set(position: u32, value: u32) {
-    let size = 32 - value.leading_zeros();
+pub fn tim14_dier_set(position: u32, size: u32, value: u32) {
     tim14_dier_write(rep_bits(tim14_dier_read(), position, size, value));
 }
-pub fn tim14_sr_set(position: u32, value: u32) {
-    let size = 32 - value.leading_zeros();
+pub fn tim14_sr_set(position: u32, size: u32, value: u32) {
     tim14_sr_write(rep_bits(tim14_sr_read(), position, size, value));
 }
 
-pub fn tim14_ccmr1_set(position: u32, value: u32) {
-    let size = 32 - value.leading_zeros();
+pub fn tim14_ccmr1_set(position: u32, size: u32, value: u32) {
     tim14_ccmr1_write(rep_bits(tim14_ccmr1_read(), position, size, value));
 }
-pub fn tim14_ccer_set(position: u32, value: u32) {
-    let size = 32 - value.leading_zeros();
+pub fn tim14_ccer_set(position: u32, size: u32, value: u32) {
     tim14_ccer_write(rep_bits(tim14_ccer_read(), position, size, value));
 }
-pub fn tim14_cnt_set(position: u32, value: u32) {
-    let size = 32 - value.leading_zeros();
+pub fn tim14_cnt_set(position: u32, size: u32, value: u32) {
     tim14_cnt_write(rep_bits(tim14_cnt_read(), position, size, value));
 }
-pub fn tim14_psc_set(position: u32, value: u32) {
-    let size = 32 - value.leading_zeros();
+pub fn tim14_psc_set(position: u32, size: u32, value: u32) {
     tim14_psc_write(rep_bits(tim14_psc_read(), position, size, value));
 }
-pub fn tim14_arr_set(position: u32, value: u32) {
-    let size = 32 - value.leading_zeros();
+pub fn tim14_arr_set(position: u32, size: u32, value: u32) {
     tim14_arr_write(rep_bits(tim14_arr_read(), position, size, value));
 }
-pub fn tim14_ccr1_set(position: u32, value: u32) {
-    let size = 32 - value.leading_zeros();
+pub fn tim14_ccr1_set(position: u32, size: u32, value: u32) {
     tim14_ccr1_write(rep_bits(tim14_ccr1_read(), position, size, value));
 }
-pub fn tim14_or_set(position: u32, value: u32) {
-    let size = 32 - value.leading_zeros();
+pub fn tim14_or_set(position: u32, size: u32, value: u32) {
     tim14_or_write(rep_bits(tim14_or_read(), position, size, value));
 }
     
         
-pub fn tim6_cr1_set(position: u32, value: u32) {
-    let size = 32 - value.leading_zeros();
+pub fn tim6_cr1_set(position: u32, size: u32, value: u32) {
     tim6_cr1_write(rep_bits(tim6_cr1_read(), position, size, value));
 }
-pub fn tim6_cr2_set(position: u32, value: u32) {
-    let size = 32 - value.leading_zeros();
+pub fn tim6_cr2_set(position: u32, size: u32, value: u32) {
     tim6_cr2_write(rep_bits(tim6_cr2_read(), position, size, value));
 }
-pub fn tim6_dier_set(position: u32, value: u32) {
-    let size = 32 - value.leading_zeros();
+pub fn tim6_dier_set(position: u32, size: u32, value: u32) {
     tim6_dier_write(rep_bits(tim6_dier_read(), position, size, value));
 }
-pub fn tim6_sr_set(position: u32, value: u32) {
-    let size = 32 - value.leading_zeros();
+pub fn tim6_sr_set(position: u32, size: u32, value: u32) {
     tim6_sr_write(rep_bits(tim6_sr_read(), position, size, value));
 }
 
-pub fn tim6_cnt_set(position: u32, value: u32) {
-    let size = 32 - value.leading_zeros();
+pub fn tim6_cnt_set(position: u32, size: u32, value: u32) {
     tim6_cnt_write(rep_bits(tim6_cnt_read(), position, size, value));
 }
-pub fn tim6_psc_set(position: u32, value: u32) {
-    let size = 32 - value.leading_zeros();
+pub fn tim6_psc_set(position: u32, size: u32, value: u32) {
     tim6_psc_write(rep_bits(tim6_psc_read(), position, size, value));
 }
-pub fn tim6_arr_set(position: u32, value: u32) {
-    let size = 32 - value.leading_zeros();
+pub fn tim6_arr_set(position: u32, size: u32, value: u32) {
     tim6_arr_write(rep_bits(tim6_arr_read(), position, size, value));
 }
     
         
-pub fn tim7_cr1_set(position: u32, value: u32) {
-    let size = 32 - value.leading_zeros();
+pub fn tim7_cr1_set(position: u32, size: u32, value: u32) {
     tim7_cr1_write(rep_bits(tim7_cr1_read(), position, size, value));
 }
-pub fn tim7_cr2_set(position: u32, value: u32) {
-    let size = 32 - value.leading_zeros();
+pub fn tim7_cr2_set(position: u32, size: u32, value: u32) {
     tim7_cr2_write(rep_bits(tim7_cr2_read(), position, size, value));
 }
-pub fn tim7_dier_set(position: u32, value: u32) {
-    let size = 32 - value.leading_zeros();
+pub fn tim7_dier_set(position: u32, size: u32, value: u32) {
     tim7_dier_write(rep_bits(tim7_dier_read(), position, size, value));
 }
-pub fn tim7_sr_set(position: u32, value: u32) {
-    let size = 32 - value.leading_zeros();
+pub fn tim7_sr_set(position: u32, size: u32, value: u32) {
     tim7_sr_write(rep_bits(tim7_sr_read(), position, size, value));
 }
 
-pub fn tim7_cnt_set(position: u32, value: u32) {
-    let size = 32 - value.leading_zeros();
+pub fn tim7_cnt_set(position: u32, size: u32, value: u32) {
     tim7_cnt_write(rep_bits(tim7_cnt_read(), position, size, value));
 }
-pub fn tim7_psc_set(position: u32, value: u32) {
-    let size = 32 - value.leading_zeros();
+pub fn tim7_psc_set(position: u32, size: u32, value: u32) {
     tim7_psc_write(rep_bits(tim7_psc_read(), position, size, value));
 }
-pub fn tim7_arr_set(position: u32, value: u32) {
-    let size = 32 - value.leading_zeros();
+pub fn tim7_arr_set(position: u32, size: u32, value: u32) {
     tim7_arr_write(rep_bits(tim7_arr_read(), position, size, value));
 }
     
@@ -3180,164 +2998,110 @@ pub fn tim1_cr1_seti(value: u32) {
     match value.count_ones() {
         1 => tim1_cr1_write(tim1_cr1_read() | value),
         31 => tim1_cr1_write(tim1_cr1_read() & value),
-        _ => (),
-    }
-
-
+        _ => (),}
 }
 pub fn tim1_cr2_seti(value: u32) {
     match value.count_ones() {
         1 => tim1_cr2_write(tim1_cr2_read() | value),
         31 => tim1_cr2_write(tim1_cr2_read() & value),
-        _ => (),
-    }
-
-
+        _ => (),}
 }
 pub fn tim1_smcr_seti(value: u32) {
     match value.count_ones() {
         1 => tim1_smcr_write(tim1_smcr_read() | value),
         31 => tim1_smcr_write(tim1_smcr_read() & value),
-        _ => (),
-    }
-
-
+        _ => (),}
 }
 pub fn tim1_dier_seti(value: u32) {
     match value.count_ones() {
         1 => tim1_dier_write(tim1_dier_read() | value),
         31 => tim1_dier_write(tim1_dier_read() & value),
-        _ => (),
-    }
-
-
+        _ => (),}
 }
 pub fn tim1_sr_seti(value: u32) {
     match value.count_ones() {
         1 => tim1_sr_write(tim1_sr_read() | value),
         31 => tim1_sr_write(tim1_sr_read() & value),
-        _ => (),
-    }
-
-
+        _ => (),}
 }
 
 pub fn tim1_ccmr1_seti(value: u32) {
     match value.count_ones() {
         1 => tim1_ccmr1_write(tim1_ccmr1_read() | value),
         31 => tim1_ccmr1_write(tim1_ccmr1_read() & value),
-        _ => (),
-    }
-
-
+        _ => (),}
 }
 pub fn tim1_ccmr2_seti(value: u32) {
     match value.count_ones() {
         1 => tim1_ccmr2_write(tim1_ccmr2_read() | value),
         31 => tim1_ccmr2_write(tim1_ccmr2_read() & value),
-        _ => (),
-    }
-
-
+        _ => (),}
 }
 pub fn tim1_ccer_seti(value: u32) {
     match value.count_ones() {
         1 => tim1_ccer_write(tim1_ccer_read() | value),
         31 => tim1_ccer_write(tim1_ccer_read() & value),
-        _ => (),
-    }
-
-
+        _ => (),}
 }
 pub fn tim1_cnt_seti(value: u32) {
     match value.count_ones() {
         1 => tim1_cnt_write(tim1_cnt_read() | value),
         31 => tim1_cnt_write(tim1_cnt_read() & value),
-        _ => (),
-    }
-
-
+        _ => (),}
 }
 pub fn tim1_psc_seti(value: u32) {
     match value.count_ones() {
         1 => tim1_psc_write(tim1_psc_read() | value),
         31 => tim1_psc_write(tim1_psc_read() & value),
-        _ => (),
-    }
-
-
+        _ => (),}
 }
 pub fn tim1_arr_seti(value: u32) {
     match value.count_ones() {
         1 => tim1_arr_write(tim1_arr_read() | value),
         31 => tim1_arr_write(tim1_arr_read() & value),
-        _ => (),
-    }
-
-
+        _ => (),}
 }
 pub fn tim1_ccr1_seti(value: u32) {
     match value.count_ones() {
         1 => tim1_ccr1_write(tim1_ccr1_read() | value),
         31 => tim1_ccr1_write(tim1_ccr1_read() & value),
-        _ => (),
-    }
-
-
+        _ => (),}
 }
 pub fn tim1_ccr2_seti(value: u32) {
     match value.count_ones() {
         1 => tim1_ccr2_write(tim1_ccr2_read() | value),
         31 => tim1_ccr2_write(tim1_ccr2_read() & value),
-        _ => (),
-    }
-
-
+        _ => (),}
 }
 pub fn tim1_ccr3_seti(value: u32) {
     match value.count_ones() {
         1 => tim1_ccr3_write(tim1_ccr3_read() | value),
         31 => tim1_ccr3_write(tim1_ccr3_read() & value),
-        _ => (),
-    }
-
-
+        _ => (),}
 }
 pub fn tim1_ccr4_seti(value: u32) {
     match value.count_ones() {
         1 => tim1_ccr4_write(tim1_ccr4_read() | value),
         31 => tim1_ccr4_write(tim1_ccr4_read() & value),
-        _ => (),
-    }
-
-
+        _ => (),}
 }
 pub fn tim1_btdr_seti(value: u32) {
     match value.count_ones() {
         1 => tim1_btdr_write(tim1_btdr_read() | value),
         31 => tim1_btdr_write(tim1_btdr_read() & value),
-        _ => (),
-    }
-
-
+        _ => (),}
 }
 pub fn tim1_dcr_seti(value: u32) {
     match value.count_ones() {
         1 => tim1_dcr_write(tim1_dcr_read() | value),
         31 => tim1_dcr_write(tim1_dcr_read() & value),
-        _ => (),
-    }
-
-
+        _ => (),}
 }
 pub fn tim1_dmar_seti(value: u32) {
     match value.count_ones() {
         1 => tim1_dmar_write(tim1_dmar_read() | value),
         31 => tim1_dmar_write(tim1_dmar_read() & value),
-        _ => (),
-    }
-
-
+        _ => (),}
 }
     
         
@@ -3345,164 +3109,110 @@ pub fn tim8_cr1_seti(value: u32) {
     match value.count_ones() {
         1 => tim8_cr1_write(tim8_cr1_read() | value),
         31 => tim8_cr1_write(tim8_cr1_read() & value),
-        _ => (),
-    }
-
-
+        _ => (),}
 }
 pub fn tim8_cr2_seti(value: u32) {
     match value.count_ones() {
         1 => tim8_cr2_write(tim8_cr2_read() | value),
         31 => tim8_cr2_write(tim8_cr2_read() & value),
-        _ => (),
-    }
-
-
+        _ => (),}
 }
 pub fn tim8_smcr_seti(value: u32) {
     match value.count_ones() {
         1 => tim8_smcr_write(tim8_smcr_read() | value),
         31 => tim8_smcr_write(tim8_smcr_read() & value),
-        _ => (),
-    }
-
-
+        _ => (),}
 }
 pub fn tim8_dier_seti(value: u32) {
     match value.count_ones() {
         1 => tim8_dier_write(tim8_dier_read() | value),
         31 => tim8_dier_write(tim8_dier_read() & value),
-        _ => (),
-    }
-
-
+        _ => (),}
 }
 pub fn tim8_sr_seti(value: u32) {
     match value.count_ones() {
         1 => tim8_sr_write(tim8_sr_read() | value),
         31 => tim8_sr_write(tim8_sr_read() & value),
-        _ => (),
-    }
-
-
+        _ => (),}
 }
 
 pub fn tim8_ccmr1_seti(value: u32) {
     match value.count_ones() {
         1 => tim8_ccmr1_write(tim8_ccmr1_read() | value),
         31 => tim8_ccmr1_write(tim8_ccmr1_read() & value),
-        _ => (),
-    }
-
-
+        _ => (),}
 }
 pub fn tim8_ccmr2_seti(value: u32) {
     match value.count_ones() {
         1 => tim8_ccmr2_write(tim8_ccmr2_read() | value),
         31 => tim8_ccmr2_write(tim8_ccmr2_read() & value),
-        _ => (),
-    }
-
-
+        _ => (),}
 }
 pub fn tim8_ccer_seti(value: u32) {
     match value.count_ones() {
         1 => tim8_ccer_write(tim8_ccer_read() | value),
         31 => tim8_ccer_write(tim8_ccer_read() & value),
-        _ => (),
-    }
-
-
+        _ => (),}
 }
 pub fn tim8_cnt_seti(value: u32) {
     match value.count_ones() {
         1 => tim8_cnt_write(tim8_cnt_read() | value),
         31 => tim8_cnt_write(tim8_cnt_read() & value),
-        _ => (),
-    }
-
-
+        _ => (),}
 }
 pub fn tim8_psc_seti(value: u32) {
     match value.count_ones() {
         1 => tim8_psc_write(tim8_psc_read() | value),
         31 => tim8_psc_write(tim8_psc_read() & value),
-        _ => (),
-    }
-
-
+        _ => (),}
 }
 pub fn tim8_arr_seti(value: u32) {
     match value.count_ones() {
         1 => tim8_arr_write(tim8_arr_read() | value),
         31 => tim8_arr_write(tim8_arr_read() & value),
-        _ => (),
-    }
-
-
+        _ => (),}
 }
 pub fn tim8_ccr1_seti(value: u32) {
     match value.count_ones() {
         1 => tim8_ccr1_write(tim8_ccr1_read() | value),
         31 => tim8_ccr1_write(tim8_ccr1_read() & value),
-        _ => (),
-    }
-
-
+        _ => (),}
 }
 pub fn tim8_ccr2_seti(value: u32) {
     match value.count_ones() {
         1 => tim8_ccr2_write(tim8_ccr2_read() | value),
         31 => tim8_ccr2_write(tim8_ccr2_read() & value),
-        _ => (),
-    }
-
-
+        _ => (),}
 }
 pub fn tim8_ccr3_seti(value: u32) {
     match value.count_ones() {
         1 => tim8_ccr3_write(tim8_ccr3_read() | value),
         31 => tim8_ccr3_write(tim8_ccr3_read() & value),
-        _ => (),
-    }
-
-
+        _ => (),}
 }
 pub fn tim8_ccr4_seti(value: u32) {
     match value.count_ones() {
         1 => tim8_ccr4_write(tim8_ccr4_read() | value),
         31 => tim8_ccr4_write(tim8_ccr4_read() & value),
-        _ => (),
-    }
-
-
+        _ => (),}
 }
 pub fn tim8_btdr_seti(value: u32) {
     match value.count_ones() {
         1 => tim8_btdr_write(tim8_btdr_read() | value),
         31 => tim8_btdr_write(tim8_btdr_read() & value),
-        _ => (),
-    }
-
-
+        _ => (),}
 }
 pub fn tim8_dcr_seti(value: u32) {
     match value.count_ones() {
         1 => tim8_dcr_write(tim8_dcr_read() | value),
         31 => tim8_dcr_write(tim8_dcr_read() & value),
-        _ => (),
-    }
-
-
+        _ => (),}
 }
 pub fn tim8_dmar_seti(value: u32) {
     match value.count_ones() {
         1 => tim8_dmar_write(tim8_dmar_read() | value),
         31 => tim8_dmar_write(tim8_dmar_read() & value),
-        _ => (),
-    }
-
-
+        _ => (),}
 }
     
         
@@ -3510,164 +3220,110 @@ pub fn tim2_cr1_seti(value: u32) {
     match value.count_ones() {
         1 => tim2_cr1_write(tim2_cr1_read() | value),
         31 => tim2_cr1_write(tim2_cr1_read() & value),
-        _ => (),
-    }
-
-
+        _ => (),}
 }
 pub fn tim2_cr2_seti(value: u32) {
     match value.count_ones() {
         1 => tim2_cr2_write(tim2_cr2_read() | value),
         31 => tim2_cr2_write(tim2_cr2_read() & value),
-        _ => (),
-    }
-
-
+        _ => (),}
 }
 pub fn tim2_smcr_seti(value: u32) {
     match value.count_ones() {
         1 => tim2_smcr_write(tim2_smcr_read() | value),
         31 => tim2_smcr_write(tim2_smcr_read() & value),
-        _ => (),
-    }
-
-
+        _ => (),}
 }
 pub fn tim2_dier_seti(value: u32) {
     match value.count_ones() {
         1 => tim2_dier_write(tim2_dier_read() | value),
         31 => tim2_dier_write(tim2_dier_read() & value),
-        _ => (),
-    }
-
-
+        _ => (),}
 }
 pub fn tim2_sr_seti(value: u32) {
     match value.count_ones() {
         1 => tim2_sr_write(tim2_sr_read() | value),
         31 => tim2_sr_write(tim2_sr_read() & value),
-        _ => (),
-    }
-
-
+        _ => (),}
 }
 
 pub fn tim2_ccmr1_seti(value: u32) {
     match value.count_ones() {
         1 => tim2_ccmr1_write(tim2_ccmr1_read() | value),
         31 => tim2_ccmr1_write(tim2_ccmr1_read() & value),
-        _ => (),
-    }
-
-
+        _ => (),}
 }
 pub fn tim2_ccmr2_seti(value: u32) {
     match value.count_ones() {
         1 => tim2_ccmr2_write(tim2_ccmr2_read() | value),
         31 => tim2_ccmr2_write(tim2_ccmr2_read() & value),
-        _ => (),
-    }
-
-
+        _ => (),}
 }
 pub fn tim2_ccer_seti(value: u32) {
     match value.count_ones() {
         1 => tim2_ccer_write(tim2_ccer_read() | value),
         31 => tim2_ccer_write(tim2_ccer_read() & value),
-        _ => (),
-    }
-
-
+        _ => (),}
 }
 pub fn tim2_cnt_seti(value: u32) {
     match value.count_ones() {
         1 => tim2_cnt_write(tim2_cnt_read() | value),
         31 => tim2_cnt_write(tim2_cnt_read() & value),
-        _ => (),
-    }
-
-
+        _ => (),}
 }
 pub fn tim2_psc_seti(value: u32) {
     match value.count_ones() {
         1 => tim2_psc_write(tim2_psc_read() | value),
         31 => tim2_psc_write(tim2_psc_read() & value),
-        _ => (),
-    }
-
-
+        _ => (),}
 }
 pub fn tim2_arr_seti(value: u32) {
     match value.count_ones() {
         1 => tim2_arr_write(tim2_arr_read() | value),
         31 => tim2_arr_write(tim2_arr_read() & value),
-        _ => (),
-    }
-
-
+        _ => (),}
 }
 pub fn tim2_ccr1_seti(value: u32) {
     match value.count_ones() {
         1 => tim2_ccr1_write(tim2_ccr1_read() | value),
         31 => tim2_ccr1_write(tim2_ccr1_read() & value),
-        _ => (),
-    }
-
-
+        _ => (),}
 }
 pub fn tim2_ccr2_seti(value: u32) {
     match value.count_ones() {
         1 => tim2_ccr2_write(tim2_ccr2_read() | value),
         31 => tim2_ccr2_write(tim2_ccr2_read() & value),
-        _ => (),
-    }
-
-
+        _ => (),}
 }
 pub fn tim2_ccr3_seti(value: u32) {
     match value.count_ones() {
         1 => tim2_ccr3_write(tim2_ccr3_read() | value),
         31 => tim2_ccr3_write(tim2_ccr3_read() & value),
-        _ => (),
-    }
-
-
+        _ => (),}
 }
 pub fn tim2_ccr4_seti(value: u32) {
     match value.count_ones() {
         1 => tim2_ccr4_write(tim2_ccr4_read() | value),
         31 => tim2_ccr4_write(tim2_ccr4_read() & value),
-        _ => (),
-    }
-
-
+        _ => (),}
 }
 pub fn tim2_dcr_seti(value: u32) {
     match value.count_ones() {
         1 => tim2_dcr_write(tim2_dcr_read() | value),
         31 => tim2_dcr_write(tim2_dcr_read() & value),
-        _ => (),
-    }
-
-
+        _ => (),}
 }
 pub fn tim2_dmar_seti(value: u32) {
     match value.count_ones() {
         1 => tim2_dmar_write(tim2_dmar_read() | value),
         31 => tim2_dmar_write(tim2_dmar_read() & value),
-        _ => (),
-    }
-
-
+        _ => (),}
 }
 pub fn tim2_or_seti(value: u32) {
     match value.count_ones() {
         1 => tim2_or_write(tim2_or_read() | value),
         31 => tim2_or_write(tim2_or_read() & value),
-        _ => (),
-    }
-
-
+        _ => (),}
 }
     
         
@@ -3675,155 +3331,104 @@ pub fn tim3_cr1_seti(value: u32) {
     match value.count_ones() {
         1 => tim3_cr1_write(tim3_cr1_read() | value),
         31 => tim3_cr1_write(tim3_cr1_read() & value),
-        _ => (),
-    }
-
-
+        _ => (),}
 }
 pub fn tim3_cr2_seti(value: u32) {
     match value.count_ones() {
         1 => tim3_cr2_write(tim3_cr2_read() | value),
         31 => tim3_cr2_write(tim3_cr2_read() & value),
-        _ => (),
-    }
-
-
+        _ => (),}
 }
 pub fn tim3_smcr_seti(value: u32) {
     match value.count_ones() {
         1 => tim3_smcr_write(tim3_smcr_read() | value),
         31 => tim3_smcr_write(tim3_smcr_read() & value),
-        _ => (),
-    }
-
-
+        _ => (),}
 }
 pub fn tim3_dier_seti(value: u32) {
     match value.count_ones() {
         1 => tim3_dier_write(tim3_dier_read() | value),
         31 => tim3_dier_write(tim3_dier_read() & value),
-        _ => (),
-    }
-
-
+        _ => (),}
 }
 pub fn tim3_sr_seti(value: u32) {
     match value.count_ones() {
         1 => tim3_sr_write(tim3_sr_read() | value),
         31 => tim3_sr_write(tim3_sr_read() & value),
-        _ => (),
-    }
-
-
+        _ => (),}
 }
 
 pub fn tim3_ccmr1_seti(value: u32) {
     match value.count_ones() {
         1 => tim3_ccmr1_write(tim3_ccmr1_read() | value),
         31 => tim3_ccmr1_write(tim3_ccmr1_read() & value),
-        _ => (),
-    }
-
-
+        _ => (),}
 }
 pub fn tim3_ccmr2_seti(value: u32) {
     match value.count_ones() {
         1 => tim3_ccmr2_write(tim3_ccmr2_read() | value),
         31 => tim3_ccmr2_write(tim3_ccmr2_read() & value),
-        _ => (),
-    }
-
-
+        _ => (),}
 }
 pub fn tim3_ccer_seti(value: u32) {
     match value.count_ones() {
         1 => tim3_ccer_write(tim3_ccer_read() | value),
         31 => tim3_ccer_write(tim3_ccer_read() & value),
-        _ => (),
-    }
-
-
+        _ => (),}
 }
 pub fn tim3_cnt_seti(value: u32) {
     match value.count_ones() {
         1 => tim3_cnt_write(tim3_cnt_read() | value),
         31 => tim3_cnt_write(tim3_cnt_read() & value),
-        _ => (),
-    }
-
-
+        _ => (),}
 }
 pub fn tim3_psc_seti(value: u32) {
     match value.count_ones() {
         1 => tim3_psc_write(tim3_psc_read() | value),
         31 => tim3_psc_write(tim3_psc_read() & value),
-        _ => (),
-    }
-
-
+        _ => (),}
 }
 pub fn tim3_arr_seti(value: u32) {
     match value.count_ones() {
         1 => tim3_arr_write(tim3_arr_read() | value),
         31 => tim3_arr_write(tim3_arr_read() & value),
-        _ => (),
-    }
-
-
+        _ => (),}
 }
 pub fn tim3_ccr1_seti(value: u32) {
     match value.count_ones() {
         1 => tim3_ccr1_write(tim3_ccr1_read() | value),
         31 => tim3_ccr1_write(tim3_ccr1_read() & value),
-        _ => (),
-    }
-
-
+        _ => (),}
 }
 pub fn tim3_ccr2_seti(value: u32) {
     match value.count_ones() {
         1 => tim3_ccr2_write(tim3_ccr2_read() | value),
         31 => tim3_ccr2_write(tim3_ccr2_read() & value),
-        _ => (),
-    }
-
-
+        _ => (),}
 }
 pub fn tim3_ccr3_seti(value: u32) {
     match value.count_ones() {
         1 => tim3_ccr3_write(tim3_ccr3_read() | value),
         31 => tim3_ccr3_write(tim3_ccr3_read() & value),
-        _ => (),
-    }
-
-
+        _ => (),}
 }
 pub fn tim3_ccr4_seti(value: u32) {
     match value.count_ones() {
         1 => tim3_ccr4_write(tim3_ccr4_read() | value),
         31 => tim3_ccr4_write(tim3_ccr4_read() & value),
-        _ => (),
-    }
-
-
+        _ => (),}
 }
 pub fn tim3_dcr_seti(value: u32) {
     match value.count_ones() {
         1 => tim3_dcr_write(tim3_dcr_read() | value),
         31 => tim3_dcr_write(tim3_dcr_read() & value),
-        _ => (),
-    }
-
-
+        _ => (),}
 }
 pub fn tim3_dmar_seti(value: u32) {
     match value.count_ones() {
         1 => tim3_dmar_write(tim3_dmar_read() | value),
         31 => tim3_dmar_write(tim3_dmar_read() & value),
-        _ => (),
-    }
-
-
+        _ => (),}
 }
     
         
@@ -3831,155 +3436,104 @@ pub fn tim4_cr1_seti(value: u32) {
     match value.count_ones() {
         1 => tim4_cr1_write(tim4_cr1_read() | value),
         31 => tim4_cr1_write(tim4_cr1_read() & value),
-        _ => (),
-    }
-
-
+        _ => (),}
 }
 pub fn tim4_cr2_seti(value: u32) {
     match value.count_ones() {
         1 => tim4_cr2_write(tim4_cr2_read() | value),
         31 => tim4_cr2_write(tim4_cr2_read() & value),
-        _ => (),
-    }
-
-
+        _ => (),}
 }
 pub fn tim4_smcr_seti(value: u32) {
     match value.count_ones() {
         1 => tim4_smcr_write(tim4_smcr_read() | value),
         31 => tim4_smcr_write(tim4_smcr_read() & value),
-        _ => (),
-    }
-
-
+        _ => (),}
 }
 pub fn tim4_dier_seti(value: u32) {
     match value.count_ones() {
         1 => tim4_dier_write(tim4_dier_read() | value),
         31 => tim4_dier_write(tim4_dier_read() & value),
-        _ => (),
-    }
-
-
+        _ => (),}
 }
 pub fn tim4_sr_seti(value: u32) {
     match value.count_ones() {
         1 => tim4_sr_write(tim4_sr_read() | value),
         31 => tim4_sr_write(tim4_sr_read() & value),
-        _ => (),
-    }
-
-
+        _ => (),}
 }
 
 pub fn tim4_ccmr1_seti(value: u32) {
     match value.count_ones() {
         1 => tim4_ccmr1_write(tim4_ccmr1_read() | value),
         31 => tim4_ccmr1_write(tim4_ccmr1_read() & value),
-        _ => (),
-    }
-
-
+        _ => (),}
 }
 pub fn tim4_ccmr2_seti(value: u32) {
     match value.count_ones() {
         1 => tim4_ccmr2_write(tim4_ccmr2_read() | value),
         31 => tim4_ccmr2_write(tim4_ccmr2_read() & value),
-        _ => (),
-    }
-
-
+        _ => (),}
 }
 pub fn tim4_ccer_seti(value: u32) {
     match value.count_ones() {
         1 => tim4_ccer_write(tim4_ccer_read() | value),
         31 => tim4_ccer_write(tim4_ccer_read() & value),
-        _ => (),
-    }
-
-
+        _ => (),}
 }
 pub fn tim4_cnt_seti(value: u32) {
     match value.count_ones() {
         1 => tim4_cnt_write(tim4_cnt_read() | value),
         31 => tim4_cnt_write(tim4_cnt_read() & value),
-        _ => (),
-    }
-
-
+        _ => (),}
 }
 pub fn tim4_psc_seti(value: u32) {
     match value.count_ones() {
         1 => tim4_psc_write(tim4_psc_read() | value),
         31 => tim4_psc_write(tim4_psc_read() & value),
-        _ => (),
-    }
-
-
+        _ => (),}
 }
 pub fn tim4_arr_seti(value: u32) {
     match value.count_ones() {
         1 => tim4_arr_write(tim4_arr_read() | value),
         31 => tim4_arr_write(tim4_arr_read() & value),
-        _ => (),
-    }
-
-
+        _ => (),}
 }
 pub fn tim4_ccr1_seti(value: u32) {
     match value.count_ones() {
         1 => tim4_ccr1_write(tim4_ccr1_read() | value),
         31 => tim4_ccr1_write(tim4_ccr1_read() & value),
-        _ => (),
-    }
-
-
+        _ => (),}
 }
 pub fn tim4_ccr2_seti(value: u32) {
     match value.count_ones() {
         1 => tim4_ccr2_write(tim4_ccr2_read() | value),
         31 => tim4_ccr2_write(tim4_ccr2_read() & value),
-        _ => (),
-    }
-
-
+        _ => (),}
 }
 pub fn tim4_ccr3_seti(value: u32) {
     match value.count_ones() {
         1 => tim4_ccr3_write(tim4_ccr3_read() | value),
         31 => tim4_ccr3_write(tim4_ccr3_read() & value),
-        _ => (),
-    }
-
-
+        _ => (),}
 }
 pub fn tim4_ccr4_seti(value: u32) {
     match value.count_ones() {
         1 => tim4_ccr4_write(tim4_ccr4_read() | value),
         31 => tim4_ccr4_write(tim4_ccr4_read() & value),
-        _ => (),
-    }
-
-
+        _ => (),}
 }
 pub fn tim4_dcr_seti(value: u32) {
     match value.count_ones() {
         1 => tim4_dcr_write(tim4_dcr_read() | value),
         31 => tim4_dcr_write(tim4_dcr_read() & value),
-        _ => (),
-    }
-
-
+        _ => (),}
 }
 pub fn tim4_dmar_seti(value: u32) {
     match value.count_ones() {
         1 => tim4_dmar_write(tim4_dmar_read() | value),
         31 => tim4_dmar_write(tim4_dmar_read() & value),
-        _ => (),
-    }
-
-
+        _ => (),}
 }
     
         
@@ -3987,164 +3541,110 @@ pub fn tim5_cr1_seti(value: u32) {
     match value.count_ones() {
         1 => tim5_cr1_write(tim5_cr1_read() | value),
         31 => tim5_cr1_write(tim5_cr1_read() & value),
-        _ => (),
-    }
-
-
+        _ => (),}
 }
 pub fn tim5_cr2_seti(value: u32) {
     match value.count_ones() {
         1 => tim5_cr2_write(tim5_cr2_read() | value),
         31 => tim5_cr2_write(tim5_cr2_read() & value),
-        _ => (),
-    }
-
-
+        _ => (),}
 }
 pub fn tim5_smcr_seti(value: u32) {
     match value.count_ones() {
         1 => tim5_smcr_write(tim5_smcr_read() | value),
         31 => tim5_smcr_write(tim5_smcr_read() & value),
-        _ => (),
-    }
-
-
+        _ => (),}
 }
 pub fn tim5_dier_seti(value: u32) {
     match value.count_ones() {
         1 => tim5_dier_write(tim5_dier_read() | value),
         31 => tim5_dier_write(tim5_dier_read() & value),
-        _ => (),
-    }
-
-
+        _ => (),}
 }
 pub fn tim5_sr_seti(value: u32) {
     match value.count_ones() {
         1 => tim5_sr_write(tim5_sr_read() | value),
         31 => tim5_sr_write(tim5_sr_read() & value),
-        _ => (),
-    }
-
-
+        _ => (),}
 }
 
 pub fn tim5_ccmr1_seti(value: u32) {
     match value.count_ones() {
         1 => tim5_ccmr1_write(tim5_ccmr1_read() | value),
         31 => tim5_ccmr1_write(tim5_ccmr1_read() & value),
-        _ => (),
-    }
-
-
+        _ => (),}
 }
 pub fn tim5_ccmr2_seti(value: u32) {
     match value.count_ones() {
         1 => tim5_ccmr2_write(tim5_ccmr2_read() | value),
         31 => tim5_ccmr2_write(tim5_ccmr2_read() & value),
-        _ => (),
-    }
-
-
+        _ => (),}
 }
 pub fn tim5_ccer_seti(value: u32) {
     match value.count_ones() {
         1 => tim5_ccer_write(tim5_ccer_read() | value),
         31 => tim5_ccer_write(tim5_ccer_read() & value),
-        _ => (),
-    }
-
-
+        _ => (),}
 }
 pub fn tim5_cnt_seti(value: u32) {
     match value.count_ones() {
         1 => tim5_cnt_write(tim5_cnt_read() | value),
         31 => tim5_cnt_write(tim5_cnt_read() & value),
-        _ => (),
-    }
-
-
+        _ => (),}
 }
 pub fn tim5_psc_seti(value: u32) {
     match value.count_ones() {
         1 => tim5_psc_write(tim5_psc_read() | value),
         31 => tim5_psc_write(tim5_psc_read() & value),
-        _ => (),
-    }
-
-
+        _ => (),}
 }
 pub fn tim5_arr_seti(value: u32) {
     match value.count_ones() {
         1 => tim5_arr_write(tim5_arr_read() | value),
         31 => tim5_arr_write(tim5_arr_read() & value),
-        _ => (),
-    }
-
-
+        _ => (),}
 }
 pub fn tim5_ccr1_seti(value: u32) {
     match value.count_ones() {
         1 => tim5_ccr1_write(tim5_ccr1_read() | value),
         31 => tim5_ccr1_write(tim5_ccr1_read() & value),
-        _ => (),
-    }
-
-
+        _ => (),}
 }
 pub fn tim5_ccr2_seti(value: u32) {
     match value.count_ones() {
         1 => tim5_ccr2_write(tim5_ccr2_read() | value),
         31 => tim5_ccr2_write(tim5_ccr2_read() & value),
-        _ => (),
-    }
-
-
+        _ => (),}
 }
 pub fn tim5_ccr3_seti(value: u32) {
     match value.count_ones() {
         1 => tim5_ccr3_write(tim5_ccr3_read() | value),
         31 => tim5_ccr3_write(tim5_ccr3_read() & value),
-        _ => (),
-    }
-
-
+        _ => (),}
 }
 pub fn tim5_ccr4_seti(value: u32) {
     match value.count_ones() {
         1 => tim5_ccr4_write(tim5_ccr4_read() | value),
         31 => tim5_ccr4_write(tim5_ccr4_read() & value),
-        _ => (),
-    }
-
-
+        _ => (),}
 }
 pub fn tim5_dcr_seti(value: u32) {
     match value.count_ones() {
         1 => tim5_dcr_write(tim5_dcr_read() | value),
         31 => tim5_dcr_write(tim5_dcr_read() & value),
-        _ => (),
-    }
-
-
+        _ => (),}
 }
 pub fn tim5_dmar_seti(value: u32) {
     match value.count_ones() {
         1 => tim5_dmar_write(tim5_dmar_read() | value),
         31 => tim5_dmar_write(tim5_dmar_read() & value),
-        _ => (),
-    }
-
-
+        _ => (),}
 }
 pub fn tim5_or_seti(value: u32) {
     match value.count_ones() {
         1 => tim5_or_write(tim5_or_read() | value),
         31 => tim5_or_write(tim5_or_read() & value),
-        _ => (),
-    }
-
-
+        _ => (),}
 }
     
         
@@ -4152,101 +3652,68 @@ pub fn tim9_cr1_seti(value: u32) {
     match value.count_ones() {
         1 => tim9_cr1_write(tim9_cr1_read() | value),
         31 => tim9_cr1_write(tim9_cr1_read() & value),
-        _ => (),
-    }
-
-
+        _ => (),}
 }
 pub fn tim9_smcr_seti(value: u32) {
     match value.count_ones() {
         1 => tim9_smcr_write(tim9_smcr_read() | value),
         31 => tim9_smcr_write(tim9_smcr_read() & value),
-        _ => (),
-    }
-
-
+        _ => (),}
 }
 pub fn tim9_dier_seti(value: u32) {
     match value.count_ones() {
         1 => tim9_dier_write(tim9_dier_read() | value),
         31 => tim9_dier_write(tim9_dier_read() & value),
-        _ => (),
-    }
-
-
+        _ => (),}
 }
 pub fn tim9_sr_seti(value: u32) {
     match value.count_ones() {
         1 => tim9_sr_write(tim9_sr_read() | value),
         31 => tim9_sr_write(tim9_sr_read() & value),
-        _ => (),
-    }
-
-
+        _ => (),}
 }
 
 pub fn tim9_ccmr1_seti(value: u32) {
     match value.count_ones() {
         1 => tim9_ccmr1_write(tim9_ccmr1_read() | value),
         31 => tim9_ccmr1_write(tim9_ccmr1_read() & value),
-        _ => (),
-    }
-
-
+        _ => (),}
 }
 pub fn tim9_ccer_seti(value: u32) {
     match value.count_ones() {
         1 => tim9_ccer_write(tim9_ccer_read() | value),
         31 => tim9_ccer_write(tim9_ccer_read() & value),
-        _ => (),
-    }
-
-
+        _ => (),}
 }
 pub fn tim9_cnt_seti(value: u32) {
     match value.count_ones() {
         1 => tim9_cnt_write(tim9_cnt_read() | value),
         31 => tim9_cnt_write(tim9_cnt_read() & value),
-        _ => (),
-    }
-
-
+        _ => (),}
 }
 pub fn tim9_psc_seti(value: u32) {
     match value.count_ones() {
         1 => tim9_psc_write(tim9_psc_read() | value),
         31 => tim9_psc_write(tim9_psc_read() & value),
-        _ => (),
-    }
-
-
+        _ => (),}
 }
 pub fn tim9_arr_seti(value: u32) {
     match value.count_ones() {
         1 => tim9_arr_write(tim9_arr_read() | value),
         31 => tim9_arr_write(tim9_arr_read() & value),
-        _ => (),
-    }
-
-
+        _ => (),}
 }
 pub fn tim9_ccr1_seti(value: u32) {
     match value.count_ones() {
         1 => tim9_ccr1_write(tim9_ccr1_read() | value),
         31 => tim9_ccr1_write(tim9_ccr1_read() & value),
-        _ => (),
-    }
-
-
+        _ => (),}
 }
 pub fn tim9_ccr2_seti(value: u32) {
     match value.count_ones() {
         1 => tim9_ccr2_write(tim9_ccr2_read() | value),
         31 => tim9_ccr2_write(tim9_ccr2_read() & value),
-        _ => (),
-    }
-
-
+        _ => (),}
 }
     
         
@@ -4254,101 +3721,68 @@ pub fn tim12_cr1_seti(value: u32) {
     match value.count_ones() {
         1 => tim12_cr1_write(tim12_cr1_read() | value),
         31 => tim12_cr1_write(tim12_cr1_read() & value),
-        _ => (),
-    }
-
-
+        _ => (),}
 }
 pub fn tim12_smcr_seti(value: u32) {
     match value.count_ones() {
         1 => tim12_smcr_write(tim12_smcr_read() | value),
         31 => tim12_smcr_write(tim12_smcr_read() & value),
-        _ => (),
-    }
-
-
+        _ => (),}
 }
 pub fn tim12_dier_seti(value: u32) {
     match value.count_ones() {
         1 => tim12_dier_write(tim12_dier_read() | value),
         31 => tim12_dier_write(tim12_dier_read() & value),
-        _ => (),
-    }
-
-
+        _ => (),}
 }
 pub fn tim12_sr_seti(value: u32) {
     match value.count_ones() {
         1 => tim12_sr_write(tim12_sr_read() | value),
         31 => tim12_sr_write(tim12_sr_read() & value),
-        _ => (),
-    }
-
-
+        _ => (),}
 }
 
 pub fn tim12_ccmr1_seti(value: u32) {
     match value.count_ones() {
         1 => tim12_ccmr1_write(tim12_ccmr1_read() | value),
         31 => tim12_ccmr1_write(tim12_ccmr1_read() & value),
-        _ => (),
-    }
-
-
+        _ => (),}
 }
 pub fn tim12_ccer_seti(value: u32) {
     match value.count_ones() {
         1 => tim12_ccer_write(tim12_ccer_read() | value),
         31 => tim12_ccer_write(tim12_ccer_read() & value),
-        _ => (),
-    }
-
-
+        _ => (),}
 }
 pub fn tim12_cnt_seti(value: u32) {
     match value.count_ones() {
         1 => tim12_cnt_write(tim12_cnt_read() | value),
         31 => tim12_cnt_write(tim12_cnt_read() & value),
-        _ => (),
-    }
-
-
+        _ => (),}
 }
 pub fn tim12_psc_seti(value: u32) {
     match value.count_ones() {
         1 => tim12_psc_write(tim12_psc_read() | value),
         31 => tim12_psc_write(tim12_psc_read() & value),
-        _ => (),
-    }
-
-
+        _ => (),}
 }
 pub fn tim12_arr_seti(value: u32) {
     match value.count_ones() {
         1 => tim12_arr_write(tim12_arr_read() | value),
         31 => tim12_arr_write(tim12_arr_read() & value),
-        _ => (),
-    }
-
-
+        _ => (),}
 }
 pub fn tim12_ccr1_seti(value: u32) {
     match value.count_ones() {
         1 => tim12_ccr1_write(tim12_ccr1_read() | value),
         31 => tim12_ccr1_write(tim12_ccr1_read() & value),
-        _ => (),
-    }
-
-
+        _ => (),}
 }
 pub fn tim12_ccr2_seti(value: u32) {
     match value.count_ones() {
         1 => tim12_ccr2_write(tim12_ccr2_read() | value),
         31 => tim12_ccr2_write(tim12_ccr2_read() & value),
-        _ => (),
-    }
-
-
+        _ => (),}
 }
     
         
@@ -4356,92 +3790,62 @@ pub fn tim10_cr1_seti(value: u32) {
     match value.count_ones() {
         1 => tim10_cr1_write(tim10_cr1_read() | value),
         31 => tim10_cr1_write(tim10_cr1_read() & value),
-        _ => (),
-    }
-
-
+        _ => (),}
 }
 pub fn tim10_dier_seti(value: u32) {
     match value.count_ones() {
         1 => tim10_dier_write(tim10_dier_read() | value),
         31 => tim10_dier_write(tim10_dier_read() & value),
-        _ => (),
-    }
-
-
+        _ => (),}
 }
 pub fn tim10_sr_seti(value: u32) {
     match value.count_ones() {
         1 => tim10_sr_write(tim10_sr_read() | value),
         31 => tim10_sr_write(tim10_sr_read() & value),
-        _ => (),
-    }
-
-
+        _ => (),}
 }
 
 pub fn tim10_ccmr1_seti(value: u32) {
     match value.count_ones() {
         1 => tim10_ccmr1_write(tim10_ccmr1_read() | value),
         31 => tim10_ccmr1_write(tim10_ccmr1_read() & value),
-        _ => (),
-    }
-
-
+        _ => (),}
 }
 pub fn tim10_ccer_seti(value: u32) {
     match value.count_ones() {
         1 => tim10_ccer_write(tim10_ccer_read() | value),
         31 => tim10_ccer_write(tim10_ccer_read() & value),
-        _ => (),
-    }
-
-
+        _ => (),}
 }
 pub fn tim10_cnt_seti(value: u32) {
     match value.count_ones() {
         1 => tim10_cnt_write(tim10_cnt_read() | value),
         31 => tim10_cnt_write(tim10_cnt_read() & value),
-        _ => (),
-    }
-
-
+        _ => (),}
 }
 pub fn tim10_psc_seti(value: u32) {
     match value.count_ones() {
         1 => tim10_psc_write(tim10_psc_read() | value),
         31 => tim10_psc_write(tim10_psc_read() & value),
-        _ => (),
-    }
-
-
+        _ => (),}
 }
 pub fn tim10_arr_seti(value: u32) {
     match value.count_ones() {
         1 => tim10_arr_write(tim10_arr_read() | value),
         31 => tim10_arr_write(tim10_arr_read() & value),
-        _ => (),
-    }
-
-
+        _ => (),}
 }
 pub fn tim10_ccr1_seti(value: u32) {
     match value.count_ones() {
         1 => tim10_ccr1_write(tim10_ccr1_read() | value),
         31 => tim10_ccr1_write(tim10_ccr1_read() & value),
-        _ => (),
-    }
-
-
+        _ => (),}
 }
 pub fn tim10_or_seti(value: u32) {
     match value.count_ones() {
         1 => tim10_or_write(tim10_or_read() | value),
         31 => tim10_or_write(tim10_or_read() & value),
-        _ => (),
-    }
-
-
+        _ => (),}
 }
     
         
@@ -4449,92 +3853,62 @@ pub fn tim11_cr1_seti(value: u32) {
     match value.count_ones() {
         1 => tim11_cr1_write(tim11_cr1_read() | value),
         31 => tim11_cr1_write(tim11_cr1_read() & value),
-        _ => (),
-    }
-
-
+        _ => (),}
 }
 pub fn tim11_dier_seti(value: u32) {
     match value.count_ones() {
         1 => tim11_dier_write(tim11_dier_read() | value),
         31 => tim11_dier_write(tim11_dier_read() & value),
-        _ => (),
-    }
-
-
+        _ => (),}
 }
 pub fn tim11_sr_seti(value: u32) {
     match value.count_ones() {
         1 => tim11_sr_write(tim11_sr_read() | value),
         31 => tim11_sr_write(tim11_sr_read() & value),
-        _ => (),
-    }
-
-
+        _ => (),}
 }
 
 pub fn tim11_ccmr1_seti(value: u32) {
     match value.count_ones() {
         1 => tim11_ccmr1_write(tim11_ccmr1_read() | value),
         31 => tim11_ccmr1_write(tim11_ccmr1_read() & value),
-        _ => (),
-    }
-
-
+        _ => (),}
 }
 pub fn tim11_ccer_seti(value: u32) {
     match value.count_ones() {
         1 => tim11_ccer_write(tim11_ccer_read() | value),
         31 => tim11_ccer_write(tim11_ccer_read() & value),
-        _ => (),
-    }
-
-
+        _ => (),}
 }
 pub fn tim11_cnt_seti(value: u32) {
     match value.count_ones() {
         1 => tim11_cnt_write(tim11_cnt_read() | value),
         31 => tim11_cnt_write(tim11_cnt_read() & value),
-        _ => (),
-    }
-
-
+        _ => (),}
 }
 pub fn tim11_psc_seti(value: u32) {
     match value.count_ones() {
         1 => tim11_psc_write(tim11_psc_read() | value),
         31 => tim11_psc_write(tim11_psc_read() & value),
-        _ => (),
-    }
-
-
+        _ => (),}
 }
 pub fn tim11_arr_seti(value: u32) {
     match value.count_ones() {
         1 => tim11_arr_write(tim11_arr_read() | value),
         31 => tim11_arr_write(tim11_arr_read() & value),
-        _ => (),
-    }
-
-
+        _ => (),}
 }
 pub fn tim11_ccr1_seti(value: u32) {
     match value.count_ones() {
         1 => tim11_ccr1_write(tim11_ccr1_read() | value),
         31 => tim11_ccr1_write(tim11_ccr1_read() & value),
-        _ => (),
-    }
-
-
+        _ => (),}
 }
 pub fn tim11_or_seti(value: u32) {
     match value.count_ones() {
         1 => tim11_or_write(tim11_or_read() | value),
         31 => tim11_or_write(tim11_or_read() & value),
-        _ => (),
-    }
-
-
+        _ => (),}
 }
     
         
@@ -4542,92 +3916,62 @@ pub fn tim13_cr1_seti(value: u32) {
     match value.count_ones() {
         1 => tim13_cr1_write(tim13_cr1_read() | value),
         31 => tim13_cr1_write(tim13_cr1_read() & value),
-        _ => (),
-    }
-
-
+        _ => (),}
 }
 pub fn tim13_dier_seti(value: u32) {
     match value.count_ones() {
         1 => tim13_dier_write(tim13_dier_read() | value),
         31 => tim13_dier_write(tim13_dier_read() & value),
-        _ => (),
-    }
-
-
+        _ => (),}
 }
 pub fn tim13_sr_seti(value: u32) {
     match value.count_ones() {
         1 => tim13_sr_write(tim13_sr_read() | value),
         31 => tim13_sr_write(tim13_sr_read() & value),
-        _ => (),
-    }
-
-
+        _ => (),}
 }
 
 pub fn tim13_ccmr1_seti(value: u32) {
     match value.count_ones() {
         1 => tim13_ccmr1_write(tim13_ccmr1_read() | value),
         31 => tim13_ccmr1_write(tim13_ccmr1_read() & value),
-        _ => (),
-    }
-
-
+        _ => (),}
 }
 pub fn tim13_ccer_seti(value: u32) {
     match value.count_ones() {
         1 => tim13_ccer_write(tim13_ccer_read() | value),
         31 => tim13_ccer_write(tim13_ccer_read() & value),
-        _ => (),
-    }
-
-
+        _ => (),}
 }
 pub fn tim13_cnt_seti(value: u32) {
     match value.count_ones() {
         1 => tim13_cnt_write(tim13_cnt_read() | value),
         31 => tim13_cnt_write(tim13_cnt_read() & value),
-        _ => (),
-    }
-
-
+        _ => (),}
 }
 pub fn tim13_psc_seti(value: u32) {
     match value.count_ones() {
         1 => tim13_psc_write(tim13_psc_read() | value),
         31 => tim13_psc_write(tim13_psc_read() & value),
-        _ => (),
-    }
-
-
+        _ => (),}
 }
 pub fn tim13_arr_seti(value: u32) {
     match value.count_ones() {
         1 => tim13_arr_write(tim13_arr_read() | value),
         31 => tim13_arr_write(tim13_arr_read() & value),
-        _ => (),
-    }
-
-
+        _ => (),}
 }
 pub fn tim13_ccr1_seti(value: u32) {
     match value.count_ones() {
         1 => tim13_ccr1_write(tim13_ccr1_read() | value),
         31 => tim13_ccr1_write(tim13_ccr1_read() & value),
-        _ => (),
-    }
-
-
+        _ => (),}
 }
 pub fn tim13_or_seti(value: u32) {
     match value.count_ones() {
         1 => tim13_or_write(tim13_or_read() | value),
         31 => tim13_or_write(tim13_or_read() & value),
-        _ => (),
-    }
-
-
+        _ => (),}
 }
     
         
@@ -4635,92 +3979,62 @@ pub fn tim14_cr1_seti(value: u32) {
     match value.count_ones() {
         1 => tim14_cr1_write(tim14_cr1_read() | value),
         31 => tim14_cr1_write(tim14_cr1_read() & value),
-        _ => (),
-    }
-
-
+        _ => (),}
 }
 pub fn tim14_dier_seti(value: u32) {
     match value.count_ones() {
         1 => tim14_dier_write(tim14_dier_read() | value),
         31 => tim14_dier_write(tim14_dier_read() & value),
-        _ => (),
-    }
-
-
+        _ => (),}
 }
 pub fn tim14_sr_seti(value: u32) {
     match value.count_ones() {
         1 => tim14_sr_write(tim14_sr_read() | value),
         31 => tim14_sr_write(tim14_sr_read() & value),
-        _ => (),
-    }
-
-
+        _ => (),}
 }
 
 pub fn tim14_ccmr1_seti(value: u32) {
     match value.count_ones() {
         1 => tim14_ccmr1_write(tim14_ccmr1_read() | value),
         31 => tim14_ccmr1_write(tim14_ccmr1_read() & value),
-        _ => (),
-    }
-
-
+        _ => (),}
 }
 pub fn tim14_ccer_seti(value: u32) {
     match value.count_ones() {
         1 => tim14_ccer_write(tim14_ccer_read() | value),
         31 => tim14_ccer_write(tim14_ccer_read() & value),
-        _ => (),
-    }
-
-
+        _ => (),}
 }
 pub fn tim14_cnt_seti(value: u32) {
     match value.count_ones() {
         1 => tim14_cnt_write(tim14_cnt_read() | value),
         31 => tim14_cnt_write(tim14_cnt_read() & value),
-        _ => (),
-    }
-
-
+        _ => (),}
 }
 pub fn tim14_psc_seti(value: u32) {
     match value.count_ones() {
         1 => tim14_psc_write(tim14_psc_read() | value),
         31 => tim14_psc_write(tim14_psc_read() & value),
-        _ => (),
-    }
-
-
+        _ => (),}
 }
 pub fn tim14_arr_seti(value: u32) {
     match value.count_ones() {
         1 => tim14_arr_write(tim14_arr_read() | value),
         31 => tim14_arr_write(tim14_arr_read() & value),
-        _ => (),
-    }
-
-
+        _ => (),}
 }
 pub fn tim14_ccr1_seti(value: u32) {
     match value.count_ones() {
         1 => tim14_ccr1_write(tim14_ccr1_read() | value),
         31 => tim14_ccr1_write(tim14_ccr1_read() & value),
-        _ => (),
-    }
-
-
+        _ => (),}
 }
 pub fn tim14_or_seti(value: u32) {
     match value.count_ones() {
         1 => tim14_or_write(tim14_or_read() | value),
         31 => tim14_or_write(tim14_or_read() & value),
-        _ => (),
-    }
-
-
+        _ => (),}
 }
     
         
@@ -4728,65 +4042,44 @@ pub fn tim6_cr1_seti(value: u32) {
     match value.count_ones() {
         1 => tim6_cr1_write(tim6_cr1_read() | value),
         31 => tim6_cr1_write(tim6_cr1_read() & value),
-        _ => (),
-    }
-
-
+        _ => (),}
 }
 pub fn tim6_cr2_seti(value: u32) {
     match value.count_ones() {
         1 => tim6_cr2_write(tim6_cr2_read() | value),
         31 => tim6_cr2_write(tim6_cr2_read() & value),
-        _ => (),
-    }
-
-
+        _ => (),}
 }
 pub fn tim6_dier_seti(value: u32) {
     match value.count_ones() {
         1 => tim6_dier_write(tim6_dier_read() | value),
         31 => tim6_dier_write(tim6_dier_read() & value),
-        _ => (),
-    }
-
-
+        _ => (),}
 }
 pub fn tim6_sr_seti(value: u32) {
     match value.count_ones() {
         1 => tim6_sr_write(tim6_sr_read() | value),
         31 => tim6_sr_write(tim6_sr_read() & value),
-        _ => (),
-    }
-
-
+        _ => (),}
 }
 
 pub fn tim6_cnt_seti(value: u32) {
     match value.count_ones() {
         1 => tim6_cnt_write(tim6_cnt_read() | value),
         31 => tim6_cnt_write(tim6_cnt_read() & value),
-        _ => (),
-    }
-
-
+        _ => (),}
 }
 pub fn tim6_psc_seti(value: u32) {
     match value.count_ones() {
         1 => tim6_psc_write(tim6_psc_read() | value),
         31 => tim6_psc_write(tim6_psc_read() & value),
-        _ => (),
-    }
-
-
+        _ => (),}
 }
 pub fn tim6_arr_seti(value: u32) {
     match value.count_ones() {
         1 => tim6_arr_write(tim6_arr_read() | value),
         31 => tim6_arr_write(tim6_arr_read() & value),
-        _ => (),
-    }
-
-
+        _ => (),}
 }
     
         
@@ -4794,64 +4087,43 @@ pub fn tim7_cr1_seti(value: u32) {
     match value.count_ones() {
         1 => tim7_cr1_write(tim7_cr1_read() | value),
         31 => tim7_cr1_write(tim7_cr1_read() & value),
-        _ => (),
-    }
-
-
+        _ => (),}
 }
 pub fn tim7_cr2_seti(value: u32) {
     match value.count_ones() {
         1 => tim7_cr2_write(tim7_cr2_read() | value),
         31 => tim7_cr2_write(tim7_cr2_read() & value),
-        _ => (),
-    }
-
-
+        _ => (),}
 }
 pub fn tim7_dier_seti(value: u32) {
     match value.count_ones() {
         1 => tim7_dier_write(tim7_dier_read() | value),
         31 => tim7_dier_write(tim7_dier_read() & value),
-        _ => (),
-    }
-
-
+        _ => (),}
 }
 pub fn tim7_sr_seti(value: u32) {
     match value.count_ones() {
         1 => tim7_sr_write(tim7_sr_read() | value),
         31 => tim7_sr_write(tim7_sr_read() & value),
-        _ => (),
-    }
-
-
+        _ => (),}
 }
 
 pub fn tim7_cnt_seti(value: u32) {
     match value.count_ones() {
         1 => tim7_cnt_write(tim7_cnt_read() | value),
         31 => tim7_cnt_write(tim7_cnt_read() & value),
-        _ => (),
-    }
-
-
+        _ => (),}
 }
 pub fn tim7_psc_seti(value: u32) {
     match value.count_ones() {
         1 => tim7_psc_write(tim7_psc_read() | value),
         31 => tim7_psc_write(tim7_psc_read() & value),
-        _ => (),
-    }
-
-
+        _ => (),}
 }
 pub fn tim7_arr_seti(value: u32) {
     match value.count_ones() {
         1 => tim7_arr_write(tim7_arr_read() | value),
         31 => tim7_arr_write(tim7_arr_read() & value),
-        _ => (),
-    }
-
-
+        _ => (),}
 }
     

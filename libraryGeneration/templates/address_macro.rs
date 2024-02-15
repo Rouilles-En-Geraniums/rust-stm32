@@ -39,8 +39,7 @@ pub fn {{component.lower()}}_{{register.lower()}}_read() -> u32 {
 
 
 {% macro gen_register_set(component, register) -%}
-pub fn {{component.lower()}}_{{register.lower()}}_set(position: u32, value: u32) {
-    let size = 32 - value.leading_zeros();
+pub fn {{component.lower()}}_{{register.lower()}}_set(position: u32, size: u32, value: u32) {
     {{component.lower()}}_{{register.lower()}}_write(rep_bits({{component.lower()}}_{{register.lower()}}_read(), position, size, value));
 }
 {%- endmacro %}
@@ -50,9 +49,6 @@ pub fn {{component.lower()}}_{{register.lower()}}_seti(value: u32) {
     match value.count_ones() {
         1 => {{component.lower()}}_{{register.lower()}}_write({{component.lower()}}_{{register.lower()}}_read() | value),
         31 => {{component.lower()}}_{{register.lower()}}_write({{component.lower()}}_{{register.lower()}}_read() & value),
-        _ => (),
-    }
-
-
+        _ => (),}
 }
 {%- endmacro %}

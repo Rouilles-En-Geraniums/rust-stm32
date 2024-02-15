@@ -46,7 +46,7 @@ fn main() {
     rcc_ahb1enr_seti(RCC_AHB1ENR_GPIODEN);
 
     let my_led = ('D', 12); // Built-in green led
-    gpiod_moder_set(my_led.1*2, GPIO_MODER_OUT);
+    gpiod_moder_set(my_led.1*2, 2, GPIO_MODER_OUT);
 
     digital_write(my_led, LOW);
     loop {

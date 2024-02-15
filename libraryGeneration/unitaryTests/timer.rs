@@ -60,7 +60,7 @@ fn main() {
     rcc_apb1enr_seti(RCC_APB1ENR_TIM4EN);
 
     let my_led = ('D', 12); // Built-in green led
-    gpiod_moder_set(my_led.1*2, GPIO_MODER_OUT);
+    gpiod_moder_set(my_led.1*2, 2, GPIO_MODER_OUT);
 
     init_timer();
 
