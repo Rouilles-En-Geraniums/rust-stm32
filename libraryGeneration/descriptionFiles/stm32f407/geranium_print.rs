@@ -40,7 +40,7 @@ use crate::stm32rustlib::gdb::*;
 #[macro_export]
 macro_rules! print {
     ($s:expr) => {
-        print(format_args($s))
+        print(format_args!($s))
     };
     ($($tt:tt)*) => {
         print(format_args!($($tt)*))
@@ -50,10 +50,10 @@ macro_rules! print {
 #[macro_export]
 macro_rules! println {
     () => {
-        print(format_args("\n"))
+        print(format_args!("\n"))
     };
     ($s:expr) => {
-        print(concat!($s, "\n"))
+        print(format_args!(concat!($s, "\n")))
     };
     ($s:expr, $($tt:tt)*) => {
         print(format_args!(concat!($s, "\n"), $($tt)*))
