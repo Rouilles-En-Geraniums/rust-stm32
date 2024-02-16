@@ -1,19 +1,12 @@
 #![no_std]
 #![no_main]
-#![allow(unused_imports)]
-#![allow(non_snake_case)]
-#![allow(unused_variables)]
-#![allow(non_upper_case_globals)]
-#![allow(dead_code)]
 
 extern crate geranium_rt;
 
 use geranium_rt::stm32rustlib::gpio::*;
 use geranium_rt::stm32rustlib::rcc::*;
 use geranium_rt::stm32rustlib::various::*;
-use geranium_rt::stm32rustlib::wait::*;
-
-const APB1_CLK: u32 = 42_000_000;
+use geranium_rt::stm32rustlib::delay::*;
 
 pub trait Task {
     fn execute(&mut self) -> (); 
@@ -32,33 +25,38 @@ pub struct Job{
     pub duration: u32
 }
 
-pub struct Task1 {
-    pub count: u32
+//User tasks
+
+const MY_LED: (char, u32) = ('D', 12); // Built-in green led
+
+pub struct LedOn {
 }
 
-impl Task for Task1 {
+impl Task for LedOn {
     fn execute(&mut self) -> () {
-        //println!("I am Task 1. Count : {}", self.count);
+        digital_write(MY_LED, HIGH);
     }
 
-    fn new() -> Task1 {
-        return Task1 { count: 32 }
+    fn new() -> LedOn {
+        LedOn { }
     }
 }
 
-pub struct Task2 {}
+pub struct LedOff {}
 
-impl Task for Task2 {
+impl Task for LedOff {
     fn execute(&mut self) -> () {
-        //println!("I am Task 2");
+        digital_write(MY_LED, LOW);
     }
 
-    fn new() -> Task2 {
-        return Task2 { }
+    fn new() -> LedOff {
+        LedOff { }
     }
 }
 
-//réfléchir à la possibiltié delaisser l'utilisateur écrire ordo_tab.rs lui-même, avec des helpers (add_task -> OrdoTask, add_job)
+//réfléchir à la possibiltié de laisser l'utilisateur écrire ordo_tab.rs lui-même, avec des helpers (add_task -> OrdoTask, add_job)
+
+//Library
 
 fn runTask(ordo_task: &mut OrdoTask, max_time: u32){
     timer_arm_ms(max_time);
@@ -99,25 +97,30 @@ pub struct Sequencer <'a> {
 
 #[no_mangle]
 fn main() {
+
+    delay_init_timers();
+    
+    rcc_ahb1enr_seti(RCC_AHB1ENR_GPIODEN);
+
+    gpiod_moder_set(MY_LED.1*2, 2, GPIO_MODER_OUT);
     //println!("Hello, world!");
 
-    let mut t1: Task1 = Task1::new();
-    let mut t2: Task2 = Task2::new();
+    let mut t1: LedOn = LedOn::new();
+    let mut t2: LedOff = LedOff::new();
 
-    let hyperperiod: u32 = 100;
+    let hyperperiod: u32 = 2000;
 
     let mut ordo_tasks = [
-        OrdoTask {name: "Tache 1", task: &mut t1},
-        OrdoTask {name: "Tache 2", task: &mut t2}
+        OrdoTask {name: "Led On", task: &mut t1},
+        OrdoTask {name: "Led Off", task: &mut t2}
     ];
     let num_ordo_tasks = 2;
 
     let jobs = [
-        Job{task_index: 0, duration: 10, start: 7},
-        Job{task_index: 0, duration: 10, start: 50},
-        Job{task_index: 1, duration: 20, start: 20}
+        Job{task_index: 0, duration: 10, start: 0},
+        Job{task_index: 1, duration: 10, start: 1000},
     ];
-    let num_jobs = 3;
+    let num_jobs = 2;
 
     run_sequencer(&mut ordo_tasks, num_ordo_tasks, &jobs, num_jobs, hyperperiod);
 
