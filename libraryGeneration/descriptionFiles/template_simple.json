@@ -12,5 +12,9 @@
     { "name": "<reg_name>", "offset": "0x<offset>", "read": [0,1], "write": [0,1] },
     { "name": "<reg_name>", "offset": "0x<offset>", "read": [0,1], "write": [0,1] },
     { "name": "..."}
+  ],
+  "constants" : [
+    { "name" : "<const_name>", "value" : "<value>"},
+    {}
   ]
 }

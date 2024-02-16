@@ -1,4 +1,36 @@
 #![no_std]
+/**
+ *	Rust on STM32 Project by Rouilles en GeraniumTM
+ *	Copyright (C) 2024 Université de Toulouse :
+ *   - Oussama Felfel - oussama.felfel@univ-tlse3.fr
+ *   - François Foltete - francois.foltete@univ-tlse3.fr
+ *   - Elana Courtines - elana.courtines@univ-tlse3.fr
+ *   - Teo Tinarrage - teo.tinarrage@univ-tlse3.fr
+ *   - Zineb Moubarik - zineb.moubarik@univ-tlse3.fr
+ *
+ *  This library aims to provide the following :
+ *   - a rust library generation tool to safely access memory ;
+ *   - a support to flash STM32 boards ;
+ *   - a task scheduling tool that generates the associated rust code.
+ *
+ *  The development of this library has done as a Proof of Concept and
+ *  is currently only tested for STM32F407-G DISC1 Boards.
+ *
+ *  It is our hope that using this library to enable development on
+ *  other boards will be facilitated.
+ *
+ *
+ *	This program is free software: you can redistribute it and/or modify
+ *	it under the terms of the GNU General Public License as published by
+ *	the Free Software Foundation, either version 3 of the License, or
+ *	(at your option) any later version.
+ *
+ *	This program is distributed in the hope that it will be useful,
+ *	but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *	GNU General Public License for more details.
+**/
+
 
 use core::panic::PanicInfo;
 use core::ptr;
@@ -7,6 +39,8 @@ extern crate core;
 pub mod stm32rustlib;
 use crate::stm32rustlib::rcc::*;
 use crate::stm32rustlib::various::*;
+use crate::stm32rustlib::syscfg::*;
+use crate::stm32rustlib::gdb::*;
 
 
 pub union Vector {
@@ -48,7 +82,7 @@ pub static EXCEPTIONS: [Vector; 14] = [
 #[link_section = ".vector_table.custom_exceptions"]
 #[no_mangle]
 pub static CUSTOM_EXCEPTIONS: [Vector; 44] = [
-    Vector { handler: DefaultExceptionHandler }, // 16 
+    Vector { handler: DefaultExceptionHandler }, // 16
     Vector { handler: DefaultExceptionHandler }, // 17
     Vector { handler: DefaultExceptionHandler }, // 18
     Vector { handler: DefaultExceptionHandler }, // 19
@@ -102,7 +136,7 @@ pub static RESET_VECTOR: unsafe extern "C" fn() -> ! = HandlerReset;
 
 // Reset Handler  first (and only) thing called when rebooting or starting up
 #[no_mangle]
-pub unsafe extern "C" fn HandlerReset() -> ! {    
+pub unsafe extern "C" fn HandlerReset() -> ! {
 	// configure clock
 	// HSI clock = 16 MHz
 	// HSE_VALUE <- 8 000 000 (8MHz - crystal frequency)
@@ -110,96 +144,60 @@ pub unsafe extern "C" fn HandlerReset() -> ! {
 	// MCK = (HS[EI]_CK / PLL_M) * PLL_N / PLL_P
 	//	MCK		APB1	APB2	PLL_M	PLL_N	PLL_P	PLL_Q
 	//	168		42		84		8		336		2		7
-    
+
 	// configure HSI clock
-	//RCC_CR |= RCC_CR_HSION;
-    rcc_cr_write(rcc_cr_read() | RCC_CR_HSION);
-	//while((RCC_CR & RCC_CR_HSIRDY) == 0);
+    rcc_cr_seti(RCC_CR_HSION);
     while (rcc_cr_read() & RCC_CR_HSIRDY) == 0 {}
-	//RCC_CFGR_SW_SET(RCC_CFGR, RCC_HSI);
-    rcc_cfgr_write(rep_bits(rcc_cfgr_read(),0,2,0b00));
-    
-    
+    rcc_cfgr_set(0,2,0b00);
+
 	// configure HSE clock
-	//RCC_CR |= RCC_CR_HSEON;
-    rcc_cr_write(rcc_cr_read() | RCC_CR_HSEON);
-	//while((RCC_CR & RCC_CR_HSERDY) == 0);
+    rcc_cr_seti(RCC_CR_HSEON);
     while (rcc_cr_read() & RCC_CR_HSERDY) == 0 {}
-    
+
 	// configure AHB and AHP[12]
-	//RCC_CFGGR_HPRE_SET(RCC_CFGR, RCC_HPRE_NODIV);
-    rcc_cfgr_write(rep_bits(rcc_cfgr_read(),4,4,0b0000));
-	//RCC_CFGGR_PPRE1_SET(RCC_CFGR, RCC_PPRE_DIV4);
-    rcc_cfgr_write(rep_bits(rcc_cfgr_read(),10,3,0b110));
-	//RCC_CFGGR_PPRE2_SET(RCC_CFGR, RCC_PPRE_DIV2);
-    rcc_cfgr_write(rep_bits(rcc_cfgr_read(),13,3,0b100));
-    
+    rcc_cfgr_set(4,4,0b0000);
+    rcc_cfgr_set(10,3,0b110);
+    rcc_cfgr_set(13,3,0b100);
+
 	// configure PLL
-	//RCC_CR &= ~RCC_CR_PLLON;
-    rcc_cr_write(rcc_cr_read() & !RCC_CR_PLLON);
+    rcc_cr_seti(!RCC_CR_PLLON);
     let mut x : u32 = 0;
-	//RCC_PLLCFGR_M_SET(x, 8);
     x = rep_bits(x,0,5,8);
-	//RCC_PLLCFGR_N_SET(x, 336);
     x = rep_bits(x,6,9,336);
-	//RCC_PLLCFGR_P_SET(x, RCC_PLLP2);
     x = rep_bits(x,16,2,0);
-	//x |= RCC_PLLCFGR_SRC_HSE;
     x |= RCC_PLLCFGR_PLLSRC;
-	//RCC_PLLCFGR_Q_SET(x, 7);
     x = rep_bits(x,24,4,7);
-	//RCC_PLLCFGR = x;
     rcc_pllcfgr_write(x);
-	//RCC_CR |= RCC_CR_PLLON;
-    rcc_cr_write(rcc_cr_read() | RCC_CR_PLLON);
-	//while((RCC_CR & RCC_CR_PLLRDY) == 0);
+    rcc_cr_seti(RCC_CR_PLLON);
     while (rcc_cr_read() & RCC_CR_PLLRDY) == 0 {}
-    
+
 	// configure flash
 	x = flash_acr_read();
 	x |= FLASH_ACR_DCEN;
 	x |= FLASH_ACR_ICEN;
-	//FLASH_ACR_LATENCY_SET(x, 5);
     x = rep_bits(x,FLASH_ACR_LATENCY,2,5);
-	//FLASH_ACR = x;
     flash_acr_write(x);
-	
+
 	// select PLL as SYSCLK
-	//RCC_CFGR_SW_SET(RCC_CFGR, RCC_PLL);
-    rcc_cfgr_write(rep_bits(rcc_cfgr_read(),0,2,0b10));
-    //while(RCC_CFGR_SWS_GET(RCC_CFGR) != RCC_PLL);
-    while get_bits(rcc_cfgr_read(),2,2) != 0b10 {}   
-	//RCC_CR &= ~RCC_CR_HSION;
-    rcc_cr_write(rcc_cr_read() & !RCC_CR_HSION);
+    rcc_cfgr_set(0,2,0b10);
+    while get_bits(rcc_cfgr_read(),2,2) != 0b10 {}
+    rcc_cr_seti(!RCC_CR_HSION);
 
 	// rmap SRAM at 0
-	//SYSCFG_MEMRMP = 0b11;
     syscfg_memrmp_write(0b11);
 
-    //uint32_t *p;
-	//uint32_t *q;
-    
 	// copy data from FLASH to RAM
-	//p = &_data_flash;
-	//for(q = &_data_begin; q < &_data_end;)
-	//		*q++ = *p++;
     let count1 = &_data_end as *const u8 as usize - &_data_begin as *const u8 as usize;
     ptr::copy_nonoverlapping(&_data_flash as *const u8, &mut _data_begin as *mut u8, count1);
-    
+
 	// set to 0 BSS
-	//for(q = &_bss_begin; q < &_bss_end;)
-	//	*q++ = 0;
     let count2 = &_bss_end as *const u8 as usize - &_bss_begin as *const u8 as usize;
-    //let count2 = 1024;
     ptr::write_bytes(&mut _bss_begin as *mut u8, 0, count2);
 
 
 	// console configuration
-	//DBG_DEMCR |= DBG_DEMCR_TRCENA;
-    dbg_demcr_write(dbg_demcr_read() | DBG_DEMCR_TRCENA);
-	//ITM_TRACE_EN |= ITM_TRACE_EN_PORT0;
-    itm_trace_en_write(itm_trace_en_read() | ITM_TRACE_EN_PORT0);
-
+    dcb_demcr_seti(DCB_DEMCR_TRCENA);
+    itm_ter_seti(ITM_TRACE_EN_PORT0);
 
 	extern "Rust" {
         fn main() -> !;

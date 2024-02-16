@@ -1,7 +1,39 @@
+/**
+ *	Rust on STM32 Project by Rouilles en GeraniumTM
+ *	Copyright (C) 2024 Université de Toulouse :
+ *   - Oussama Felfel - oussama.felfel@univ-tlse3.fr
+ *   - François Foltete - francois.foltete@univ-tlse3.fr
+ *   - Elana Courtines - elana.courtines@univ-tlse3.fr
+ *   - Teo Tinarrage - teo.tinarrage@univ-tlse3.fr
+ *   - Zineb Moubarik - zineb.moubarik@univ-tlse3.fr
+ *
+ *  This library aims to provide the following :
+ *   - a rust library generation tool to safely access memory ;
+ *   - a support to flash STM32 boards ;
+ *   - a task scheduling tool that generates the associated rust code.
+ *
+ *  The development of this library has done as a Proof of Concept and
+ *  is currently only tested for STM32F407-G DISC1 Boards.
+ *
+ *  It is our hope that using this library to enable development on
+ *  other boards will be facilitated.
+ *
+ *
+ *	This program is free software: you can redistribute it and/or modify
+ *	it under the terms of the GNU General Public License as published by
+ *	the Free Software Foundation, either version 3 of the License, or
+ *	(at your option) any later version.
+ *
+ *	This program is distributed in the hope that it will be useful,
+ *	but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *	GNU General Public License for more details.
+**/
+
 extern crate core;
 use crate::core::ptr::write_volatile;
 use crate::core::ptr::read_volatile;
-
+use crate::stm32rustlib::various::*;
 
 const DAC_ADR : u32 = 0x40007400;
         
@@ -183,4 +215,113 @@ pub fn dac_sr_read() -> u32 {
         read_volatile( (DAC_ADR + DAC_SR_OFFSET) as *mut u32)
     }
 }
+    
+        
+pub fn dac_cr_set(position: u32, size: u32, value: u32) {
+    dac_cr_write(rep_bits(dac_cr_read(), position, size, value));
+}
+pub fn dac_swtrigr_set(position: u32, size: u32, value: u32) {
+    dac_swtrigr_write(rep_bits(dac_swtrigr_read(), position, size, value));
+}
+pub fn dac_dhr12r1_set(position: u32, size: u32, value: u32) {
+    dac_dhr12r1_write(rep_bits(dac_dhr12r1_read(), position, size, value));
+}
+pub fn dac_dhr12l1_set(position: u32, size: u32, value: u32) {
+    dac_dhr12l1_write(rep_bits(dac_dhr12l1_read(), position, size, value));
+}
+pub fn dac_dhr8r1_set(position: u32, size: u32, value: u32) {
+    dac_dhr8r1_write(rep_bits(dac_dhr8r1_read(), position, size, value));
+}
+pub fn dac_dhr12r2_set(position: u32, size: u32, value: u32) {
+    dac_dhr12r2_write(rep_bits(dac_dhr12r2_read(), position, size, value));
+}
+pub fn dac_dhr12l2_set(position: u32, size: u32, value: u32) {
+    dac_dhr12l2_write(rep_bits(dac_dhr12l2_read(), position, size, value));
+}
+pub fn dac_dhr8r2_set(position: u32, size: u32, value: u32) {
+    dac_dhr8r2_write(rep_bits(dac_dhr8r2_read(), position, size, value));
+}
+pub fn dac_dhr12rd_set(position: u32, size: u32, value: u32) {
+    dac_dhr12rd_write(rep_bits(dac_dhr12rd_read(), position, size, value));
+}
+pub fn dac_dhr12ld_set(position: u32, size: u32, value: u32) {
+    dac_dhr12ld_write(rep_bits(dac_dhr12ld_read(), position, size, value));
+}
+pub fn dac_dhr8rd_set(position: u32, size: u32, value: u32) {
+    dac_dhr8rd_write(rep_bits(dac_dhr8rd_read(), position, size, value));
+}
+
+
+
+    
+        
+pub fn dac_cr_seti(value: u32) {
+    match value.count_ones() {
+        1 => dac_cr_write(dac_cr_read() | value),
+        31 => dac_cr_write(dac_cr_read() & value),
+        _ => (),}
+}
+pub fn dac_swtrigr_seti(value: u32) {
+    match value.count_ones() {
+        1 => dac_swtrigr_write(dac_swtrigr_read() | value),
+        31 => dac_swtrigr_write(dac_swtrigr_read() & value),
+        _ => (),}
+}
+pub fn dac_dhr12r1_seti(value: u32) {
+    match value.count_ones() {
+        1 => dac_dhr12r1_write(dac_dhr12r1_read() | value),
+        31 => dac_dhr12r1_write(dac_dhr12r1_read() & value),
+        _ => (),}
+}
+pub fn dac_dhr12l1_seti(value: u32) {
+    match value.count_ones() {
+        1 => dac_dhr12l1_write(dac_dhr12l1_read() | value),
+        31 => dac_dhr12l1_write(dac_dhr12l1_read() & value),
+        _ => (),}
+}
+pub fn dac_dhr8r1_seti(value: u32) {
+    match value.count_ones() {
+        1 => dac_dhr8r1_write(dac_dhr8r1_read() | value),
+        31 => dac_dhr8r1_write(dac_dhr8r1_read() & value),
+        _ => (),}
+}
+pub fn dac_dhr12r2_seti(value: u32) {
+    match value.count_ones() {
+        1 => dac_dhr12r2_write(dac_dhr12r2_read() | value),
+        31 => dac_dhr12r2_write(dac_dhr12r2_read() & value),
+        _ => (),}
+}
+pub fn dac_dhr12l2_seti(value: u32) {
+    match value.count_ones() {
+        1 => dac_dhr12l2_write(dac_dhr12l2_read() | value),
+        31 => dac_dhr12l2_write(dac_dhr12l2_read() & value),
+        _ => (),}
+}
+pub fn dac_dhr8r2_seti(value: u32) {
+    match value.count_ones() {
+        1 => dac_dhr8r2_write(dac_dhr8r2_read() | value),
+        31 => dac_dhr8r2_write(dac_dhr8r2_read() & value),
+        _ => (),}
+}
+pub fn dac_dhr12rd_seti(value: u32) {
+    match value.count_ones() {
+        1 => dac_dhr12rd_write(dac_dhr12rd_read() | value),
+        31 => dac_dhr12rd_write(dac_dhr12rd_read() & value),
+        _ => (),}
+}
+pub fn dac_dhr12ld_seti(value: u32) {
+    match value.count_ones() {
+        1 => dac_dhr12ld_write(dac_dhr12ld_read() | value),
+        31 => dac_dhr12ld_write(dac_dhr12ld_read() & value),
+        _ => (),}
+}
+pub fn dac_dhr8rd_seti(value: u32) {
+    match value.count_ones() {
+        1 => dac_dhr8rd_write(dac_dhr8rd_read() | value),
+        31 => dac_dhr8rd_write(dac_dhr8rd_read() & value),
+        _ => (),}
+}
+
+
+
     

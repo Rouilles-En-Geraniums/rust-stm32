@@ -1,30 +1,64 @@
 #![no_std]
 #![no_main]
-extern crate core;
-use panic_halt as _;
-use cortex_m_rt::entry;
-use cortex_m::asm;
+/**
+ *	Rust on STM32 Project by Rouilles en GeraniumTM
+ *	Copyright (C) 2024 Université de Toulouse :
+ *   - Oussama Felfel - oussama.felfel@univ-tlse3.fr
+ *   - François Foltete - francois.foltete@univ-tlse3.fr
+ *   - Elana Courtines - elana.courtines@univ-tlse3.fr
+ *   - Teo Tinarrage - teo.tinarrage@univ-tlse3.fr
+ *   - Zineb Moubarik - zineb.moubarik@univ-tlse3.fr
+ *
+ *  This library aims to provide the following :
+ *   - a rust library generation tool to safely access memory ;
+ *   - a support to flash STM32 boards ;
+ *   - a task scheduling tool that generates the associated rust code.
+ *
+ *  The development of this library has done as a Proof of Concept and
+ *  is currently only tested for STM32F407-G DISC1 Boards.
+ *
+ *  It is our hope that using this library to enable development on
+ *  other boards will be facilitated.
+ *
+ *
+ *	This program is free software: you can redistribute it and/or modify
+ *	it under the terms of the GNU General Public License as published by
+ *	the Free Software Foundation, either version 3 of the License, or
+ *	(at your option) any later version.
+ *
+ *	This program is distributed in the hope that it will be useful,
+ *	but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *	GNU General Public License for more details.
+**/
 
-use crate::stm32rustlib::gpio;
-use crate::stm32rustlib::rcc;
-use crate::stm32rustlib::various;
+extern crate geranium_rt;
 
-pub mod stm32rustlib;
+use geranium_rt::stm32rustlib::gpio::*;
+use geranium_rt::stm32rustlib::rcc::*;
+use geranium_rt::stm32rustlib::various::*;
+use geranium_rt::stm32rustlib::delay::*;
 
-#[entry]
-fn main() -> ! {
-    rcc::rcc_ahb1enr_write(rcc::rcc_ahb1enr_read() | (1 << 3)); //GPIO D
-    
+#[no_mangle]
+fn main() {
+    // delay functions must be initialized first. They use TIM2.
+    delay_init_timers();
+
+    // Enable the GPIO that the LED will be on.
+    rcc_ahb1enr_seti(RCC_AHB1ENR_GPIODEN);
+
+    // Declare a LED tuple
     let my_led = ('D', 12); // Built-in green led
 
-    gpio::gpiod_moder_write(various::rep_bits(gpio::gpiod_moder_read(), my_led.1*2, 2, gpio::GPIO_MODER_OUT));
+    // Initialize the LED
+    gpiod_moder_set(my_led.1*2, 2, GPIO_MODER_OUT);
 
-    let mut bstate = RELEASED;
-    gpio::digital_write(my_led, various::LOW);
+    // Set it to LOW by default
+    digital_write(my_led, LOW);
     loop {
-		gpio::digital_write(my_led, various::LOW);
-		asm::delay(4200000);
-		gpio::digital_write(my_led, various::HIGH);
-		asm::delay(4200000);
+        digital_write(my_led, LOW);
+        delay_ms(1000);
+        digital_write(my_led, HIGH);
+        delay_ms(1000);
     }
 }

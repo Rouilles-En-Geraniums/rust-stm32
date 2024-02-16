@@ -25,7 +25,7 @@
     {"name" : "SYSCFG_EXTICR1_EXTI1", "value" : "1 << 4"},
     {"name" : "SYSCFG_EXTICR1_EXTI2", "value" : "1 << 8"},
     {"name" : "SYSCFG_EXTICR1_EXTI3", "value" : "1 << 12"},
-    
+
     {"name" : "SYSCFG_EXTICR2_EXTI4", "value" : "1 << 0"},
     {"name" : "SYSCFG_EXTICR2_EXTI5", "value" : "1 << 4"},
     {"name" : "SYSCFG_EXTICR2_EXTI6", "value" : "1 << 8"},

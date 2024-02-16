@@ -1,34 +1,78 @@
 #![no_std]
 #![no_main]
-#![allow(unused_imports)]
-#![allow(non_snake_case)]
-#![allow(unused_variables)]
-#![allow(non_upper_case_globals)]
-#![allow(dead_code)]
+/**
+ *	Rust on STM32 Project by Rouilles en GeraniumTM
+ *	Copyright (C) 2024 Université de Toulouse :
+ *   - Oussama Felfel - oussama.felfel@univ-tlse3.fr
+ *   - François Foltete - francois.foltete@univ-tlse3.fr
+ *   - Elana Courtines - elana.courtines@univ-tlse3.fr
+ *   - Teo Tinarrage - teo.tinarrage@univ-tlse3.fr
+ *   - Zineb Moubarik - zineb.moubarik@univ-tlse3.fr
+ *
+ *  This library aims to provide the following :
+ *   - a rust library generation tool to safely access memory ;
+ *   - a support to flash STM32 boards ;
+ *   - a task scheduling tool that generates the associated rust code.
+ *
+ *  The development of this library has done as a Proof of Concept and
+ *  is currently only tested for STM32F407-G DISC1 Boards.
+ *
+ *  It is our hope that using this library to enable development on
+ *  other boards will be facilitated.
+ *
+ *
+ *	This program is free software: you can redistribute it and/or modify
+ *	it under the terms of the GNU General Public License as published by
+ *	the Free Software Foundation, either version 3 of the License, or
+ *	(at your option) any later version.
+ *
+ *	This program is distributed in the hope that it will be useful,
+ *	but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *	GNU General Public License for more details.
+**/
+
 
 extern crate geranium_rt;
-extern crate core;
-use core::arch::asm;
 
-pub mod stm32rustlib;
-use crate::stm32rustlib::gpio::*;
-use crate::stm32rustlib::rcc::*;
-use crate::stm32rustlib::various::*;
-use crate::stm32rustlib::wait::*;
+use geranium_rt::stm32rustlib::gpio::*;
+use geranium_rt::stm32rustlib::rcc::*;
+use geranium_rt::stm32rustlib::various::*;
+use geranium_rt::stm32rustlib::tim::*;
+use geranium_rt::stm32rustlib::system::*;
+
+const PSC: u32 = 1000;
+const PERIOD: u32 = APB1_CLK / 1000;
+
+pub fn init_timer() {
+    tim4_cr1_seti(!TIM_CEN);
+    tim4_psc_write(PSC - 1);
+    tim4_arr_write(PERIOD);
+    tim4_egr_write(TIM_UG);
+    tim4_sr_write(0);
+    tim4_cr1_seti(TIM_CEN);
+}
 
 
 #[no_mangle]
 fn main() {
-    rcc_ahb1enr_write(rcc_ahb1enr_read() | (1 << 3)); //GPIO D
-    
+    rcc_ahb1enr_seti(RCC_AHB1ENR_GPIODEN);
+    rcc_apb1enr_seti(RCC_APB1ENR_TIM4EN);
+
     let my_led = ('D', 12); // Built-in green led
-    gpiod_moder_write(rep_bits(gpiod_moder_read(), my_led.1*2, 2, GPIO_MODER_OUT));
-    
+    gpiod_moder_set(my_led.1*2, 2, GPIO_MODER_OUT);
+
+    init_timer();
+
     digital_write(my_led, LOW);
     loop {
-        digital_write(my_led, LOW);
-        wait_ms(1000);
-        digital_write(my_led, HIGH);
-        wait_ms(1000);
+        while (tim4_sr_read() & TIM_UIF) == 0 {};
+
+        if digital_read(my_led) == LOW {
+			digital_write(my_led, HIGH);
+		} else {
+            digital_write(my_led, LOW);
+		}
+        tim4_sr_write(0);
     }
 }

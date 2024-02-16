@@ -1,4 +1,34 @@
-
+/**
+ *	Rust on STM32 Project by Rouilles en GeraniumTM
+ *	Copyright (C) 2024 Université de Toulouse :
+ *   - Oussama Felfel - oussama.felfel@univ-tlse3.fr
+ *   - François Foltete - francois.foltete@univ-tlse3.fr
+ *   - Elana Courtines - elana.courtines@univ-tlse3.fr
+ *   - Teo Tinarrage - teo.tinarrage@univ-tlse3.fr
+ *   - Zineb Moubarik - zineb.moubarik@univ-tlse3.fr
+ *
+ *  This library aims to provide the following :
+ *   - a rust library generation tool to safely access memory ;
+ *   - a support to flash STM32 boards ;
+ *   - a task scheduling tool that generates the associated rust code.
+ *
+ *  The development of this library has done as a Proof of Concept and
+ *  is currently only tested for STM32F407-G DISC1 Boards.
+ *
+ *  It is our hope that using this library to enable development on
+ *  other boards will be facilitated.
+ *
+ *
+ *	This program is free software: you can redistribute it and/or modify
+ *	it under the terms of the GNU General Public License as published by
+ *	the Free Software Foundation, either version 3 of the License, or
+ *	(at your option) any later version.
+ *
+ *	This program is distributed in the hope that it will be useful,
+ *	but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *	GNU General Public License for more details.
+**/
 extern crate core;
 use crate::core::ptr::write_volatile;
 use crate::core::ptr::read_volatile;
@@ -1302,21 +1332,1046 @@ pub fn gpiok_afrh_read() -> u32 {
     }
 }
     
-
-
-/*
-fn initGPIO(pin: (char,u8), mode: u8){
-    GPIOD_MODER = REP_BITS(GPIOD_MODER, (GREEN_LED)*2, 2, GPIO_MODER_OUT) ;
-    GPIOD_OTYPER = GPIOD_OTYPER & ~( 1 << (GREEN_LED));
+        
+pub fn gpioa_moder_set(position: u32, size: u32, value: u32) {
+    gpioa_moder_write(rep_bits(gpioa_moder_read(), position, size, value));
 }
-*/
+pub fn gpioa_otyper_set(position: u32, size: u32, value: u32) {
+    gpioa_otyper_write(rep_bits(gpioa_otyper_read(), position, size, value));
+}
+pub fn gpioa_ospeedr_set(position: u32, size: u32, value: u32) {
+    gpioa_ospeedr_write(rep_bits(gpioa_ospeedr_read(), position, size, value));
+}
+pub fn gpioa_pupdr_set(position: u32, size: u32, value: u32) {
+    gpioa_pupdr_write(rep_bits(gpioa_pupdr_read(), position, size, value));
+}
+pub fn gpioa_idr_set(position: u32, size: u32, value: u32) {
+    gpioa_idr_write(rep_bits(gpioa_idr_read(), position, size, value));
+}
+pub fn gpioa_odr_set(position: u32, size: u32, value: u32) {
+    gpioa_odr_write(rep_bits(gpioa_odr_read(), position, size, value));
+}
+pub fn gpioa_bsrr_set(position: u32, size: u32, value: u32) {
+    gpioa_bsrr_write(rep_bits(gpioa_bsrr_read(), position, size, value));
+}
+pub fn gpioa_lckr_set(position: u32, size: u32, value: u32) {
+    gpioa_lckr_write(rep_bits(gpioa_lckr_read(), position, size, value));
+}
+pub fn gpioa_afrl_set(position: u32, size: u32, value: u32) {
+    gpioa_afrl_write(rep_bits(gpioa_afrl_read(), position, size, value));
+}
+pub fn gpioa_afrh_set(position: u32, size: u32, value: u32) {
+    gpioa_afrh_write(rep_bits(gpioa_afrh_read(), position, size, value));
+}
+    
+        
+pub fn gpiob_moder_set(position: u32, size: u32, value: u32) {
+    gpiob_moder_write(rep_bits(gpiob_moder_read(), position, size, value));
+}
+pub fn gpiob_otyper_set(position: u32, size: u32, value: u32) {
+    gpiob_otyper_write(rep_bits(gpiob_otyper_read(), position, size, value));
+}
+pub fn gpiob_ospeedr_set(position: u32, size: u32, value: u32) {
+    gpiob_ospeedr_write(rep_bits(gpiob_ospeedr_read(), position, size, value));
+}
+pub fn gpiob_pupdr_set(position: u32, size: u32, value: u32) {
+    gpiob_pupdr_write(rep_bits(gpiob_pupdr_read(), position, size, value));
+}
+pub fn gpiob_idr_set(position: u32, size: u32, value: u32) {
+    gpiob_idr_write(rep_bits(gpiob_idr_read(), position, size, value));
+}
+pub fn gpiob_odr_set(position: u32, size: u32, value: u32) {
+    gpiob_odr_write(rep_bits(gpiob_odr_read(), position, size, value));
+}
+pub fn gpiob_bsrr_set(position: u32, size: u32, value: u32) {
+    gpiob_bsrr_write(rep_bits(gpiob_bsrr_read(), position, size, value));
+}
+pub fn gpiob_lckr_set(position: u32, size: u32, value: u32) {
+    gpiob_lckr_write(rep_bits(gpiob_lckr_read(), position, size, value));
+}
+pub fn gpiob_afrl_set(position: u32, size: u32, value: u32) {
+    gpiob_afrl_write(rep_bits(gpiob_afrl_read(), position, size, value));
+}
+pub fn gpiob_afrh_set(position: u32, size: u32, value: u32) {
+    gpiob_afrh_write(rep_bits(gpiob_afrh_read(), position, size, value));
+}
+    
+        
+pub fn gpioc_moder_set(position: u32, size: u32, value: u32) {
+    gpioc_moder_write(rep_bits(gpioc_moder_read(), position, size, value));
+}
+pub fn gpioc_otyper_set(position: u32, size: u32, value: u32) {
+    gpioc_otyper_write(rep_bits(gpioc_otyper_read(), position, size, value));
+}
+pub fn gpioc_ospeedr_set(position: u32, size: u32, value: u32) {
+    gpioc_ospeedr_write(rep_bits(gpioc_ospeedr_read(), position, size, value));
+}
+pub fn gpioc_pupdr_set(position: u32, size: u32, value: u32) {
+    gpioc_pupdr_write(rep_bits(gpioc_pupdr_read(), position, size, value));
+}
+pub fn gpioc_idr_set(position: u32, size: u32, value: u32) {
+    gpioc_idr_write(rep_bits(gpioc_idr_read(), position, size, value));
+}
+pub fn gpioc_odr_set(position: u32, size: u32, value: u32) {
+    gpioc_odr_write(rep_bits(gpioc_odr_read(), position, size, value));
+}
+pub fn gpioc_bsrr_set(position: u32, size: u32, value: u32) {
+    gpioc_bsrr_write(rep_bits(gpioc_bsrr_read(), position, size, value));
+}
+pub fn gpioc_lckr_set(position: u32, size: u32, value: u32) {
+    gpioc_lckr_write(rep_bits(gpioc_lckr_read(), position, size, value));
+}
+pub fn gpioc_afrl_set(position: u32, size: u32, value: u32) {
+    gpioc_afrl_write(rep_bits(gpioc_afrl_read(), position, size, value));
+}
+pub fn gpioc_afrh_set(position: u32, size: u32, value: u32) {
+    gpioc_afrh_write(rep_bits(gpioc_afrh_read(), position, size, value));
+}
+    
+        
+pub fn gpiod_moder_set(position: u32, size: u32, value: u32) {
+    gpiod_moder_write(rep_bits(gpiod_moder_read(), position, size, value));
+}
+pub fn gpiod_otyper_set(position: u32, size: u32, value: u32) {
+    gpiod_otyper_write(rep_bits(gpiod_otyper_read(), position, size, value));
+}
+pub fn gpiod_ospeedr_set(position: u32, size: u32, value: u32) {
+    gpiod_ospeedr_write(rep_bits(gpiod_ospeedr_read(), position, size, value));
+}
+pub fn gpiod_pupdr_set(position: u32, size: u32, value: u32) {
+    gpiod_pupdr_write(rep_bits(gpiod_pupdr_read(), position, size, value));
+}
+pub fn gpiod_idr_set(position: u32, size: u32, value: u32) {
+    gpiod_idr_write(rep_bits(gpiod_idr_read(), position, size, value));
+}
+pub fn gpiod_odr_set(position: u32, size: u32, value: u32) {
+    gpiod_odr_write(rep_bits(gpiod_odr_read(), position, size, value));
+}
+pub fn gpiod_bsrr_set(position: u32, size: u32, value: u32) {
+    gpiod_bsrr_write(rep_bits(gpiod_bsrr_read(), position, size, value));
+}
+pub fn gpiod_lckr_set(position: u32, size: u32, value: u32) {
+    gpiod_lckr_write(rep_bits(gpiod_lckr_read(), position, size, value));
+}
+pub fn gpiod_afrl_set(position: u32, size: u32, value: u32) {
+    gpiod_afrl_write(rep_bits(gpiod_afrl_read(), position, size, value));
+}
+pub fn gpiod_afrh_set(position: u32, size: u32, value: u32) {
+    gpiod_afrh_write(rep_bits(gpiod_afrh_read(), position, size, value));
+}
+    
+        
+pub fn gpioe_moder_set(position: u32, size: u32, value: u32) {
+    gpioe_moder_write(rep_bits(gpioe_moder_read(), position, size, value));
+}
+pub fn gpioe_otyper_set(position: u32, size: u32, value: u32) {
+    gpioe_otyper_write(rep_bits(gpioe_otyper_read(), position, size, value));
+}
+pub fn gpioe_ospeedr_set(position: u32, size: u32, value: u32) {
+    gpioe_ospeedr_write(rep_bits(gpioe_ospeedr_read(), position, size, value));
+}
+pub fn gpioe_pupdr_set(position: u32, size: u32, value: u32) {
+    gpioe_pupdr_write(rep_bits(gpioe_pupdr_read(), position, size, value));
+}
+pub fn gpioe_idr_set(position: u32, size: u32, value: u32) {
+    gpioe_idr_write(rep_bits(gpioe_idr_read(), position, size, value));
+}
+pub fn gpioe_odr_set(position: u32, size: u32, value: u32) {
+    gpioe_odr_write(rep_bits(gpioe_odr_read(), position, size, value));
+}
+pub fn gpioe_bsrr_set(position: u32, size: u32, value: u32) {
+    gpioe_bsrr_write(rep_bits(gpioe_bsrr_read(), position, size, value));
+}
+pub fn gpioe_lckr_set(position: u32, size: u32, value: u32) {
+    gpioe_lckr_write(rep_bits(gpioe_lckr_read(), position, size, value));
+}
+pub fn gpioe_afrl_set(position: u32, size: u32, value: u32) {
+    gpioe_afrl_write(rep_bits(gpioe_afrl_read(), position, size, value));
+}
+pub fn gpioe_afrh_set(position: u32, size: u32, value: u32) {
+    gpioe_afrh_write(rep_bits(gpioe_afrh_read(), position, size, value));
+}
+    
+        
+pub fn gpiof_moder_set(position: u32, size: u32, value: u32) {
+    gpiof_moder_write(rep_bits(gpiof_moder_read(), position, size, value));
+}
+pub fn gpiof_otyper_set(position: u32, size: u32, value: u32) {
+    gpiof_otyper_write(rep_bits(gpiof_otyper_read(), position, size, value));
+}
+pub fn gpiof_ospeedr_set(position: u32, size: u32, value: u32) {
+    gpiof_ospeedr_write(rep_bits(gpiof_ospeedr_read(), position, size, value));
+}
+pub fn gpiof_pupdr_set(position: u32, size: u32, value: u32) {
+    gpiof_pupdr_write(rep_bits(gpiof_pupdr_read(), position, size, value));
+}
+pub fn gpiof_idr_set(position: u32, size: u32, value: u32) {
+    gpiof_idr_write(rep_bits(gpiof_idr_read(), position, size, value));
+}
+pub fn gpiof_odr_set(position: u32, size: u32, value: u32) {
+    gpiof_odr_write(rep_bits(gpiof_odr_read(), position, size, value));
+}
+pub fn gpiof_bsrr_set(position: u32, size: u32, value: u32) {
+    gpiof_bsrr_write(rep_bits(gpiof_bsrr_read(), position, size, value));
+}
+pub fn gpiof_lckr_set(position: u32, size: u32, value: u32) {
+    gpiof_lckr_write(rep_bits(gpiof_lckr_read(), position, size, value));
+}
+pub fn gpiof_afrl_set(position: u32, size: u32, value: u32) {
+    gpiof_afrl_write(rep_bits(gpiof_afrl_read(), position, size, value));
+}
+pub fn gpiof_afrh_set(position: u32, size: u32, value: u32) {
+    gpiof_afrh_write(rep_bits(gpiof_afrh_read(), position, size, value));
+}
+    
+        
+pub fn gpiog_moder_set(position: u32, size: u32, value: u32) {
+    gpiog_moder_write(rep_bits(gpiog_moder_read(), position, size, value));
+}
+pub fn gpiog_otyper_set(position: u32, size: u32, value: u32) {
+    gpiog_otyper_write(rep_bits(gpiog_otyper_read(), position, size, value));
+}
+pub fn gpiog_ospeedr_set(position: u32, size: u32, value: u32) {
+    gpiog_ospeedr_write(rep_bits(gpiog_ospeedr_read(), position, size, value));
+}
+pub fn gpiog_pupdr_set(position: u32, size: u32, value: u32) {
+    gpiog_pupdr_write(rep_bits(gpiog_pupdr_read(), position, size, value));
+}
+pub fn gpiog_idr_set(position: u32, size: u32, value: u32) {
+    gpiog_idr_write(rep_bits(gpiog_idr_read(), position, size, value));
+}
+pub fn gpiog_odr_set(position: u32, size: u32, value: u32) {
+    gpiog_odr_write(rep_bits(gpiog_odr_read(), position, size, value));
+}
+pub fn gpiog_bsrr_set(position: u32, size: u32, value: u32) {
+    gpiog_bsrr_write(rep_bits(gpiog_bsrr_read(), position, size, value));
+}
+pub fn gpiog_lckr_set(position: u32, size: u32, value: u32) {
+    gpiog_lckr_write(rep_bits(gpiog_lckr_read(), position, size, value));
+}
+pub fn gpiog_afrl_set(position: u32, size: u32, value: u32) {
+    gpiog_afrl_write(rep_bits(gpiog_afrl_read(), position, size, value));
+}
+pub fn gpiog_afrh_set(position: u32, size: u32, value: u32) {
+    gpiog_afrh_write(rep_bits(gpiog_afrh_read(), position, size, value));
+}
+    
+        
+pub fn gpioh_moder_set(position: u32, size: u32, value: u32) {
+    gpioh_moder_write(rep_bits(gpioh_moder_read(), position, size, value));
+}
+pub fn gpioh_otyper_set(position: u32, size: u32, value: u32) {
+    gpioh_otyper_write(rep_bits(gpioh_otyper_read(), position, size, value));
+}
+pub fn gpioh_ospeedr_set(position: u32, size: u32, value: u32) {
+    gpioh_ospeedr_write(rep_bits(gpioh_ospeedr_read(), position, size, value));
+}
+pub fn gpioh_pupdr_set(position: u32, size: u32, value: u32) {
+    gpioh_pupdr_write(rep_bits(gpioh_pupdr_read(), position, size, value));
+}
+pub fn gpioh_idr_set(position: u32, size: u32, value: u32) {
+    gpioh_idr_write(rep_bits(gpioh_idr_read(), position, size, value));
+}
+pub fn gpioh_odr_set(position: u32, size: u32, value: u32) {
+    gpioh_odr_write(rep_bits(gpioh_odr_read(), position, size, value));
+}
+pub fn gpioh_bsrr_set(position: u32, size: u32, value: u32) {
+    gpioh_bsrr_write(rep_bits(gpioh_bsrr_read(), position, size, value));
+}
+pub fn gpioh_lckr_set(position: u32, size: u32, value: u32) {
+    gpioh_lckr_write(rep_bits(gpioh_lckr_read(), position, size, value));
+}
+pub fn gpioh_afrl_set(position: u32, size: u32, value: u32) {
+    gpioh_afrl_write(rep_bits(gpioh_afrl_read(), position, size, value));
+}
+pub fn gpioh_afrh_set(position: u32, size: u32, value: u32) {
+    gpioh_afrh_write(rep_bits(gpioh_afrh_read(), position, size, value));
+}
+    
+        
+pub fn gpioi_moder_set(position: u32, size: u32, value: u32) {
+    gpioi_moder_write(rep_bits(gpioi_moder_read(), position, size, value));
+}
+pub fn gpioi_otyper_set(position: u32, size: u32, value: u32) {
+    gpioi_otyper_write(rep_bits(gpioi_otyper_read(), position, size, value));
+}
+pub fn gpioi_ospeedr_set(position: u32, size: u32, value: u32) {
+    gpioi_ospeedr_write(rep_bits(gpioi_ospeedr_read(), position, size, value));
+}
+pub fn gpioi_pupdr_set(position: u32, size: u32, value: u32) {
+    gpioi_pupdr_write(rep_bits(gpioi_pupdr_read(), position, size, value));
+}
+pub fn gpioi_idr_set(position: u32, size: u32, value: u32) {
+    gpioi_idr_write(rep_bits(gpioi_idr_read(), position, size, value));
+}
+pub fn gpioi_odr_set(position: u32, size: u32, value: u32) {
+    gpioi_odr_write(rep_bits(gpioi_odr_read(), position, size, value));
+}
+pub fn gpioi_bsrr_set(position: u32, size: u32, value: u32) {
+    gpioi_bsrr_write(rep_bits(gpioi_bsrr_read(), position, size, value));
+}
+pub fn gpioi_lckr_set(position: u32, size: u32, value: u32) {
+    gpioi_lckr_write(rep_bits(gpioi_lckr_read(), position, size, value));
+}
+pub fn gpioi_afrl_set(position: u32, size: u32, value: u32) {
+    gpioi_afrl_write(rep_bits(gpioi_afrl_read(), position, size, value));
+}
+pub fn gpioi_afrh_set(position: u32, size: u32, value: u32) {
+    gpioi_afrh_write(rep_bits(gpioi_afrh_read(), position, size, value));
+}
+    
+        
+pub fn gpioj_moder_set(position: u32, size: u32, value: u32) {
+    gpioj_moder_write(rep_bits(gpioj_moder_read(), position, size, value));
+}
+pub fn gpioj_otyper_set(position: u32, size: u32, value: u32) {
+    gpioj_otyper_write(rep_bits(gpioj_otyper_read(), position, size, value));
+}
+pub fn gpioj_ospeedr_set(position: u32, size: u32, value: u32) {
+    gpioj_ospeedr_write(rep_bits(gpioj_ospeedr_read(), position, size, value));
+}
+pub fn gpioj_pupdr_set(position: u32, size: u32, value: u32) {
+    gpioj_pupdr_write(rep_bits(gpioj_pupdr_read(), position, size, value));
+}
+pub fn gpioj_idr_set(position: u32, size: u32, value: u32) {
+    gpioj_idr_write(rep_bits(gpioj_idr_read(), position, size, value));
+}
+pub fn gpioj_odr_set(position: u32, size: u32, value: u32) {
+    gpioj_odr_write(rep_bits(gpioj_odr_read(), position, size, value));
+}
+pub fn gpioj_bsrr_set(position: u32, size: u32, value: u32) {
+    gpioj_bsrr_write(rep_bits(gpioj_bsrr_read(), position, size, value));
+}
+pub fn gpioj_lckr_set(position: u32, size: u32, value: u32) {
+    gpioj_lckr_write(rep_bits(gpioj_lckr_read(), position, size, value));
+}
+pub fn gpioj_afrl_set(position: u32, size: u32, value: u32) {
+    gpioj_afrl_write(rep_bits(gpioj_afrl_read(), position, size, value));
+}
+pub fn gpioj_afrh_set(position: u32, size: u32, value: u32) {
+    gpioj_afrh_write(rep_bits(gpioj_afrh_read(), position, size, value));
+}
+    
+        
+pub fn gpiok_moder_set(position: u32, size: u32, value: u32) {
+    gpiok_moder_write(rep_bits(gpiok_moder_read(), position, size, value));
+}
+pub fn gpiok_otyper_set(position: u32, size: u32, value: u32) {
+    gpiok_otyper_write(rep_bits(gpiok_otyper_read(), position, size, value));
+}
+pub fn gpiok_ospeedr_set(position: u32, size: u32, value: u32) {
+    gpiok_ospeedr_write(rep_bits(gpiok_ospeedr_read(), position, size, value));
+}
+pub fn gpiok_pupdr_set(position: u32, size: u32, value: u32) {
+    gpiok_pupdr_write(rep_bits(gpiok_pupdr_read(), position, size, value));
+}
+pub fn gpiok_idr_set(position: u32, size: u32, value: u32) {
+    gpiok_idr_write(rep_bits(gpiok_idr_read(), position, size, value));
+}
+pub fn gpiok_odr_set(position: u32, size: u32, value: u32) {
+    gpiok_odr_write(rep_bits(gpiok_odr_read(), position, size, value));
+}
+pub fn gpiok_bsrr_set(position: u32, size: u32, value: u32) {
+    gpiok_bsrr_write(rep_bits(gpiok_bsrr_read(), position, size, value));
+}
+pub fn gpiok_lckr_set(position: u32, size: u32, value: u32) {
+    gpiok_lckr_write(rep_bits(gpiok_lckr_read(), position, size, value));
+}
+pub fn gpiok_afrl_set(position: u32, size: u32, value: u32) {
+    gpiok_afrl_write(rep_bits(gpiok_afrl_read(), position, size, value));
+}
+pub fn gpiok_afrh_set(position: u32, size: u32, value: u32) {
+    gpiok_afrh_write(rep_bits(gpiok_afrh_read(), position, size, value));
+}
+    
+        
+pub fn gpioa_moder_seti(value: u32) {
+    match value.count_ones() {
+        1 => gpioa_moder_write(gpioa_moder_read() | value),
+        31 => gpioa_moder_write(gpioa_moder_read() & value),
+        _ => (),}
+}
+pub fn gpioa_otyper_seti(value: u32) {
+    match value.count_ones() {
+        1 => gpioa_otyper_write(gpioa_otyper_read() | value),
+        31 => gpioa_otyper_write(gpioa_otyper_read() & value),
+        _ => (),}
+}
+pub fn gpioa_ospeedr_seti(value: u32) {
+    match value.count_ones() {
+        1 => gpioa_ospeedr_write(gpioa_ospeedr_read() | value),
+        31 => gpioa_ospeedr_write(gpioa_ospeedr_read() & value),
+        _ => (),}
+}
+pub fn gpioa_pupdr_seti(value: u32) {
+    match value.count_ones() {
+        1 => gpioa_pupdr_write(gpioa_pupdr_read() | value),
+        31 => gpioa_pupdr_write(gpioa_pupdr_read() & value),
+        _ => (),}
+}
+pub fn gpioa_idr_seti(value: u32) {
+    match value.count_ones() {
+        1 => gpioa_idr_write(gpioa_idr_read() | value),
+        31 => gpioa_idr_write(gpioa_idr_read() & value),
+        _ => (),}
+}
+pub fn gpioa_odr_seti(value: u32) {
+    match value.count_ones() {
+        1 => gpioa_odr_write(gpioa_odr_read() | value),
+        31 => gpioa_odr_write(gpioa_odr_read() & value),
+        _ => (),}
+}
+pub fn gpioa_bsrr_seti(value: u32) {
+    match value.count_ones() {
+        1 => gpioa_bsrr_write(gpioa_bsrr_read() | value),
+        31 => gpioa_bsrr_write(gpioa_bsrr_read() & value),
+        _ => (),}
+}
+pub fn gpioa_lckr_seti(value: u32) {
+    match value.count_ones() {
+        1 => gpioa_lckr_write(gpioa_lckr_read() | value),
+        31 => gpioa_lckr_write(gpioa_lckr_read() & value),
+        _ => (),}
+}
+pub fn gpioa_afrl_seti(value: u32) {
+    match value.count_ones() {
+        1 => gpioa_afrl_write(gpioa_afrl_read() | value),
+        31 => gpioa_afrl_write(gpioa_afrl_read() & value),
+        _ => (),}
+}
+pub fn gpioa_afrh_seti(value: u32) {
+    match value.count_ones() {
+        1 => gpioa_afrh_write(gpioa_afrh_read() | value),
+        31 => gpioa_afrh_write(gpioa_afrh_read() & value),
+        _ => (),}
+}
+    
+        
+pub fn gpiob_moder_seti(value: u32) {
+    match value.count_ones() {
+        1 => gpiob_moder_write(gpiob_moder_read() | value),
+        31 => gpiob_moder_write(gpiob_moder_read() & value),
+        _ => (),}
+}
+pub fn gpiob_otyper_seti(value: u32) {
+    match value.count_ones() {
+        1 => gpiob_otyper_write(gpiob_otyper_read() | value),
+        31 => gpiob_otyper_write(gpiob_otyper_read() & value),
+        _ => (),}
+}
+pub fn gpiob_ospeedr_seti(value: u32) {
+    match value.count_ones() {
+        1 => gpiob_ospeedr_write(gpiob_ospeedr_read() | value),
+        31 => gpiob_ospeedr_write(gpiob_ospeedr_read() & value),
+        _ => (),}
+}
+pub fn gpiob_pupdr_seti(value: u32) {
+    match value.count_ones() {
+        1 => gpiob_pupdr_write(gpiob_pupdr_read() | value),
+        31 => gpiob_pupdr_write(gpiob_pupdr_read() & value),
+        _ => (),}
+}
+pub fn gpiob_idr_seti(value: u32) {
+    match value.count_ones() {
+        1 => gpiob_idr_write(gpiob_idr_read() | value),
+        31 => gpiob_idr_write(gpiob_idr_read() & value),
+        _ => (),}
+}
+pub fn gpiob_odr_seti(value: u32) {
+    match value.count_ones() {
+        1 => gpiob_odr_write(gpiob_odr_read() | value),
+        31 => gpiob_odr_write(gpiob_odr_read() & value),
+        _ => (),}
+}
+pub fn gpiob_bsrr_seti(value: u32) {
+    match value.count_ones() {
+        1 => gpiob_bsrr_write(gpiob_bsrr_read() | value),
+        31 => gpiob_bsrr_write(gpiob_bsrr_read() & value),
+        _ => (),}
+}
+pub fn gpiob_lckr_seti(value: u32) {
+    match value.count_ones() {
+        1 => gpiob_lckr_write(gpiob_lckr_read() | value),
+        31 => gpiob_lckr_write(gpiob_lckr_read() & value),
+        _ => (),}
+}
+pub fn gpiob_afrl_seti(value: u32) {
+    match value.count_ones() {
+        1 => gpiob_afrl_write(gpiob_afrl_read() | value),
+        31 => gpiob_afrl_write(gpiob_afrl_read() & value),
+        _ => (),}
+}
+pub fn gpiob_afrh_seti(value: u32) {
+    match value.count_ones() {
+        1 => gpiob_afrh_write(gpiob_afrh_read() | value),
+        31 => gpiob_afrh_write(gpiob_afrh_read() & value),
+        _ => (),}
+}
+    
+        
+pub fn gpioc_moder_seti(value: u32) {
+    match value.count_ones() {
+        1 => gpioc_moder_write(gpioc_moder_read() | value),
+        31 => gpioc_moder_write(gpioc_moder_read() & value),
+        _ => (),}
+}
+pub fn gpioc_otyper_seti(value: u32) {
+    match value.count_ones() {
+        1 => gpioc_otyper_write(gpioc_otyper_read() | value),
+        31 => gpioc_otyper_write(gpioc_otyper_read() & value),
+        _ => (),}
+}
+pub fn gpioc_ospeedr_seti(value: u32) {
+    match value.count_ones() {
+        1 => gpioc_ospeedr_write(gpioc_ospeedr_read() | value),
+        31 => gpioc_ospeedr_write(gpioc_ospeedr_read() & value),
+        _ => (),}
+}
+pub fn gpioc_pupdr_seti(value: u32) {
+    match value.count_ones() {
+        1 => gpioc_pupdr_write(gpioc_pupdr_read() | value),
+        31 => gpioc_pupdr_write(gpioc_pupdr_read() & value),
+        _ => (),}
+}
+pub fn gpioc_idr_seti(value: u32) {
+    match value.count_ones() {
+        1 => gpioc_idr_write(gpioc_idr_read() | value),
+        31 => gpioc_idr_write(gpioc_idr_read() & value),
+        _ => (),}
+}
+pub fn gpioc_odr_seti(value: u32) {
+    match value.count_ones() {
+        1 => gpioc_odr_write(gpioc_odr_read() | value),
+        31 => gpioc_odr_write(gpioc_odr_read() & value),
+        _ => (),}
+}
+pub fn gpioc_bsrr_seti(value: u32) {
+    match value.count_ones() {
+        1 => gpioc_bsrr_write(gpioc_bsrr_read() | value),
+        31 => gpioc_bsrr_write(gpioc_bsrr_read() & value),
+        _ => (),}
+}
+pub fn gpioc_lckr_seti(value: u32) {
+    match value.count_ones() {
+        1 => gpioc_lckr_write(gpioc_lckr_read() | value),
+        31 => gpioc_lckr_write(gpioc_lckr_read() & value),
+        _ => (),}
+}
+pub fn gpioc_afrl_seti(value: u32) {
+    match value.count_ones() {
+        1 => gpioc_afrl_write(gpioc_afrl_read() | value),
+        31 => gpioc_afrl_write(gpioc_afrl_read() & value),
+        _ => (),}
+}
+pub fn gpioc_afrh_seti(value: u32) {
+    match value.count_ones() {
+        1 => gpioc_afrh_write(gpioc_afrh_read() | value),
+        31 => gpioc_afrh_write(gpioc_afrh_read() & value),
+        _ => (),}
+}
+    
+        
+pub fn gpiod_moder_seti(value: u32) {
+    match value.count_ones() {
+        1 => gpiod_moder_write(gpiod_moder_read() | value),
+        31 => gpiod_moder_write(gpiod_moder_read() & value),
+        _ => (),}
+}
+pub fn gpiod_otyper_seti(value: u32) {
+    match value.count_ones() {
+        1 => gpiod_otyper_write(gpiod_otyper_read() | value),
+        31 => gpiod_otyper_write(gpiod_otyper_read() & value),
+        _ => (),}
+}
+pub fn gpiod_ospeedr_seti(value: u32) {
+    match value.count_ones() {
+        1 => gpiod_ospeedr_write(gpiod_ospeedr_read() | value),
+        31 => gpiod_ospeedr_write(gpiod_ospeedr_read() & value),
+        _ => (),}
+}
+pub fn gpiod_pupdr_seti(value: u32) {
+    match value.count_ones() {
+        1 => gpiod_pupdr_write(gpiod_pupdr_read() | value),
+        31 => gpiod_pupdr_write(gpiod_pupdr_read() & value),
+        _ => (),}
+}
+pub fn gpiod_idr_seti(value: u32) {
+    match value.count_ones() {
+        1 => gpiod_idr_write(gpiod_idr_read() | value),
+        31 => gpiod_idr_write(gpiod_idr_read() & value),
+        _ => (),}
+}
+pub fn gpiod_odr_seti(value: u32) {
+    match value.count_ones() {
+        1 => gpiod_odr_write(gpiod_odr_read() | value),
+        31 => gpiod_odr_write(gpiod_odr_read() & value),
+        _ => (),}
+}
+pub fn gpiod_bsrr_seti(value: u32) {
+    match value.count_ones() {
+        1 => gpiod_bsrr_write(gpiod_bsrr_read() | value),
+        31 => gpiod_bsrr_write(gpiod_bsrr_read() & value),
+        _ => (),}
+}
+pub fn gpiod_lckr_seti(value: u32) {
+    match value.count_ones() {
+        1 => gpiod_lckr_write(gpiod_lckr_read() | value),
+        31 => gpiod_lckr_write(gpiod_lckr_read() & value),
+        _ => (),}
+}
+pub fn gpiod_afrl_seti(value: u32) {
+    match value.count_ones() {
+        1 => gpiod_afrl_write(gpiod_afrl_read() | value),
+        31 => gpiod_afrl_write(gpiod_afrl_read() & value),
+        _ => (),}
+}
+pub fn gpiod_afrh_seti(value: u32) {
+    match value.count_ones() {
+        1 => gpiod_afrh_write(gpiod_afrh_read() | value),
+        31 => gpiod_afrh_write(gpiod_afrh_read() & value),
+        _ => (),}
+}
+    
+        
+pub fn gpioe_moder_seti(value: u32) {
+    match value.count_ones() {
+        1 => gpioe_moder_write(gpioe_moder_read() | value),
+        31 => gpioe_moder_write(gpioe_moder_read() & value),
+        _ => (),}
+}
+pub fn gpioe_otyper_seti(value: u32) {
+    match value.count_ones() {
+        1 => gpioe_otyper_write(gpioe_otyper_read() | value),
+        31 => gpioe_otyper_write(gpioe_otyper_read() & value),
+        _ => (),}
+}
+pub fn gpioe_ospeedr_seti(value: u32) {
+    match value.count_ones() {
+        1 => gpioe_ospeedr_write(gpioe_ospeedr_read() | value),
+        31 => gpioe_ospeedr_write(gpioe_ospeedr_read() & value),
+        _ => (),}
+}
+pub fn gpioe_pupdr_seti(value: u32) {
+    match value.count_ones() {
+        1 => gpioe_pupdr_write(gpioe_pupdr_read() | value),
+        31 => gpioe_pupdr_write(gpioe_pupdr_read() & value),
+        _ => (),}
+}
+pub fn gpioe_idr_seti(value: u32) {
+    match value.count_ones() {
+        1 => gpioe_idr_write(gpioe_idr_read() | value),
+        31 => gpioe_idr_write(gpioe_idr_read() & value),
+        _ => (),}
+}
+pub fn gpioe_odr_seti(value: u32) {
+    match value.count_ones() {
+        1 => gpioe_odr_write(gpioe_odr_read() | value),
+        31 => gpioe_odr_write(gpioe_odr_read() & value),
+        _ => (),}
+}
+pub fn gpioe_bsrr_seti(value: u32) {
+    match value.count_ones() {
+        1 => gpioe_bsrr_write(gpioe_bsrr_read() | value),
+        31 => gpioe_bsrr_write(gpioe_bsrr_read() & value),
+        _ => (),}
+}
+pub fn gpioe_lckr_seti(value: u32) {
+    match value.count_ones() {
+        1 => gpioe_lckr_write(gpioe_lckr_read() | value),
+        31 => gpioe_lckr_write(gpioe_lckr_read() & value),
+        _ => (),}
+}
+pub fn gpioe_afrl_seti(value: u32) {
+    match value.count_ones() {
+        1 => gpioe_afrl_write(gpioe_afrl_read() | value),
+        31 => gpioe_afrl_write(gpioe_afrl_read() & value),
+        _ => (),}
+}
+pub fn gpioe_afrh_seti(value: u32) {
+    match value.count_ones() {
+        1 => gpioe_afrh_write(gpioe_afrh_read() | value),
+        31 => gpioe_afrh_write(gpioe_afrh_read() & value),
+        _ => (),}
+}
+    
+        
+pub fn gpiof_moder_seti(value: u32) {
+    match value.count_ones() {
+        1 => gpiof_moder_write(gpiof_moder_read() | value),
+        31 => gpiof_moder_write(gpiof_moder_read() & value),
+        _ => (),}
+}
+pub fn gpiof_otyper_seti(value: u32) {
+    match value.count_ones() {
+        1 => gpiof_otyper_write(gpiof_otyper_read() | value),
+        31 => gpiof_otyper_write(gpiof_otyper_read() & value),
+        _ => (),}
+}
+pub fn gpiof_ospeedr_seti(value: u32) {
+    match value.count_ones() {
+        1 => gpiof_ospeedr_write(gpiof_ospeedr_read() | value),
+        31 => gpiof_ospeedr_write(gpiof_ospeedr_read() & value),
+        _ => (),}
+}
+pub fn gpiof_pupdr_seti(value: u32) {
+    match value.count_ones() {
+        1 => gpiof_pupdr_write(gpiof_pupdr_read() | value),
+        31 => gpiof_pupdr_write(gpiof_pupdr_read() & value),
+        _ => (),}
+}
+pub fn gpiof_idr_seti(value: u32) {
+    match value.count_ones() {
+        1 => gpiof_idr_write(gpiof_idr_read() | value),
+        31 => gpiof_idr_write(gpiof_idr_read() & value),
+        _ => (),}
+}
+pub fn gpiof_odr_seti(value: u32) {
+    match value.count_ones() {
+        1 => gpiof_odr_write(gpiof_odr_read() | value),
+        31 => gpiof_odr_write(gpiof_odr_read() & value),
+        _ => (),}
+}
+pub fn gpiof_bsrr_seti(value: u32) {
+    match value.count_ones() {
+        1 => gpiof_bsrr_write(gpiof_bsrr_read() | value),
+        31 => gpiof_bsrr_write(gpiof_bsrr_read() & value),
+        _ => (),}
+}
+pub fn gpiof_lckr_seti(value: u32) {
+    match value.count_ones() {
+        1 => gpiof_lckr_write(gpiof_lckr_read() | value),
+        31 => gpiof_lckr_write(gpiof_lckr_read() & value),
+        _ => (),}
+}
+pub fn gpiof_afrl_seti(value: u32) {
+    match value.count_ones() {
+        1 => gpiof_afrl_write(gpiof_afrl_read() | value),
+        31 => gpiof_afrl_write(gpiof_afrl_read() & value),
+        _ => (),}
+}
+pub fn gpiof_afrh_seti(value: u32) {
+    match value.count_ones() {
+        1 => gpiof_afrh_write(gpiof_afrh_read() | value),
+        31 => gpiof_afrh_write(gpiof_afrh_read() & value),
+        _ => (),}
+}
+    
+        
+pub fn gpiog_moder_seti(value: u32) {
+    match value.count_ones() {
+        1 => gpiog_moder_write(gpiog_moder_read() | value),
+        31 => gpiog_moder_write(gpiog_moder_read() & value),
+        _ => (),}
+}
+pub fn gpiog_otyper_seti(value: u32) {
+    match value.count_ones() {
+        1 => gpiog_otyper_write(gpiog_otyper_read() | value),
+        31 => gpiog_otyper_write(gpiog_otyper_read() & value),
+        _ => (),}
+}
+pub fn gpiog_ospeedr_seti(value: u32) {
+    match value.count_ones() {
+        1 => gpiog_ospeedr_write(gpiog_ospeedr_read() | value),
+        31 => gpiog_ospeedr_write(gpiog_ospeedr_read() & value),
+        _ => (),}
+}
+pub fn gpiog_pupdr_seti(value: u32) {
+    match value.count_ones() {
+        1 => gpiog_pupdr_write(gpiog_pupdr_read() | value),
+        31 => gpiog_pupdr_write(gpiog_pupdr_read() & value),
+        _ => (),}
+}
+pub fn gpiog_idr_seti(value: u32) {
+    match value.count_ones() {
+        1 => gpiog_idr_write(gpiog_idr_read() | value),
+        31 => gpiog_idr_write(gpiog_idr_read() & value),
+        _ => (),}
+}
+pub fn gpiog_odr_seti(value: u32) {
+    match value.count_ones() {
+        1 => gpiog_odr_write(gpiog_odr_read() | value),
+        31 => gpiog_odr_write(gpiog_odr_read() & value),
+        _ => (),}
+}
+pub fn gpiog_bsrr_seti(value: u32) {
+    match value.count_ones() {
+        1 => gpiog_bsrr_write(gpiog_bsrr_read() | value),
+        31 => gpiog_bsrr_write(gpiog_bsrr_read() & value),
+        _ => (),}
+}
+pub fn gpiog_lckr_seti(value: u32) {
+    match value.count_ones() {
+        1 => gpiog_lckr_write(gpiog_lckr_read() | value),
+        31 => gpiog_lckr_write(gpiog_lckr_read() & value),
+        _ => (),}
+}
+pub fn gpiog_afrl_seti(value: u32) {
+    match value.count_ones() {
+        1 => gpiog_afrl_write(gpiog_afrl_read() | value),
+        31 => gpiog_afrl_write(gpiog_afrl_read() & value),
+        _ => (),}
+}
+pub fn gpiog_afrh_seti(value: u32) {
+    match value.count_ones() {
+        1 => gpiog_afrh_write(gpiog_afrh_read() | value),
+        31 => gpiog_afrh_write(gpiog_afrh_read() & value),
+        _ => (),}
+}
+    
+        
+pub fn gpioh_moder_seti(value: u32) {
+    match value.count_ones() {
+        1 => gpioh_moder_write(gpioh_moder_read() | value),
+        31 => gpioh_moder_write(gpioh_moder_read() & value),
+        _ => (),}
+}
+pub fn gpioh_otyper_seti(value: u32) {
+    match value.count_ones() {
+        1 => gpioh_otyper_write(gpioh_otyper_read() | value),
+        31 => gpioh_otyper_write(gpioh_otyper_read() & value),
+        _ => (),}
+}
+pub fn gpioh_ospeedr_seti(value: u32) {
+    match value.count_ones() {
+        1 => gpioh_ospeedr_write(gpioh_ospeedr_read() | value),
+        31 => gpioh_ospeedr_write(gpioh_ospeedr_read() & value),
+        _ => (),}
+}
+pub fn gpioh_pupdr_seti(value: u32) {
+    match value.count_ones() {
+        1 => gpioh_pupdr_write(gpioh_pupdr_read() | value),
+        31 => gpioh_pupdr_write(gpioh_pupdr_read() & value),
+        _ => (),}
+}
+pub fn gpioh_idr_seti(value: u32) {
+    match value.count_ones() {
+        1 => gpioh_idr_write(gpioh_idr_read() | value),
+        31 => gpioh_idr_write(gpioh_idr_read() & value),
+        _ => (),}
+}
+pub fn gpioh_odr_seti(value: u32) {
+    match value.count_ones() {
+        1 => gpioh_odr_write(gpioh_odr_read() | value),
+        31 => gpioh_odr_write(gpioh_odr_read() & value),
+        _ => (),}
+}
+pub fn gpioh_bsrr_seti(value: u32) {
+    match value.count_ones() {
+        1 => gpioh_bsrr_write(gpioh_bsrr_read() | value),
+        31 => gpioh_bsrr_write(gpioh_bsrr_read() & value),
+        _ => (),}
+}
+pub fn gpioh_lckr_seti(value: u32) {
+    match value.count_ones() {
+        1 => gpioh_lckr_write(gpioh_lckr_read() | value),
+        31 => gpioh_lckr_write(gpioh_lckr_read() & value),
+        _ => (),}
+}
+pub fn gpioh_afrl_seti(value: u32) {
+    match value.count_ones() {
+        1 => gpioh_afrl_write(gpioh_afrl_read() | value),
+        31 => gpioh_afrl_write(gpioh_afrl_read() & value),
+        _ => (),}
+}
+pub fn gpioh_afrh_seti(value: u32) {
+    match value.count_ones() {
+        1 => gpioh_afrh_write(gpioh_afrh_read() | value),
+        31 => gpioh_afrh_write(gpioh_afrh_read() & value),
+        _ => (),}
+}
+    
+        
+pub fn gpioi_moder_seti(value: u32) {
+    match value.count_ones() {
+        1 => gpioi_moder_write(gpioi_moder_read() | value),
+        31 => gpioi_moder_write(gpioi_moder_read() & value),
+        _ => (),}
+}
+pub fn gpioi_otyper_seti(value: u32) {
+    match value.count_ones() {
+        1 => gpioi_otyper_write(gpioi_otyper_read() | value),
+        31 => gpioi_otyper_write(gpioi_otyper_read() & value),
+        _ => (),}
+}
+pub fn gpioi_ospeedr_seti(value: u32) {
+    match value.count_ones() {
+        1 => gpioi_ospeedr_write(gpioi_ospeedr_read() | value),
+        31 => gpioi_ospeedr_write(gpioi_ospeedr_read() & value),
+        _ => (),}
+}
+pub fn gpioi_pupdr_seti(value: u32) {
+    match value.count_ones() {
+        1 => gpioi_pupdr_write(gpioi_pupdr_read() | value),
+        31 => gpioi_pupdr_write(gpioi_pupdr_read() & value),
+        _ => (),}
+}
+pub fn gpioi_idr_seti(value: u32) {
+    match value.count_ones() {
+        1 => gpioi_idr_write(gpioi_idr_read() | value),
+        31 => gpioi_idr_write(gpioi_idr_read() & value),
+        _ => (),}
+}
+pub fn gpioi_odr_seti(value: u32) {
+    match value.count_ones() {
+        1 => gpioi_odr_write(gpioi_odr_read() | value),
+        31 => gpioi_odr_write(gpioi_odr_read() & value),
+        _ => (),}
+}
+pub fn gpioi_bsrr_seti(value: u32) {
+    match value.count_ones() {
+        1 => gpioi_bsrr_write(gpioi_bsrr_read() | value),
+        31 => gpioi_bsrr_write(gpioi_bsrr_read() & value),
+        _ => (),}
+}
+pub fn gpioi_lckr_seti(value: u32) {
+    match value.count_ones() {
+        1 => gpioi_lckr_write(gpioi_lckr_read() | value),
+        31 => gpioi_lckr_write(gpioi_lckr_read() & value),
+        _ => (),}
+}
+pub fn gpioi_afrl_seti(value: u32) {
+    match value.count_ones() {
+        1 => gpioi_afrl_write(gpioi_afrl_read() | value),
+        31 => gpioi_afrl_write(gpioi_afrl_read() & value),
+        _ => (),}
+}
+pub fn gpioi_afrh_seti(value: u32) {
+    match value.count_ones() {
+        1 => gpioi_afrh_write(gpioi_afrh_read() | value),
+        31 => gpioi_afrh_write(gpioi_afrh_read() & value),
+        _ => (),}
+}
+    
+        
+pub fn gpioj_moder_seti(value: u32) {
+    match value.count_ones() {
+        1 => gpioj_moder_write(gpioj_moder_read() | value),
+        31 => gpioj_moder_write(gpioj_moder_read() & value),
+        _ => (),}
+}
+pub fn gpioj_otyper_seti(value: u32) {
+    match value.count_ones() {
+        1 => gpioj_otyper_write(gpioj_otyper_read() | value),
+        31 => gpioj_otyper_write(gpioj_otyper_read() & value),
+        _ => (),}
+}
+pub fn gpioj_ospeedr_seti(value: u32) {
+    match value.count_ones() {
+        1 => gpioj_ospeedr_write(gpioj_ospeedr_read() | value),
+        31 => gpioj_ospeedr_write(gpioj_ospeedr_read() & value),
+        _ => (),}
+}
+pub fn gpioj_pupdr_seti(value: u32) {
+    match value.count_ones() {
+        1 => gpioj_pupdr_write(gpioj_pupdr_read() | value),
+        31 => gpioj_pupdr_write(gpioj_pupdr_read() & value),
+        _ => (),}
+}
+pub fn gpioj_idr_seti(value: u32) {
+    match value.count_ones() {
+        1 => gpioj_idr_write(gpioj_idr_read() | value),
+        31 => gpioj_idr_write(gpioj_idr_read() & value),
+        _ => (),}
+}
+pub fn gpioj_odr_seti(value: u32) {
+    match value.count_ones() {
+        1 => gpioj_odr_write(gpioj_odr_read() | value),
+        31 => gpioj_odr_write(gpioj_odr_read() & value),
+        _ => (),}
+}
+pub fn gpioj_bsrr_seti(value: u32) {
+    match value.count_ones() {
+        1 => gpioj_bsrr_write(gpioj_bsrr_read() | value),
+        31 => gpioj_bsrr_write(gpioj_bsrr_read() & value),
+        _ => (),}
+}
+pub fn gpioj_lckr_seti(value: u32) {
+    match value.count_ones() {
+        1 => gpioj_lckr_write(gpioj_lckr_read() | value),
+        31 => gpioj_lckr_write(gpioj_lckr_read() & value),
+        _ => (),}
+}
+pub fn gpioj_afrl_seti(value: u32) {
+    match value.count_ones() {
+        1 => gpioj_afrl_write(gpioj_afrl_read() | value),
+        31 => gpioj_afrl_write(gpioj_afrl_read() & value),
+        _ => (),}
+}
+pub fn gpioj_afrh_seti(value: u32) {
+    match value.count_ones() {
+        1 => gpioj_afrh_write(gpioj_afrh_read() | value),
+        31 => gpioj_afrh_write(gpioj_afrh_read() & value),
+        _ => (),}
+}
+    
+        
+pub fn gpiok_moder_seti(value: u32) {
+    match value.count_ones() {
+        1 => gpiok_moder_write(gpiok_moder_read() | value),
+        31 => gpiok_moder_write(gpiok_moder_read() & value),
+        _ => (),}
+}
+pub fn gpiok_otyper_seti(value: u32) {
+    match value.count_ones() {
+        1 => gpiok_otyper_write(gpiok_otyper_read() | value),
+        31 => gpiok_otyper_write(gpiok_otyper_read() & value),
+        _ => (),}
+}
+pub fn gpiok_ospeedr_seti(value: u32) {
+    match value.count_ones() {
+        1 => gpiok_ospeedr_write(gpiok_ospeedr_read() | value),
+        31 => gpiok_ospeedr_write(gpiok_ospeedr_read() & value),
+        _ => (),}
+}
+pub fn gpiok_pupdr_seti(value: u32) {
+    match value.count_ones() {
+        1 => gpiok_pupdr_write(gpiok_pupdr_read() | value),
+        31 => gpiok_pupdr_write(gpiok_pupdr_read() & value),
+        _ => (),}
+}
+pub fn gpiok_idr_seti(value: u32) {
+    match value.count_ones() {
+        1 => gpiok_idr_write(gpiok_idr_read() | value),
+        31 => gpiok_idr_write(gpiok_idr_read() & value),
+        _ => (),}
+}
+pub fn gpiok_odr_seti(value: u32) {
+    match value.count_ones() {
+        1 => gpiok_odr_write(gpiok_odr_read() | value),
+        31 => gpiok_odr_write(gpiok_odr_read() & value),
+        _ => (),}
+}
+pub fn gpiok_bsrr_seti(value: u32) {
+    match value.count_ones() {
+        1 => gpiok_bsrr_write(gpiok_bsrr_read() | value),
+        31 => gpiok_bsrr_write(gpiok_bsrr_read() & value),
+        _ => (),}
+}
+pub fn gpiok_lckr_seti(value: u32) {
+    match value.count_ones() {
+        1 => gpiok_lckr_write(gpiok_lckr_read() | value),
+        31 => gpiok_lckr_write(gpiok_lckr_read() & value),
+        _ => (),}
+}
+pub fn gpiok_afrl_seti(value: u32) {
+    match value.count_ones() {
+        1 => gpiok_afrl_write(gpiok_afrl_read() | value),
+        31 => gpiok_afrl_write(gpiok_afrl_read() & value),
+        _ => (),}
+}
+pub fn gpiok_afrh_seti(value: u32) {
+    match value.count_ones() {
+        1 => gpiok_afrh_write(gpiok_afrh_read() | value),
+        31 => gpiok_afrh_write(gpiok_afrh_read() & value),
+        _ => (),}
+}
+    
 
 /**
- * pin = (GPIO : char, Pin : u8)
+ * pin = (GPIO# : char, pin# : u32)
  * mode = HIGH/LOW
  */
 pub fn digital_write(pin: (char,u32), mode: u8){
-    // pin = (A, 2), mode = 1
     match pin.0 {
         'A' => {
             match mode {
@@ -1399,8 +2454,11 @@ pub fn digital_write(pin: (char,u32), mode: u8){
     }
 }
 
+/**
+ * Reads the input of a given pin
+ * pin = (GPIO# : char, pin# : u32)
+ */
 pub fn digital_read(pin: (char,u32)) -> u8 {
-    // pin = (A, 2), mode = 1
     match pin.0 {
         'A' => {
             if (gpioa_idr_read() & (1 << pin.1)) != 0 {
@@ -1480,561 +2538,5 @@ pub fn digital_read(pin: (char,u32)) -> u8 {
             }
         },
         _ => 2
-    }
-}
-
-pub fn init_gpio(pin: (char, u32), types: u8, mode: u32) {
-    match pin.0 {
-        
-    'A' => {
-        match types {
-                MODER => match mode{
-                    GPIO_MODER_IN => {
-                        gpioa_moder_write(rep_bits(gpioa_moder_read(), pin.1*2, 2, GPIO_MODER_IN));
-                                },
-                    GPIO_MODER_OUT => {
-                        gpioa_moder_write(rep_bits(gpioa_moder_read(), pin.1*2, 2, GPIO_MODER_OUT));
-                    },
-                    GPIO_MODER_ALT => {
-                        gpioa_moder_write(rep_bits(gpioa_moder_read(), pin.1*2, 2, GPIO_MODER_ALT));
-                    },
-                    GPIO_MODER_ANA => {
-                        gpioa_moder_write(rep_bits(gpioa_moder_read(), pin.1*2, 2, GPIO_MODER_ANA));
-                    },
-                    _ => (),
-                }
-                PUPDR => match mode {
-                    GPIO_PUPDR_NO => {
-                        gpioa_pupdr_write(rep_bits(gpioa_pupdr_read(), pin.1*2, 2, GPIO_PUPDR_NO));
-                    },
-                    GPIO_PUPDR_PU => {
-                        gpioa_pupdr_write(rep_bits(gpioa_pupdr_read(), pin.1*2, 2, GPIO_PUPDR_PU));
-                    },
-                    GPIO_PUPDR_PD => {
-                        gpioa_pupdr_write(rep_bits(gpioa_pupdr_read(), pin.1*2, 2, GPIO_PUPDR_PD));
-                    },
-                    _ => (),
-
-                },
-                OSPEEDER => match mode {
-                    GPIO_OSPEEDR_LO => {
-                        gpioa_ospeedr_write(rep_bits(gpioa_ospeedr_read(), pin.1*2, 2, GPIO_OSPEEDR_LO));
-                    },
-                    GPIO_OSPEEDR_ME => {
-                        gpioa_ospeedr_write(rep_bits(gpioa_ospeedr_read(), pin.1*2, 2, GPIO_OSPEEDR_ME));
-                    },
-                    GPIO_OSPEEDR_HI => {
-                        gpioa_ospeedr_write(rep_bits(gpioa_ospeedr_read(), pin.1*2, 2, GPIO_OSPEEDR_HI));
-                    },
-                    GPIO_OSPEEDR_VH => {
-                        gpioa_ospeedr_write(rep_bits(gpioa_ospeedr_read(), pin.1*2, 2, GPIO_OSPEEDR_VH));
-                    },
-                    _ => (),
-                },
-                _ =>(),
-        }
-    },
-
-        
-    'B' => {
-        match types {
-                MODER => match mode{
-                    GPIO_MODER_IN => {
-                        gpiob_moder_write(rep_bits(gpiob_moder_read(), pin.1*2, 2, GPIO_MODER_IN));
-                                },
-                    GPIO_MODER_OUT => {
-                        gpiob_moder_write(rep_bits(gpiob_moder_read(), pin.1*2, 2, GPIO_MODER_OUT));
-                    },
-                    GPIO_MODER_ALT => {
-                        gpiob_moder_write(rep_bits(gpiob_moder_read(), pin.1*2, 2, GPIO_MODER_ALT));
-                    },
-                    GPIO_MODER_ANA => {
-                        gpiob_moder_write(rep_bits(gpiob_moder_read(), pin.1*2, 2, GPIO_MODER_ANA));
-                    },
-                    _ => (),
-                }
-                PUPDR => match mode {
-                    GPIO_PUPDR_NO => {
-                        gpiob_pupdr_write(rep_bits(gpiob_pupdr_read(), pin.1*2, 2, GPIO_PUPDR_NO));
-                    },
-                    GPIO_PUPDR_PU => {
-                        gpiob_pupdr_write(rep_bits(gpiob_pupdr_read(), pin.1*2, 2, GPIO_PUPDR_PU));
-                    },
-                    GPIO_PUPDR_PD => {
-                        gpiob_pupdr_write(rep_bits(gpiob_pupdr_read(), pin.1*2, 2, GPIO_PUPDR_PD));
-                    },
-                    _ => (),
-
-                },
-                OSPEEDER => match mode {
-                    GPIO_OSPEEDR_LO => {
-                        gpiob_ospeedr_write(rep_bits(gpiob_ospeedr_read(), pin.1*2, 2, GPIO_OSPEEDR_LO));
-                    },
-                    GPIO_OSPEEDR_ME => {
-                        gpiob_ospeedr_write(rep_bits(gpiob_ospeedr_read(), pin.1*2, 2, GPIO_OSPEEDR_ME));
-                    },
-                    GPIO_OSPEEDR_HI => {
-                        gpiob_ospeedr_write(rep_bits(gpiob_ospeedr_read(), pin.1*2, 2, GPIO_OSPEEDR_HI));
-                    },
-                    GPIO_OSPEEDR_VH => {
-                        gpiob_ospeedr_write(rep_bits(gpiob_ospeedr_read(), pin.1*2, 2, GPIO_OSPEEDR_VH));
-                    },
-                    _ => (),
-                },
-                _ =>(),
-        }
-    },
-
-        
-    'C' => {
-        match types {
-                MODER => match mode{
-                    GPIO_MODER_IN => {
-                        gpioc_moder_write(rep_bits(gpioc_moder_read(), pin.1*2, 2, GPIO_MODER_IN));
-                                },
-                    GPIO_MODER_OUT => {
-                        gpioc_moder_write(rep_bits(gpioc_moder_read(), pin.1*2, 2, GPIO_MODER_OUT));
-                    },
-                    GPIO_MODER_ALT => {
-                        gpioc_moder_write(rep_bits(gpioc_moder_read(), pin.1*2, 2, GPIO_MODER_ALT));
-                    },
-                    GPIO_MODER_ANA => {
-                        gpioc_moder_write(rep_bits(gpioc_moder_read(), pin.1*2, 2, GPIO_MODER_ANA));
-                    },
-                    _ => (),
-                }
-                PUPDR => match mode {
-                    GPIO_PUPDR_NO => {
-                        gpioc_pupdr_write(rep_bits(gpioc_pupdr_read(), pin.1*2, 2, GPIO_PUPDR_NO));
-                    },
-                    GPIO_PUPDR_PU => {
-                        gpioc_pupdr_write(rep_bits(gpioc_pupdr_read(), pin.1*2, 2, GPIO_PUPDR_PU));
-                    },
-                    GPIO_PUPDR_PD => {
-                        gpioc_pupdr_write(rep_bits(gpioc_pupdr_read(), pin.1*2, 2, GPIO_PUPDR_PD));
-                    },
-                    _ => (),
-
-                },
-                OSPEEDER => match mode {
-                    GPIO_OSPEEDR_LO => {
-                        gpioc_ospeedr_write(rep_bits(gpioc_ospeedr_read(), pin.1*2, 2, GPIO_OSPEEDR_LO));
-                    },
-                    GPIO_OSPEEDR_ME => {
-                        gpioc_ospeedr_write(rep_bits(gpioc_ospeedr_read(), pin.1*2, 2, GPIO_OSPEEDR_ME));
-                    },
-                    GPIO_OSPEEDR_HI => {
-                        gpioc_ospeedr_write(rep_bits(gpioc_ospeedr_read(), pin.1*2, 2, GPIO_OSPEEDR_HI));
-                    },
-                    GPIO_OSPEEDR_VH => {
-                        gpioc_ospeedr_write(rep_bits(gpioc_ospeedr_read(), pin.1*2, 2, GPIO_OSPEEDR_VH));
-                    },
-                    _ => (),
-                },
-                _ =>(),
-        }
-    },
-
-        
-    'D' => {
-        match types {
-                MODER => match mode{
-                    GPIO_MODER_IN => {
-                        gpiod_moder_write(rep_bits(gpiod_moder_read(), pin.1*2, 2, GPIO_MODER_IN));
-                                },
-                    GPIO_MODER_OUT => {
-                        gpiod_moder_write(rep_bits(gpiod_moder_read(), pin.1*2, 2, GPIO_MODER_OUT));
-                    },
-                    GPIO_MODER_ALT => {
-                        gpiod_moder_write(rep_bits(gpiod_moder_read(), pin.1*2, 2, GPIO_MODER_ALT));
-                    },
-                    GPIO_MODER_ANA => {
-                        gpiod_moder_write(rep_bits(gpiod_moder_read(), pin.1*2, 2, GPIO_MODER_ANA));
-                    },
-                    _ => (),
-                }
-                PUPDR => match mode {
-                    GPIO_PUPDR_NO => {
-                        gpiod_pupdr_write(rep_bits(gpiod_pupdr_read(), pin.1*2, 2, GPIO_PUPDR_NO));
-                    },
-                    GPIO_PUPDR_PU => {
-                        gpiod_pupdr_write(rep_bits(gpiod_pupdr_read(), pin.1*2, 2, GPIO_PUPDR_PU));
-                    },
-                    GPIO_PUPDR_PD => {
-                        gpiod_pupdr_write(rep_bits(gpiod_pupdr_read(), pin.1*2, 2, GPIO_PUPDR_PD));
-                    },
-                    _ => (),
-
-                },
-                OSPEEDER => match mode {
-                    GPIO_OSPEEDR_LO => {
-                        gpiod_ospeedr_write(rep_bits(gpiod_ospeedr_read(), pin.1*2, 2, GPIO_OSPEEDR_LO));
-                    },
-                    GPIO_OSPEEDR_ME => {
-                        gpiod_ospeedr_write(rep_bits(gpiod_ospeedr_read(), pin.1*2, 2, GPIO_OSPEEDR_ME));
-                    },
-                    GPIO_OSPEEDR_HI => {
-                        gpiod_ospeedr_write(rep_bits(gpiod_ospeedr_read(), pin.1*2, 2, GPIO_OSPEEDR_HI));
-                    },
-                    GPIO_OSPEEDR_VH => {
-                        gpiod_ospeedr_write(rep_bits(gpiod_ospeedr_read(), pin.1*2, 2, GPIO_OSPEEDR_VH));
-                    },
-                    _ => (),
-                },
-                _ =>(),
-        }
-    },
-
-        
-    'E' => {
-        match types {
-                MODER => match mode{
-                    GPIO_MODER_IN => {
-                        gpioe_moder_write(rep_bits(gpioe_moder_read(), pin.1*2, 2, GPIO_MODER_IN));
-                                },
-                    GPIO_MODER_OUT => {
-                        gpioe_moder_write(rep_bits(gpioe_moder_read(), pin.1*2, 2, GPIO_MODER_OUT));
-                    },
-                    GPIO_MODER_ALT => {
-                        gpioe_moder_write(rep_bits(gpioe_moder_read(), pin.1*2, 2, GPIO_MODER_ALT));
-                    },
-                    GPIO_MODER_ANA => {
-                        gpioe_moder_write(rep_bits(gpioe_moder_read(), pin.1*2, 2, GPIO_MODER_ANA));
-                    },
-                    _ => (),
-                }
-                PUPDR => match mode {
-                    GPIO_PUPDR_NO => {
-                        gpioe_pupdr_write(rep_bits(gpioe_pupdr_read(), pin.1*2, 2, GPIO_PUPDR_NO));
-                    },
-                    GPIO_PUPDR_PU => {
-                        gpioe_pupdr_write(rep_bits(gpioe_pupdr_read(), pin.1*2, 2, GPIO_PUPDR_PU));
-                    },
-                    GPIO_PUPDR_PD => {
-                        gpioe_pupdr_write(rep_bits(gpioe_pupdr_read(), pin.1*2, 2, GPIO_PUPDR_PD));
-                    },
-                    _ => (),
-
-                },
-                OSPEEDER => match mode {
-                    GPIO_OSPEEDR_LO => {
-                        gpioe_ospeedr_write(rep_bits(gpioe_ospeedr_read(), pin.1*2, 2, GPIO_OSPEEDR_LO));
-                    },
-                    GPIO_OSPEEDR_ME => {
-                        gpioe_ospeedr_write(rep_bits(gpioe_ospeedr_read(), pin.1*2, 2, GPIO_OSPEEDR_ME));
-                    },
-                    GPIO_OSPEEDR_HI => {
-                        gpioe_ospeedr_write(rep_bits(gpioe_ospeedr_read(), pin.1*2, 2, GPIO_OSPEEDR_HI));
-                    },
-                    GPIO_OSPEEDR_VH => {
-                        gpioe_ospeedr_write(rep_bits(gpioe_ospeedr_read(), pin.1*2, 2, GPIO_OSPEEDR_VH));
-                    },
-                    _ => (),
-                },
-                _ =>(),
-        }
-    },
-
-        
-    'F' => {
-        match types {
-                MODER => match mode{
-                    GPIO_MODER_IN => {
-                        gpiof_moder_write(rep_bits(gpiof_moder_read(), pin.1*2, 2, GPIO_MODER_IN));
-                                },
-                    GPIO_MODER_OUT => {
-                        gpiof_moder_write(rep_bits(gpiof_moder_read(), pin.1*2, 2, GPIO_MODER_OUT));
-                    },
-                    GPIO_MODER_ALT => {
-                        gpiof_moder_write(rep_bits(gpiof_moder_read(), pin.1*2, 2, GPIO_MODER_ALT));
-                    },
-                    GPIO_MODER_ANA => {
-                        gpiof_moder_write(rep_bits(gpiof_moder_read(), pin.1*2, 2, GPIO_MODER_ANA));
-                    },
-                    _ => (),
-                }
-                PUPDR => match mode {
-                    GPIO_PUPDR_NO => {
-                        gpiof_pupdr_write(rep_bits(gpiof_pupdr_read(), pin.1*2, 2, GPIO_PUPDR_NO));
-                    },
-                    GPIO_PUPDR_PU => {
-                        gpiof_pupdr_write(rep_bits(gpiof_pupdr_read(), pin.1*2, 2, GPIO_PUPDR_PU));
-                    },
-                    GPIO_PUPDR_PD => {
-                        gpiof_pupdr_write(rep_bits(gpiof_pupdr_read(), pin.1*2, 2, GPIO_PUPDR_PD));
-                    },
-                    _ => (),
-
-                },
-                OSPEEDER => match mode {
-                    GPIO_OSPEEDR_LO => {
-                        gpiof_ospeedr_write(rep_bits(gpiof_ospeedr_read(), pin.1*2, 2, GPIO_OSPEEDR_LO));
-                    },
-                    GPIO_OSPEEDR_ME => {
-                        gpiof_ospeedr_write(rep_bits(gpiof_ospeedr_read(), pin.1*2, 2, GPIO_OSPEEDR_ME));
-                    },
-                    GPIO_OSPEEDR_HI => {
-                        gpiof_ospeedr_write(rep_bits(gpiof_ospeedr_read(), pin.1*2, 2, GPIO_OSPEEDR_HI));
-                    },
-                    GPIO_OSPEEDR_VH => {
-                        gpiof_ospeedr_write(rep_bits(gpiof_ospeedr_read(), pin.1*2, 2, GPIO_OSPEEDR_VH));
-                    },
-                    _ => (),
-                },
-                _ =>(),
-        }
-    },
-
-        
-    'G' => {
-        match types {
-                MODER => match mode{
-                    GPIO_MODER_IN => {
-                        gpiog_moder_write(rep_bits(gpiog_moder_read(), pin.1*2, 2, GPIO_MODER_IN));
-                                },
-                    GPIO_MODER_OUT => {
-                        gpiog_moder_write(rep_bits(gpiog_moder_read(), pin.1*2, 2, GPIO_MODER_OUT));
-                    },
-                    GPIO_MODER_ALT => {
-                        gpiog_moder_write(rep_bits(gpiog_moder_read(), pin.1*2, 2, GPIO_MODER_ALT));
-                    },
-                    GPIO_MODER_ANA => {
-                        gpiog_moder_write(rep_bits(gpiog_moder_read(), pin.1*2, 2, GPIO_MODER_ANA));
-                    },
-                    _ => (),
-                }
-                PUPDR => match mode {
-                    GPIO_PUPDR_NO => {
-                        gpiog_pupdr_write(rep_bits(gpiog_pupdr_read(), pin.1*2, 2, GPIO_PUPDR_NO));
-                    },
-                    GPIO_PUPDR_PU => {
-                        gpiog_pupdr_write(rep_bits(gpiog_pupdr_read(), pin.1*2, 2, GPIO_PUPDR_PU));
-                    },
-                    GPIO_PUPDR_PD => {
-                        gpiog_pupdr_write(rep_bits(gpiog_pupdr_read(), pin.1*2, 2, GPIO_PUPDR_PD));
-                    },
-                    _ => (),
-
-                },
-                OSPEEDER => match mode {
-                    GPIO_OSPEEDR_LO => {
-                        gpiog_ospeedr_write(rep_bits(gpiog_ospeedr_read(), pin.1*2, 2, GPIO_OSPEEDR_LO));
-                    },
-                    GPIO_OSPEEDR_ME => {
-                        gpiog_ospeedr_write(rep_bits(gpiog_ospeedr_read(), pin.1*2, 2, GPIO_OSPEEDR_ME));
-                    },
-                    GPIO_OSPEEDR_HI => {
-                        gpiog_ospeedr_write(rep_bits(gpiog_ospeedr_read(), pin.1*2, 2, GPIO_OSPEEDR_HI));
-                    },
-                    GPIO_OSPEEDR_VH => {
-                        gpiog_ospeedr_write(rep_bits(gpiog_ospeedr_read(), pin.1*2, 2, GPIO_OSPEEDR_VH));
-                    },
-                    _ => (),
-                },
-                _ =>(),
-        }
-    },
-
-        
-    'H' => {
-        match types {
-                MODER => match mode{
-                    GPIO_MODER_IN => {
-                        gpioh_moder_write(rep_bits(gpioh_moder_read(), pin.1*2, 2, GPIO_MODER_IN));
-                                },
-                    GPIO_MODER_OUT => {
-                        gpioh_moder_write(rep_bits(gpioh_moder_read(), pin.1*2, 2, GPIO_MODER_OUT));
-                    },
-                    GPIO_MODER_ALT => {
-                        gpioh_moder_write(rep_bits(gpioh_moder_read(), pin.1*2, 2, GPIO_MODER_ALT));
-                    },
-                    GPIO_MODER_ANA => {
-                        gpioh_moder_write(rep_bits(gpioh_moder_read(), pin.1*2, 2, GPIO_MODER_ANA));
-                    },
-                    _ => (),
-                }
-                PUPDR => match mode {
-                    GPIO_PUPDR_NO => {
-                        gpioh_pupdr_write(rep_bits(gpioh_pupdr_read(), pin.1*2, 2, GPIO_PUPDR_NO));
-                    },
-                    GPIO_PUPDR_PU => {
-                        gpioh_pupdr_write(rep_bits(gpioh_pupdr_read(), pin.1*2, 2, GPIO_PUPDR_PU));
-                    },
-                    GPIO_PUPDR_PD => {
-                        gpioh_pupdr_write(rep_bits(gpioh_pupdr_read(), pin.1*2, 2, GPIO_PUPDR_PD));
-                    },
-                    _ => (),
-
-                },
-                OSPEEDER => match mode {
-                    GPIO_OSPEEDR_LO => {
-                        gpioh_ospeedr_write(rep_bits(gpioh_ospeedr_read(), pin.1*2, 2, GPIO_OSPEEDR_LO));
-                    },
-                    GPIO_OSPEEDR_ME => {
-                        gpioh_ospeedr_write(rep_bits(gpioh_ospeedr_read(), pin.1*2, 2, GPIO_OSPEEDR_ME));
-                    },
-                    GPIO_OSPEEDR_HI => {
-                        gpioh_ospeedr_write(rep_bits(gpioh_ospeedr_read(), pin.1*2, 2, GPIO_OSPEEDR_HI));
-                    },
-                    GPIO_OSPEEDR_VH => {
-                        gpioh_ospeedr_write(rep_bits(gpioh_ospeedr_read(), pin.1*2, 2, GPIO_OSPEEDR_VH));
-                    },
-                    _ => (),
-                },
-                _ =>(),
-        }
-    },
-
-        
-    'I' => {
-        match types {
-                MODER => match mode{
-                    GPIO_MODER_IN => {
-                        gpioi_moder_write(rep_bits(gpioi_moder_read(), pin.1*2, 2, GPIO_MODER_IN));
-                                },
-                    GPIO_MODER_OUT => {
-                        gpioi_moder_write(rep_bits(gpioi_moder_read(), pin.1*2, 2, GPIO_MODER_OUT));
-                    },
-                    GPIO_MODER_ALT => {
-                        gpioi_moder_write(rep_bits(gpioi_moder_read(), pin.1*2, 2, GPIO_MODER_ALT));
-                    },
-                    GPIO_MODER_ANA => {
-                        gpioi_moder_write(rep_bits(gpioi_moder_read(), pin.1*2, 2, GPIO_MODER_ANA));
-                    },
-                    _ => (),
-                }
-                PUPDR => match mode {
-                    GPIO_PUPDR_NO => {
-                        gpioi_pupdr_write(rep_bits(gpioi_pupdr_read(), pin.1*2, 2, GPIO_PUPDR_NO));
-                    },
-                    GPIO_PUPDR_PU => {
-                        gpioi_pupdr_write(rep_bits(gpioi_pupdr_read(), pin.1*2, 2, GPIO_PUPDR_PU));
-                    },
-                    GPIO_PUPDR_PD => {
-                        gpioi_pupdr_write(rep_bits(gpioi_pupdr_read(), pin.1*2, 2, GPIO_PUPDR_PD));
-                    },
-                    _ => (),
-
-                },
-                OSPEEDER => match mode {
-                    GPIO_OSPEEDR_LO => {
-                        gpioi_ospeedr_write(rep_bits(gpioi_ospeedr_read(), pin.1*2, 2, GPIO_OSPEEDR_LO));
-                    },
-                    GPIO_OSPEEDR_ME => {
-                        gpioi_ospeedr_write(rep_bits(gpioi_ospeedr_read(), pin.1*2, 2, GPIO_OSPEEDR_ME));
-                    },
-                    GPIO_OSPEEDR_HI => {
-                        gpioi_ospeedr_write(rep_bits(gpioi_ospeedr_read(), pin.1*2, 2, GPIO_OSPEEDR_HI));
-                    },
-                    GPIO_OSPEEDR_VH => {
-                        gpioi_ospeedr_write(rep_bits(gpioi_ospeedr_read(), pin.1*2, 2, GPIO_OSPEEDR_VH));
-                    },
-                    _ => (),
-                },
-                _ =>(),
-        }
-    },
-
-        
-    'J' => {
-        match types {
-                MODER => match mode{
-                    GPIO_MODER_IN => {
-                        gpioj_moder_write(rep_bits(gpioj_moder_read(), pin.1*2, 2, GPIO_MODER_IN));
-                                },
-                    GPIO_MODER_OUT => {
-                        gpioj_moder_write(rep_bits(gpioj_moder_read(), pin.1*2, 2, GPIO_MODER_OUT));
-                    },
-                    GPIO_MODER_ALT => {
-                        gpioj_moder_write(rep_bits(gpioj_moder_read(), pin.1*2, 2, GPIO_MODER_ALT));
-                    },
-                    GPIO_MODER_ANA => {
-                        gpioj_moder_write(rep_bits(gpioj_moder_read(), pin.1*2, 2, GPIO_MODER_ANA));
-                    },
-                    _ => (),
-                }
-                PUPDR => match mode {
-                    GPIO_PUPDR_NO => {
-                        gpioj_pupdr_write(rep_bits(gpioj_pupdr_read(), pin.1*2, 2, GPIO_PUPDR_NO));
-                    },
-                    GPIO_PUPDR_PU => {
-                        gpioj_pupdr_write(rep_bits(gpioj_pupdr_read(), pin.1*2, 2, GPIO_PUPDR_PU));
-                    },
-                    GPIO_PUPDR_PD => {
-                        gpioj_pupdr_write(rep_bits(gpioj_pupdr_read(), pin.1*2, 2, GPIO_PUPDR_PD));
-                    },
-                    _ => (),
-
-                },
-                OSPEEDER => match mode {
-                    GPIO_OSPEEDR_LO => {
-                        gpioj_ospeedr_write(rep_bits(gpioj_ospeedr_read(), pin.1*2, 2, GPIO_OSPEEDR_LO));
-                    },
-                    GPIO_OSPEEDR_ME => {
-                        gpioj_ospeedr_write(rep_bits(gpioj_ospeedr_read(), pin.1*2, 2, GPIO_OSPEEDR_ME));
-                    },
-                    GPIO_OSPEEDR_HI => {
-                        gpioj_ospeedr_write(rep_bits(gpioj_ospeedr_read(), pin.1*2, 2, GPIO_OSPEEDR_HI));
-                    },
-                    GPIO_OSPEEDR_VH => {
-                        gpioj_ospeedr_write(rep_bits(gpioj_ospeedr_read(), pin.1*2, 2, GPIO_OSPEEDR_VH));
-                    },
-                    _ => (),
-                },
-                _ =>(),
-        }
-    },
-
-        
-    'K' => {
-        match types {
-                MODER => match mode{
-                    GPIO_MODER_IN => {
-                        gpiok_moder_write(rep_bits(gpiok_moder_read(), pin.1*2, 2, GPIO_MODER_IN));
-                                },
-                    GPIO_MODER_OUT => {
-                        gpiok_moder_write(rep_bits(gpiok_moder_read(), pin.1*2, 2, GPIO_MODER_OUT));
-                    },
-                    GPIO_MODER_ALT => {
-                        gpiok_moder_write(rep_bits(gpiok_moder_read(), pin.1*2, 2, GPIO_MODER_ALT));
-                    },
-                    GPIO_MODER_ANA => {
-                        gpiok_moder_write(rep_bits(gpiok_moder_read(), pin.1*2, 2, GPIO_MODER_ANA));
-                    },
-                    _ => (),
-                }
-                PUPDR => match mode {
-                    GPIO_PUPDR_NO => {
-                        gpiok_pupdr_write(rep_bits(gpiok_pupdr_read(), pin.1*2, 2, GPIO_PUPDR_NO));
-                    },
-                    GPIO_PUPDR_PU => {
-                        gpiok_pupdr_write(rep_bits(gpiok_pupdr_read(), pin.1*2, 2, GPIO_PUPDR_PU));
-                    },
-                    GPIO_PUPDR_PD => {
-                        gpiok_pupdr_write(rep_bits(gpiok_pupdr_read(), pin.1*2, 2, GPIO_PUPDR_PD));
-                    },
-                    _ => (),
-
-                },
-                OSPEEDER => match mode {
-                    GPIO_OSPEEDR_LO => {
-                        gpiok_ospeedr_write(rep_bits(gpiok_ospeedr_read(), pin.1*2, 2, GPIO_OSPEEDR_LO));
-                    },
-                    GPIO_OSPEEDR_ME => {
-                        gpiok_ospeedr_write(rep_bits(gpiok_ospeedr_read(), pin.1*2, 2, GPIO_OSPEEDR_ME));
-                    },
-                    GPIO_OSPEEDR_HI => {
-                        gpiok_ospeedr_write(rep_bits(gpiok_ospeedr_read(), pin.1*2, 2, GPIO_OSPEEDR_HI));
-                    },
-                    GPIO_OSPEEDR_VH => {
-                        gpiok_ospeedr_write(rep_bits(gpiok_ospeedr_read(), pin.1*2, 2, GPIO_OSPEEDR_VH));
-                    },
-                    _ => (),
-                },
-                _ =>(),
-        }
-    },
-
-        _ => (),
     }
 }

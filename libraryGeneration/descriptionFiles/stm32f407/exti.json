@@ -18,22 +18,22 @@
 
     {"name": "EXTI_IMR_MR", "value": "1 << 0"},
 
-    
+
     {"name": "EXTI_EMR_MR", "value": "1 << 0"},
 
-    
+
     {"name": "EXTI_RTSR_TR", "value": "1 << 0"},
 
-    
+
     {"name": "EXTI_FTSR_TR", "value": "1 << 0"},
 
-    
+
     {"name": "EXTI_SWIER_SWIER", "value": "1 << 0"},
 
-    
+
     {"name": "EXTI_PR_PR", "value": "1 << 0"}
 
-    
+
 
   ]
 }
