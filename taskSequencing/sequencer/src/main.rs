@@ -71,6 +71,12 @@ fn run_sequencer(ordo_tasks: &mut [OrdoTask], num_ordo_tasks: usize, jobs: &[Job
     }
 
     loop {
+        if jobs.len() < 1 {
+            continue;
+        }
+
+        delay_ms(jobs[1].start);
+
         let mut i: usize = 0;
         while i < jobs.len() - 1 {
             let job = &jobs[i];
