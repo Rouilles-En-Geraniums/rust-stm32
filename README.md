@@ -6,6 +6,19 @@
 
 This project offers a method for cross-compiling Rust programs specifically for STM microcontrollers.
 
+This project was done as part of a university module at Université Toulouse III - Paul Sabatier: SECIL Master's Degree.
+
+It has been tested for the following operating systems :
+- Linux:
+    - Fedora 38;
+    - Ubuntu 22.04LTS;
+- Windows:
+    - 10;
+    - 11;
+    - WSL;
+- MacOS:
+    - Ventura 13.0.1 (M1 Chip).
+
 ## Installation
 
 This library requires Rust and Python along with various other tools to work.
