@@ -32,26 +32,37 @@
  *	GNU General Public License for more details.
 **/
 
-// The following creates are required to use println
+// The following crates are required to use println
 extern crate geranium_rt;
-extern crate core;
-use geranium_rt::stm32rustlib::geranium_print::*;
-use core::format_args;
+use geranium_rt::{print, println};
 
-// TODO you can impl Debug trait to use it
-// it could also work with Display but it hasn't been tested
+// Anything formatable by classic println! also works
+// (ie Display traits)
 #[derive(Debug)]
 struct TupleStruct(char, u32);
 
 #[no_mangle]
 fn main() {
+    let i = -232;
+    let j = 666_u32;
+    let k = 42_u32;
 
     let my_led = ('D', 12); // Built-in green led
-    let my_ledst = TupleStruct('A', 323_u32);
+    let my_ledst = TupleStruct('A', 12_u32);
 
-    // You must use the format_args! macro to println
-    println(format_args!("my_led: ({},{})", my_led.0, my_led.1));
-    println(format_args!("my_ledst: {my_ledst:?}"));
+    // Our print macros cannot capture surrounding variable
+    // println!("println! - my_led tuple {my_led:?}"); // this wouldn't work
+    println!("println! - my_led tuple {:?}", my_led); // this does work
+    println!("println! - my_ledst {:?}", my_ledst);
+
+
+    print!("print! - print! followed by println!()");
+    println!();
+    println!("println! - only string litteral");
+    println!("println! - string literral with format, i: {}, j: {}, k: {}", i, j, k);
+    println!("println! - now testing print! macro");
+    print!("print! - only string litteral ");
+    print!("print! - string literral with format, i: {}, j: {}, k: {} ", i, j, k);
 
     loop {
     }
