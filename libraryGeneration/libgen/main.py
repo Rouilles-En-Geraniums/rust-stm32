@@ -50,7 +50,7 @@ def cmdlineParse():
     # Parser argument control section.
     parser.add_argument("-o", "--outputdir",
                         help="Output directory.",
-                        default="test")
+                        default="tmp")
     parser.add_argument("-l", "--libraryname",
                         help="Library name.",
                         default="stm32rustlib")
@@ -145,7 +145,7 @@ def main():
 
     # Generate various.rs file (global variables used across the library)
     mod_file_path = os.path.join(output_dir_path, library_name + ".rs")
-    output_file_path = library_dir_path + "/various.rs"
+    output_file_path = os.path.join(library_dir_path, "various.rs")
     with open(output_file_path, 'w') as output_file:
         t = env.get_template("various.rs")
         output_file.write(t.render())
@@ -164,9 +164,8 @@ def main():
         basename = os.path.splitext(os.path.basename(json_file_path))[0]
 
         # Generate library file
-        output_file_path = library_dir_path+"/"+basename+".rs"
+        output_file_path = os.path.join(library_dir_path, basename + ".rs")
         with open(output_file_path, 'w') as output_file:
-            # TODO: verify that the file exists
             # Generate corresponding template
             t = env.get_template(basename+".rs")
             output_file.write(t.render(data))

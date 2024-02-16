@@ -42,10 +42,12 @@ const PSC_US: u32 = APB1_CLK / 1_000_000;
 /**
  * This function must be called once before using any of the delay functions.
  */
+#[inline(always)]
 pub fn delay_init_timers(){
     rcc_apb1enr_seti(RCC_APB1ENR_TIM2EN);
 }
 
+#[inline(always)]
 pub fn delay_ms(ms: u32) {
     tim2_cr1_seti(!TIM_CEN);
     tim2_psc_write(PSC_MS - 1);
@@ -60,6 +62,7 @@ pub fn delay_ms(ms: u32) {
     tim2_cr1_seti(!TIM_CEN);
 }
 
+#[inline(always)]
 pub fn delay_us(us: u32) {
     tim2_cr1_seti(!TIM_CEN);
     tim2_psc_write(PSC_US - 1);
@@ -74,6 +77,7 @@ pub fn delay_us(us: u32) {
     tim2_cr1_seti(!TIM_CEN);
 }
 
+#[inline(always)]
 pub fn timer_arm_ms(ms: u32) {
     tim2_cr1_seti(!TIM_CEN);
     tim2_psc_write(PSC_MS - 1);
@@ -83,6 +87,7 @@ pub fn timer_arm_ms(ms: u32) {
     tim2_cr1_seti(TIM_CEN);
 }
 
+#[inline(always)]
 pub fn timer_arm_us(us: u32) {
     tim2_cr1_seti(!TIM_CEN);
     tim2_psc_write(PSC_US - 1);
@@ -92,6 +97,7 @@ pub fn timer_arm_us(us: u32) {
     tim2_cr1_seti(TIM_CEN);
 }
 
+#[inline(always)]
 pub fn timer_timeout() {
     while (tim2_sr_read() & TIM_UIF) == 0 {};
 
@@ -99,6 +105,7 @@ pub fn timer_timeout() {
     tim2_cr1_seti(!TIM_CEN);
 }
 
+#[inline(always)]
 pub fn timer_is_timeout() -> bool {
     if (tim2_sr_read() & TIM_UIF) == 0 {
         false
