@@ -67,6 +67,14 @@ fn run_sequencer(ordo_tasks: &mut [OrdoTask], num_ordo_tasks: usize, jobs: &[Job
 
 //User section
 
+pub fn user_init(){
+    delay_init_timers();
+    
+    rcc_ahb1enr_seti(RCC_AHB1ENR_GPIODEN);
+
+    gpiod_moder_set(MY_LED.1*2, 2, GPIO_MODER_OUT);
+}
+
 const MY_LED: (char, u32) = ('D', 12); // Built-in green led
 
 pub struct LedOn {
@@ -105,13 +113,6 @@ pub struct Sequencer <'a> {
 
 #[no_mangle]
 fn main() {
-
-    delay_init_timers();
-    
-    rcc_ahb1enr_seti(RCC_AHB1ENR_GPIODEN);
-
-    gpiod_moder_set(MY_LED.1*2, 2, GPIO_MODER_OUT);
-    //println!("Hello, world!");
 
     let mut t1: LedOn = LedOn::new();
     let mut t2: LedOff = LedOff::new();
