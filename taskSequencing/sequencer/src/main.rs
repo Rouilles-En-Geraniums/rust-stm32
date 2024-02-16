@@ -29,13 +29,13 @@ pub struct Job{
     pub duration: u32
 }
 
-fn runTask(ordo_task: &mut OrdoTask, max_time: u32){
+fn run_task(ordo_task: &mut OrdoTask, max_time: u32){
     timer_arm_ms(max_time);
     ordo_task.task.execute();
     timer_timeout();
 }
 
-fn run_sequencer(ordo_tasks: &mut [OrdoTask], num_ordo_tasks: usize, jobs: &[Job], num_jobs: usize, hyperperiod: u32) -> !{
+fn run_sequencer(ordo_tasks: &mut [OrdoTask], jobs: &[Job], hyperperiod: u32) -> !{
     for task in ordo_tasks.iter_mut() {
         //println!("{}", task.name);
         task.task.init();
@@ -54,14 +54,14 @@ fn run_sequencer(ordo_tasks: &mut [OrdoTask], num_ordo_tasks: usize, jobs: &[Job
             let next_job = &jobs[i + 1];
             let ordo_task: &mut OrdoTask = &mut ordo_tasks[job.task_index];
     
-            runTask(ordo_task, next_job.start - job.start);
+            run_task(ordo_task, next_job.start - job.start);
     
             i += 1;
         }
         let job = &jobs[i];
         let ordo_task: &mut OrdoTask = &mut ordo_tasks[job.task_index];
     
-        runTask(ordo_task, hyperperiod - job.start);
+        run_task(ordo_task, hyperperiod - job.start);
     }
 }
 
@@ -106,11 +106,6 @@ impl Task for LedOff {
 
 //generated code section
 
-pub struct Sequencer <'a> {
-    pub tasks: [OrdoTask<'a> ; 2],
-    pub jobs: [Job ; 3]
-}
-
 #[no_mangle]
 fn main() {
 
@@ -123,15 +118,15 @@ fn main() {
         OrdoTask {name: "Led On", task: &mut t1},
         OrdoTask {name: "Led Off", task: &mut t2}
     ];
-    let num_ordo_tasks = 2;
 
     let jobs = [
         Job{task_index: 0, duration: 10, start: 0},
         Job{task_index: 1, duration: 10, start: 1000},
     ];
-    let num_jobs = 2;
 
-    run_sequencer(&mut ordo_tasks, num_ordo_tasks, &jobs, num_jobs, hyperperiod);
+    user_init();
+
+    run_sequencer(&mut ordo_tasks, &jobs, hyperperiod);
 
     /*
     let mut time: u32 = 0;
