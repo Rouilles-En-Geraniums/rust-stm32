@@ -47,19 +47,19 @@
     {"name" : "RCC_CR_PLLI2SRDY", "value" : "1 << 27"},
     {"name" : "RCC_CR_PLLSAION", "value" : "1 << 28"},
     {"name" : "RCC_CR_PLLSAIRDY", "value" : "1 << 29"},
-    
+
     {"name" : "RCC_PLLCFGR_PLLM", "value" : "1 << 0"},
     {"name" : "RCC_PLLCFGR_PLLN", "value" : "1 << 6"},
     {"name" : "RCC_PLLCFGR_PLLP", "value" : "1 << 16"},
     {"name" : "RCC_PLLCFGR_PLLSRC", "value" : "1 << 22"},
     {"name" : "RCC_PLLCFGR_PLLQ", "value" : "1 << 24"},
-    
+
 
     {"name" : "RCC_CFGR_SW", "value" : "1 << 0"},
     {"name" : "RCC_CFGR_SWS", "value" : "1 << 2"},
     {"name" : "RCC_CFGR_HPRE", "value" : "1 << 4"},
     {"name" : "RCC_CFGR_PPRE1", "value" : "1 << 10"},
-    {"name" : "RCC_CFGR_PPRE2 ", "value" : "1 << 13"},
+    {"name" : "RCC_CFGR_PPRE2", "value" : "1 << 13"},
     {"name" : "RCC_CFGR_RTCPRE", "value" : "1 << 16"},
     {"name" : "RCC_CFGR_MCO1", "value" : "1 << 21"},
     {"name" : "RCC_CFGR_I2SSCR", "value" : "1 << 23"},
@@ -118,7 +118,7 @@
     { "name" : "RCC_APB2RSTR_TIM9RST", "value" : "1 << 16"},
     { "name" : "RCC_APB2RSTR_TIM10RST", "value" : "1 << 17"},
     { "name" : "RCC_APB2RSTR_TIM11RST", "value" : "1 << 18"},
-    
+
     { "name" : "RCC_AHB1ENR_GPIOAEN", "value" : "1 << 0"},
     { "name" : "RCC_AHB1ENR_GPIOBEN", "value" : "1 << 1"},
     { "name" : "RCC_AHB1ENR_GPIOCEN", "value" : "1 << 2"},
@@ -146,7 +146,7 @@
     { "name" : "RCC_APB2ENR_TIM9EN", "value" : "1 << 16"},
     { "name" : "RCC_APB2ENR_TIM10EN", "value" : "1 << 17"},
     { "name" : "RCC_APB2ENR_TIM11EN", "value" : "1 << 18"},
-    
+
     { "name" : "RCC_BDCR_BDRST", "value" : "1 << 16"},
     { "name" : "RCC_BDCR_RTCEN", "value" : "1 << 15"},
     { "name" : "RCC_BDCR_RTCSEL", "value" : "1 << 8"},
@@ -174,12 +174,12 @@
     { "name" : "RCC_PPLI2SCFGR_PLLI2SR1", "value" : "1 << 29"},
     { "name" : "RCC_PPLI2SCFGR_PLLI2SR0", "value" : "1 << 28"},
     { "name" : "RCC_PPLI2SCFGR_PLLI2SQ", "value" : "1 << 24"},
-    { "name" : "RCC_PPLI2SCFGR_PLLI2SN", "value" : "1 << 6"}, 
-    
+    { "name" : "RCC_PPLI2SCFGR_PLLI2SN", "value" : "1 << 6"},
+
     { "name" : "RCC_PLLSAICFGR_PLLSAIR", "value" : "1 << 28"},
     { "name" : "RCC_PLLSAICFGR_PLLSAIQ", "value" : "1 << 24"},
     { "name" : "RCC_PLLSAICFGR_PLLSAIN", "value" : "1 << 6"},
-    
+
     { "name" : "RCC_DCKCFGR_TIMPRE", "value" : "1 << 24"},
     { "name" : "RCC_DCKCFGR_SAI1BSCR", "value" : "1 << 22"},
     { "name" : "RCC_DCKCFGR_SAI1ASCR", "value" : "1 << 20"},

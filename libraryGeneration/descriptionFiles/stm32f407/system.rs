@@ -30,9 +30,7 @@
  *	GNU General Public License for more details.
 **/
 
-extern crate core;
-
-use crate::core::ptr::read_volatile;
-use crate::core::ptr::write_volatile;
-use crate::stm32rustlib::various::*;
-{% include "address.rs" %}
+// STM32F4 Discovery
+pub const MCK_CLK: u32 = 168_000_000;
+pub const APB1_CLK: u32 = 42_000_000;
+pub const APB2_CLK: u32 = 84_000_000;

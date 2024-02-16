@@ -54,7 +54,7 @@
 
     {"name": "DAC_DHR12RD_DACC1DHR", "value": "1 << 0"},
     {"name": "DAC_DHR12RD_DACC2DHR", "value": "1 << 16"},
-    
+
     {"name": "DAC_DHR12LD_DACC1DHR", "value": "1 << 4"},
     {"name": "DAC_DHR12LD_DACC2DHR", "value": "1 << 16"},
 
@@ -64,13 +64,13 @@
     {"name": "DAC_DOR1_DACC1DOR", "value": "1 << 0"},
 
     {"name": "DAC_DOR2_DACC2DOR", "value": "1 << 0"},
-    
+
     {"name": "DAC_SR_DMAUDR1", "value": "1 << 13"},
     {"name": "DAC_SR_DMAUDR2", "value": "1 << 29"}
-    
 
 
-  
-    
+
+
+
   ]
 }

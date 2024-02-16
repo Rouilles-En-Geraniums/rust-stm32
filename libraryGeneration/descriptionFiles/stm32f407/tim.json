@@ -275,8 +275,8 @@
       ]
     }
 
-    
-    
+
+
   ],
   "constants" : [
     { "name" : "TIM_CKD_CKINT", "value" : "0b00 << 8"},
