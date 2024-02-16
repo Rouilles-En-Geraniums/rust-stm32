@@ -8,11 +8,15 @@ use geranium_rt::stm32rustlib::rcc::*;
 use geranium_rt::stm32rustlib::various::*;
 use geranium_rt::stm32rustlib::delay::*;
 
+//User exposed library
+
 pub trait Task {
     fn execute(&mut self) -> (); 
     fn init(&mut self) -> () {}
     fn new() -> Self where Self: Sized;
 }
+
+//Internal library
 
 pub struct OrdoTask <'a>{
     pub name: *const str,
@@ -24,39 +28,6 @@ pub struct Job{
     pub start: u32,
     pub duration: u32
 }
-
-//User tasks
-
-const MY_LED: (char, u32) = ('D', 12); // Built-in green led
-
-pub struct LedOn {
-}
-
-impl Task for LedOn {
-    fn execute(&mut self) -> () {
-        digital_write(MY_LED, HIGH);
-    }
-
-    fn new() -> LedOn {
-        LedOn { }
-    }
-}
-
-pub struct LedOff {}
-
-impl Task for LedOff {
-    fn execute(&mut self) -> () {
-        digital_write(MY_LED, LOW);
-    }
-
-    fn new() -> LedOff {
-        LedOff { }
-    }
-}
-
-//réfléchir à la possibiltié de laisser l'utilisateur écrire ordo_tab.rs lui-même, avec des helpers (add_task -> OrdoTask, add_job)
-
-//Library
 
 fn runTask(ordo_task: &mut OrdoTask, max_time: u32){
     timer_arm_ms(max_time);
@@ -93,6 +64,37 @@ fn run_sequencer(ordo_tasks: &mut [OrdoTask], num_ordo_tasks: usize, jobs: &[Job
         runTask(ordo_task, hyperperiod - job.start);
     }
 }
+
+//User section
+
+const MY_LED: (char, u32) = ('D', 12); // Built-in green led
+
+pub struct LedOn {
+}
+
+impl Task for LedOn {
+    fn execute(&mut self) -> () {
+        digital_write(MY_LED, HIGH);
+    }
+
+    fn new() -> LedOn {
+        LedOn { }
+    }
+}
+
+pub struct LedOff {}
+
+impl Task for LedOff {
+    fn execute(&mut self) -> () {
+        digital_write(MY_LED, LOW);
+    }
+
+    fn new() -> LedOff {
+        LedOff { }
+    }
+}
+
+//réfléchir à la possibiltié de laisser l'utilisateur écrire ordo_tab.rs lui-même, avec des helpers (add_task -> OrdoTask, add_job)
 
 //generated code section
 
