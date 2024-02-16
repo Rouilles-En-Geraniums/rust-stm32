@@ -1,12 +1,10 @@
 // il faut mettre l'équivalent de "volatile" partout
 
 {%- macro gen_digital_write_switch_case(gpioName) -%}
-        '{{gpioName}}' => {
-            match mode {
-                HIGH => gpio{{gpioName.lower()}}_bsrr_write(1 << pin.1),
-                LOW => gpio{{gpioName.lower()}}_bsrr_write(1 << (pin.1 + 16)),
-                _ => (),
-            }
+        '{{gpioName}}' => match mode {
+            HIGH => gpio{{gpioName.lower()}}_bsrr_write(1 << pin.1),
+            LOW => gpio{{gpioName.lower()}}_bsrr_write(1 << (pin.1 + 16)),
+            _ => (),
         },
 {%- endmacro %}
 
@@ -18,7 +16,7 @@
             } else {
                 LOW
             }
-        },
+        }
 {%- endmacro %}
 
 
@@ -52,7 +50,7 @@
                     },
                     _ => (),
 
-                },
+                }
                 OSPEEDER => match mode {
                     GPIO_OSPEEDR_LO => {
                         gpio{{gpioName.lower()}}_ospeedr_write(rep_bits(gpio{{gpioName.lower()}}_ospeedr_read(), pin.1*2, 2, GPIO_OSPEEDR_LO));
@@ -67,7 +65,7 @@
                         gpio{{gpioName.lower()}}_ospeedr_write(rep_bits(gpio{{gpioName.lower()}}_ospeedr_read(), pin.1*2, 2, GPIO_OSPEEDR_VH));
                     },
                     _ => (),
-                },
+                }
                 _ =>(),
         }
     },

@@ -59,7 +59,7 @@
     {"name" : "RCC_CFGR_SWS", "value" : "1 << 2"},
     {"name" : "RCC_CFGR_HPRE", "value" : "1 << 4"},
     {"name" : "RCC_CFGR_PPRE1", "value" : "1 << 10"},
-    {"name" : "RCC_CFGR_PPRE2 ", "value" : "1 << 13"},
+    {"name" : "RCC_CFGR_PPRE2", "value" : "1 << 13"},
     {"name" : "RCC_CFGR_RTCPRE", "value" : "1 << 16"},
     {"name" : "RCC_CFGR_MCO1", "value" : "1 << 21"},
     {"name" : "RCC_CFGR_I2SSCR", "value" : "1 << 23"},
