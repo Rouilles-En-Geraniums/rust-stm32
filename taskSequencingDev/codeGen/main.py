@@ -3,6 +3,8 @@ import os
 import json
 from pathlib import Path
 import argparse
+from jinja2 import Environment, FileSystemLoader
+
 
 """
     Error codes:
@@ -116,6 +118,7 @@ def parse_json(json_file_path):
     tasks = {task["id"]: task for task in ordo["tasks"]}
 
     json_file.close()
+    return ordo
 
 
 def main():
@@ -124,7 +127,18 @@ def main():
     json_file = args.json_file
 
     # Parse JSON (check errors)
-    parse_json(json_file)
+    json_data = parse_json(json_file)
+
+    # Initiate Jinja2 environment
+    file_loader = FileSystemLoader('templates/')
+    env = Environment(loader=file_loader)
+
+    # Generate various.rs file (global variables used across the library)
+    output_file_path = "main.rs"
+    with open(output_file_path, 'w') as output_file:
+        t = env.get_template("main.rs")
+        output_file.write(t.render(json_data))
+
 
 
 if __name__ == "__main__":
