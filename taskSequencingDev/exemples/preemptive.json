@@ -7,12 +7,12 @@
     {
         "id": "task1",
         "label": "Tache une",
-        "functionName": "function1"
+        "taskStruct": "Task1"
     },
     {
         "id": "task2",
         "label": "Tache deux",
-        "functionName": "function2"
+        "taskStruct": "Task2"
     }
 ],
 

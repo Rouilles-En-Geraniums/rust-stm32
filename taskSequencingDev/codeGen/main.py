@@ -44,7 +44,7 @@ def check_json_validity(json_data):
     # TODO Versionning see https://stackoverflow.com/questions/11887762/how-do-i-compare-version-numbers-in-python
     TOP_LEVEL_KEYS = ["version", "type", "hyperperiod", "tasks", "jobs"]
     VALID_TYPES = ["strict", "deadline", "cooperative", "preemptive"]
-    TASKS_KEYS = ["id", "functionName", "duration"]  # "label" key is optionnal
+    TASKS_KEYS = ["id", "taskStruct", "duration"]  # "label" key is optionnal
     JOBS_KEYS = ["taskId", "startTime", "activations"] # modified later
     PREEMPTIVE_ACTIVATION_KEYS = ["time", "duration"] # activation items in field "activations" (array)
 
