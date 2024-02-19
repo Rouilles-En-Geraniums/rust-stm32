@@ -124,7 +124,6 @@ def main():
             output_file.write("[package]\n")
             output_file.write("authors = [\"{}\"]\n".format(author))
             output_file.write("edition = \"2021\"\n")
-            output_file.write("readme = \"README.md\"\n")
             output_file.write("name = \"{}\"\n".format(projectname))
             output_file.write("version = \"0.1.0\"\n\n")
             output_file.write("[dependencies]\n")
@@ -155,12 +154,6 @@ def main():
         gdbinit_orig = "app-template/gdbinit"
         gdbinit_file = projectname + "/gdbinit"
         shutil.copyfile(gdbinit_orig, gdbinit_file)
-
-
-        # README
-        readme_orig = "app-template/README.md"
-        readme_file = projectname + "/README.md"
-        shutil.copyfile(readme_orig, readme_file)
 
 
         print("\nProject '{}' has been successfully generated.".format(projectname))
