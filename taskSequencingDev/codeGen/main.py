@@ -129,7 +129,7 @@ def main():
     json_data = parse_json(json_file)
 
     # Initiate Jinja2 environment
-    file_loader = FileSystemLoader('templates/')
+    file_loader = FileSystemLoader('../templates/')
     env = Environment(loader=file_loader)
 
     # Generate various.rs file (global variables used across the library)
