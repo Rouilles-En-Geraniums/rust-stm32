@@ -1,4 +1,5 @@
 extern crate geranium_rt;
+use core::cell::RefCell;
 
 use crate::sequencer::task::Task;
 use geranium_rt::stm32rustlib::delay::timer_arm_ms;
@@ -32,11 +33,17 @@ pub fn run_sequencer(jobs: &[Job], hyperperiod: u32) -> !{
         while i < jobs.len() - 1 {
             let job = &jobs[i];
             let next_job = &jobs[i + 1];
-            run_task(&mut job.task.borrow_mut(), next_job.start - job.start);
+            run_task(&mut job.ordo_task.borrow_mut(), next_job.start - job.start);
 
             i += 1;
         }
         let job = &jobs[i];
-        run_task(&mut job.task.borrow_mut(), hyperperiod - job.start);
+        run_task(&mut job.ordo_task.borrow_mut(), hyperperiod - job.start);
+    }
+}
+
+pub fn init_tasks(ordo_tasks: &mut [OrdoTask]) {
+    for ordo_task in ordo_tasks.iter_mut() {
+        ordo_task.task.init();
     }
 }
