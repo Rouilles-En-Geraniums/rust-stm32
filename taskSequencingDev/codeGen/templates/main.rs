@@ -97,21 +97,15 @@ fn run_sequencer(
 #[no_mangle]
 fn main() {
     // Start of Generated code
-    {%- for task in tasks %}
-    let t_{{task.id}} = {{task.functionName}}::new();
-    {%- endfor %}
-    let mut t1: LedOn = LedOn::new();
-    let mut t2: LedOff = LedOff::new();
+    let hyperperiod: u32 = {{hyperperiod}};
 
-    let hyperperiod: u32 = 2000;
-
-    let mut ordo_tasks = [
     {%- for task in tasks %}
-        OrdoTask {
-            task: &mut t_{{task.id}},
-        },
+    let mut t_{{task.id}} = {{task.functionName}}::new();
     {%- endfor %}
-    ];
+
+    {%- for task in tasks %}
+
+    {%- }
 
     let jobs = [
     {%- for job in jobs %}
