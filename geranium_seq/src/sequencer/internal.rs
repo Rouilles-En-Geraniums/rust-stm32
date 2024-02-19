@@ -43,14 +43,13 @@ pub fn run_sequencer(jobs: &[Job], hyperperiod: u32) -> !{
         while i < jobs.len() - 1 {
             let job = &jobs[i];
             let next_job = &jobs[i + 1];
-            run_task(&mut job.ordo_task.borrow_mut(), job.duration);
-            delay_ms(next_job.start - (job.start + job.duration));
+            run_task(&mut job.ordo_task.borrow_mut(), next_job.start - job.start);
 
             i += 1;
         }
         let job = &jobs[i];
-        run_task(&mut job.ordo_task.borrow_mut(), job.duration);
-        delay_ms(hyperperiod - (job.start + job.duration));
+        run_task(&mut job.ordo_task.borrow_mut(), hyperperiod - job.start);
+
     }
 }
 
