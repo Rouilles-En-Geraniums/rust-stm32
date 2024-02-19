@@ -123,7 +123,7 @@ fn main() {
     {
         let mut ordo_tasks = [
             {%- for task in tasks %}
-            &ot_{{task.id}}
+            &ot_{{task.id}},
             {%- endfor %}
         ];
         init_tasks(&mut ordo_tasks);
