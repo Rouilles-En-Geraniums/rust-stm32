@@ -104,25 +104,34 @@ fn main() {
     {%- endfor %}
 
     {%- for task in tasks %}
+    let ot_{{task.id}} = RefCell::new(OrdoTask {
+        task: &mut t_{{task.id}},
+        duration: {{task.duration}}
+    });
+    {%- endfor %}
 
-    {%- }
 
     let jobs = [
     {%- for job in jobs %}
         Job {
-            task_index: 0,
-            duration: {{job.duration}},
+            ordo_task: &ot_{{job.taskId}},
             start: {{job.startTime}},
         },
     {%- endfor %}
     ];
 
+    {
+        let mut ordo_tasks = [
+            {%- for task in tasks %}
+            &ot_{{job.taskId}}
+            {%- endfor %}
+        ];
+        init_tasks(&mut ordo_tasks);
+    }
+
     run_sequencer(
-        &mut ordo_tasks,
-        num_ordo_tasks,
         &jobs,
-        num_jobs,
-        hyperperiod,
+        hyperperiod
     );
     // End of generated code
 }
