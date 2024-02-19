@@ -1,98 +1,44 @@
 #![no_std]
 #![no_main]
+/**
+ *	Rust on STM32 Project by Rouilles en GeraniumTM
+ *	Copyright (C) 2024 Université de Toulouse :
+ *   - Oussama Felfel - oussama.felfel@univ-tlse3.fr
+ *   - François Foltete - francois.foltete@univ-tlse3.fr
+ *   - Elana Courtines - elana.courtines@univ-tlse3.fr
+ *   - Teo Tinarrage - teo.tinarrage@univ-tlse3.fr
+ *   - Zineb Moubarik - zineb.moubarik@univ-tlse3.fr
+ *
+ *  This library aims to provide the following :
+ *   - a rust library generation tool to safely access memory ;
+ *   - a support to flash STM32 boards ;
+ *   - a task scheduling tool that generates the associated rust code.
+ *
+ *  The development of this library has done as a Proof of Concept and
+ *  is currently only tested for STM32F407-G DISC1 Boards.
+ *
+ *  It is our hope that using this library to enable development on
+ *  other boards will be facilitated.
+ *
+ *
+ *	This program is free software: you can redistribute it and/or modify
+ *	it under the terms of the GNU General Public License as published by
+ *	the Free Software Foundation, either version 3 of the License, or
+ *	(at your option) any later version.
+ *
+ *	This program is distributed in the hope that it will be useful,
+ *	but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *	GNU General Public License for more details.
+**/
 
 extern crate geranium_rt;
+use core::cell::RefCell;
 
-use geranium_rt::stm32rustlib::gpio::*;
-use geranium_rt::stm32rustlib::rcc::*;
-use geranium_rt::stm32rustlib::various::*;
-use geranium_rt::stm32rustlib::wait::*;
-
-const APB1_CLK: u32 = 42_000_000;
-
-pub trait Task {
-    fn execute(&mut self) -> ();
-    fn init(&mut self) -> () {}
-    fn new() -> Self
-    where
-        Self: Sized;
-}
-
-pub struct OrdoTask<'a> {
-    // pub name: *const str,
-    pub task: &'a mut dyn Task,
-}
-
-pub struct Job {
-    pub task_index: usize,
-    pub start: u32,
-    pub duration: u32,
-}
-
-// User tasks
-
-const MY_LED: (char, u32) = ('D', 12); // Built-in green led
-
-pub struct LedOn {}
-
-impl Task for LedOn {
-    fn execute(&mut self) -> () {
-        digital_write(MY_LED, HIGH);
-    }
-
-    fn new() -> LedOn {
-        LedOn {}
-    }
-}
-
-pub struct LedOff {}
-
-impl Task for LedOff {
-    fn execute(&mut self) -> () {
-        digital_write(MY_LED, LOW);
-    }
-
-    fn new() -> LedOff {
-        LedOff {}
-    }
-}
-
-// Library
-
-fn run_task(ordo_task: &mut OrdoTask, max_time: u32) {
-    timer_arm_ms(max_time);
-    ordo_task.task.execute();
-    timer_timeout();
-}
-
-fn run_sequencer(
-    ordo_tasks: &mut [OrdoTask],
-    num_ordo_tasks: usize,
-    jobs: &[Job],
-    num_jobs: usize,
-    hyperperiod: u32,
-) -> ! {
-    for task in ordo_tasks.iter_mut() {
-        task.task.init();
-    }
-
-    loop {
-        let mut i: usize = 0;
-        while i < jobs.len() - 1 {
-            let job = &jobs[i];
-            let next_job = &jobs[i + 1];
-            let ordo_task: &mut OrdoTask = &mut ordo_tasks[job.task_index];
-
-            run_task(ordo_task, next_job.start - job.start);
-
-            i += 1;
-        }
-        let job = &jobs[i];
-        let ordo_task: &mut OrdoTask = &mut ordo_tasks[job.task_index];
-
-        run_task(ordo_task, hyperperiod - job.start);
-    }
-}
+mod user_tasks;
+use user_tasks::*;
+use geranium_seq::sequencer::internal::*;
+use geranium_seq::sequencer::task::Task;
 
 #[no_mangle]
 fn main() {
