@@ -33,14 +33,14 @@ extern crate core;
 
 use crate::core::ptr::write_volatile;
 const NVIC_ADR: u32 = 0xE000E000;
-
+        
 const NVIC_ISER_OFFSET: u32 = 0x100;
 const NVIC_ICER_OFFSET: u32 = 0x180;
 const NVIC_ISPR_OFFSET: u32 = 0x200;
 const NVIC_ICPR_OFFSET: u32 = 0x280;
 const NVIC_IABR_OFFSET: u32 = 0x300;
 const NVIC_IPR_OFFSET: u32 = 0x400;
-
+    
 pub const NVIC_IRQ: u32 = 0x00000040;
 pub const WWDG: u32 = 0;
 pub const PVD: u32 = 1;
@@ -124,38 +124,38 @@ pub const DCMI: u32 = 78;
 pub const CRYP: u32 = 79;
 pub const HASH_RNG: u32 = 80;
 pub const FPU: u32 = 81;
+        
 
 
 
 
 
 
+    
+        
 
 
 
 
 
 
+    
+        
 
 
 
 
 
 
+    
+        
 
 
 
 
 
 
-
-
-
-
-
-
-
-
+    
 #[inline(always)]
 pub fn nvic_iser_set(vector: u32, value: u32) {
     unsafe {

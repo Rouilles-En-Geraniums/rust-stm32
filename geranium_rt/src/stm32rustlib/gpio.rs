@@ -46,7 +46,7 @@ const GPIOH_ADR: u32 = 0x40021C00;
 const GPIOI_ADR: u32 = 0x40022000;
 const GPIOJ_ADR: u32 = 0x40022400;
 const GPIOK_ADR: u32 = 0x40022800;
-
+        
 const GPIOA_MODER_OFFSET: u32 = 0x00;
 const GPIOA_OTYPER_OFFSET: u32 = 0x04;
 const GPIOA_OSPEEDR_OFFSET: u32 = 0x08;
@@ -57,8 +57,8 @@ const GPIOA_BSRR_OFFSET: u32 = 0x18;
 const GPIOA_LCKR_OFFSET: u32 = 0x1c;
 const GPIOA_AFRL_OFFSET: u32 = 0x20;
 const GPIOA_AFRH_OFFSET: u32 = 0x24;
-
-
+    
+        
 const GPIOB_MODER_OFFSET: u32 = 0x00;
 const GPIOB_OTYPER_OFFSET: u32 = 0x04;
 const GPIOB_OSPEEDR_OFFSET: u32 = 0x08;
@@ -69,8 +69,8 @@ const GPIOB_BSRR_OFFSET: u32 = 0x18;
 const GPIOB_LCKR_OFFSET: u32 = 0x1c;
 const GPIOB_AFRL_OFFSET: u32 = 0x20;
 const GPIOB_AFRH_OFFSET: u32 = 0x24;
-
-
+    
+        
 const GPIOC_MODER_OFFSET: u32 = 0x00;
 const GPIOC_OTYPER_OFFSET: u32 = 0x04;
 const GPIOC_OSPEEDR_OFFSET: u32 = 0x08;
@@ -81,8 +81,8 @@ const GPIOC_BSRR_OFFSET: u32 = 0x18;
 const GPIOC_LCKR_OFFSET: u32 = 0x1c;
 const GPIOC_AFRL_OFFSET: u32 = 0x20;
 const GPIOC_AFRH_OFFSET: u32 = 0x24;
-
-
+    
+        
 const GPIOD_MODER_OFFSET: u32 = 0x00;
 const GPIOD_OTYPER_OFFSET: u32 = 0x04;
 const GPIOD_OSPEEDR_OFFSET: u32 = 0x08;
@@ -93,8 +93,8 @@ const GPIOD_BSRR_OFFSET: u32 = 0x18;
 const GPIOD_LCKR_OFFSET: u32 = 0x1c;
 const GPIOD_AFRL_OFFSET: u32 = 0x20;
 const GPIOD_AFRH_OFFSET: u32 = 0x24;
-
-
+    
+        
 const GPIOE_MODER_OFFSET: u32 = 0x00;
 const GPIOE_OTYPER_OFFSET: u32 = 0x04;
 const GPIOE_OSPEEDR_OFFSET: u32 = 0x08;
@@ -105,8 +105,8 @@ const GPIOE_BSRR_OFFSET: u32 = 0x18;
 const GPIOE_LCKR_OFFSET: u32 = 0x1c;
 const GPIOE_AFRL_OFFSET: u32 = 0x20;
 const GPIOE_AFRH_OFFSET: u32 = 0x24;
-
-
+    
+        
 const GPIOF_MODER_OFFSET: u32 = 0x00;
 const GPIOF_OTYPER_OFFSET: u32 = 0x04;
 const GPIOF_OSPEEDR_OFFSET: u32 = 0x08;
@@ -117,8 +117,8 @@ const GPIOF_BSRR_OFFSET: u32 = 0x18;
 const GPIOF_LCKR_OFFSET: u32 = 0x1c;
 const GPIOF_AFRL_OFFSET: u32 = 0x20;
 const GPIOF_AFRH_OFFSET: u32 = 0x24;
-
-
+    
+        
 const GPIOG_MODER_OFFSET: u32 = 0x00;
 const GPIOG_OTYPER_OFFSET: u32 = 0x04;
 const GPIOG_OSPEEDR_OFFSET: u32 = 0x08;
@@ -129,8 +129,8 @@ const GPIOG_BSRR_OFFSET: u32 = 0x18;
 const GPIOG_LCKR_OFFSET: u32 = 0x1c;
 const GPIOG_AFRL_OFFSET: u32 = 0x20;
 const GPIOG_AFRH_OFFSET: u32 = 0x24;
-
-
+    
+        
 const GPIOH_MODER_OFFSET: u32 = 0x00;
 const GPIOH_OTYPER_OFFSET: u32 = 0x04;
 const GPIOH_OSPEEDR_OFFSET: u32 = 0x08;
@@ -141,8 +141,8 @@ const GPIOH_BSRR_OFFSET: u32 = 0x18;
 const GPIOH_LCKR_OFFSET: u32 = 0x1c;
 const GPIOH_AFRL_OFFSET: u32 = 0x20;
 const GPIOH_AFRH_OFFSET: u32 = 0x24;
-
-
+    
+        
 const GPIOI_MODER_OFFSET: u32 = 0x00;
 const GPIOI_OTYPER_OFFSET: u32 = 0x04;
 const GPIOI_OSPEEDR_OFFSET: u32 = 0x08;
@@ -153,8 +153,8 @@ const GPIOI_BSRR_OFFSET: u32 = 0x18;
 const GPIOI_LCKR_OFFSET: u32 = 0x1c;
 const GPIOI_AFRL_OFFSET: u32 = 0x20;
 const GPIOI_AFRH_OFFSET: u32 = 0x24;
-
-
+    
+        
 const GPIOJ_MODER_OFFSET: u32 = 0x00;
 const GPIOJ_OTYPER_OFFSET: u32 = 0x04;
 const GPIOJ_OSPEEDR_OFFSET: u32 = 0x08;
@@ -165,8 +165,8 @@ const GPIOJ_BSRR_OFFSET: u32 = 0x18;
 const GPIOJ_LCKR_OFFSET: u32 = 0x1c;
 const GPIOJ_AFRL_OFFSET: u32 = 0x20;
 const GPIOJ_AFRH_OFFSET: u32 = 0x24;
-
-
+    
+        
 const GPIOK_MODER_OFFSET: u32 = 0x00;
 const GPIOK_OTYPER_OFFSET: u32 = 0x04;
 const GPIOK_OSPEEDR_OFFSET: u32 = 0x08;
@@ -177,7 +177,7 @@ const GPIOK_BSRR_OFFSET: u32 = 0x18;
 const GPIOK_LCKR_OFFSET: u32 = 0x1c;
 const GPIOK_AFRL_OFFSET: u32 = 0x20;
 const GPIOK_AFRH_OFFSET: u32 = 0x24;
-
+    
 pub const GPIO_MODER_IN: u32 = 0b00;
 pub const GPIO_MODER_OUT: u32 = 0b01;
 pub const GPIO_MODER_ALT: u32 = 0b10;
@@ -189,7 +189,7 @@ pub const GPIO_OSPEEDR_VH: u32 = 0b11;
 pub const GPIO_PUPDR_NO: u32 = 0b00;
 pub const GPIO_PUPDR_PU: u32 = 0b01;
 pub const GPIO_PUPDR_PD: u32 = 0b10;
-
+        
 #[inline(always)]
 pub fn gpioa_moder_write(value: u32) {
     unsafe { write_volatile((GPIOA_ADR + GPIOA_MODER_OFFSET) as *mut u32, value) };
@@ -230,8 +230,8 @@ pub fn gpioa_afrl_write(value: u32) {
 pub fn gpioa_afrh_write(value: u32) {
     unsafe { write_volatile((GPIOA_ADR + GPIOA_AFRH_OFFSET) as *mut u32, value) };
 }
-
-
+    
+        
 #[inline(always)]
 pub fn gpiob_moder_write(value: u32) {
     unsafe { write_volatile((GPIOB_ADR + GPIOB_MODER_OFFSET) as *mut u32, value) };
@@ -272,8 +272,8 @@ pub fn gpiob_afrl_write(value: u32) {
 pub fn gpiob_afrh_write(value: u32) {
     unsafe { write_volatile((GPIOB_ADR + GPIOB_AFRH_OFFSET) as *mut u32, value) };
 }
-
-
+    
+        
 #[inline(always)]
 pub fn gpioc_moder_write(value: u32) {
     unsafe { write_volatile((GPIOC_ADR + GPIOC_MODER_OFFSET) as *mut u32, value) };
@@ -314,8 +314,8 @@ pub fn gpioc_afrl_write(value: u32) {
 pub fn gpioc_afrh_write(value: u32) {
     unsafe { write_volatile((GPIOC_ADR + GPIOC_AFRH_OFFSET) as *mut u32, value) };
 }
-
-
+    
+        
 #[inline(always)]
 pub fn gpiod_moder_write(value: u32) {
     unsafe { write_volatile((GPIOD_ADR + GPIOD_MODER_OFFSET) as *mut u32, value) };
@@ -356,8 +356,8 @@ pub fn gpiod_afrl_write(value: u32) {
 pub fn gpiod_afrh_write(value: u32) {
     unsafe { write_volatile((GPIOD_ADR + GPIOD_AFRH_OFFSET) as *mut u32, value) };
 }
-
-
+    
+        
 #[inline(always)]
 pub fn gpioe_moder_write(value: u32) {
     unsafe { write_volatile((GPIOE_ADR + GPIOE_MODER_OFFSET) as *mut u32, value) };
@@ -398,8 +398,8 @@ pub fn gpioe_afrl_write(value: u32) {
 pub fn gpioe_afrh_write(value: u32) {
     unsafe { write_volatile((GPIOE_ADR + GPIOE_AFRH_OFFSET) as *mut u32, value) };
 }
-
-
+    
+        
 #[inline(always)]
 pub fn gpiof_moder_write(value: u32) {
     unsafe { write_volatile((GPIOF_ADR + GPIOF_MODER_OFFSET) as *mut u32, value) };
@@ -440,8 +440,8 @@ pub fn gpiof_afrl_write(value: u32) {
 pub fn gpiof_afrh_write(value: u32) {
     unsafe { write_volatile((GPIOF_ADR + GPIOF_AFRH_OFFSET) as *mut u32, value) };
 }
-
-
+    
+        
 #[inline(always)]
 pub fn gpiog_moder_write(value: u32) {
     unsafe { write_volatile((GPIOG_ADR + GPIOG_MODER_OFFSET) as *mut u32, value) };
@@ -482,8 +482,8 @@ pub fn gpiog_afrl_write(value: u32) {
 pub fn gpiog_afrh_write(value: u32) {
     unsafe { write_volatile((GPIOG_ADR + GPIOG_AFRH_OFFSET) as *mut u32, value) };
 }
-
-
+    
+        
 #[inline(always)]
 pub fn gpioh_moder_write(value: u32) {
     unsafe { write_volatile((GPIOH_ADR + GPIOH_MODER_OFFSET) as *mut u32, value) };
@@ -524,8 +524,8 @@ pub fn gpioh_afrl_write(value: u32) {
 pub fn gpioh_afrh_write(value: u32) {
     unsafe { write_volatile((GPIOH_ADR + GPIOH_AFRH_OFFSET) as *mut u32, value) };
 }
-
-
+    
+        
 #[inline(always)]
 pub fn gpioi_moder_write(value: u32) {
     unsafe { write_volatile((GPIOI_ADR + GPIOI_MODER_OFFSET) as *mut u32, value) };
@@ -566,8 +566,8 @@ pub fn gpioi_afrl_write(value: u32) {
 pub fn gpioi_afrh_write(value: u32) {
     unsafe { write_volatile((GPIOI_ADR + GPIOI_AFRH_OFFSET) as *mut u32, value) };
 }
-
-
+    
+        
 #[inline(always)]
 pub fn gpioj_moder_write(value: u32) {
     unsafe { write_volatile((GPIOJ_ADR + GPIOJ_MODER_OFFSET) as *mut u32, value) };
@@ -608,8 +608,8 @@ pub fn gpioj_afrl_write(value: u32) {
 pub fn gpioj_afrh_write(value: u32) {
     unsafe { write_volatile((GPIOJ_ADR + GPIOJ_AFRH_OFFSET) as *mut u32, value) };
 }
-
-
+    
+        
 #[inline(always)]
 pub fn gpiok_moder_write(value: u32) {
     unsafe { write_volatile((GPIOK_ADR + GPIOK_MODER_OFFSET) as *mut u32, value) };
@@ -650,8 +650,8 @@ pub fn gpiok_afrl_write(value: u32) {
 pub fn gpiok_afrh_write(value: u32) {
     unsafe { write_volatile((GPIOK_ADR + GPIOK_AFRH_OFFSET) as *mut u32, value) };
 }
-
-
+    
+        
 #[inline(always)]
 pub fn gpioa_moder_read() -> u32 {
     unsafe { read_volatile((GPIOA_ADR + GPIOA_MODER_OFFSET) as *mut u32) }
@@ -692,8 +692,8 @@ pub fn gpioa_afrl_read() -> u32 {
 pub fn gpioa_afrh_read() -> u32 {
     unsafe { read_volatile((GPIOA_ADR + GPIOA_AFRH_OFFSET) as *mut u32) }
 }
-
-
+    
+        
 #[inline(always)]
 pub fn gpiob_moder_read() -> u32 {
     unsafe { read_volatile((GPIOB_ADR + GPIOB_MODER_OFFSET) as *mut u32) }
@@ -734,8 +734,8 @@ pub fn gpiob_afrl_read() -> u32 {
 pub fn gpiob_afrh_read() -> u32 {
     unsafe { read_volatile((GPIOB_ADR + GPIOB_AFRH_OFFSET) as *mut u32) }
 }
-
-
+    
+        
 #[inline(always)]
 pub fn gpioc_moder_read() -> u32 {
     unsafe { read_volatile((GPIOC_ADR + GPIOC_MODER_OFFSET) as *mut u32) }
@@ -776,8 +776,8 @@ pub fn gpioc_afrl_read() -> u32 {
 pub fn gpioc_afrh_read() -> u32 {
     unsafe { read_volatile((GPIOC_ADR + GPIOC_AFRH_OFFSET) as *mut u32) }
 }
-
-
+    
+        
 #[inline(always)]
 pub fn gpiod_moder_read() -> u32 {
     unsafe { read_volatile((GPIOD_ADR + GPIOD_MODER_OFFSET) as *mut u32) }
@@ -818,8 +818,8 @@ pub fn gpiod_afrl_read() -> u32 {
 pub fn gpiod_afrh_read() -> u32 {
     unsafe { read_volatile((GPIOD_ADR + GPIOD_AFRH_OFFSET) as *mut u32) }
 }
-
-
+    
+        
 #[inline(always)]
 pub fn gpioe_moder_read() -> u32 {
     unsafe { read_volatile((GPIOE_ADR + GPIOE_MODER_OFFSET) as *mut u32) }
@@ -860,8 +860,8 @@ pub fn gpioe_afrl_read() -> u32 {
 pub fn gpioe_afrh_read() -> u32 {
     unsafe { read_volatile((GPIOE_ADR + GPIOE_AFRH_OFFSET) as *mut u32) }
 }
-
-
+    
+        
 #[inline(always)]
 pub fn gpiof_moder_read() -> u32 {
     unsafe { read_volatile((GPIOF_ADR + GPIOF_MODER_OFFSET) as *mut u32) }
@@ -902,8 +902,8 @@ pub fn gpiof_afrl_read() -> u32 {
 pub fn gpiof_afrh_read() -> u32 {
     unsafe { read_volatile((GPIOF_ADR + GPIOF_AFRH_OFFSET) as *mut u32) }
 }
-
-
+    
+        
 #[inline(always)]
 pub fn gpiog_moder_read() -> u32 {
     unsafe { read_volatile((GPIOG_ADR + GPIOG_MODER_OFFSET) as *mut u32) }
@@ -944,8 +944,8 @@ pub fn gpiog_afrl_read() -> u32 {
 pub fn gpiog_afrh_read() -> u32 {
     unsafe { read_volatile((GPIOG_ADR + GPIOG_AFRH_OFFSET) as *mut u32) }
 }
-
-
+    
+        
 #[inline(always)]
 pub fn gpioh_moder_read() -> u32 {
     unsafe { read_volatile((GPIOH_ADR + GPIOH_MODER_OFFSET) as *mut u32) }
@@ -986,8 +986,8 @@ pub fn gpioh_afrl_read() -> u32 {
 pub fn gpioh_afrh_read() -> u32 {
     unsafe { read_volatile((GPIOH_ADR + GPIOH_AFRH_OFFSET) as *mut u32) }
 }
-
-
+    
+        
 #[inline(always)]
 pub fn gpioi_moder_read() -> u32 {
     unsafe { read_volatile((GPIOI_ADR + GPIOI_MODER_OFFSET) as *mut u32) }
@@ -1028,8 +1028,8 @@ pub fn gpioi_afrl_read() -> u32 {
 pub fn gpioi_afrh_read() -> u32 {
     unsafe { read_volatile((GPIOI_ADR + GPIOI_AFRH_OFFSET) as *mut u32) }
 }
-
-
+    
+        
 #[inline(always)]
 pub fn gpioj_moder_read() -> u32 {
     unsafe { read_volatile((GPIOJ_ADR + GPIOJ_MODER_OFFSET) as *mut u32) }
@@ -1070,8 +1070,8 @@ pub fn gpioj_afrl_read() -> u32 {
 pub fn gpioj_afrh_read() -> u32 {
     unsafe { read_volatile((GPIOJ_ADR + GPIOJ_AFRH_OFFSET) as *mut u32) }
 }
-
-
+    
+        
 #[inline(always)]
 pub fn gpiok_moder_read() -> u32 {
     unsafe { read_volatile((GPIOK_ADR + GPIOK_MODER_OFFSET) as *mut u32) }
@@ -1112,8 +1112,8 @@ pub fn gpiok_afrl_read() -> u32 {
 pub fn gpiok_afrh_read() -> u32 {
     unsafe { read_volatile((GPIOK_ADR + GPIOK_AFRH_OFFSET) as *mut u32) }
 }
-
-
+    
+        
 #[inline(always)]
 pub fn gpioa_moder_set(position: u32, size: u32, value: u32) {
     gpioa_moder_write(rep_bits(gpioa_moder_read(), position, size, value));
@@ -1154,8 +1154,8 @@ pub fn gpioa_afrl_set(position: u32, size: u32, value: u32) {
 pub fn gpioa_afrh_set(position: u32, size: u32, value: u32) {
     gpioa_afrh_write(rep_bits(gpioa_afrh_read(), position, size, value));
 }
-
-
+    
+        
 #[inline(always)]
 pub fn gpiob_moder_set(position: u32, size: u32, value: u32) {
     gpiob_moder_write(rep_bits(gpiob_moder_read(), position, size, value));
@@ -1196,8 +1196,8 @@ pub fn gpiob_afrl_set(position: u32, size: u32, value: u32) {
 pub fn gpiob_afrh_set(position: u32, size: u32, value: u32) {
     gpiob_afrh_write(rep_bits(gpiob_afrh_read(), position, size, value));
 }
-
-
+    
+        
 #[inline(always)]
 pub fn gpioc_moder_set(position: u32, size: u32, value: u32) {
     gpioc_moder_write(rep_bits(gpioc_moder_read(), position, size, value));
@@ -1238,8 +1238,8 @@ pub fn gpioc_afrl_set(position: u32, size: u32, value: u32) {
 pub fn gpioc_afrh_set(position: u32, size: u32, value: u32) {
     gpioc_afrh_write(rep_bits(gpioc_afrh_read(), position, size, value));
 }
-
-
+    
+        
 #[inline(always)]
 pub fn gpiod_moder_set(position: u32, size: u32, value: u32) {
     gpiod_moder_write(rep_bits(gpiod_moder_read(), position, size, value));
@@ -1280,8 +1280,8 @@ pub fn gpiod_afrl_set(position: u32, size: u32, value: u32) {
 pub fn gpiod_afrh_set(position: u32, size: u32, value: u32) {
     gpiod_afrh_write(rep_bits(gpiod_afrh_read(), position, size, value));
 }
-
-
+    
+        
 #[inline(always)]
 pub fn gpioe_moder_set(position: u32, size: u32, value: u32) {
     gpioe_moder_write(rep_bits(gpioe_moder_read(), position, size, value));
@@ -1322,8 +1322,8 @@ pub fn gpioe_afrl_set(position: u32, size: u32, value: u32) {
 pub fn gpioe_afrh_set(position: u32, size: u32, value: u32) {
     gpioe_afrh_write(rep_bits(gpioe_afrh_read(), position, size, value));
 }
-
-
+    
+        
 #[inline(always)]
 pub fn gpiof_moder_set(position: u32, size: u32, value: u32) {
     gpiof_moder_write(rep_bits(gpiof_moder_read(), position, size, value));
@@ -1364,8 +1364,8 @@ pub fn gpiof_afrl_set(position: u32, size: u32, value: u32) {
 pub fn gpiof_afrh_set(position: u32, size: u32, value: u32) {
     gpiof_afrh_write(rep_bits(gpiof_afrh_read(), position, size, value));
 }
-
-
+    
+        
 #[inline(always)]
 pub fn gpiog_moder_set(position: u32, size: u32, value: u32) {
     gpiog_moder_write(rep_bits(gpiog_moder_read(), position, size, value));
@@ -1406,8 +1406,8 @@ pub fn gpiog_afrl_set(position: u32, size: u32, value: u32) {
 pub fn gpiog_afrh_set(position: u32, size: u32, value: u32) {
     gpiog_afrh_write(rep_bits(gpiog_afrh_read(), position, size, value));
 }
-
-
+    
+        
 #[inline(always)]
 pub fn gpioh_moder_set(position: u32, size: u32, value: u32) {
     gpioh_moder_write(rep_bits(gpioh_moder_read(), position, size, value));
@@ -1448,8 +1448,8 @@ pub fn gpioh_afrl_set(position: u32, size: u32, value: u32) {
 pub fn gpioh_afrh_set(position: u32, size: u32, value: u32) {
     gpioh_afrh_write(rep_bits(gpioh_afrh_read(), position, size, value));
 }
-
-
+    
+        
 #[inline(always)]
 pub fn gpioi_moder_set(position: u32, size: u32, value: u32) {
     gpioi_moder_write(rep_bits(gpioi_moder_read(), position, size, value));
@@ -1490,8 +1490,8 @@ pub fn gpioi_afrl_set(position: u32, size: u32, value: u32) {
 pub fn gpioi_afrh_set(position: u32, size: u32, value: u32) {
     gpioi_afrh_write(rep_bits(gpioi_afrh_read(), position, size, value));
 }
-
-
+    
+        
 #[inline(always)]
 pub fn gpioj_moder_set(position: u32, size: u32, value: u32) {
     gpioj_moder_write(rep_bits(gpioj_moder_read(), position, size, value));
@@ -1532,8 +1532,8 @@ pub fn gpioj_afrl_set(position: u32, size: u32, value: u32) {
 pub fn gpioj_afrh_set(position: u32, size: u32, value: u32) {
     gpioj_afrh_write(rep_bits(gpioj_afrh_read(), position, size, value));
 }
-
-
+    
+        
 #[inline(always)]
 pub fn gpiok_moder_set(position: u32, size: u32, value: u32) {
     gpiok_moder_write(rep_bits(gpiok_moder_read(), position, size, value));
@@ -1574,8 +1574,8 @@ pub fn gpiok_afrl_set(position: u32, size: u32, value: u32) {
 pub fn gpiok_afrh_set(position: u32, size: u32, value: u32) {
     gpiok_afrh_write(rep_bits(gpiok_afrh_read(), position, size, value));
 }
-
-
+    
+        
 #[inline(always)]
 pub fn gpioa_moder_seti(value: u32) {
     match value.count_ones() {
@@ -1656,8 +1656,8 @@ pub fn gpioa_afrh_seti(value: u32) {
         _ => (),
     }
 }
-
-
+    
+        
 #[inline(always)]
 pub fn gpiob_moder_seti(value: u32) {
     match value.count_ones() {
@@ -1738,8 +1738,8 @@ pub fn gpiob_afrh_seti(value: u32) {
         _ => (),
     }
 }
-
-
+    
+        
 #[inline(always)]
 pub fn gpioc_moder_seti(value: u32) {
     match value.count_ones() {
@@ -1820,8 +1820,8 @@ pub fn gpioc_afrh_seti(value: u32) {
         _ => (),
     }
 }
-
-
+    
+        
 #[inline(always)]
 pub fn gpiod_moder_seti(value: u32) {
     match value.count_ones() {
@@ -1902,8 +1902,8 @@ pub fn gpiod_afrh_seti(value: u32) {
         _ => (),
     }
 }
-
-
+    
+        
 #[inline(always)]
 pub fn gpioe_moder_seti(value: u32) {
     match value.count_ones() {
@@ -1984,8 +1984,8 @@ pub fn gpioe_afrh_seti(value: u32) {
         _ => (),
     }
 }
-
-
+    
+        
 #[inline(always)]
 pub fn gpiof_moder_seti(value: u32) {
     match value.count_ones() {
@@ -2066,8 +2066,8 @@ pub fn gpiof_afrh_seti(value: u32) {
         _ => (),
     }
 }
-
-
+    
+        
 #[inline(always)]
 pub fn gpiog_moder_seti(value: u32) {
     match value.count_ones() {
@@ -2148,8 +2148,8 @@ pub fn gpiog_afrh_seti(value: u32) {
         _ => (),
     }
 }
-
-
+    
+        
 #[inline(always)]
 pub fn gpioh_moder_seti(value: u32) {
     match value.count_ones() {
@@ -2230,8 +2230,8 @@ pub fn gpioh_afrh_seti(value: u32) {
         _ => (),
     }
 }
-
-
+    
+        
 #[inline(always)]
 pub fn gpioi_moder_seti(value: u32) {
     match value.count_ones() {
@@ -2312,8 +2312,8 @@ pub fn gpioi_afrh_seti(value: u32) {
         _ => (),
     }
 }
-
-
+    
+        
 #[inline(always)]
 pub fn gpioj_moder_seti(value: u32) {
     match value.count_ones() {
@@ -2394,8 +2394,8 @@ pub fn gpioj_afrh_seti(value: u32) {
         _ => (),
     }
 }
-
-
+    
+        
 #[inline(always)]
 pub fn gpiok_moder_seti(value: u32) {
     match value.count_ones() {
@@ -2476,7 +2476,7 @@ pub fn gpiok_afrh_seti(value: u32) {
         _ => (),
     }
 }
-
+    
 
 /**
  * pin = (GPIO# : char, pin# : u32)

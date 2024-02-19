@@ -37,7 +37,7 @@ use crate::core::ptr::write_volatile;
 use crate::stm32rustlib::various::*;
 
 const DAC_ADR: u32 = 0x40007400;
-
+        
 const DAC_CR_OFFSET: u32 = 0x00;
 const DAC_SWTRIGR_OFFSET: u32 = 0x04;
 const DAC_DHR12R1_OFFSET: u32 = 0x08;
@@ -52,7 +52,7 @@ const DAC_DHR8RD_OFFSET: u32 = 0x28;
 const DAC_DOR1_OFFSET: u32 = 0x2C;
 const DAC_DOR2_OFFSET: u32 = 0x30;
 const DAC_SR_OFFSET: u32 = 0x34;
-
+    
 pub const DAC_CR_EN: u32 = 1 << 0;
 pub const DAC_CR_BOFF1: u32 = 1 << 1;
 pub const DAC_CR_TEN1: u32 = 1 << 2;
@@ -85,7 +85,7 @@ pub const DAC_DOR1_DACC1DOR: u32 = 1 << 0;
 pub const DAC_DOR2_DACC2DOR: u32 = 1 << 0;
 pub const DAC_SR_DMAUDR1: u32 = 1 << 13;
 pub const DAC_SR_DMAUDR2: u32 = 1 << 29;
-
+        
 #[inline(always)]
 pub fn dac_cr_write(value: u32) {
     unsafe { write_volatile((DAC_ADR + DAC_CR_OFFSET) as *mut u32, value) };
@@ -133,8 +133,8 @@ pub fn dac_dhr8rd_write(value: u32) {
 
 
 
-
-
+    
+        
 #[inline(always)]
 pub fn dac_cr_read() -> u32 {
     unsafe { read_volatile((DAC_ADR + DAC_CR_OFFSET) as *mut u32) }
@@ -191,8 +191,8 @@ pub fn dac_dor2_read() -> u32 {
 pub fn dac_sr_read() -> u32 {
     unsafe { read_volatile((DAC_ADR + DAC_SR_OFFSET) as *mut u32) }
 }
-
-
+    
+        
 #[inline(always)]
 pub fn dac_cr_set(position: u32, size: u32, value: u32) {
     dac_cr_write(rep_bits(dac_cr_read(), position, size, value));
@@ -240,8 +240,8 @@ pub fn dac_dhr8rd_set(position: u32, size: u32, value: u32) {
 
 
 
-
-
+    
+        
 #[inline(always)]
 pub fn dac_cr_seti(value: u32) {
     match value.count_ones() {
@@ -333,3 +333,4 @@ pub fn dac_dhr8rd_seti(value: u32) {
 
 
 
+    

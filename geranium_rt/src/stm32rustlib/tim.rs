@@ -50,7 +50,7 @@ const TIM13_ADR: u32 = 0x40001C00;
 const TIM14_ADR: u32 = 0x40002000;
 const TIM6_ADR: u32 = 0x40001000;
 const TIM7_ADR: u32 = 0x40001400;
-
+        
 const TIM1_CR1_OFFSET: u32 = 0x00;
 const TIM1_CR2_OFFSET: u32 = 0x04;
 const TIM1_SMCR_OFFSET: u32 = 0x08;
@@ -70,8 +70,8 @@ const TIM1_CCR4_OFFSET: u32 = 0x40;
 const TIM1_BTDR_OFFSET: u32 = 0x44;
 const TIM1_DCR_OFFSET: u32 = 0x48;
 const TIM1_DMAR_OFFSET: u32 = 0x4C;
-
-
+    
+        
 const TIM8_CR1_OFFSET: u32 = 0x00;
 const TIM8_CR2_OFFSET: u32 = 0x04;
 const TIM8_SMCR_OFFSET: u32 = 0x08;
@@ -91,8 +91,8 @@ const TIM8_CCR4_OFFSET: u32 = 0x40;
 const TIM8_BTDR_OFFSET: u32 = 0x44;
 const TIM8_DCR_OFFSET: u32 = 0x48;
 const TIM8_DMAR_OFFSET: u32 = 0x4C;
-
-
+    
+        
 const TIM2_CR1_OFFSET: u32 = 0x00;
 const TIM2_CR2_OFFSET: u32 = 0x04;
 const TIM2_SMCR_OFFSET: u32 = 0x08;
@@ -112,8 +112,8 @@ const TIM2_CCR4_OFFSET: u32 = 0x40;
 const TIM2_DCR_OFFSET: u32 = 0x48;
 const TIM2_DMAR_OFFSET: u32 = 0x4C;
 const TIM2_OR_OFFSET: u32 = 0x50;
-
-
+    
+        
 const TIM3_CR1_OFFSET: u32 = 0x00;
 const TIM3_CR2_OFFSET: u32 = 0x04;
 const TIM3_SMCR_OFFSET: u32 = 0x08;
@@ -132,8 +132,8 @@ const TIM3_CCR3_OFFSET: u32 = 0x3C;
 const TIM3_CCR4_OFFSET: u32 = 0x40;
 const TIM3_DCR_OFFSET: u32 = 0x48;
 const TIM3_DMAR_OFFSET: u32 = 0x4C;
-
-
+    
+        
 const TIM4_CR1_OFFSET: u32 = 0x00;
 const TIM4_CR2_OFFSET: u32 = 0x04;
 const TIM4_SMCR_OFFSET: u32 = 0x08;
@@ -152,8 +152,8 @@ const TIM4_CCR3_OFFSET: u32 = 0x3C;
 const TIM4_CCR4_OFFSET: u32 = 0x40;
 const TIM4_DCR_OFFSET: u32 = 0x48;
 const TIM4_DMAR_OFFSET: u32 = 0x4C;
-
-
+    
+        
 const TIM5_CR1_OFFSET: u32 = 0x00;
 const TIM5_CR2_OFFSET: u32 = 0x04;
 const TIM5_SMCR_OFFSET: u32 = 0x08;
@@ -173,8 +173,8 @@ const TIM5_CCR4_OFFSET: u32 = 0x40;
 const TIM5_DCR_OFFSET: u32 = 0x48;
 const TIM5_DMAR_OFFSET: u32 = 0x4C;
 const TIM5_OR_OFFSET: u32 = 0x50;
-
-
+    
+        
 const TIM9_CR1_OFFSET: u32 = 0x00;
 const TIM9_SMCR_OFFSET: u32 = 0x08;
 const TIM9_DIER_OFFSET: u32 = 0x0C;
@@ -187,8 +187,8 @@ const TIM9_PSC_OFFSET: u32 = 0x28;
 const TIM9_ARR_OFFSET: u32 = 0x2C;
 const TIM9_CCR1_OFFSET: u32 = 0x34;
 const TIM9_CCR2_OFFSET: u32 = 0x38;
-
-
+    
+        
 const TIM12_CR1_OFFSET: u32 = 0x00;
 const TIM12_SMCR_OFFSET: u32 = 0x08;
 const TIM12_DIER_OFFSET: u32 = 0x0C;
@@ -201,8 +201,8 @@ const TIM12_PSC_OFFSET: u32 = 0x28;
 const TIM12_ARR_OFFSET: u32 = 0x2C;
 const TIM12_CCR1_OFFSET: u32 = 0x34;
 const TIM12_CCR2_OFFSET: u32 = 0x38;
-
-
+    
+        
 const TIM10_CR1_OFFSET: u32 = 0x00;
 const TIM10_DIER_OFFSET: u32 = 0x0C;
 const TIM10_SR_OFFSET: u32 = 0x10;
@@ -214,8 +214,8 @@ const TIM10_PSC_OFFSET: u32 = 0x28;
 const TIM10_ARR_OFFSET: u32 = 0x2C;
 const TIM10_CCR1_OFFSET: u32 = 0x34;
 const TIM10_OR_OFFSET: u32 = 0x50;
-
-
+    
+        
 const TIM11_CR1_OFFSET: u32 = 0x00;
 const TIM11_DIER_OFFSET: u32 = 0x0C;
 const TIM11_SR_OFFSET: u32 = 0x10;
@@ -227,8 +227,8 @@ const TIM11_PSC_OFFSET: u32 = 0x28;
 const TIM11_ARR_OFFSET: u32 = 0x2C;
 const TIM11_CCR1_OFFSET: u32 = 0x34;
 const TIM11_OR_OFFSET: u32 = 0x50;
-
-
+    
+        
 const TIM13_CR1_OFFSET: u32 = 0x00;
 const TIM13_DIER_OFFSET: u32 = 0x0C;
 const TIM13_SR_OFFSET: u32 = 0x10;
@@ -240,8 +240,8 @@ const TIM13_PSC_OFFSET: u32 = 0x28;
 const TIM13_ARR_OFFSET: u32 = 0x2C;
 const TIM13_CCR1_OFFSET: u32 = 0x34;
 const TIM13_OR_OFFSET: u32 = 0x50;
-
-
+    
+        
 const TIM14_CR1_OFFSET: u32 = 0x00;
 const TIM14_DIER_OFFSET: u32 = 0x0C;
 const TIM14_SR_OFFSET: u32 = 0x10;
@@ -253,8 +253,8 @@ const TIM14_PSC_OFFSET: u32 = 0x28;
 const TIM14_ARR_OFFSET: u32 = 0x2C;
 const TIM14_CCR1_OFFSET: u32 = 0x34;
 const TIM14_OR_OFFSET: u32 = 0x50;
-
-
+    
+        
 const TIM6_CR1_OFFSET: u32 = 0x00;
 const TIM6_CR2_OFFSET: u32 = 0x04;
 const TIM6_DIER_OFFSET: u32 = 0x0C;
@@ -263,8 +263,8 @@ const TIM6_EGR_OFFSET: u32 = 0x14;
 const TIM6_CNT_OFFSET: u32 = 0x24;
 const TIM6_PSC_OFFSET: u32 = 0x28;
 const TIM6_ARR_OFFSET: u32 = 0x2C;
-
-
+    
+        
 const TIM7_CR1_OFFSET: u32 = 0x00;
 const TIM7_CR2_OFFSET: u32 = 0x04;
 const TIM7_DIER_OFFSET: u32 = 0x0C;
@@ -273,7 +273,7 @@ const TIM7_EGR_OFFSET: u32 = 0x14;
 const TIM7_CNT_OFFSET: u32 = 0x24;
 const TIM7_PSC_OFFSET: u32 = 0x28;
 const TIM7_ARR_OFFSET: u32 = 0x2C;
-
+    
 pub const TIM_CKD_CKINT: u32 = 0b00 << 8;
 pub const TIM_CKD_CKINT2: u32 = 0b01 << 8;
 pub const TIM_CKD_CKINT4: u32 = 0b10 << 8;
@@ -446,7 +446,7 @@ pub const TIM11_IRQ: u32 = 26;
 pub const TIM12_IRQ: u32 = 43;
 pub const TIM13_IRQ: u32 = 44;
 pub const TIM14_IRQ: u32 = 45;
-
+        
 #[inline(always)]
 pub fn tim1_cr1_write(value: u32) {
     unsafe { write_volatile((TIM1_ADR + TIM1_CR1_OFFSET) as *mut u32, value) };
@@ -523,8 +523,8 @@ pub fn tim1_dcr_write(value: u32) {
 pub fn tim1_dmar_write(value: u32) {
     unsafe { write_volatile((TIM1_ADR + TIM1_DMAR_OFFSET) as *mut u32, value) };
 }
-
-
+    
+        
 #[inline(always)]
 pub fn tim8_cr1_write(value: u32) {
     unsafe { write_volatile((TIM8_ADR + TIM8_CR1_OFFSET) as *mut u32, value) };
@@ -601,8 +601,8 @@ pub fn tim8_dcr_write(value: u32) {
 pub fn tim8_dmar_write(value: u32) {
     unsafe { write_volatile((TIM8_ADR + TIM8_DMAR_OFFSET) as *mut u32, value) };
 }
-
-
+    
+        
 #[inline(always)]
 pub fn tim2_cr1_write(value: u32) {
     unsafe { write_volatile((TIM2_ADR + TIM2_CR1_OFFSET) as *mut u32, value) };
@@ -679,8 +679,8 @@ pub fn tim2_dmar_write(value: u32) {
 pub fn tim2_or_write(value: u32) {
     unsafe { write_volatile((TIM2_ADR + TIM2_OR_OFFSET) as *mut u32, value) };
 }
-
-
+    
+        
 #[inline(always)]
 pub fn tim3_cr1_write(value: u32) {
     unsafe { write_volatile((TIM3_ADR + TIM3_CR1_OFFSET) as *mut u32, value) };
@@ -753,8 +753,8 @@ pub fn tim3_dcr_write(value: u32) {
 pub fn tim3_dmar_write(value: u32) {
     unsafe { write_volatile((TIM3_ADR + TIM3_DMAR_OFFSET) as *mut u32, value) };
 }
-
-
+    
+        
 #[inline(always)]
 pub fn tim4_cr1_write(value: u32) {
     unsafe { write_volatile((TIM4_ADR + TIM4_CR1_OFFSET) as *mut u32, value) };
@@ -827,8 +827,8 @@ pub fn tim4_dcr_write(value: u32) {
 pub fn tim4_dmar_write(value: u32) {
     unsafe { write_volatile((TIM4_ADR + TIM4_DMAR_OFFSET) as *mut u32, value) };
 }
-
-
+    
+        
 #[inline(always)]
 pub fn tim5_cr1_write(value: u32) {
     unsafe { write_volatile((TIM5_ADR + TIM5_CR1_OFFSET) as *mut u32, value) };
@@ -905,8 +905,8 @@ pub fn tim5_dmar_write(value: u32) {
 pub fn tim5_or_write(value: u32) {
     unsafe { write_volatile((TIM5_ADR + TIM5_OR_OFFSET) as *mut u32, value) };
 }
-
-
+    
+        
 #[inline(always)]
 pub fn tim9_cr1_write(value: u32) {
     unsafe { write_volatile((TIM9_ADR + TIM9_CR1_OFFSET) as *mut u32, value) };
@@ -955,8 +955,8 @@ pub fn tim9_ccr1_write(value: u32) {
 pub fn tim9_ccr2_write(value: u32) {
     unsafe { write_volatile((TIM9_ADR + TIM9_CCR2_OFFSET) as *mut u32, value) };
 }
-
-
+    
+        
 #[inline(always)]
 pub fn tim12_cr1_write(value: u32) {
     unsafe { write_volatile((TIM12_ADR + TIM12_CR1_OFFSET) as *mut u32, value) };
@@ -1005,8 +1005,8 @@ pub fn tim12_ccr1_write(value: u32) {
 pub fn tim12_ccr2_write(value: u32) {
     unsafe { write_volatile((TIM12_ADR + TIM12_CCR2_OFFSET) as *mut u32, value) };
 }
-
-
+    
+        
 #[inline(always)]
 pub fn tim10_cr1_write(value: u32) {
     unsafe { write_volatile((TIM10_ADR + TIM10_CR1_OFFSET) as *mut u32, value) };
@@ -1051,8 +1051,8 @@ pub fn tim10_ccr1_write(value: u32) {
 pub fn tim10_or_write(value: u32) {
     unsafe { write_volatile((TIM10_ADR + TIM10_OR_OFFSET) as *mut u32, value) };
 }
-
-
+    
+        
 #[inline(always)]
 pub fn tim11_cr1_write(value: u32) {
     unsafe { write_volatile((TIM11_ADR + TIM11_CR1_OFFSET) as *mut u32, value) };
@@ -1097,8 +1097,8 @@ pub fn tim11_ccr1_write(value: u32) {
 pub fn tim11_or_write(value: u32) {
     unsafe { write_volatile((TIM11_ADR + TIM11_OR_OFFSET) as *mut u32, value) };
 }
-
-
+    
+        
 #[inline(always)]
 pub fn tim13_cr1_write(value: u32) {
     unsafe { write_volatile((TIM13_ADR + TIM13_CR1_OFFSET) as *mut u32, value) };
@@ -1143,8 +1143,8 @@ pub fn tim13_ccr1_write(value: u32) {
 pub fn tim13_or_write(value: u32) {
     unsafe { write_volatile((TIM13_ADR + TIM13_OR_OFFSET) as *mut u32, value) };
 }
-
-
+    
+        
 #[inline(always)]
 pub fn tim14_cr1_write(value: u32) {
     unsafe { write_volatile((TIM14_ADR + TIM14_CR1_OFFSET) as *mut u32, value) };
@@ -1189,8 +1189,8 @@ pub fn tim14_ccr1_write(value: u32) {
 pub fn tim14_or_write(value: u32) {
     unsafe { write_volatile((TIM14_ADR + TIM14_OR_OFFSET) as *mut u32, value) };
 }
-
-
+    
+        
 #[inline(always)]
 pub fn tim6_cr1_write(value: u32) {
     unsafe { write_volatile((TIM6_ADR + TIM6_CR1_OFFSET) as *mut u32, value) };
@@ -1223,8 +1223,8 @@ pub fn tim6_psc_write(value: u32) {
 pub fn tim6_arr_write(value: u32) {
     unsafe { write_volatile((TIM6_ADR + TIM6_ARR_OFFSET) as *mut u32, value) };
 }
-
-
+    
+        
 #[inline(always)]
 pub fn tim7_cr1_write(value: u32) {
     unsafe { write_volatile((TIM7_ADR + TIM7_CR1_OFFSET) as *mut u32, value) };
@@ -1257,8 +1257,8 @@ pub fn tim7_psc_write(value: u32) {
 pub fn tim7_arr_write(value: u32) {
     unsafe { write_volatile((TIM7_ADR + TIM7_ARR_OFFSET) as *mut u32, value) };
 }
-
-
+    
+        
 #[inline(always)]
 pub fn tim1_cr1_read() -> u32 {
     unsafe { read_volatile((TIM1_ADR + TIM1_CR1_OFFSET) as *mut u32) }
@@ -1332,8 +1332,8 @@ pub fn tim1_dcr_read() -> u32 {
 pub fn tim1_dmar_read() -> u32 {
     unsafe { read_volatile((TIM1_ADR + TIM1_DMAR_OFFSET) as *mut u32) }
 }
-
-
+    
+        
 #[inline(always)]
 pub fn tim8_cr1_read() -> u32 {
     unsafe { read_volatile((TIM8_ADR + TIM8_CR1_OFFSET) as *mut u32) }
@@ -1407,8 +1407,8 @@ pub fn tim8_dcr_read() -> u32 {
 pub fn tim8_dmar_read() -> u32 {
     unsafe { read_volatile((TIM8_ADR + TIM8_DMAR_OFFSET) as *mut u32) }
 }
-
-
+    
+        
 #[inline(always)]
 pub fn tim2_cr1_read() -> u32 {
     unsafe { read_volatile((TIM2_ADR + TIM2_CR1_OFFSET) as *mut u32) }
@@ -1482,8 +1482,8 @@ pub fn tim2_dmar_read() -> u32 {
 pub fn tim2_or_read() -> u32 {
     unsafe { read_volatile((TIM2_ADR + TIM2_OR_OFFSET) as *mut u32) }
 }
-
-
+    
+        
 #[inline(always)]
 pub fn tim3_cr1_read() -> u32 {
     unsafe { read_volatile((TIM3_ADR + TIM3_CR1_OFFSET) as *mut u32) }
@@ -1553,8 +1553,8 @@ pub fn tim3_dcr_read() -> u32 {
 pub fn tim3_dmar_read() -> u32 {
     unsafe { read_volatile((TIM3_ADR + TIM3_DMAR_OFFSET) as *mut u32) }
 }
-
-
+    
+        
 #[inline(always)]
 pub fn tim4_cr1_read() -> u32 {
     unsafe { read_volatile((TIM4_ADR + TIM4_CR1_OFFSET) as *mut u32) }
@@ -1624,8 +1624,8 @@ pub fn tim4_dcr_read() -> u32 {
 pub fn tim4_dmar_read() -> u32 {
     unsafe { read_volatile((TIM4_ADR + TIM4_DMAR_OFFSET) as *mut u32) }
 }
-
-
+    
+        
 #[inline(always)]
 pub fn tim5_cr1_read() -> u32 {
     unsafe { read_volatile((TIM5_ADR + TIM5_CR1_OFFSET) as *mut u32) }
@@ -1699,8 +1699,8 @@ pub fn tim5_dmar_read() -> u32 {
 pub fn tim5_or_read() -> u32 {
     unsafe { read_volatile((TIM5_ADR + TIM5_OR_OFFSET) as *mut u32) }
 }
-
-
+    
+        
 #[inline(always)]
 pub fn tim9_cr1_read() -> u32 {
     unsafe { read_volatile((TIM9_ADR + TIM9_CR1_OFFSET) as *mut u32) }
@@ -1746,8 +1746,8 @@ pub fn tim9_ccr1_read() -> u32 {
 pub fn tim9_ccr2_read() -> u32 {
     unsafe { read_volatile((TIM9_ADR + TIM9_CCR2_OFFSET) as *mut u32) }
 }
-
-
+    
+        
 #[inline(always)]
 pub fn tim12_cr1_read() -> u32 {
     unsafe { read_volatile((TIM12_ADR + TIM12_CR1_OFFSET) as *mut u32) }
@@ -1793,8 +1793,8 @@ pub fn tim12_ccr1_read() -> u32 {
 pub fn tim12_ccr2_read() -> u32 {
     unsafe { read_volatile((TIM12_ADR + TIM12_CCR2_OFFSET) as *mut u32) }
 }
-
-
+    
+        
 #[inline(always)]
 pub fn tim10_cr1_read() -> u32 {
     unsafe { read_volatile((TIM10_ADR + TIM10_CR1_OFFSET) as *mut u32) }
@@ -1836,8 +1836,8 @@ pub fn tim10_ccr1_read() -> u32 {
 pub fn tim10_or_read() -> u32 {
     unsafe { read_volatile((TIM10_ADR + TIM10_OR_OFFSET) as *mut u32) }
 }
-
-
+    
+        
 #[inline(always)]
 pub fn tim11_cr1_read() -> u32 {
     unsafe { read_volatile((TIM11_ADR + TIM11_CR1_OFFSET) as *mut u32) }
@@ -1879,8 +1879,8 @@ pub fn tim11_ccr1_read() -> u32 {
 pub fn tim11_or_read() -> u32 {
     unsafe { read_volatile((TIM11_ADR + TIM11_OR_OFFSET) as *mut u32) }
 }
-
-
+    
+        
 #[inline(always)]
 pub fn tim13_cr1_read() -> u32 {
     unsafe { read_volatile((TIM13_ADR + TIM13_CR1_OFFSET) as *mut u32) }
@@ -1922,8 +1922,8 @@ pub fn tim13_ccr1_read() -> u32 {
 pub fn tim13_or_read() -> u32 {
     unsafe { read_volatile((TIM13_ADR + TIM13_OR_OFFSET) as *mut u32) }
 }
-
-
+    
+        
 #[inline(always)]
 pub fn tim14_cr1_read() -> u32 {
     unsafe { read_volatile((TIM14_ADR + TIM14_CR1_OFFSET) as *mut u32) }
@@ -1965,8 +1965,8 @@ pub fn tim14_ccr1_read() -> u32 {
 pub fn tim14_or_read() -> u32 {
     unsafe { read_volatile((TIM14_ADR + TIM14_OR_OFFSET) as *mut u32) }
 }
-
-
+    
+        
 #[inline(always)]
 pub fn tim6_cr1_read() -> u32 {
     unsafe { read_volatile((TIM6_ADR + TIM6_CR1_OFFSET) as *mut u32) }
@@ -1996,8 +1996,8 @@ pub fn tim6_psc_read() -> u32 {
 pub fn tim6_arr_read() -> u32 {
     unsafe { read_volatile((TIM6_ADR + TIM6_ARR_OFFSET) as *mut u32) }
 }
-
-
+    
+        
 #[inline(always)]
 pub fn tim7_cr1_read() -> u32 {
     unsafe { read_volatile((TIM7_ADR + TIM7_CR1_OFFSET) as *mut u32) }
@@ -2027,8 +2027,8 @@ pub fn tim7_psc_read() -> u32 {
 pub fn tim7_arr_read() -> u32 {
     unsafe { read_volatile((TIM7_ADR + TIM7_ARR_OFFSET) as *mut u32) }
 }
-
-
+    
+        
 #[inline(always)]
 pub fn tim1_cr1_set(position: u32, size: u32, value: u32) {
     tim1_cr1_write(rep_bits(tim1_cr1_read(), position, size, value));
@@ -2102,8 +2102,8 @@ pub fn tim1_dcr_set(position: u32, size: u32, value: u32) {
 pub fn tim1_dmar_set(position: u32, size: u32, value: u32) {
     tim1_dmar_write(rep_bits(tim1_dmar_read(), position, size, value));
 }
-
-
+    
+        
 #[inline(always)]
 pub fn tim8_cr1_set(position: u32, size: u32, value: u32) {
     tim8_cr1_write(rep_bits(tim8_cr1_read(), position, size, value));
@@ -2177,8 +2177,8 @@ pub fn tim8_dcr_set(position: u32, size: u32, value: u32) {
 pub fn tim8_dmar_set(position: u32, size: u32, value: u32) {
     tim8_dmar_write(rep_bits(tim8_dmar_read(), position, size, value));
 }
-
-
+    
+        
 #[inline(always)]
 pub fn tim2_cr1_set(position: u32, size: u32, value: u32) {
     tim2_cr1_write(rep_bits(tim2_cr1_read(), position, size, value));
@@ -2252,8 +2252,8 @@ pub fn tim2_dmar_set(position: u32, size: u32, value: u32) {
 pub fn tim2_or_set(position: u32, size: u32, value: u32) {
     tim2_or_write(rep_bits(tim2_or_read(), position, size, value));
 }
-
-
+    
+        
 #[inline(always)]
 pub fn tim3_cr1_set(position: u32, size: u32, value: u32) {
     tim3_cr1_write(rep_bits(tim3_cr1_read(), position, size, value));
@@ -2323,8 +2323,8 @@ pub fn tim3_dcr_set(position: u32, size: u32, value: u32) {
 pub fn tim3_dmar_set(position: u32, size: u32, value: u32) {
     tim3_dmar_write(rep_bits(tim3_dmar_read(), position, size, value));
 }
-
-
+    
+        
 #[inline(always)]
 pub fn tim4_cr1_set(position: u32, size: u32, value: u32) {
     tim4_cr1_write(rep_bits(tim4_cr1_read(), position, size, value));
@@ -2394,8 +2394,8 @@ pub fn tim4_dcr_set(position: u32, size: u32, value: u32) {
 pub fn tim4_dmar_set(position: u32, size: u32, value: u32) {
     tim4_dmar_write(rep_bits(tim4_dmar_read(), position, size, value));
 }
-
-
+    
+        
 #[inline(always)]
 pub fn tim5_cr1_set(position: u32, size: u32, value: u32) {
     tim5_cr1_write(rep_bits(tim5_cr1_read(), position, size, value));
@@ -2469,8 +2469,8 @@ pub fn tim5_dmar_set(position: u32, size: u32, value: u32) {
 pub fn tim5_or_set(position: u32, size: u32, value: u32) {
     tim5_or_write(rep_bits(tim5_or_read(), position, size, value));
 }
-
-
+    
+        
 #[inline(always)]
 pub fn tim9_cr1_set(position: u32, size: u32, value: u32) {
     tim9_cr1_write(rep_bits(tim9_cr1_read(), position, size, value));
@@ -2516,8 +2516,8 @@ pub fn tim9_ccr1_set(position: u32, size: u32, value: u32) {
 pub fn tim9_ccr2_set(position: u32, size: u32, value: u32) {
     tim9_ccr2_write(rep_bits(tim9_ccr2_read(), position, size, value));
 }
-
-
+    
+        
 #[inline(always)]
 pub fn tim12_cr1_set(position: u32, size: u32, value: u32) {
     tim12_cr1_write(rep_bits(tim12_cr1_read(), position, size, value));
@@ -2563,8 +2563,8 @@ pub fn tim12_ccr1_set(position: u32, size: u32, value: u32) {
 pub fn tim12_ccr2_set(position: u32, size: u32, value: u32) {
     tim12_ccr2_write(rep_bits(tim12_ccr2_read(), position, size, value));
 }
-
-
+    
+        
 #[inline(always)]
 pub fn tim10_cr1_set(position: u32, size: u32, value: u32) {
     tim10_cr1_write(rep_bits(tim10_cr1_read(), position, size, value));
@@ -2606,8 +2606,8 @@ pub fn tim10_ccr1_set(position: u32, size: u32, value: u32) {
 pub fn tim10_or_set(position: u32, size: u32, value: u32) {
     tim10_or_write(rep_bits(tim10_or_read(), position, size, value));
 }
-
-
+    
+        
 #[inline(always)]
 pub fn tim11_cr1_set(position: u32, size: u32, value: u32) {
     tim11_cr1_write(rep_bits(tim11_cr1_read(), position, size, value));
@@ -2649,8 +2649,8 @@ pub fn tim11_ccr1_set(position: u32, size: u32, value: u32) {
 pub fn tim11_or_set(position: u32, size: u32, value: u32) {
     tim11_or_write(rep_bits(tim11_or_read(), position, size, value));
 }
-
-
+    
+        
 #[inline(always)]
 pub fn tim13_cr1_set(position: u32, size: u32, value: u32) {
     tim13_cr1_write(rep_bits(tim13_cr1_read(), position, size, value));
@@ -2692,8 +2692,8 @@ pub fn tim13_ccr1_set(position: u32, size: u32, value: u32) {
 pub fn tim13_or_set(position: u32, size: u32, value: u32) {
     tim13_or_write(rep_bits(tim13_or_read(), position, size, value));
 }
-
-
+    
+        
 #[inline(always)]
 pub fn tim14_cr1_set(position: u32, size: u32, value: u32) {
     tim14_cr1_write(rep_bits(tim14_cr1_read(), position, size, value));
@@ -2735,8 +2735,8 @@ pub fn tim14_ccr1_set(position: u32, size: u32, value: u32) {
 pub fn tim14_or_set(position: u32, size: u32, value: u32) {
     tim14_or_write(rep_bits(tim14_or_read(), position, size, value));
 }
-
-
+    
+        
 #[inline(always)]
 pub fn tim6_cr1_set(position: u32, size: u32, value: u32) {
     tim6_cr1_write(rep_bits(tim6_cr1_read(), position, size, value));
@@ -2766,8 +2766,8 @@ pub fn tim6_psc_set(position: u32, size: u32, value: u32) {
 pub fn tim6_arr_set(position: u32, size: u32, value: u32) {
     tim6_arr_write(rep_bits(tim6_arr_read(), position, size, value));
 }
-
-
+    
+        
 #[inline(always)]
 pub fn tim7_cr1_set(position: u32, size: u32, value: u32) {
     tim7_cr1_write(rep_bits(tim7_cr1_read(), position, size, value));
@@ -2797,8 +2797,8 @@ pub fn tim7_psc_set(position: u32, size: u32, value: u32) {
 pub fn tim7_arr_set(position: u32, size: u32, value: u32) {
     tim7_arr_write(rep_bits(tim7_arr_read(), position, size, value));
 }
-
-
+    
+        
 #[inline(always)]
 pub fn tim1_cr1_seti(value: u32) {
     match value.count_ones() {
@@ -2944,8 +2944,8 @@ pub fn tim1_dmar_seti(value: u32) {
         _ => (),
     }
 }
-
-
+    
+        
 #[inline(always)]
 pub fn tim8_cr1_seti(value: u32) {
     match value.count_ones() {
@@ -3091,8 +3091,8 @@ pub fn tim8_dmar_seti(value: u32) {
         _ => (),
     }
 }
-
-
+    
+        
 #[inline(always)]
 pub fn tim2_cr1_seti(value: u32) {
     match value.count_ones() {
@@ -3238,8 +3238,8 @@ pub fn tim2_or_seti(value: u32) {
         _ => (),
     }
 }
-
-
+    
+        
 #[inline(always)]
 pub fn tim3_cr1_seti(value: u32) {
     match value.count_ones() {
@@ -3377,8 +3377,8 @@ pub fn tim3_dmar_seti(value: u32) {
         _ => (),
     }
 }
-
-
+    
+        
 #[inline(always)]
 pub fn tim4_cr1_seti(value: u32) {
     match value.count_ones() {
@@ -3516,8 +3516,8 @@ pub fn tim4_dmar_seti(value: u32) {
         _ => (),
     }
 }
-
-
+    
+        
 #[inline(always)]
 pub fn tim5_cr1_seti(value: u32) {
     match value.count_ones() {
@@ -3663,8 +3663,8 @@ pub fn tim5_or_seti(value: u32) {
         _ => (),
     }
 }
-
-
+    
+        
 #[inline(always)]
 pub fn tim9_cr1_seti(value: u32) {
     match value.count_ones() {
@@ -3754,8 +3754,8 @@ pub fn tim9_ccr2_seti(value: u32) {
         _ => (),
     }
 }
-
-
+    
+        
 #[inline(always)]
 pub fn tim12_cr1_seti(value: u32) {
     match value.count_ones() {
@@ -3845,8 +3845,8 @@ pub fn tim12_ccr2_seti(value: u32) {
         _ => (),
     }
 }
-
-
+    
+        
 #[inline(always)]
 pub fn tim10_cr1_seti(value: u32) {
     match value.count_ones() {
@@ -3928,8 +3928,8 @@ pub fn tim10_or_seti(value: u32) {
         _ => (),
     }
 }
-
-
+    
+        
 #[inline(always)]
 pub fn tim11_cr1_seti(value: u32) {
     match value.count_ones() {
@@ -4011,8 +4011,8 @@ pub fn tim11_or_seti(value: u32) {
         _ => (),
     }
 }
-
-
+    
+        
 #[inline(always)]
 pub fn tim13_cr1_seti(value: u32) {
     match value.count_ones() {
@@ -4094,8 +4094,8 @@ pub fn tim13_or_seti(value: u32) {
         _ => (),
     }
 }
-
-
+    
+        
 #[inline(always)]
 pub fn tim14_cr1_seti(value: u32) {
     match value.count_ones() {
@@ -4177,8 +4177,8 @@ pub fn tim14_or_seti(value: u32) {
         _ => (),
     }
 }
-
-
+    
+        
 #[inline(always)]
 pub fn tim6_cr1_seti(value: u32) {
     match value.count_ones() {
@@ -4236,8 +4236,8 @@ pub fn tim6_arr_seti(value: u32) {
         _ => (),
     }
 }
-
-
+    
+        
 #[inline(always)]
 pub fn tim7_cr1_seti(value: u32) {
     match value.count_ones() {
@@ -4295,3 +4295,4 @@ pub fn tim7_arr_seti(value: u32) {
         _ => (),
     }
 }
+    

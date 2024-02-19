@@ -39,7 +39,7 @@ use crate::stm32rustlib::various::*;
 const ADC1_ADR: u32 = 0x40012000;
 const ADC2_ADR: u32 = 0x40012100;
 const ADC3_ADR: u32 = 0x40012200;
-
+        
 const ADC1_SR_OFFSET: u32 = 0x00;
 const ADC1_CR1_OFFSET: u32 = 0x04;
 const ADC1_CR2_OFFSET: u32 = 0x08;
@@ -54,8 +54,8 @@ const ADC1_SQR3_OFFSET: u32 = 0x34;
 const ADC1_JSQR_OFFSET: u32 = 0x38;
 const ADC1_JDR1_OFFSET: u32 = 0x3C;
 const ADC1_DR_OFFSET: u32 = 0x4C;
-
-
+    
+        
 const ADC2_SR_OFFSET: u32 = 0x00;
 const ADC2_CR1_OFFSET: u32 = 0x04;
 const ADC2_CR2_OFFSET: u32 = 0x08;
@@ -70,8 +70,8 @@ const ADC2_SQR3_OFFSET: u32 = 0x34;
 const ADC2_JSQR_OFFSET: u32 = 0x38;
 const ADC2_JDR1_OFFSET: u32 = 0x3C;
 const ADC2_DR_OFFSET: u32 = 0x4C;
-
-
+    
+        
 const ADC3_SR_OFFSET: u32 = 0x00;
 const ADC3_CR1_OFFSET: u32 = 0x04;
 const ADC3_CR2_OFFSET: u32 = 0x08;
@@ -86,7 +86,7 @@ const ADC3_SQR3_OFFSET: u32 = 0x34;
 const ADC3_JSQR_OFFSET: u32 = 0x38;
 const ADC3_JDR1_OFFSET: u32 = 0x3C;
 const ADC3_DR_OFFSET: u32 = 0x4C;
-
+    
 pub const ADC_SR_AWD: u32 = 1 << 16;
 pub const ADC_SR_EOC: u32 = 1 << 17;
 pub const ADC_SR_JEOC: u32 = 1 << 18;
@@ -170,7 +170,7 @@ pub const ADC_JSQR_JSQ4: u32 = 1 << 16;
 pub const ADC_JSQR_JL: u32 = 1 << 20;
 pub const ADC_JDR1_JDATA: u32 = 1 << 0;
 pub const ADC_DR_DATA: u32 = 1 << 0;
-
+        
 #[inline(always)]
 pub fn adc1_sr_write(value: u32) {
     unsafe { write_volatile((ADC1_ADR + ADC1_SR_OFFSET) as *mut u32, value) };
@@ -221,8 +221,8 @@ pub fn adc1_jsqr_write(value: u32) {
 }
 
 
-
-
+    
+        
 #[inline(always)]
 pub fn adc2_sr_write(value: u32) {
     unsafe { write_volatile((ADC2_ADR + ADC2_SR_OFFSET) as *mut u32, value) };
@@ -273,8 +273,8 @@ pub fn adc2_jsqr_write(value: u32) {
 }
 
 
-
-
+    
+        
 #[inline(always)]
 pub fn adc3_sr_write(value: u32) {
     unsafe { write_volatile((ADC3_ADR + ADC3_SR_OFFSET) as *mut u32, value) };
@@ -325,8 +325,8 @@ pub fn adc3_jsqr_write(value: u32) {
 }
 
 
-
-
+    
+        
 #[inline(always)]
 pub fn adc1_sr_read() -> u32 {
     unsafe { read_volatile((ADC1_ADR + ADC1_SR_OFFSET) as *mut u32) }
@@ -383,8 +383,8 @@ pub fn adc1_jdr1_read() -> u32 {
 pub fn adc1_dr_read() -> u32 {
     unsafe { read_volatile((ADC1_ADR + ADC1_DR_OFFSET) as *mut u32) }
 }
-
-
+    
+        
 #[inline(always)]
 pub fn adc2_sr_read() -> u32 {
     unsafe { read_volatile((ADC2_ADR + ADC2_SR_OFFSET) as *mut u32) }
@@ -441,8 +441,8 @@ pub fn adc2_jdr1_read() -> u32 {
 pub fn adc2_dr_read() -> u32 {
     unsafe { read_volatile((ADC2_ADR + ADC2_DR_OFFSET) as *mut u32) }
 }
-
-
+    
+        
 #[inline(always)]
 pub fn adc3_sr_read() -> u32 {
     unsafe { read_volatile((ADC3_ADR + ADC3_SR_OFFSET) as *mut u32) }
@@ -499,8 +499,8 @@ pub fn adc3_jdr1_read() -> u32 {
 pub fn adc3_dr_read() -> u32 {
     unsafe { read_volatile((ADC3_ADR + ADC3_DR_OFFSET) as *mut u32) }
 }
-
-
+    
+        
 #[inline(always)]
 pub fn adc1_sr_set(position: u32, size: u32, value: u32) {
     adc1_sr_write(rep_bits(adc1_sr_read(), position, size, value));
@@ -551,8 +551,8 @@ pub fn adc1_jsqr_set(position: u32, size: u32, value: u32) {
 }
 
 
-
-
+    
+        
 #[inline(always)]
 pub fn adc2_sr_set(position: u32, size: u32, value: u32) {
     adc2_sr_write(rep_bits(adc2_sr_read(), position, size, value));
@@ -603,8 +603,8 @@ pub fn adc2_jsqr_set(position: u32, size: u32, value: u32) {
 }
 
 
-
-
+    
+        
 #[inline(always)]
 pub fn adc3_sr_set(position: u32, size: u32, value: u32) {
     adc3_sr_write(rep_bits(adc3_sr_read(), position, size, value));
@@ -655,8 +655,8 @@ pub fn adc3_jsqr_set(position: u32, size: u32, value: u32) {
 }
 
 
-
-
+    
+        
 #[inline(always)]
 pub fn adc1_sr_seti(value: u32) {
     match value.count_ones() {
@@ -755,8 +755,8 @@ pub fn adc1_jsqr_seti(value: u32) {
 }
 
 
-
-
+    
+        
 #[inline(always)]
 pub fn adc2_sr_seti(value: u32) {
     match value.count_ones() {
@@ -855,8 +855,8 @@ pub fn adc2_jsqr_seti(value: u32) {
 }
 
 
-
-
+    
+        
 #[inline(always)]
 pub fn adc3_sr_seti(value: u32) {
     match value.count_ones() {
@@ -955,3 +955,4 @@ pub fn adc3_jsqr_seti(value: u32) {
 }
 
 
+    

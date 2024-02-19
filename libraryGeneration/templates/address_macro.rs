@@ -53,19 +53,3 @@ pub fn {{component.lower()}}_{{register.lower()}}_seti(value: u32) {
     }
 }
 {%- endmacro %}
-
-
-{% macro gen_register_set(component, register) -%}
-pub fn {{component.lower()}}_{{register.lower()}}_set(position: u32, size: u32, value: u32) {
-    {{component.lower()}}_{{register.lower()}}_write(rep_bits({{component.lower()}}_{{register.lower()}}_read(), position, size, value));
-}
-{%- endmacro %}
-
-{% macro gen_register_seti(component, register) -%}
-pub fn {{component.lower()}}_{{register.lower()}}_seti(value: u32) {
-    match value.count_ones() {
-        1 => {{component.lower()}}_{{register.lower()}}_write({{component.lower()}}_{{register.lower()}}_read() | value),
-        31 => {{component.lower()}}_{{register.lower()}}_write({{component.lower()}}_{{register.lower()}}_read() & value),
-        _ => (),}
-}
-{%- endmacro %}

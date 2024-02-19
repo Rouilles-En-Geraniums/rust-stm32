@@ -41,7 +41,7 @@ const DWT_ADR: u32 = 0xE0001000;
 const FPB_ADR: u32 = 0xE0002000;
 const SCB_ADR: u32 = 0xE000ED00;
 const DCB_ADR: u32 = 0xE000EDF0;
-
+        
 const ITM_STIMULUS_PORT0_OFFSET: u32 = 0x000;
 const ITM_STIMULUS_PORT1_OFFSET: u32 = 0x004;
 const ITM_STIMULUS_PORT2_OFFSET: u32 = 0x008;
@@ -79,8 +79,8 @@ const ITM_TPR_OFFSET: u32 = 0xE40;
 const ITM_TCR_OFFSET: u32 = 0xE80;
 const ITM_LAR_OFFSET: u32 = 0xFB0;
 const ITM_LSR_OFFSET: u32 = 0xFB4;
-
-
+    
+        
 const DWT_CTRL_OFFSET: u32 = 0x00;
 const DWT_CYCCNT_OFFSET: u32 = 0x04;
 const DWT_CPICNT_OFFSET: u32 = 0x08;
@@ -138,22 +138,22 @@ const DWT_COMP15_OFFSET: u32 = 0x110;
 const DWT_MASK15_OFFSET: u32 = 0x114;
 const DWT_FUNCTION15_OFFSET: u32 = 0x118;
 const DWT_LSR_OFFSET: u32 = 0xFB4;
-
-
+    
+        
 const FPB_CTRL_OFFSET: u32 = 0x00;
 const FPB_REMAP_OFFSET: u32 = 0x04;
 const FPB_COMP_OFFSET: u32 = 0x08;
 const FPB_LSR_OFFSET: u32 = 0xFB4;
-
-
+    
+        
 const SCB_CPUID_OFFSET: u32 = 0x00;
-
-
+    
+        
 const DCB_DHCSR_OFFSET: u32 = 0x00;
 const DCB_DCRSR_OFFSET: u32 = 0x04;
 const DCB_DCRDR_OFFSET: u32 = 0x08;
 const DCB_DEMCR_OFFSET: u32 = 0x0C;
-
+    
 pub const ITM_TRACE_EN_PORT0: u32 = 1 << 0;
 pub const ITM_TRACE_EN_PORT1: u32 = 1 << 1;
 pub const ITM_TRACE_EN_PORT2: u32 = 1 << 2;
@@ -210,7 +210,7 @@ pub const DCB_DEMCR_MON_STEP: u32 = 1 << 17;
 pub const DCB_DEMCR_MON_PEND: u32 = 1 << 18;
 pub const DCB_DEMCR_MON_EN: u32 = 1 << 19;
 pub const DCB_DEMCR_TRCENA: u32 = 1 << 24;
-
+        
 #[inline(always)]
 pub fn itm_stimulus_port0_write(value: u32) {
     unsafe { write_volatile((ITM_ADR + ITM_STIMULUS_PORT0_OFFSET) as *mut u32, value) };
@@ -356,8 +356,8 @@ pub fn itm_lar_write(value: u32) {
     unsafe { write_volatile((ITM_ADR + ITM_LAR_OFFSET) as *mut u32, value) };
 }
 
-
-
+    
+        
 #[inline(always)]
 pub fn dwt_ctrl_write(value: u32) {
     unsafe { write_volatile((DWT_ADR + DWT_CTRL_OFFSET) as *mut u32, value) };
@@ -580,8 +580,8 @@ pub fn dwt_function15_write(value: u32) {
     unsafe { write_volatile((DWT_ADR + DWT_FUNCTION15_OFFSET) as *mut u32, value) };
 }
 
-
-
+    
+        
 #[inline(always)]
 pub fn fpb_ctrl_write(value: u32) {
     unsafe { write_volatile((FPB_ADR + FPB_CTRL_OFFSET) as *mut u32, value) };
@@ -595,11 +595,11 @@ pub fn fpb_comp_write(value: u32) {
     unsafe { write_volatile((FPB_ADR + FPB_COMP_OFFSET) as *mut u32, value) };
 }
 
+    
+        
 
-
-
-
-
+    
+        
 #[inline(always)]
 pub fn dcb_dhcsr_write(value: u32) {
     unsafe { write_volatile((DCB_ADR + DCB_DHCSR_OFFSET) as *mut u32, value) };
@@ -616,8 +616,8 @@ pub fn dcb_dcrdr_write(value: u32) {
 pub fn dcb_demcr_write(value: u32) {
     unsafe { write_volatile((DCB_ADR + DCB_DEMCR_OFFSET) as *mut u32, value) };
 }
-
-
+    
+        
 #[inline(always)]
 pub fn itm_stimulus_port0_read() -> u32 {
     unsafe { read_volatile((ITM_ADR + ITM_STIMULUS_PORT0_OFFSET) as *mut u32) }
@@ -763,8 +763,8 @@ pub fn itm_tcr_read() -> u32 {
 pub fn itm_lsr_read() -> u32 {
     unsafe { read_volatile((ITM_ADR + ITM_LSR_OFFSET) as *mut u32) }
 }
-
-
+    
+        
 #[inline(always)]
 pub fn dwt_ctrl_read() -> u32 {
     unsafe { read_volatile((DWT_ADR + DWT_CTRL_OFFSET) as *mut u32) }
@@ -993,8 +993,8 @@ pub fn dwt_function15_read() -> u32 {
 pub fn dwt_lsr_read() -> u32 {
     unsafe { read_volatile((DWT_ADR + DWT_LSR_OFFSET) as *mut u32) }
 }
-
-
+    
+        
 #[inline(always)]
 pub fn fpb_ctrl_read() -> u32 {
     unsafe { read_volatile((FPB_ADR + FPB_CTRL_OFFSET) as *mut u32) }
@@ -1011,14 +1011,14 @@ pub fn fpb_comp_read() -> u32 {
 pub fn fpb_lsr_read() -> u32 {
     unsafe { read_volatile((FPB_ADR + FPB_LSR_OFFSET) as *mut u32) }
 }
-
-
+    
+        
 #[inline(always)]
 pub fn scb_cpuid_read() -> u32 {
     unsafe { read_volatile((SCB_ADR + SCB_CPUID_OFFSET) as *mut u32) }
 }
-
-
+    
+        
 #[inline(always)]
 pub fn dcb_dhcsr_read() -> u32 {
     unsafe { read_volatile((DCB_ADR + DCB_DHCSR_OFFSET) as *mut u32) }
@@ -1032,8 +1032,8 @@ pub fn dcb_dcrdr_read() -> u32 {
 pub fn dcb_demcr_read() -> u32 {
     unsafe { read_volatile((DCB_ADR + DCB_DEMCR_OFFSET) as *mut u32) }
 }
-
-
+    
+        
 #[inline(always)]
 pub fn itm_stimulus_port0_set(position: u32, size: u32, value: u32) {
     itm_stimulus_port0_write(rep_bits(itm_stimulus_port0_read(), position, size, value));
@@ -1176,8 +1176,8 @@ pub fn itm_tcr_set(position: u32, size: u32, value: u32) {
 }
 
 
-
-
+    
+        
 #[inline(always)]
 pub fn dwt_ctrl_set(position: u32, size: u32, value: u32) {
     dwt_ctrl_write(rep_bits(dwt_ctrl_read(), position, size, value));
@@ -1400,8 +1400,8 @@ pub fn dwt_function15_set(position: u32, size: u32, value: u32) {
     dwt_function15_write(rep_bits(dwt_function15_read(), position, size, value));
 }
 
-
-
+    
+        
 #[inline(always)]
 pub fn fpb_ctrl_set(position: u32, size: u32, value: u32) {
     fpb_ctrl_write(rep_bits(fpb_ctrl_read(), position, size, value));
@@ -1415,11 +1415,11 @@ pub fn fpb_comp_set(position: u32, size: u32, value: u32) {
     fpb_comp_write(rep_bits(fpb_comp_read(), position, size, value));
 }
 
+    
+        
 
-
-
-
-
+    
+        
 #[inline(always)]
 pub fn dcb_dhcsr_set(position: u32, size: u32, value: u32) {
     dcb_dhcsr_write(rep_bits(dcb_dhcsr_read(), position, size, value));
@@ -1433,8 +1433,8 @@ pub fn dcb_dcrdr_set(position: u32, size: u32, value: u32) {
 pub fn dcb_demcr_set(position: u32, size: u32, value: u32) {
     dcb_demcr_write(rep_bits(dcb_demcr_read(), position, size, value));
 }
-
-
+    
+        
 #[inline(always)]
 pub fn itm_stimulus_port0_seti(value: u32) {
     match value.count_ones() {
@@ -1717,8 +1717,8 @@ pub fn itm_tcr_seti(value: u32) {
 }
 
 
-
-
+    
+        
 #[inline(always)]
 pub fn dwt_ctrl_seti(value: u32) {
     match value.count_ones() {
@@ -2161,8 +2161,8 @@ pub fn dwt_function15_seti(value: u32) {
     }
 }
 
-
-
+    
+        
 #[inline(always)]
 pub fn fpb_ctrl_seti(value: u32) {
     match value.count_ones() {
@@ -2188,11 +2188,11 @@ pub fn fpb_comp_seti(value: u32) {
     }
 }
 
+    
+        
 
-
-
-
-
+    
+        
 #[inline(always)]
 pub fn dcb_dhcsr_seti(value: u32) {
     match value.count_ones() {
@@ -2218,3 +2218,4 @@ pub fn dcb_demcr_seti(value: u32) {
         _ => (),
     }
 }
+    

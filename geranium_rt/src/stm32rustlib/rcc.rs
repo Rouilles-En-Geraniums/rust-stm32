@@ -37,7 +37,7 @@ use crate::core::ptr::write_volatile;
 use crate::stm32rustlib::various::*;
 
 const RCC_ADR: u32 = 0x40023800;
-
+        
 const RCC_CR_OFFSET: u32 = 0x00;
 const RCC_PLLCFGR_OFFSET: u32 = 0x04;
 const RCC_CFGR_OFFSET: u32 = 0x08;
@@ -61,7 +61,7 @@ const RCC_BDCR_OFFSET: u32 = 0x70;
 const RCC_CSR_OFFSET: u32 = 0x74;
 const RCC_SSCGR_OFFSET: u32 = 0x80;
 const RCC_PLLISCFGR_OFFSET: u32 = 0x84;
-
+    
 pub const RCC_CR_HSION: u32 = 1 << 0;
 pub const RCC_CR_HSIRDY: u32 = 1 << 1;
 pub const RCC_CR_HSITRIM: u32 = 1 << 3;
@@ -199,7 +199,7 @@ pub const RCC_DCKCFGR_SAI1ASCR: u32 = 1 << 20;
 pub const RCC_DCKCFGR_PLLSAIDIVR: u32 = 1 << 16;
 pub const RCC_DCKCFGR_PLLSAIDIVQ: u32 = 1 << 8;
 pub const RCC_DCKCFGR_PLLI2SDIVQ: u32 = 1 << 0;
-
+        
 #[inline(always)]
 pub fn rcc_cr_write(value: u32) {
     unsafe { write_volatile((RCC_ADR + RCC_CR_OFFSET) as *mut u32, value) };
@@ -286,8 +286,8 @@ pub fn rcc_sscgr_write(value: u32) {
 pub fn rcc_plliscfgr_write(value: u32) {
     unsafe { write_volatile((RCC_ADR + RCC_PLLISCFGR_OFFSET) as *mut u32, value) };
 }
-
-
+    
+        
 #[inline(always)]
 pub fn rcc_cr_read() -> u32 {
     unsafe { read_volatile((RCC_ADR + RCC_CR_OFFSET) as *mut u32) }
@@ -380,8 +380,8 @@ pub fn rcc_sscgr_read() -> u32 {
 pub fn rcc_plliscfgr_read() -> u32 {
     unsafe { read_volatile((RCC_ADR + RCC_PLLISCFGR_OFFSET) as *mut u32) }
 }
-
-
+    
+        
 #[inline(always)]
 pub fn rcc_cr_set(position: u32, size: u32, value: u32) {
     rcc_cr_write(rep_bits(rcc_cr_read(), position, size, value));
@@ -468,8 +468,8 @@ pub fn rcc_sscgr_set(position: u32, size: u32, value: u32) {
 pub fn rcc_plliscfgr_set(position: u32, size: u32, value: u32) {
     rcc_plliscfgr_write(rep_bits(rcc_plliscfgr_read(), position, size, value));
 }
-
-
+    
+        
 #[inline(always)]
 pub fn rcc_cr_seti(value: u32) {
     match value.count_ones() {
@@ -640,3 +640,4 @@ pub fn rcc_plliscfgr_seti(value: u32) {
         _ => (),
     }
 }
+    
