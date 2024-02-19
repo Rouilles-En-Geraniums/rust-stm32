@@ -1,3 +1,5 @@
+#![no_std]
+#![no_main]
 /**
  *	Rust on STM32 Project by Rouilles en GeraniumTM
  *	Copyright (C) 2024 Université de Toulouse :
@@ -30,9 +32,33 @@
  *	GNU General Public License for more details.
 **/
 
-extern crate core;
+extern crate geranium_rt;
 
-use crate::core::ptr::read_volatile;
-use crate::core::ptr::write_volatile;
-use crate::stm32rustlib::various::*;
-{% include "address.rs" %}
+use geranium_rt::stm32rustlib::gpio::*;
+use geranium_rt::stm32rustlib::rcc::*;
+use geranium_rt::stm32rustlib::various::*;
+use geranium_rt::stm32rustlib::delay::*;
+
+#[no_mangle]
+fn main() {
+    // delay functions must be initialized first. They use TIM2.
+    delay_init_timers();
+
+    // Enable the GPIO that the LED will be on.
+    rcc_ahb1enr_seti(RCC_AHB1ENR_GPIODEN);
+
+    // Declare a LED tuple
+    let my_led = ('D', 12); // Built-in green led
+
+    // Initialize the LED
+    gpiod_moder_set(my_led.1*2, 2, GPIO_MODER_OUT);
+
+    // Set it to LOW by default
+    digital_write(my_led, LOW);
+    loop {
+        digital_write(my_led, LOW);
+        delay_ms(1000);
+        digital_write(my_led, HIGH);
+        delay_ms(1000);
+    }
+}

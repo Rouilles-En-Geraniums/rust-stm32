@@ -11,9 +11,6 @@ openocd :
 log :
 	tail -f stm32f4.log
 
-log :
-	tail -f stm32f4.log
-
 debug :
 	cargo clean
 	cargo build

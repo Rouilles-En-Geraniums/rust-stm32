@@ -6,6 +6,19 @@
 
 This project offers a method for cross-compiling Rust programs specifically for STM microcontrollers.
 
+This project was done as part of a university module at Université Toulouse III - Paul Sabatier: SECIL Master's Degree.
+
+It has been tested for the following operating systems :
+- Linux:
+    - Fedora 38;
+    - Ubuntu 22.04LTS;
+- Windows:
+    - 10;
+    - 11;
+    - WSL;
+- MacOS:
+    - Ventura 13.0.1 (M1 Chip).
+
 ## Installation
 
 This library requires Rust and Python along with various other tools to work.
@@ -46,7 +59,7 @@ Cargo-binutils is a collection of Cargo subcommands that make it easy to use the
 
 ### OpenOCD
 
-OpenOCD is the tool used to communicate with the board. 
+OpenOCD is the tool used to communicate with the board.
 
 #### Ubuntu
 
@@ -65,9 +78,9 @@ Or
 Or
 > `sudo dnf install gdb`
 
-#### Windows 
+#### Windows
 
-##### Openocd 
+##### Openocd
 
 - Download the openocd toolchain from : https://gnutoolchains.com/arm-eabi/openocd/
 
@@ -85,7 +98,7 @@ Or
 
 - Download and install gdb-multiarch. We recommend using MSYS2 for this : https://www.msys2.org/
 
-  Once msys2 is install, install the gdb-multiarch package : 
+  Once msys2 is install, install the gdb-multiarch package :
   > `pacman -S mingw-w64-x86_64-gdb-multiarch`
 
   This should automatically add gdb-multiarch to your path. More information at https://packages.msys2.org/package/mingw-w64-x86_64-gdb-multiarch?repo=mingw64
@@ -97,7 +110,7 @@ Adding anything to your PATH may require a reboot.
 
 It is recommended to install packages with homebrew.
 
-##### Openocd 
+##### Openocd
 
 - Install the openocd package with brew :
   > `brew install openocd`
@@ -127,7 +140,7 @@ The default target of this project is the STM32F407-G DISC1 Board. If you wish t
     - `Cargo.toml` : the toml file with the minimal imports for the library crate ;
     - `build.rs` : which tells cargo to use the Linker Script ;
     - `src/lib.rs` : which is what will first be executed when loading the compiled program on the board, see below for more details ;
-    - `src/stm32rustlib/` : the generated abstraction library itself, which projects will directly include 
+    - `src/stm32rustlib/` : the generated abstraction library itself, which projects will directly include
 - `app-template/` :
     - `Cargo.toml` : the toml file with the minimal imports for the project binary crate ;
     - `gdbinit` : contains various commands executed at the beginning of the debug process (optional) ;
@@ -162,7 +175,7 @@ Feel free to modify the existing lib.rs as you see fit.
 
 The `openocd.cfg` should be modified based on your board (interface and target) and what you want it to do. If you plan on using your own printing functions (or the one we provide), make sure it properly initializes the serial connection.
 
-The `gdbinit` file is purely optional but can make the flashing and debugging process more enjoyable. 
+The `gdbinit` file is purely optional but can make the flashing and debugging process more enjoyable.
 
 
 ## Generating your board's library
@@ -200,7 +213,7 @@ These elements should be the same for most components. You may also add componen
 
 ## Building projects
 
-### src/main.rs 
+### src/main.rs
 
 Below is the minimum code required for a project to build :
 
@@ -215,7 +228,7 @@ extern crate geranium_rt; //required import to launch the lib.rs reset handler
 fn main() {
     // init
     loop {
-        // code 
+        // code
     }
 }
 ```
@@ -272,8 +285,8 @@ Various rules are provided within the Makefile, but here are some explanations a
     (You may also want to `cargo clean` before hand just in case, it often solves problems)
 - next, flash the board with your GDB :
     > `gdb -q target/targetname/debug/projectname`
-    
-    For example : 
+
+    For example :
 
     > `gdb -q target/thumbv7em-none-eabi/debug/app`
 
@@ -282,7 +295,7 @@ Various rules are provided within the Makefile, but here are some explanations a
     > `target remote localhost:3333`
 
     > `load`
-    
+
     After that, you will be debugging as you would debug any other project. You should easily be able to find various tutorials online on how to use the debugging tool.
 
 

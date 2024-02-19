@@ -1,3 +1,5 @@
+#![no_std]
+#![no_main]
 /**
  *	Rust on STM32 Project by Rouilles en GeraniumTM
  *	Copyright (C) 2024 Université de Toulouse :
@@ -30,9 +32,38 @@
  *	GNU General Public License for more details.
 **/
 
-extern crate core;
+// The following crates are required to use println
+extern crate geranium_rt;
+use geranium_rt::{print, println};
 
-use crate::core::ptr::read_volatile;
-use crate::core::ptr::write_volatile;
-use crate::stm32rustlib::various::*;
-{% include "address.rs" %}
+// Anything formatable by classic println! also works
+// (ie Display traits)
+#[derive(Debug)]
+struct TupleStruct(char, u32);
+
+#[no_mangle]
+fn main() {
+    let i = -232;
+    let j = 666_u32;
+    let k = 42_u32;
+
+    let my_led = ('D', 12); // Built-in green led
+    let my_ledst = TupleStruct('A', 12_u32);
+
+    // Our print macros cannot capture surrounding variable
+    // println!("println! - my_led tuple {my_led:?}"); // this wouldn't work
+    println!("println! - my_led tuple {:?}", my_led); // this does work
+    println!("println! - my_ledst {:?}", my_ledst);
+
+
+    print!("print! - print! followed by println!()");
+    println!();
+    println!("println! - only string litteral");
+    println!("println! - string literral with format, i: {}, j: {}, k: {}", i, j, k);
+    println!("println! - now testing print! macro");
+    print!("print! - only string litteral ");
+    print!("print! - string literral with format, i: {}, j: {}, k: {} ", i, j, k);
+
+    loop {
+    }
+}
