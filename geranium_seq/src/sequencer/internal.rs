@@ -27,7 +27,7 @@ pub fn run_sequencer(jobs: &[Job], hyperperiod: u32) -> !{
     if jobs.is_empty() { loop {} }
 
     loop {
-        delay_ms(jobs[1].start);
+        delay_ms(jobs[0].start);
 
         let mut i: usize = 0;
         while i < jobs.len() - 1 {
