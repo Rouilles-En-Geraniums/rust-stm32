@@ -17,7 +17,7 @@ pub struct Job<'a>{
     pub duration: u32 // TODO check if wait is inclusive or exclusive
 }
 
-pub fn run_task(ordo_task: &mut OrdoTask, max_time: u32){
+fn run_task(ordo_task: &mut OrdoTask, max_time: u32){
     timer_arm_ms(max_time);
     ordo_task.task.execute();
     timer_timeout();
