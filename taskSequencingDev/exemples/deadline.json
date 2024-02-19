@@ -1,31 +1,32 @@
 {
-"version": "v0.1",
-"type": "deadline",
-"hyperperiod": "12",
-
-"tasks": [
-    {
-        "id": "task1",
-        "label": "Tache une",
-        "functionName": "function1"
-    },
-    {
-        "id": "task2",
-        "label": "Tache deux",
-        "functionName": "function2"
+    "version": "v0.1",
+    "type": "deadline",
+    "hyperperiod": "12",
+    
+    "tasks": [
+        {
+            "id": "task1",
+            "label": "Tache une",
+            "functionName": "function1",
+            "duration": 3
+        },
+        {
+            "id": "task2",
+            "label": "Tache deux",
+            "functionName": "function2",
+            "duration": 4
+        }
+    ],
+    
+    "jobs": [
+        {
+            "taskId": "task1",
+            "startTime": 0
+        },
+        {
+            "taskId": "task2",
+            "startTime": 4
+        }
+    ]
     }
-],
-
-"jobs": [
-    {
-        "taskId": "task1",
-        "startTime": 0,
-        "duration": 2
-    },
-    {
-        "taskId": "task2",
-        "startTime": 4,
-        "duration": 3
-    }
-]
-}
+    

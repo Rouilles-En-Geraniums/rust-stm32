@@ -7,25 +7,25 @@
     {
         "id": "task1",
         "label": "Tache une",
-        "functionName": "function1"
+        "functionName": "function1",
+        "duration": 3
     },
     {
         "id": "task2",
         "label": "Tache deux",
-        "functionName": "function2"
+        "functionName": "function2",
+        "duration": 4
     }
 ],
 
 "jobs": [
     {
         "taskId": "task1",
-        "startTime": 0,
-        "duration": 2
+        "startTime": 0
     },
     {
         "taskId": "task2",
-        "startTime": 4,
-        "duration": 3
+        "startTime": 4
     }
 ]
 }
