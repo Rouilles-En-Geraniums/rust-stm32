@@ -26,6 +26,16 @@ pub fn run_task(ordo_task: &mut OrdoTask, max_time: u32){
 pub fn run_sequencer(jobs: &[Job], hyperperiod: u32) -> !{
     if jobs.is_empty() { loop {} }
 
+    if jobs.len() == 1 {
+        let job = &jobs[0];
+        loop {
+            delay_ms(job.start);
+            run_task(&mut job.ordo_task.borrow_mut(), job.duration);
+            delay_ms(hyperperiod - (job.start + job.duration ));
+        }
+    }
+
+    // At least 2 jobs
     loop {
         delay_ms(jobs[0].start);
 
@@ -33,12 +43,14 @@ pub fn run_sequencer(jobs: &[Job], hyperperiod: u32) -> !{
         while i < jobs.len() - 1 {
             let job = &jobs[i];
             let next_job = &jobs[i + 1];
-            run_task(&mut job.ordo_task.borrow_mut(), next_job.start - job.start);
+            run_task(&mut job.ordo_task.borrow_mut(), job.duration);
+            delay_ms(next_job.start - (job.start + job.duration));
 
             i += 1;
         }
         let job = &jobs[i];
-        run_task(&mut job.ordo_task.borrow_mut(), hyperperiod - job.start);
+        run_task(&mut job.ordo_task.borrow_mut(), job.duration);
+        delay_ms(hyperperiod - (job.start + job.duration));
     }
 }
 
