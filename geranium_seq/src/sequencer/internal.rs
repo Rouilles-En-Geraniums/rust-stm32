@@ -17,7 +17,7 @@ pub struct Job<'a>{
     pub duration: u32 // TODO check if wait is inclusive or exclusive
 }
 
-fn run_task(ordo_task: &mut OrdoTask, max_time: u32){
+pub fn run_task(ordo_task: &mut OrdoTask, max_time: u32){
     timer_arm_ms(max_time);
     ordo_task.task.execute();
     timer_timeout();
@@ -54,8 +54,8 @@ pub fn run_sequencer(jobs: &[Job], hyperperiod: u32) -> !{
     }
 }
 
-pub fn init_tasks(ordo_tasks: &mut [OrdoTask]) {
+pub fn init_tasks(ordo_tasks: &mut [& RefCell<OrdoTask>]) {
     for ordo_task in ordo_tasks.iter_mut() {
-        ordo_task.task.init();
+        ordo_task.borrow_mut().task.init();
     }
 }
