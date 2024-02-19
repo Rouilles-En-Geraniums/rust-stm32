@@ -100,7 +100,7 @@ fn main() {
     let hyperperiod: u32 = {{hyperperiod}};
 
     {%- for task in tasks %}
-    let mut t_{{task.id}} = {{task.functionName}}::new();
+    let mut t_{{task.id}} = {{task.taskStruct}}::new();
     {%- endfor %}
 
     {%- for task in tasks %}
