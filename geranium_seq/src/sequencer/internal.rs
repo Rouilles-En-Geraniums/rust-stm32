@@ -8,13 +8,13 @@ use geranium_rt::stm32rustlib::delay::delay_ms;
 
 
 pub struct OrdoTask <'a>{
-    pub task: &'a mut dyn Task
+    pub task: &'a mut dyn Task,
+    pub duration: u32 // TODO check if wait is inclusive or exclusive
 }
 
 pub struct Job<'a>{
     pub ordo_task: &'a RefCell<OrdoTask<'a>>,
     pub start: u32,
-    pub duration: u32 // TODO check if wait is inclusive or exclusive
 }
 
 pub fn run_task(ordo_task: &mut OrdoTask, max_time: u32){
