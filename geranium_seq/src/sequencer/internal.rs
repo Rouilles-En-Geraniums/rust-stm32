@@ -2,9 +2,7 @@ extern crate geranium_rt;
 use core::cell::RefCell;
 
 use crate::sequencer::task::Task;
-use geranium_rt::stm32rustlib::delay::timer_arm_ms;
-use geranium_rt::stm32rustlib::delay::timer_timeout;
-use geranium_rt::stm32rustlib::delay::delay_ms;
+use geranium_rt::stm32rustlib::delay::*;
 
 
 pub struct OrdoTask <'a>{
@@ -17,20 +15,22 @@ pub struct Job<'a>{
     pub start: u32,
 }
 
-pub fn run_task(ordo_task: &mut OrdoTask, max_time: u32){
+pub fn run_task_strict(ordo_task: &mut OrdoTask, max_time: u32){
     timer_arm_ms(max_time);
     ordo_task.task.execute();
     timer_timeout();
 }
 
-pub fn run_sequencer(jobs: &[Job], hyperperiod: u32) -> !{
+pub fn run_sequencer_strict(jobs: &[Job], hyperperiod: u32) -> !{
     if jobs.is_empty() { loop {} }
+
+    delay_init_timers();
 
     if jobs.len() == 1 {
         let job = &jobs[0];
         loop {
             delay_ms(job.start);
-            run_task(&mut job.ordo_task.borrow_mut(), hyperperiod - job.start);
+            run_task_strict(&mut job.ordo_task.borrow_mut(), hyperperiod - job.start);
         }
     }
 
@@ -42,12 +42,50 @@ pub fn run_sequencer(jobs: &[Job], hyperperiod: u32) -> !{
         while i < jobs.len() - 1 {
             let job = &jobs[i];
             let next_job = &jobs[i + 1];
-            run_task(&mut job.ordo_task.borrow_mut(), next_job.start - job.start);
+            run_task_strict(&mut job.ordo_task.borrow_mut(), next_job.start - job.start);
 
             i += 1;
         }
         let job = &jobs[i];
-        run_task(&mut job.ordo_task.borrow_mut(), hyperperiod - job.start);
+        run_task_strict(&mut job.ordo_task.borrow_mut(), hyperperiod - job.start);
+
+    }
+}
+
+pub fn run_task_deadline(ordo_task: &mut OrdoTask, max_time: u32){
+    timer_arm_ms(max_time);
+    ordo_task.task.execute();
+    // un-arm interupt
+}
+
+pub fn run_sequencer_deadline(jobs: &[Job], hyperperiod: u32) -> !{
+    if jobs.is_empty() { loop {} }
+
+    // TODO needed ? delay_init_timers();
+    // TODO init interrupt (may need helper function from delay)
+
+    if jobs.len() == 1 {
+        let job = &jobs[0];
+        loop {
+            delay_ms(job.start);
+            run_task_deadline(&mut job.ordo_task.borrow_mut(), hyperperiod - job.start);
+        }
+    }
+
+    // At least 2 jobs
+    loop {
+        delay_ms(jobs[0].start);
+
+        let mut i: usize = 0;
+        while i < jobs.len() - 1 {
+            let job = &jobs[i];
+            let next_job = &jobs[i + 1];
+            run_task_deadline(&mut job.ordo_task.borrow_mut(), next_job.start - job.start);
+
+            i += 1;
+        }
+        let job = &jobs[i];
+        run_task_deadline(&mut job.ordo_task.borrow_mut(), hyperperiod - job.start);
 
     }
 }
