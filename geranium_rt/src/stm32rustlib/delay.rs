@@ -49,6 +49,9 @@ pub fn delay_init_timers(){
 
 #[inline(always)]
 pub fn delay_ms(ms: u32) {
+    // ST Ref. Man. RM0090 section 18.4.12 :
+    // "The CNT is blocked while ARR is null"
+    if ms == 0 { return ; }
     tim2_cr1_seti(!TIM_CEN);
     tim2_psc_write(PSC_MS - 1);
     tim2_arr_write(ms);
@@ -64,6 +67,9 @@ pub fn delay_ms(ms: u32) {
 
 #[inline(always)]
 pub fn delay_us(us: u32) {
+    // ST Ref. Man. RM0090 section 18.4.12 :
+    // "The CNT is blocked while ARR is null"
+    if us == 0 { return ; }
     tim2_cr1_seti(!TIM_CEN);
     tim2_psc_write(PSC_US - 1);
     tim2_arr_write(us);
@@ -99,6 +105,10 @@ pub fn timer_arm_us(us: u32) {
 
 #[inline(always)]
 pub fn timer_timeout() {
+    // ST Ref. Man. RM0090 section 18.4.12 :
+    // "The CNT is blocked while ARR is null"
+    if tim2_arr_read() == 0 { return; }
+
     while (tim2_sr_read() & TIM_UIF) == 0 {};
 
     tim2_sr_write(0);
@@ -107,6 +117,10 @@ pub fn timer_timeout() {
 
 #[inline(always)]
 pub fn timer_is_timeout() -> bool {
+    // ST Ref. Man. RM0090 section 18.4.12 :
+    // "The CNT is blocked while ARR is null"
+    if tim2_arr_read() == 0 { return true; }
+
     if (tim2_sr_read() & TIM_UIF) == 0 {
         false
     } else {
