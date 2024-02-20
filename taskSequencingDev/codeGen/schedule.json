@@ -1,0 +1,31 @@
+{
+"version": "v0.1",
+"type": "cooperative",
+"hyperperiod": 1000,
+
+"tasks": [
+    {
+        "id": "ledon",
+        "label": "LED On",
+        "taskStruct": "LedOn",
+        "duration": 1
+    },
+    {
+        "id": "ledoff",
+        "label": "LED Off",
+        "taskStruct": "LedOff",
+        "duration": 1
+    }
+],
+
+"jobs": [
+    {
+        "taskId": "ledon",
+        "startTime": 0
+    },
+    {
+        "taskId": "ledoff",
+        "startTime": 500
+    }
+]
+}
