@@ -32,11 +32,8 @@ pub fn run_sequencer(jobs: &[Job], hyperperiod: u32) -> !{
         let job = &jobs[0];
         loop {
             seq_delay_ms(job.start);
-            let mut ordo_task = job.ordo_task.borrow_mut();
-            let duration = ordo_task.duration;
-
-            run_task(&mut ordo_task, duration);
-            seq_delay_ms(hyperperiod - (job.start + duration));
+            run_task(&mut job.ordo_task.borrow_mut(), job.ordo_task.borrow_mut().duration);
+            seq_delay_ms(hyperperiod - (job.start + job.ordo_task.borrow_mut().duration ));
         }
     }
 
@@ -48,20 +45,14 @@ pub fn run_sequencer(jobs: &[Job], hyperperiod: u32) -> !{
         while i < jobs.len() - 1 {
             let job = &jobs[i];
             let next_job = &jobs[i + 1];
-            let mut ordo_task = job.ordo_task.borrow_mut();
-            let duration = ordo_task.duration;
-
-            run_task(&mut ordo_task, duration);
-            seq_delay_ms(next_job.start - (job.start + duration));
+            run_task(&mut job.ordo_task.borrow_mut(), job.ordo_task.borrow_mut().duration);
+            seq_delay_ms(next_job.start - (job.start + job.ordo_task.borrow_mut().duration));
 
             i += 1;
         }
         let job = &jobs[i];
-        let mut ordo_task = job.ordo_task.borrow_mut();
-        let duration = ordo_task.duration;
-
-        run_task(&mut ordo_task, duration);
-        seq_delay_ms(hyperperiod - (job.start + duration));
+        run_task(&mut job.ordo_task.borrow_mut(), job.ordo_task.borrow_mut().duration);
+        seq_delay_ms(hyperperiod - (job.start + job.ordo_task.borrow_mut().duration));
     }
 }
 
