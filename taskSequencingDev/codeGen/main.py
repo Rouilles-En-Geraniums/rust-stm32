@@ -132,8 +132,7 @@ def main():
     file_loader = FileSystemLoader('../templates/')
     env = Environment(loader=file_loader)
 
-    # Generate various.rs file (global variables used across the library)
-    output_file_path = "main.rs"
+    output_file_path = "src/main.rs"
     with open(output_file_path, 'w') as output_file:
         t = env.get_template("main.rs")
         output_file.write(t.render(json_data))

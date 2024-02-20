@@ -65,8 +65,8 @@ def cmdlineParse():
     parser.add_argument("-u","--updatelibrary",
                         help="Specify whether or not to update the library crate. This option disables every other options",
                         action=argparse.BooleanOptionalAction)
-    parser.add_argument ("-s", "--scheduler"
-                        help="Generates a Scheduled project, with tasks defined in user_tasks.rs scheduled according to a given user-defined scheduling. More info on ???"
+    parser.add_argument ("-s", "--scheduler",
+                        help="Generates a Scheduled project, with tasks defined in user_tasks.rs scheduled according to a given user-defined scheduling. More info on ???",
                         action=argparse.BooleanOptionalAction)
 
     args = parser.parse_args()
@@ -122,6 +122,9 @@ def main():
             user_tasks_orig = "app-template/src/user_tasks.rs"
             user_tasks_file = projectname + "/src/user_tasks.rs"
             shutil.copyfile(user_tasks_orig, user_tasks_file)
+            main_orig = "app-template/src/main_scheduled_project.rs"
+            main_file = projectname + "/src/main.rs"
+            shutil.copyfile(main_orig, main_file)
         else:
             main_orig = "app-template/src/main.rs"
             main_file = projectname + "/src/main.rs"
@@ -156,8 +159,11 @@ def main():
 
         # Scheduler Generator
         generator_origin = "taskSequencingDev/codeGen/main.py"
-        generator_file = projectname + "/src/generate-main.rs"
+        generator_file = projectname + "/generate-main.py"
         shutil.copyfile(generator_origin, generator_file)
+        schedule_origin = "taskSequencingDev/codeGen/schedule.json"
+        schedule_file = projectname + "/schedule.json"
+        shutil.copyfile(schedule_origin, schedule_file)
 
         # Openocd
         openocdcfg_orig = openocdcfg

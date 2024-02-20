@@ -50,6 +50,7 @@ tmp/
 
 
 taskSequencingDev/codeGen/main.rs
+app_seq_test
 
 
 ##################
