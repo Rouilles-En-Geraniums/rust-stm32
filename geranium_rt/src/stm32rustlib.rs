@@ -10,4 +10,5 @@ pub mod syscfg;
 pub mod tim;
 pub mod delay;
 pub mod geranium_print;
+pub mod seq;
 pub mod system;
