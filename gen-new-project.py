@@ -119,10 +119,10 @@ def main():
         # main.rs and user_tasks.rs
 
         if args.scheduler:
-            user_tasks_orig = "app-template/src/user_tasks.rs"
+            user_tasks_orig = "app-template/sequencer/user_tasks.rs"
             user_tasks_file = projectname + "/src/user_tasks.rs"
             shutil.copyfile(user_tasks_orig, user_tasks_file)
-            main_orig = "app-template/src/main_scheduled_project.rs"
+            main_orig = "app-template/sequencer/main_scheduled_project.rs"
             main_file = projectname + "/src/main.rs"
             shutil.copyfile(main_orig, main_file)
         else:
@@ -158,12 +158,13 @@ def main():
             file.write(filedata)
 
         # Scheduler Generator
-        generator_origin = "taskSequencingDev/codeGen/main.py"
-        generator_file = projectname + "/generate-main.py"
-        shutil.copyfile(generator_origin, generator_file)
-        schedule_origin = "taskSequencingDev/codeGen/schedule.json"
-        schedule_file = projectname + "/schedule.json"
-        shutil.copyfile(schedule_origin, schedule_file)
+        if args.scheduler:
+            generator_origin = "taskSequencing/codeGen/main.py"
+            generator_file = projectname + "/generate-main.py"
+            shutil.copyfile(generator_origin, generator_file)
+            schedule_origin = "taskSequencing/codeGen/schedule.json"
+            schedule_file = projectname + "/schedule.json"
+            shutil.copyfile(schedule_origin, schedule_file)
 
         # Openocd
         openocdcfg_orig = openocdcfg
