@@ -43,85 +43,85 @@ const PSC_US: u32 = APB1_CLK / 1_000_000;
  * This function must be called once before using any of the delay functions.
  */
 #[inline(always)]
-pub fn delay_init_timers(){
-    rcc_apb1enr_seti(RCC_APB1ENR_TIM2EN);
+pub fn seq_delay_init_timers(){
+    rcc_apb1enr_seti(RCC_APB1ENR_TIM5EN);
 }
 
 #[inline(always)]
-pub fn delay_ms(ms: u32) {
+pub fn seq_delay_ms(ms: u32) {
     // ST Ref. Man. RM0090 section 18.4.12 :
     // "The CNT is blocked while ARR is null"
     if ms == 0 { return ; }
-    tim2_cr1_seti(!TIM_CEN);
-    tim2_psc_write(PSC_MS - 1);
-    tim2_arr_write(ms);
-    tim2_egr_write(TIM_UG);
-    tim2_sr_write(0);
-    tim2_cr1_seti(TIM_CEN);
+    tim5_cr1_seti(!TIM_CEN);
+    tim5_psc_write(PSC_MS - 1);
+    tim5_arr_write(ms);
+    tim5_egr_write(TIM_UG);
+    tim5_sr_write(0);
+    tim5_cr1_seti(TIM_CEN);
 
-    while (tim2_sr_read() & TIM_UIF) == 0 {};
+    while (tim5_sr_read() & TIM_UIF) == 0 {};
 
-    tim2_sr_write(0);
-    tim2_cr1_seti(!TIM_CEN);
+    tim5_sr_write(0);
+    tim5_cr1_seti(!TIM_CEN);
 }
 
 #[inline(always)]
-pub fn delay_us(us: u32) {
+pub fn seq_delay_us(us: u32) {
     // ST Ref. Man. RM0090 section 18.4.12 :
     // "The CNT is blocked while ARR is null"
     if us == 0 { return ; }
-    tim2_cr1_seti(!TIM_CEN);
-    tim2_psc_write(PSC_US - 1);
-    tim2_arr_write(us);
-    tim2_egr_write(TIM_UG);
-    tim2_sr_write(0);
-    tim2_cr1_seti(TIM_CEN);
+    tim5_cr1_seti(!TIM_CEN);
+    tim5_psc_write(PSC_US - 1);
+    tim5_arr_write(us);
+    tim5_egr_write(TIM_UG);
+    tim5_sr_write(0);
+    tim5_cr1_seti(TIM_CEN);
 
-    while (tim2_sr_read() & TIM_UIF) == 0 {};
+    while (tim5_sr_read() & TIM_UIF) == 0 {};
 
-    tim2_sr_write(0);
-    tim2_cr1_seti(!TIM_CEN);
+    tim5_sr_write(0);
+    tim5_cr1_seti(!TIM_CEN);
 }
 
 #[inline(always)]
-pub fn timer_arm_ms(ms: u32) {
-    tim2_cr1_seti(!TIM_CEN);
-    tim2_psc_write(PSC_MS - 1);
-    tim2_arr_write(ms);
-    tim2_egr_write(TIM_UG);
-    tim2_sr_write(0);
-    tim2_cr1_seti(TIM_CEN);
+pub fn seq_timer_arm_ms(ms: u32) {
+    tim5_cr1_seti(!TIM_CEN);
+    tim5_psc_write(PSC_MS - 1);
+    tim5_arr_write(ms);
+    tim5_egr_write(TIM_UG);
+    tim5_sr_write(0);
+    tim5_cr1_seti(TIM_CEN);
 }
 
 #[inline(always)]
-pub fn timer_arm_us(us: u32) {
-    tim2_cr1_seti(!TIM_CEN);
-    tim2_psc_write(PSC_US - 1);
-    tim2_arr_write(us);
-    tim2_egr_write(TIM_UG);
-    tim2_sr_write(0);
-    tim2_cr1_seti(TIM_CEN);
+pub fn seq_timer_arm_us(us: u32) {
+    tim5_cr1_seti(!TIM_CEN);
+    tim5_psc_write(PSC_US - 1);
+    tim5_arr_write(us);
+    tim5_egr_write(TIM_UG);
+    tim5_sr_write(0);
+    tim5_cr1_seti(TIM_CEN);
 }
 
 #[inline(always)]
-pub fn timer_timeout() {
+pub fn seq_timer_timeout() {
     // ST Ref. Man. RM0090 section 18.4.12 :
     // "The CNT is blocked while ARR is null"
-    if tim2_arr_read() == 0 { return; }
+    if tim5_arr_read() == 0 { return; }
 
-    while (tim2_sr_read() & TIM_UIF) == 0 {};
+    while (tim5_sr_read() & TIM_UIF) == 0 {};
 
-    tim2_sr_write(0);
-    tim2_cr1_seti(!TIM_CEN);
+    tim5_sr_write(0);
+    tim5_cr1_seti(!TIM_CEN);
 }
 
 #[inline(always)]
-pub fn timer_is_timeout() -> bool {
+pub fn seq_timer_is_timeout() -> bool {
     // ST Ref. Man. RM0090 section 18.4.12 :
     // "The CNT is blocked while ARR is null"
-    if tim2_arr_read() == 0 { return true; }
+    if tim5_arr_read() == 0 { return true; }
 
-    if (tim2_sr_read() & TIM_UIF) == 0 {
+    if (tim5_sr_read() & TIM_UIF) == 0 {
         false
     } else {
         true
