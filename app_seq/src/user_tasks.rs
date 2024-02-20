@@ -23,7 +23,6 @@ impl Task for LedOn {
     fn init(&mut self) {
         println!("init {:?}", self);
         rcc_ahb1enr_seti(RCC_AHB1ENR_GPIODEN);
-        delay_init_timers();
         gpiod_moder_set(MY_LED.1*2, 2, GPIO_MODER_OUT);
     }
 }
