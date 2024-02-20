@@ -1,7 +1,7 @@
 {
     "version": "v0.1",
     "type": "strict",
-    "hyperperiod": "12",
+    "hyperperiod": 12,
     
     "tasks": [
         {
