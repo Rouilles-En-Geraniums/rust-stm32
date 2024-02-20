@@ -1,4 +1,3 @@
-extern crate geranium_rt;
 use core::cell::RefCell;
 
 use crate::sequencer::task::Task;
