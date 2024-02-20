@@ -1,6 +1,6 @@
 #![no_std]
 #![no_main]
-/**
+/*
  *	Rust on STM32 Project by Rouilles en GeraniumTM
  *	Copyright (C) 2024 Université de Toulouse :
  *   - Oussama Felfel - oussama.felfel@univ-tlse3.fr
@@ -30,7 +30,7 @@
  *	but WITHOUT ANY WARRANTY; without even the implied warranty of
  *	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  *	GNU General Public License for more details.
-**/
+*/
 
 extern crate geranium_rt;
 use core::cell::RefCell;
