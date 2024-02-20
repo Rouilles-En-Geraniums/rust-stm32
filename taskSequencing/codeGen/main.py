@@ -140,7 +140,12 @@ def main():
 
     output_file_path = args.output_path
     with open(output_file_path, 'w') as output_file:
-        t = env.get_template("main.rs")
+        t = None
+        if (json_data["type"] == "deadline"):
+            t = env.get_template("main_deadline.rs")
+        else:
+            t = env.get_template("main_strict.rs")
+
         output_file.write(t.render(json_data))
 
 

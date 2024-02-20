@@ -37,7 +37,7 @@ use core::cell::RefCell;
 
 mod user_tasks;
 use user_tasks::*;
-use geranium_seq::sequencer::internal::*;
+use geranium_seq::sequencer::internal::deadline::*;
 use geranium_seq::sequencer::task::Task;
 
 #[no_mangle]
