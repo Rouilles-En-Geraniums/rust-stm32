@@ -1,0 +1,40 @@
+{
+    "version": "v0.1",
+    "type": "strict",
+    "hyperperiod": 2000,
+
+    "tasks": [
+        {
+            "id": "ledon",
+            "label": "Led On",
+            "taskStruct": "LedOn",
+            "duration": 500
+        },
+        {
+            "id": "ledoff",
+            "label": "Led Off",
+            "taskStruct": "LedOff",
+            "duration": 500
+        }
+    ],
+
+    "jobs": [
+        {
+            "taskId": "ledon",
+            "startTime": 0
+        },
+        {
+            "taskId": "ledoff",
+            "startTime": 500
+        },
+        {
+            "taskId": "ledon",
+            "startTime": 1000
+        },
+        {
+            "taskId": "ledoff",
+            "startTime": 1500
+        }
+    ]
+    }
+
