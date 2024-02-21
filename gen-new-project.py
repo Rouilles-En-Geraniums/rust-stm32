@@ -66,7 +66,7 @@ def cmdlineParse():
                         help="Specify whether or not to update the library crate. This option disables every other options",
                         action=argparse.BooleanOptionalAction)
     parser.add_argument ("-s", "--scheduler",
-                        help="Generates a Scheduled project, with tasks defined in user_tasks.rs scheduled according to a given user-defined scheduling. More info on ???",
+                        help="Generates a Scheduled project, with tasks defined in user_tasks.rs scheduled according to a given user-defined scheduling. More info on ./taskSequencing/README.md",
                         action=argparse.BooleanOptionalAction)
 
     args = parser.parse_args()

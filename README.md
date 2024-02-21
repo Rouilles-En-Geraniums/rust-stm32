@@ -300,3 +300,6 @@ Various rules are provided within the Makefile, but here are some explanations a
 
 
 Note : if you attempt to flash with `cargo build --release`, you may be unable to debug due to the compiler optimizing the executable.
+
+## Use the shceduler
+See the [scheduling documentation](./taskSequencing/README.md)
