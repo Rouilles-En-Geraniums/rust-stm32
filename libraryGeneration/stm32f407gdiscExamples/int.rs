@@ -73,7 +73,7 @@ pub unsafe extern "C" fn handle_TIM4() {
 		}
 	}
 	tim4_sr_seti(!TIM_UIF);
-	nvic_icpr_set(TIM4 >> 5, TIM4);
+	nvic_icpr_set(TIM4 >> 5, 1 << (TIM4 & 0x1F));
 }
 
 fn init_tim4_interrupt(){

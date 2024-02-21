@@ -35,9 +35,6 @@ use crate::core::ptr::write_volatile;
 
 pub const HIGH: u8 = 1;
 pub const LOW: u8 = 0;
-pub const MODER: u8 = 0;
-pub const PUPDR: u8 = 1;
-pub const OSPEEDER: u8 = 2;
 
 #[inline(always)]
 pub fn mask(l: u32) -> u32 {

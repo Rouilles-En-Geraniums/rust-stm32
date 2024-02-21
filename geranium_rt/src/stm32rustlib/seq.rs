@@ -30,9 +30,13 @@
  *	GNU General Public License for more details.
 **/
 
+use core::arch::asm;
+use core::panic;
+
 use crate::stm32rustlib::rcc::*;
 use crate::stm32rustlib::tim::*;
 use crate::stm32rustlib::system::*;
+use crate::stm32rustlib::nvic::*;
 
 
 const PSC_MS: u32 = APB1_CLK / 1_000;
@@ -119,11 +123,116 @@ pub fn seq_timer_timeout() {
 pub fn seq_timer_is_timeout() -> bool {
     // ST Ref. Man. RM0090 section 18.4.12 :
     // "The CNT is blocked while ARR is null"
-    if tim5_arr_read() == 0 { return true; }
-
-    if (tim5_sr_read() & TIM_UIF) == 0 {
-        false
-    } else {
+    if tim5_arr_read() == 0 {
         true
+    } else {
+        (tim5_sr_read() & TIM_UIF) != 0
     }
+}
+
+#[no_mangle]
+pub unsafe extern "C" fn handle_TIM5() {
+    if (tim5_sr_read() & TIM_UIF) != 0 {
+        tim5_sr_seti(!TIM_UIF);
+        nvic_icpr_set(TIM4 >> 5, TIM4);
+        panic!("Current task exceded its duration (WCET)");
+    }
+}
+
+/**
+ * This function must be called before using seq_timer_arm_[ms,us]_interrupt functions.
+ * You still need to call seq_delay_init_timers()
+ *
+ * This function set the handler for the interrupt.
+ * f must be declared as a pub unsafe extern "C" function
+ * with #[no_mangle] attribute for it to be properly set as
+ * a handler in the Interruption Vector Table.
+ */
+pub fn seq_timer_arm_interrupt_init() {
+    // disable timer5
+    tim5_cr1_seti(!TIM_CEN);
+
+    // disable global interrupt
+    unsafe { asm!("CPSID I"); }
+    // disable interrupt for TIM5 NVIC
+        // first 27 bits give the NVIC_ICER register adress
+        // last 5 bits gives the bit in this register (2^5=32)
+    nvic_icer_set(TIM5 >> 5, 1 << (TIM5 & 0x1F));
+    // disable interrupt in device TIM5
+    tim5_dier_seti(!TIM_UIE);
+    // clear pending interrupt for TIM5 NVIC
+    nvic_icpr_set(TIM5 >> 5, 1 << (TIM5 & 0x1F));
+    // clear pending interrupt in device TIM5
+    tim5_sr_write(0);
+    // set handler for TIM5 NVIC
+    nvic_handler_set(TIM5, handle_TIM5);
+    // set priority for TIM5 NVIC
+    nvic_ipr_set(TIM5, 0);
+    // enable interrupt in device TIM5
+    tim5_dier_write(TIM_UIE); // and clear other bts
+    // enable interrupt for TIM5 NVIC
+    nvic_iser_set(TIM5 >> 5, 1 << (TIM5 & 0x1F));
+    // enable interrupt globaly
+    unsafe { asm!("CPSIE I"); }
+}
+
+// Disable interrupt for seq_timer_arm_[ms,us]_interrupt functions
+// Doesn't reset timer, you can still use timer_timout functions
+pub fn seq_disable_arm_interrupt() {
+    // disable global interrupt
+    unsafe { asm!("CPSID I"); }
+    // disable interrupt for TIM5 NVIC
+    nvic_icer_set(TIM5 >> 5, 1 << (TIM5 & 0x1F));
+    // disable interrupt in device TIM5
+    tim5_dier_seti(!TIM_UIE);
+    // clear pending interrupt for TIM5 NVIC
+    nvic_icpr_set(TIM5 >> 5, 1 << (TIM5 & 0x1F));
+    // clear pending interrupt in device TIM5
+    tim5_sr_write(0);
+    // enable interrupt globaly
+    unsafe { asm!("CPSIE I"); }
+}
+
+// Interrupt triggered by hardware when timer runs out and will panic!()
+// Use seq_disable_arm_interrupt to disarm it
+#[inline(always)]
+pub fn seq_timer_arm_ms_interrupt(ms: u32) {
+    // disable global interrupt
+    unsafe { asm!("CPSID I"); }
+    tim5_cr1_seti(!TIM_CEN);
+    tim5_psc_write(PSC_MS - 1);
+    tim5_arr_write(ms);
+    tim5_egr_write(TIM_UG);
+    tim5_sr_write(0);
+
+    // enable interrupt in device TIM5
+    tim5_dier_write(TIM_UIE);
+    // enable interrupt for TIM5 NVIC
+    nvic_iser_set(TIM5 >> 5, 1 << (TIM5 & 0x1F));
+
+    tim5_cr1_seti(TIM_CEN);
+    // enable interrupt globaly
+    unsafe { asm!("CPSIE I"); }
+}
+
+// Interrupt triggered by hardware when timer runs out and will panic!()
+// Use seq_disable_arm_interrupt to disarm it
+#[inline(always)]
+pub fn seq_timer_arm_us_interrupt(us: u32) {
+    // disable global interrupt
+    unsafe { asm!("CPSID I"); }
+    tim5_cr1_seti(!TIM_CEN);
+    tim5_psc_write(PSC_US - 1);
+    tim5_arr_write(us);
+    tim5_egr_write(TIM_UG);
+    tim5_sr_write(0);
+
+    // enable interrupt in device TIM5
+    tim5_dier_write(TIM_UIE);
+    // enable interrupt for TIM5 NVIC
+    nvic_iser_set(TIM5 >> 5, 1 << (TIM5 & 0x1F));
+
+    tim5_cr1_seti(TIM_CEN);
+    // enable interrupt globaly
+    unsafe { asm!("CPSIE I"); }
 }
