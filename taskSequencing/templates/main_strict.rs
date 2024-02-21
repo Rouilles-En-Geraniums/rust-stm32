@@ -51,8 +51,7 @@ fn main() {
 
     {%- for task in tasks %}
     let ot_{{task.id}} = RefCell::new(OrdoTask {
-        task: &mut t_{{task.id}},
-        duration: {{task.duration}}
+        task: &mut t_{{task.id}}
     });
     {%- endfor %}
 

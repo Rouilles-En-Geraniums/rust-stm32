@@ -7,14 +7,12 @@
         {
             "id": "task1",
             "label": "Tache une",
-            "taskStruct": "Task1",
-            "duration": 3
+            "taskStruct": "Task1"
         },
         {
             "id": "task2",
             "label": "Tache deux",
-            "taskStruct": "Task2",
-            "duration": 4
+            "taskStruct": "Task2"
         }
     ],
     
