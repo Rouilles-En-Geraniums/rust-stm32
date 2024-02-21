@@ -123,12 +123,10 @@ pub fn seq_timer_timeout() {
 pub fn seq_timer_is_timeout() -> bool {
     // ST Ref. Man. RM0090 section 18.4.12 :
     // "The CNT is blocked while ARR is null"
-    if tim5_arr_read() == 0 { return true; }
-
-    if (tim5_sr_read() & TIM_UIF) == 0 {
-        false
-    } else {
+    if tim5_arr_read() == 0 {
         true
+    } else {
+        (tim5_sr_read() & TIM_UIF) != 0
     }
 }
 
