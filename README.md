@@ -2,6 +2,11 @@
 [![Licence](https://img.shields.io/badge/licence-AGPL--3.0-blue.svg)](https://opensource.org/licenses/AGPL-3.0)
 [![Last-changedate](https://img.shields.io/badge/last%20change-15--02--2024-yellowgreen.svg)](https://github.com/SMAC-Group/gmwm)
 
+
+If you came from the poster... the answer is 9!
+
+
+
 # STM Microcontroller Cross-Compilation for Rust Projects
 
 This project offers a method for cross-compiling Rust programs specifically for STM microcontrollers.
