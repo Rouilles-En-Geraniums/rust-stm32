@@ -1,6 +1,6 @@
 {
 "version": "v0.1",
-"type": "cooperative",
+"type": "strict",
 "hyperperiod": 1000,
 
 "tasks": [
@@ -8,13 +8,13 @@
         "id": "ledon",
         "label": "LED On",
         "taskStruct": "LedOn",
-        "duration": 1
+        "duration": 500
     },
     {
         "id": "ledoff",
         "label": "LED Off",
         "taskStruct": "LedOff",
-        "duration": 1
+        "duration": 500
     }
 ],
 

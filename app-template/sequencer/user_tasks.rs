@@ -31,30 +31,55 @@
 */
 
 use geranium_seq::sequencer::task::*;
-use geranium_rt::stm32rustlib::gpio::digital_write;
-use geranium_rt::stm32rustlib::various::HIGH;
-use geranium_rt::stm32rustlib::various::LOW;
+use geranium_rt::stm32rustlib::gpio::*;
+use geranium_rt::stm32rustlib::various::{HIGH, LOW};
+use geranium_rt::stm32rustlib::rcc::*;
+use geranium_rt::println;
 
 const MY_LED: (char, u32) = ('D', 12); // Built-in green led
 
-pub struct LedOn {}
+// derive Debug (/Display if you have an allocator) to print your struct
+#[derive(Debug)]
+pub struct LedOn {
+    // use variables to share state between calls
+    count: u32
+}
+
 impl Task for LedOn {
     fn execute(&mut self) -> () {
         digital_write(MY_LED, HIGH);
+        self.count += 1;
+        println!("{:?}, count: {}", self, self.count);
     }
 
     fn new() -> LedOn {
-        LedOn {}
+        LedOn {count:0}
+    }
+
+    fn init(&mut self) {
+        println!("init {:?}", self);
+        rcc_ahb1enr_seti(RCC_AHB1ENR_GPIODEN);
+        gpiod_moder_set(MY_LED.1*2, 2, GPIO_MODER_OUT);
     }
 }
 
-pub struct LedOff {}
+#[derive(Debug)]
+pub struct LedOff {
+    icount: i32
+}
+
 impl Task for LedOff {
     fn execute(&mut self) -> () {
         digital_write(MY_LED, LOW);
+        self.icount += 1;
+        println!("{:?}, icount: {}", self, self.icount);
     }
 
     fn new() -> LedOff {
-        LedOff {}
+        LedOff {icount: 0}
+    }
+
+    fn init(&mut self) {
+        println!("init {:?}", self);
     }
 }
