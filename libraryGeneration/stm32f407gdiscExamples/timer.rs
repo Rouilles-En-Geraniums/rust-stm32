@@ -41,6 +41,8 @@ use geranium_rt::stm32rustlib::various::*;
 use geranium_rt::stm32rustlib::tim::*;
 use geranium_rt::stm32rustlib::system::*;
 
+const MY_LED: (char, u32)  = ('D', 12); // Built-in green led
+
 const PSC: u32 = 1000;
 const PERIOD: u32 = APB1_CLK / 1000;
 
@@ -55,23 +57,27 @@ pub fn init_timer() {
 
 
 #[no_mangle]
-fn main() {
+fn init() {
     rcc_ahb1enr_seti(RCC_AHB1ENR_GPIODEN);
     rcc_apb1enr_seti(RCC_APB1ENR_TIM4EN);
-
-    let my_led = ('D', 12); // Built-in green led
-    gpiod_moder_set(my_led.1*2, 2, GPIO_MODER_OUT);
-
+    
+    gpiod_moder_set(MY_LED.1*2, 2, GPIO_MODER_OUT);
+    
     init_timer();
+    
+    digital_write(MY_LED, LOW);
+}
 
-    digital_write(my_led, LOW);
+
+#[no_mangle]
+fn main() {
     loop {
         while (tim4_sr_read() & TIM_UIF) == 0 {};
 
-        if digital_read(my_led) == LOW {
-			digital_write(my_led, HIGH);
+        if digital_read(MY_LED) == LOW {
+			digital_write(MY_LED, HIGH);
 		} else {
-            digital_write(my_led, LOW);
+            digital_write(MY_LED, LOW);
 		}
         tim4_sr_write(0);
     }

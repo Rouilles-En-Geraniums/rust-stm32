@@ -199,9 +199,16 @@ pub unsafe extern "C" fn HandlerReset() -> ! {
     dcb_demcr_seti(DCB_DEMCR_TRCENA);
     itm_ter_seti(ITM_TRACE_EN_PORT0);
 
+    extern "Rust" {
+        fn init();
+    }
+
 	extern "Rust" {
         fn main() -> !;
     }
+
+    init();
+
     main()
 }
 

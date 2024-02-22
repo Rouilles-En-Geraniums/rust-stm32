@@ -114,17 +114,20 @@ fn init_tim4_interrupt(){
 }
 
 
+#[no_mangle]
+fn init() {
+	rcc_ahb1enr_seti(RCC_AHB1ENR_GPIOAEN);
+	rcc_ahb1enr_seti(RCC_AHB1ENR_GPIODEN);
+	rcc_apb1enr_seti(RCC_APB1ENR_TIM4EN);
+	
+	gpiod_moder_set(MY_LED.1*2, 2, GPIO_MODER_OUT);
+	
+	init_tim4_interrupt();
+}
+
 
 #[no_mangle]
 fn main() {
-    rcc_ahb1enr_seti(RCC_AHB1ENR_GPIOAEN);
-    rcc_ahb1enr_seti(RCC_AHB1ENR_GPIODEN);
-    rcc_apb1enr_seti(RCC_APB1ENR_TIM4EN);
-
-    gpiod_moder_set(MY_LED.1*2, 2, GPIO_MODER_OUT);
-
-	init_tim4_interrupt();
-
     loop {
     }
 }

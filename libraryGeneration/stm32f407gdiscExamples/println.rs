@@ -41,6 +41,12 @@ use geranium_rt::{print, println};
 #[derive(Debug)]
 struct TupleStruct(char, u32);
 
+
+#[no_mangle]
+fn init() {
+}
+
+
 #[no_mangle]
 fn main() {
     let i = -232;

@@ -228,10 +228,14 @@ Below is the minimum code required for a project to build :
 
 extern crate geranium_rt; //required import to launch the lib.rs reset handler
 
+#[no_mangle] // required macro for lib.rs to find where the init function is
+fn init() {
+    // init
+}
 
 #[no_mangle] // required macro for lib.rs to find where the main function is
 fn main() {
-    // init
+    // additionnal init
     loop {
         // code 
     }
