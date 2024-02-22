@@ -65,6 +65,9 @@ def cmdlineParse():
     parser.add_argument("-u","--updatelibrary",
                         help="Specify whether or not to update the library crate. This option disables every other options",
                         action=argparse.BooleanOptionalAction)
+    parser.add_argument ("-s", "--scheduler",
+                        help="Generates a Scheduled project, with tasks defined in user_tasks.rs scheduled according to a given user-defined scheduling. More info on ./taskSequencing/README.md",
+                        action=argparse.BooleanOptionalAction)
 
     args = parser.parse_args()
 
@@ -113,10 +116,19 @@ def main():
 
 
         # Src folder
-        # main.rs
-        main_orig = "app-template/src/main.rs"
-        main_file = projectname + "/src/main.rs"
-        shutil.copyfile(main_orig, main_file)
+        # main.rs and user_tasks.rs
+
+        if args.scheduler:
+            user_tasks_orig = "app-template/sequencer/user_tasks.rs"
+            user_tasks_file = projectname + "/src/user_tasks.rs"
+            shutil.copyfile(user_tasks_orig, user_tasks_file)
+            main_orig = "app-template/sequencer/main_scheduled_project.rs"
+            main_file = projectname + "/src/main.rs"
+            shutil.copyfile(main_orig, main_file)
+        else:
+            main_orig = "app-template/src/main.rs"
+            main_file = projectname + "/src/main.rs"
+            shutil.copyfile(main_orig, main_file)
 
         # Cargo.toml
         toml_file = projectname + "/Cargo.toml"
@@ -128,6 +140,8 @@ def main():
             output_file.write("version = \"0.1.0\"\n\n")
             output_file.write("[dependencies]\n")
             output_file.write("geranium_rt = { path = \"../geranium_rt\" }\n")
+            if args.scheduler:
+                output_file.write("geranium_seq = { path = \"../geranium_seq\" }\n")
 
 
         # Makefile
@@ -143,6 +157,14 @@ def main():
         with open(makefile_file, 'w') as file:
             file.write(filedata)
 
+        # Scheduler Generator
+        if args.scheduler:
+            generator_origin = "taskSequencing/codeGen/main.py"
+            generator_file = projectname + "/generate-main.py"
+            shutil.copyfile(generator_origin, generator_file)
+            schedule_origin = "taskSequencing/codeGen/schedule.json"
+            schedule_file = projectname + "/schedule.json"
+            shutil.copyfile(schedule_origin, schedule_file)
 
         # Openocd
         openocdcfg_orig = openocdcfg

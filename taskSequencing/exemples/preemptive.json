@@ -1,0 +1,47 @@
+{
+"version": "v0.1",
+"type": "preemptive",
+"hyperperiod": 24,
+
+"tasks": [
+    {
+        "id": "task1",
+        "label": "Tache une",
+        "taskStruct": "Task1"
+    },
+    {
+        "id": "task2",
+        "label": "Tache deux",
+        "taskStruct": "Task2"
+    }
+],
+
+"jobs": [
+    {
+        "taskId": "task1",
+        "activations": [
+            {
+                "time": 10,
+                "duration": 2
+            },
+            {
+                "time": 14,
+                "duration": 2
+            }
+        ]
+    },
+    {
+        "taskId": "task2",
+        "activations": [
+            {
+                "time": 0,
+                "duration": 6
+            },
+            {
+                "time": 18,
+                "duration": 4
+            }
+        ]
+    }
+]
+}

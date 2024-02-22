@@ -32,7 +32,8 @@ tests/
 app/
 tmp/
 
-
+# IDE
+.vscode/
 
 
 
@@ -48,9 +49,7 @@ tmp/
 ##### PART 2 #####
 ##################
 
-
-
-
+taskSequencing/codeGen/main.rs
 
 ##################
 ##### PART 3 #####
