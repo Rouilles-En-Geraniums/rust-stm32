@@ -111,12 +111,16 @@ fn set_qtr8_high(){
 //
 
 // Function to read the sensor values for all pins
-fn qtr8_read_sensor(pins: &[(char, u32); QTR8_NUM_PINS]) -> [bool; QTR8_NUM_PINS] {
-    let mut sensor_values = [false; QTR8_NUM_PINS];
-    for i in 0..QTR8_NUM_PINS {
-        sensor_values[i] = digital_read(pins[i]) == HIGH;
-    }
-    sensor_values
+//fn qtr8_read_sensor(pins: &[(char, u32); QTR8_NUM_PINS]) -> [bool; QTR8_NUM_PINS] {
+//    let mut sensor_values = [false; QTR8_NUM_PINS];
+//    for i in 0..QTR8_NUM_PINS {
+//        sensor_values[i] = digital_read(pins[i]) == HIGH;
+//    }
+//    sensor_values
+//}
+
+fn qtr8_read_sensor(pin : (char, u32))-> bool{
+    digital_read(pin) == HIGH
 }
 
 //void turn_on_qtr8_led() { GPIO_BSRR(GPIO_QTR8_LED) = 1 << GPIO_QTR8_LED; }
@@ -200,7 +204,7 @@ fn init_tim3() {
 //
 //
 
-
+//
 //
 //int main() {
 //	printf("\nStarting...\n");
@@ -215,8 +219,7 @@ fn init_tim3() {
 //
 //    init_tim3();
 //    init_qtr8();
-//    while (42) {let line_position = qtr_read_line(&qtr8_pins, true, true); // Example call with black line and emitters on
-        println!("Line position: {}", line_position);
+//    while (42) {
 //        /*
 //         1. Turn on IR LEDs (optional).
 //         2. Set the I/O line to an output and drive it high.
@@ -224,8 +227,7 @@ fn init_tim3() {
 //         4. Make the I/O line an input (high impedance).
 //         5. Measure the time for the voltage to decay by waiting for the I/O line to go low.
 //         6. Turn off IR LEDs (optional).
-//         */let line_position = qtr_read_line(&qtr8_pins, true, true); // Example call with black line and emitters on
-        println!("Line position: {}", line_position);
+//         */
 //        printf("Starting measuring\n");
 //        turn_on_qtr8_led();
 //        set_qtr8_output();
@@ -236,8 +238,7 @@ fn init_tim3() {
 //        TIM3_CNT = 0;
 //        while (qtr8_read_sensor(QTR8_PIN0)) NOP;
 //        printf("Took %luus to discharge\n", TIM3_CNT);
-//let line_position = qtr_read_line(&qtr8_pins, true, true); // Example call with black line and emitters on
-println!("Line position: {}", line_position);
+//
 //        // Threshold (TODO we assume that after 6ms it is black)
 //        // delay_us(6000);
 //
@@ -245,20 +246,19 @@ println!("Line position: {}", line_position);
 //
 //        // wait 5 sec
 //        for (int i = 0; i < 500; i++) {
-//            delay_us(10*1000); // 10 mslet line_position = qtr_read_line(&qtr8_pins, true, true); // Example call with black line and emitters on
-        println!("Line position: {}", line_position);
+//            delay_us(10*1000); // 10 ms
 //        }
 //    }
 //
 //}
+//
 //
 #[no_mangle]
 fn main()  {
     rcc_ahb1enr_seti(RCC_AHB1ENR_GPIOAEN);
     rcc_ahb1enr_seti(RCC_AHB1ENR_GPIODEN);
     rcc_ahb1enr_seti(RCC_AHB1ENR_GPIOCEN);
-    rcc_apb1enr_seti(RCC_APB1ENR_TIM3EN);let line_position = qtr_read_line(&qtr8_pins, true, true); // Example call with black line and emitters on
-    println!("Line position: {}", line_position);
+    rcc_apb1enr_seti(RCC_APB1ENR_TIM3EN);
     init_tim3();
     init_qtr8();
     delay_init_timers();
@@ -272,10 +272,12 @@ fn main()  {
 
 
         tim3_cnt_write(0);
-        let sensor_values = qtr8_read_sensor(&qtr8_pins);
-        for i in 0..QTR8_NUM_PINS {
-            println!("Sensor {} value: {}", i, sensor_values[i]);
-        }
+         
+        //let sensor_values = qtr8_read_sensor(&qtr8_pins);
+        //for i in 0..QTR8_NUM_PINS {
+        //    println!("Sensor {} value: {}", i, sensor_values[i]);
+        //}
+        while (qtr8_read_sensor(QTR8_PIN0)) {};
         println!("Took {} us to discharge", tim3_cnt_read());
         //delay_us(6000);
 
@@ -284,7 +286,8 @@ fn main()  {
 
 
         turn_off_qtr8_led();
-        delay_us(10*1000); 
+        delay_us(10*1000);
+        
 
         
     }
