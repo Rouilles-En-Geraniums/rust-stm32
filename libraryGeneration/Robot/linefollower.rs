@@ -163,42 +163,44 @@ fn init_tim3() {
     tim3_cr1_write(TIM_CEN);
 }
 // Function to read the line position based on sensor readings
-fn qtr_read_line(pins: &[(char, u32); QTR8_NUM_PINS], black_line: bool, emitters_on: bool) -> u32 {
-    // Turn on/off the IR emitters based on the input parameter
-    if emitters_on {
-        turn_on_qtr8_led();
-    } else {
-        turn_off_qtr8_led();
-    }
-
-    let mut sensor_values = [false; QTR8_NUM_PINS];
-    for i in 0..QTR8_NUM_PINS {
-        let pin_value = digital_read(pins[i]);
-        sensor_values[i] = if pin_value == HIGH { true } else { false };
-    }
-
-    let mut weighted_sum: u32 = 0;
-    let mut sum: u32 = 0;
-
-    for i in 0..QTR8_NUM_PINS {
-        weighted_sum += (i as u32) * if sensor_values[i] { 1 } else { 0 };
-        sum += if sensor_values[i] { 1 } else { 0 };
-    }
-
-    if sum == 0 {
-        // No line detected, return extreme values
-        if black_line {
-            return 1000 * (QTR8_NUM_PINS as u32 - 1);
-        } else {
-            return 0;
-        }
-    }
-
-    (weighted_sum * 1000) / sum
-}
-
-
+//fn qtr_read_line(pins: &[(char, u32); QTR8_NUM_PINS], black_line: bool, emitters_on: bool) -> u32 {
+//    // Turn on/off the IR emitters based on the input parameter
+//    if emitters_on {
+//        turn_on_qtr8_led();
+//    } else {
+//        turn_off_qtr8_led();
+//    }
 //
+//    let mut sensor_values = [false; QTR8_NUM_PINS];
+//    for i in 0..QTR8_NUM_PINS {
+//        let pin_value = digital_read(pins[i]);
+//        sensor_values[i] = if pin_value == HIGH { true } else { false };
+//    }
+//
+//    let mut weighted_sum: u32 = 0;
+//    let mut sum: u32 = 0;
+//
+//    for i in 0..QTR8_NUM_PINS {
+//        weighted_sum += (i as u32) * if sensor_values[i] { 1 } else { 0 };
+//        sum += if sensor_values[i] { 1 } else { 0 };
+//    }
+//
+//    if sum == 0 {
+//        // No line detected, return extreme values
+//        if black_line {
+//            return 1000 * (QTR8_NUM_PINS as u32 - 1);
+//        } else {
+//            return 0;
+//        }
+//    }
+//
+//    (weighted_sum * 1000) / sum
+//}
+//
+//
+//
+
+
 //
 //int main() {
 //	printf("\nStarting...\n");
@@ -213,7 +215,8 @@ fn qtr_read_line(pins: &[(char, u32); QTR8_NUM_PINS], black_line: bool, emitters
 //
 //    init_tim3();
 //    init_qtr8();
-//    while (42) {
+//    while (42) {let line_position = qtr_read_line(&qtr8_pins, true, true); // Example call with black line and emitters on
+        println!("Line position: {}", line_position);
 //        /*
 //         1. Turn on IR LEDs (optional).
 //         2. Set the I/O line to an output and drive it high.
@@ -221,7 +224,8 @@ fn qtr_read_line(pins: &[(char, u32); QTR8_NUM_PINS], black_line: bool, emitters
 //         4. Make the I/O line an input (high impedance).
 //         5. Measure the time for the voltage to decay by waiting for the I/O line to go low.
 //         6. Turn off IR LEDs (optional).
-//         */
+//         */let line_position = qtr_read_line(&qtr8_pins, true, true); // Example call with black line and emitters on
+        println!("Line position: {}", line_position);
 //        printf("Starting measuring\n");
 //        turn_on_qtr8_led();
 //        set_qtr8_output();
@@ -232,7 +236,8 @@ fn qtr_read_line(pins: &[(char, u32); QTR8_NUM_PINS], black_line: bool, emitters
 //        TIM3_CNT = 0;
 //        while (qtr8_read_sensor(QTR8_PIN0)) NOP;
 //        printf("Took %luus to discharge\n", TIM3_CNT);
-//
+//let line_position = qtr_read_line(&qtr8_pins, true, true); // Example call with black line and emitters on
+println!("Line position: {}", line_position);
 //        // Threshold (TODO we assume that after 6ms it is black)
 //        // delay_us(6000);
 //
@@ -240,7 +245,8 @@ fn qtr_read_line(pins: &[(char, u32); QTR8_NUM_PINS], black_line: bool, emitters
 //
 //        // wait 5 sec
 //        for (int i = 0; i < 500; i++) {
-//            delay_us(10*1000); // 10 ms
+//            delay_us(10*1000); // 10 mslet line_position = qtr_read_line(&qtr8_pins, true, true); // Example call with black line and emitters on
+        println!("Line position: {}", line_position);
 //        }
 //    }
 //
@@ -251,7 +257,8 @@ fn main()  {
     rcc_ahb1enr_seti(RCC_AHB1ENR_GPIOAEN);
     rcc_ahb1enr_seti(RCC_AHB1ENR_GPIODEN);
     rcc_ahb1enr_seti(RCC_AHB1ENR_GPIOCEN);
-    rcc_apb1enr_seti(RCC_APB1ENR_TIM3EN);
+    rcc_apb1enr_seti(RCC_APB1ENR_TIM3EN);let line_position = qtr_read_line(&qtr8_pins, true, true); // Example call with black line and emitters on
+    println!("Line position: {}", line_position);
     init_tim3();
     init_qtr8();
     delay_init_timers();
@@ -269,11 +276,11 @@ fn main()  {
         for i in 0..QTR8_NUM_PINS {
             println!("Sensor {} value: {}", i, sensor_values[i]);
         }
-        //println!("Took {} us to discharge", tim3_cnt_read());
+        println!("Took {} us to discharge", tim3_cnt_read());
         //delay_us(6000);
 
-        let line_position = qtr_read_line(&qtr8_pins, true, true); // Example call with black line and emitters on
-        println!("Line position: {}", line_position);
+        //let line_position = qtr_read_line(&qtr8_pins, true, true); // Example call with black line and emitters on
+        //println!("Line position: {}", line_position);
 
 
         turn_off_qtr8_led();
