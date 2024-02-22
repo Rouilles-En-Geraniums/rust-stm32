@@ -9,6 +9,7 @@ from jinja2 import Environment, FileSystemLoader
 """
     Error codes:
         1 : Json file not found
+        2 : Argparse error
         [50-60[: Json error
             50: Json parsing error
             51: mandatory key is absent in json
@@ -21,6 +22,11 @@ UNEXPECTED_VALUE = 52
 
 DEBUG = False
 
+def dir_path(path):
+    if os.path.isdir(path):
+        return path
+    else:
+        raise argparse.ArgumentTypeError(f"template_directory:{path} is not a valid directory")
 
 def cmdlineParse():
     # Argument line parser initialisation.
@@ -35,7 +41,8 @@ def cmdlineParse():
     default="src/main.rs")
     parser.add_argument("-t", "--template_directory",
     help="Where to look for templates. Defaults to ../taskSequencing/templates/, change only if you know what you are doing.",
-    default="../taskSequencing/templates/")
+    default="../taskSequencing/templates/",
+    type=dir_path)
 
     args = parser.parse_args()
 
@@ -129,6 +136,7 @@ def parse_json(json_file_path):
 def main():
     # Parse argument line
     args = cmdlineParse()
+
     json_file = args.json_file
 
     # Parse JSON (check errors)
