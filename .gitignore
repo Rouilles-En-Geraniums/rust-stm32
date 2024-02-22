@@ -32,7 +32,8 @@ tests/
 app/
 tmp/
 
-
+# IDE
+.vscode/
 
 
 
