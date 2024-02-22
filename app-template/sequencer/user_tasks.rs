@@ -30,11 +30,11 @@
  *	GNU General Public License for more details.
 */
 
-use geranium_seq::sequencer::task::*;
-use geranium_rt::stm32rustlib::gpio::*;
-use geranium_rt::stm32rustlib::various::{HIGH, LOW};
-use geranium_rt::stm32rustlib::rcc::*;
 use geranium_rt::println;
+use geranium_rt::stm32rustlib::gpio::*;
+use geranium_rt::stm32rustlib::rcc::*;
+use geranium_rt::stm32rustlib::various::{HIGH, LOW};
+use geranium_seq::sequencer::task::*;
 
 const MY_LED: (char, u32) = ('D', 12); // Built-in green led
 
@@ -42,7 +42,7 @@ const MY_LED: (char, u32) = ('D', 12); // Built-in green led
 #[derive(Debug)]
 pub struct LedOn {
     // use variables to share state between calls
-    count: u32
+    count: u32,
 }
 
 impl Task for LedOn {
@@ -53,19 +53,19 @@ impl Task for LedOn {
     }
 
     fn new() -> LedOn {
-        LedOn {count:0}
+        LedOn { count: 0 }
     }
 
     fn init(&mut self) {
         println!("init {:?}", self);
         rcc_ahb1enr_seti(RCC_AHB1ENR_GPIODEN);
-        gpiod_moder_set(MY_LED.1*2, 2, GPIO_MODER_OUT);
+        gpiod_moder_set(MY_LED.1 * 2, 2, GPIO_MODER_OUT);
     }
 }
 
 #[derive(Debug)]
 pub struct LedOff {
-    icount: i32
+    icount: i32,
 }
 
 impl Task for LedOff {
@@ -76,7 +76,7 @@ impl Task for LedOff {
     }
 
     fn new() -> LedOff {
-        LedOff {icount: 0}
+        LedOff { icount: 0 }
     }
 
     fn init(&mut self) {
