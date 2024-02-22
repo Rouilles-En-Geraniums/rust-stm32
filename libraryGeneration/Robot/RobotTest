@@ -1,0 +1,121 @@
+#![no_std]
+#![no_main]
+
+extern crate core ; 
+extern  crate geranium_rt;
+
+use geranium_rt::stm32rustlib::gpio::*;
+use geranium_rt::stm32rustlib::rcc::*;
+use geranium_rt::stm32rustlib::tim::*;
+use geranium_rt::stm32rustlib::delay::*;
+use geranium_rt::stm32rustlib::various::*;
+use geranium_rt::{print, println};
+
+
+
+//#define _GPIONUM(c) ((c) - 'A')
+//#define GPIO_QTR8_SENSOR _GPIONUM('D')
+//// From left to right
+//#define QTR8_PIN0 7 // PD7
+const QTR8_PIN0: (char,u32) = ('D', 7);
+//#define QTR8_PIN1 5
+const QTR8_PIN1: (char,u32) = ('D', 5);
+//#define QTR8_PIN2 3
+const QTR8_PIN2: (char,u32) = ('D', 3);
+//#define QTR8_PIN3 1
+const QTR8_PIN3: (char,u32) = ('D', 1);
+//#define QTR8_PIN4 0
+const QTR8_PIN4: (char,u32) = ('D', 0);
+//#define QTR8_PIN5 2
+const QTR8_PIN5: (char,u32) = ('D', 2);
+//#define QTR8_PIN6 4
+const QTR8_PIN6: (char,u32) = ('D', 4);
+//#define QTR8_PIN7 6
+const QTR8_PIN7: (char,u32) = ('D', 6);
+
+//
+//#define QTR8_NUM_PINS 8
+const QTR8_NUM_PINS: usize = 8;
+//
+//#define GPIO_QTR8_LED _GPIONUM('C')
+const GPIO_QTR8_LED: (char,u32) = ('C', 15);
+//
+//// From left to right
+const qtr8_pins: [(char,u32); 8] = [QTR8_PIN0, QTR8_PIN1, QTR8_PIN2, QTR8_PIN3, QTR8_PIN4, QTR8_PIN5, QTR8_PIN6, QTR8_PIN7];
+
+
+fn set_qtr8_input(){
+    for i in 0..=QTR8_NUM_PINS-1 {
+        gpiod_moder_set(qtr8_pins[i].1*2,2,GPIO_MODER_IN);
+        gpiod_pupdr_set(qtr8_pins[i].1*2,2,GPIO_PUPDR_PD);
+    }
+}
+
+
+fn set_qtr8_output(){
+    for i in 0..=QTR8_NUM_PINS-1{
+        gpiod_moder_set(qtr8_pins[i].1*2,2,GPIO_MODER_OUT);
+    }
+}
+
+
+fn set_qtr8_high(){
+    for i in 0..=QTR8_NUM_PINS-1{
+        digital_write(qtr8_pins[i],HIGH);
+    }
+}
+
+fn qtr8_read_sensor() -> u32{
+    turn_on_qtr8_led();
+    set_qtr8_output();
+    set_qtr8_high();
+    delay_us(12);
+    set_qtr8_input();
+    delay_us(6000);
+    let sensor_read: u32 = 0x00000000;//?!
+    let pos: u8 = 0 ; 
+    let active: u8 = 0;
+    //condition sur les pins 
+
+
+
+    turn_off_qtr8_led();
+    //update actives .....
+
+
+
+
+}
+//fn qtr8_read_sensor(pin : (char, u32))-> bool{
+//    digital_read(pin) == HIGH
+//}
+
+fn turn_on_qtr8_led(){ digital_write(GPIO_QTR8_LED,HIGH);}
+fn turn_off_qtr8_led(){ digital_write(GPIO_QTR8_LED,LOW);}
+
+
+fn init_qtr8(){
+    gpioc_moder_set(GPIO_QTR8_LED.1*2,2,GPIO_MODER_OUT);
+    turn_off_qtr8_led();
+    set_qtr8_output(); // done in led
+
+}
+//
+
+const DELAY_US_PSC: u32 = 42;
+const DELAY_US_ARR: u32 = 0xffff;
+
+fn init_tim3() {
+    tim3_cr1_write(0);
+    tim3_psc_write(DELAY_US_PSC);
+    tim3_arr_write(DELAY_US_ARR);
+    tim3_cr1_write(TIM_CEN);
+}
+#[no_mangle]
+fn main()  {
+    rcc_ahb1enr_seti(RCC_AHB1ENR_GPIOAEN);
+    rcc_ahb1enr_seti(RCC_AHB1ENR_GPIODEN);
+    rcc_ahb1enr_seti(RCC_AHB1ENR_GPIOCEN);
+    rcc_apb1enr_seti(RCC_APB1ENR_TIM3EN);
+    
+}

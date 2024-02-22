@@ -1,21 +1,9 @@
-///* Embedded Systems - Exercise 15 */
-//
-//#include <tinyprintf.h>
-//#include <stm32f4/rcc.h>
-//#include <stm32f4/gpio.h>
-//#include <stm32f4/nvic.h>
-//#include <stm32f4/exti.h>
-//#include <stm32f4/syscfg.h>
-//#include <stm32f4/tim.h>
-//#include <stm32f4/adc.h>
-//
-//
-
 
 #![no_std]
 #![no_main]
 
-
+extern crate core ; 
+extern crate geranium_rt; 
 
 use geranium_rt::stm32rustlib::exti::*;
 use geranium_rt::stm32rustlib::gpio::*;
@@ -26,8 +14,6 @@ use geranium_rt::stm32rustlib::delay::*;
 use geranium_rt::stm32rustlib::various::*;
 use geranium_rt::stm32rustlib::system::*;
 use geranium_rt::stm32rustlib::geranium_print::*;
-use core::format_args;
-pub mod stm32rustlib;
 
 //// GPIOD
 //#define MR_F 0
@@ -51,13 +37,13 @@ const PWM_PSC: u32 = 13;
 const PWM_ARR: u32 = 60000;
 //
 //#define MAX_SPEED 256 //puissance de 2 de préférence
-const MAX_SPEED:u32 = 256
+const MAX_SPEED:u32 = 256;
 //
 
 //inline void reset_speed_mr(){
 //	TIM3_CCR2 = 0;
 //}
-fn reset_speed_mr-(){
+fn reset_speed_mr(){
     tim3_ccr2_seti(0);
 }
 //
@@ -81,7 +67,7 @@ fn reset_speed(){
 //	TIM3_CCR2 = PWM_ARR * x / MAX_SPEED;
 //}
 //
-fn set_speed_pwm_mr(u32 x){
+fn set_speed_pwm_mr(x: u32){
     tim3_ccr2_seti(PWM_ARR * x / MAX_SPEED);
 }
 
@@ -91,22 +77,22 @@ fn set_speed_pwm_mr(u32 x){
 //	set_speed_pwm_mr(x);
 //    GPIOD_BSRR = (1 << MR_F) + (1 << (MR_B + 16));
 //}
-fn set_speed_mr_positive(u32 x){
-    gpiod_bsrr_write(1 << MR_F.1) + (1 << (MR_B.1 + 16))
+fn set_speed_mr_positive(x: u32){
+    gpiod_bsrr_write((1 << MR_F.1) + (1 << (MR_B.1 + 16)))
 }
 //
 //void set_speed_mr_negative(int x){
 //	set_speed_pwm_mr(x);
 //    GPIOD_BSRR = (1 << MR_B) + (1 << (MR_F + 16));
 //}
-fn set_speed_mr_negative(u32 x){
-    gpiod_bsrr_write(1 << MR_B.1) + (1 << (MR_F.1 + 16))
+fn set_speed_mr_negative(x: u32){
+    gpiod_bsrr_write((1 << MR_B.1) + (1 << (MR_F.1 + 16)))
 }
 //
 //void set_speed_pwm_ml(int x){
 //	TIM3_CCR1 = PWM_ARR * x / MAX_SPEED;
 //}
-fn set_speed_pwm_ml(u32 x){
+fn set_speed_pwm_ml(x: u32){
     tim3_ccr1_seti(PWM_ARR * x / MAX_SPEED);
 }
 //
@@ -114,16 +100,16 @@ fn set_speed_pwm_ml(u32 x){
 //	set_speed_pwm_ml(x);
 //    GPIOD_BSRR = (1 << ML_F) + (1 << (ML_B + 16));
 //}
-fn set_speed_ml_positive(u32 x){
-    gpiod_bsrr_write(1 << ML_F.1) + (1 << (ML_B.1 + 16))
+fn set_speed_ml_positive(x: u32){
+    gpiod_bsrr_write((1 << ML_F.1) + (1 << (ML_B.1 + 16)))
 }
 //
 //void set_speed_ml_negative(int x){
 //	set_speed_pwm_ml(x);
 //    GPIOD_BSRR = (1 << ML_B) + (1 << (ML_F + 16));
 //}
-fn set_speed_ml_negative(u32 x){
-    gpiod_bsrr_write(1 << ML_B.1) + (1 << (ML_F.1 + 16))
+fn set_speed_ml_negative(x: u32){
+    gpiod_bsrr_write((1 << ML_B.1) + (1 << (ML_F.1 + 16)))
 }
 //
 ////x de -MAX_SPEED+1 à MAX_SPEED-1
@@ -134,9 +120,9 @@ fn set_speed_ml_negative(u32 x){
 //		set_speed_mr_positive(x);
 //	}
 //}
-fn set_speed_mr(u32 x){
+fn set_speed_mr(x: u32){
     if x < 0  {
-        set_speed_mr_negative(-x);
+        set_speed_mr_negative((0 as u32)-x);
     }
     else{
         set_speed_mr_positive(x);
@@ -151,9 +137,9 @@ fn set_speed_mr(u32 x){
 //		set_speed_ml_positive(x);
 //	}
 //}
-fn set_speed_ml(u32 x){
+fn set_speed_ml(x: u32){
     if x < 0  {
-        set_speed_ml_negative(-x);
+        set_speed_ml_negative((0 as u32)-x);
     }
     else{
         set_speed_ml_positive(x);
@@ -165,7 +151,7 @@ fn set_speed_ml(u32 x){
 //	set_speed_ml_negative(x);
 //	set_speed_mr_positive(x);
 //}
-fn turn_left(u32 x){
+fn turn_left(x: u32){
     set_speed_ml_negative(x);
     set_speed_mr_positive(x);
 }
@@ -174,7 +160,7 @@ fn turn_left(u32 x){
 //	set_speed_mr_negative(x);
 //	set_speed_ml_positive(x);
 //}
-fn turn_right(u32 x){
+fn turn_right(x: u32){
 	set_speed_mr_negative(x);
 	set_speed_ml_positive(x);
 }
