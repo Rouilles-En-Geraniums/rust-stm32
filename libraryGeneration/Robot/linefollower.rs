@@ -269,10 +269,10 @@ fn main()  {
         for i in 0..QTR8_NUM_PINS {
             println!("Sensor {} value: {}", i, sensor_values[i]);
         }
-        println!("Took {} us to discharge", tim3_cnt_read());
+        //println!("Took {} us to discharge", tim3_cnt_read());
         //delay_us(6000);
 
-        let line_position = qtr_read_line(&qtr8_pins, true, true); // Example call with white line and emitters on
+        let line_position = qtr_read_line(&qtr8_pins, true, true); // Example call with black line and emitters on
         println!("Line position: {}", line_position);
 
 
