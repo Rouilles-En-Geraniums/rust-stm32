@@ -12,8 +12,6 @@ from your point of view the entry point is user_tasks.rs, as it's where the sche
 */
 
 use geranium_rt::println;
-use core::format_args;
-use core::concat;
 
 #[no_mangle]
 fn main(){
