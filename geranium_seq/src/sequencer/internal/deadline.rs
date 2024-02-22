@@ -16,7 +16,7 @@ pub struct Job<'a>{
 
 // If task runs longer than max_time this function panic!()
 pub fn run_task(ordo_task: &mut OrdoTask, max_time: u32){
-    seq_timer_arm_ms_interrupt(max_time);
+    seq_timer_arm_us_interrupt(max_time);
     ordo_task.task.execute();
     seq_disable_arm_interrupt();
     seq_timer_timeout();
@@ -31,18 +31,18 @@ pub fn run_sequencer(jobs: &[Job], hyperperiod: u32) -> !{
     if jobs.len() == 1 {
         let job = &jobs[0];
         loop {
-            seq_delay_ms(job.start);
+            seq_delay_us(job.start);
             let mut ordo_task = job.ordo_task.borrow_mut();
             let duration = ordo_task.duration;
 
             run_task(&mut ordo_task, duration);
-            seq_delay_ms(hyperperiod - (job.start + duration));
+            seq_delay_us(hyperperiod - (job.start + duration));
         }
     }
 
     // At least 2 jobs
     loop {
-        seq_delay_ms(jobs[0].start);
+        seq_delay_us(jobs[0].start);
 
         let mut i: usize = 0;
         while i < jobs.len() - 1 {
@@ -52,7 +52,7 @@ pub fn run_sequencer(jobs: &[Job], hyperperiod: u32) -> !{
             let duration = ordo_task.duration;
 
             run_task(&mut ordo_task, duration);
-            seq_delay_ms(next_job.start - (job.start + duration));
+            seq_delay_us(next_job.start - (job.start + duration));
 
             i += 1;
         }
@@ -61,7 +61,7 @@ pub fn run_sequencer(jobs: &[Job], hyperperiod: u32) -> !{
         let duration = ordo_task.duration;
 
         run_task(&mut ordo_task, duration);
-        seq_delay_ms(hyperperiod - (job.start + duration));
+        seq_delay_us(hyperperiod - (job.start + duration));
     }
 }
 
