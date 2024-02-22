@@ -3,24 +3,25 @@ use core::cell::RefCell;
 use crate::sequencer::task::Task;
 use geranium_rt::stm32rustlib::seq::*;
 
-
-pub struct OrdoTask <'a>{
-    pub task: &'a mut dyn Task
+pub struct OrdoTask<'a> {
+    pub task: &'a mut dyn Task,
 }
 
-pub struct Job<'a>{
+pub struct Job<'a> {
     pub ordo_task: &'a RefCell<OrdoTask<'a>>,
     pub start: u32,
 }
 
-pub fn run_task(ordo_task: &mut OrdoTask, max_time: u32){
+pub fn run_task(ordo_task: &mut OrdoTask, max_time: u32) {
     seq_timer_arm_ms(max_time);
     ordo_task.task.execute();
     seq_timer_timeout();
 }
 
-pub fn run_sequencer(jobs: &[Job], hyperperiod: u32) -> !{
-    if jobs.is_empty() { loop {} }
+pub fn run_sequencer(jobs: &[Job], hyperperiod: u32) -> ! {
+    if jobs.is_empty() {
+        loop {}
+    }
 
     seq_delay_init_timers();
 
@@ -46,12 +47,10 @@ pub fn run_sequencer(jobs: &[Job], hyperperiod: u32) -> !{
         }
         let job = &jobs[i];
         run_task(&mut job.ordo_task.borrow_mut(), hyperperiod - job.start);
-
     }
 }
 
-
-pub fn init_tasks(ordo_tasks: &mut [& RefCell<OrdoTask>]) {
+pub fn init_tasks(ordo_tasks: &mut [&RefCell<OrdoTask>]) {
     for ordo_task in ordo_tasks.iter_mut() {
         ordo_task.borrow_mut().task.init();
     }

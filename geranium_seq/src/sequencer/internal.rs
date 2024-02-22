@@ -1,2 +1,2 @@
-pub mod strict;
 pub mod deadline;
+pub mod strict;

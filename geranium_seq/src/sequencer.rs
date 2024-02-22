@@ -1,2 +1,2 @@
-pub mod task;
 pub mod internal;
+pub mod task;
