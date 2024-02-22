@@ -14,7 +14,7 @@ pub struct Job<'a>{
 }
 
 pub fn run_task(ordo_task: &mut OrdoTask, max_time: u32){
-    seq_timer_arm_us(max_time);
+    seq_timer_arm_ms(max_time);
     ordo_task.task.execute();
     seq_timer_timeout();
 }
@@ -27,14 +27,14 @@ pub fn run_sequencer(jobs: &[Job], hyperperiod: u32) -> !{
     if jobs.len() == 1 {
         let job = &jobs[0];
         loop {
-            seq_delay_us(job.start);
+            seq_delay_ms(job.start);
             run_task(&mut job.ordo_task.borrow_mut(), hyperperiod - job.start);
         }
     }
 
     // At least 2 jobs
     loop {
-        seq_delay_us(jobs[0].start);
+        seq_delay_ms(jobs[0].start);
 
         let mut i: usize = 0;
         while i < jobs.len() - 1 {
