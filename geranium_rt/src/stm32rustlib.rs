@@ -7,6 +7,7 @@ pub mod gpio;
 pub mod nvic;
 pub mod rcc;
 pub mod syscfg;
+pub mod systick;
 pub mod tim;
 pub mod delay;
 pub mod geranium_print;

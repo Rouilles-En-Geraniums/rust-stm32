@@ -76,6 +76,7 @@ pub static EXCEPTIONS: [Vector; 14] = [
     Vector { reserved: 0 }, // 13 - Reserved
     Vector { handler: DefaultExceptionHandler }, // 14 - PendSV (pendable service call)
     Vector { handler: DefaultExceptionHandler }, // 15 - SysTick (System tick timer)
+    //Vector { handler: DefaultSystickHandler }, // 15 - SysTick (System tick timer)
 ];
 
 
@@ -219,6 +220,15 @@ pub extern "C" fn DefaultExceptionHandler() {
     loop {}
 }
 
+
+#[no_mangle]
+pub extern "C" fn DefaultSystickHandler() {
+    println!("Interrupt triggered");
+    extern "Rust" {
+        fn systick_handler();
+    }
+    unsafe { systick_handler(); }
+}
 
 #[panic_handler]
 fn panic(_panic: &PanicInfo<'_>) -> ! {

@@ -39,12 +39,15 @@ const PSC_MS: u32 = APB1_CLK / 1_000;
 const PSC_US: u32 = APB1_CLK / 1_000_000;
 
 
+static mut time_ms: u32 = 0;
+
 /**
  * This function must be called once before using any of the delay functions.
  */
 #[inline(always)]
 pub fn delay_init_timers(){
     rcc_apb1enr_seti(RCC_APB1ENR_TIM2EN);
+    unsafe { time_ms = 0; } // safety measure
 }
 
 #[inline(always)]
