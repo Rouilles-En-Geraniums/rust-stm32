@@ -42,110 +42,75 @@ use crate::stm32rustlib::various::*;
 use crate::stm32rustlib::syscfg::*;
 use crate::stm32rustlib::gdb::*;
 
+use core::ptr::read_volatile;
+//use core::ptr::write_volatile;
 
+#[derive(Copy,Clone)]
 pub union Vector {
     reserved: u32,
     handler: unsafe extern "C" fn(),
 }
 
-
 extern "C" {
-    static mut _data_flash: u8;
-    static mut _data_begin: u8;
-    static mut _data_end: u8;
-    static mut _bss_begin: u8;
-    static mut _bss_end: u8;
-    static mut _stack_end: u8;
+    fn NMI();
+    fn HardFault();
+    fn MemManage();
+    fn BusFault();
+    fn UsageFault();
+    fn SVCall();
+    fn PendSV();
+    fn SysTick();
 }
-
 
 #[link_section = ".vector_table.exceptions"]
 #[no_mangle]
 pub static EXCEPTIONS: [Vector; 14] = [
-    Vector { handler: DefaultExceptionHandler },  // 2 - NMI (non maskable interrupt)
-    Vector { handler: DefaultExceptionHandler }, // 3 - Hard fault
-    Vector { handler: DefaultExceptionHandler }, // 4 - Memmanage fault (MPU violation or access to illegal location)
-    Vector { handler: DefaultExceptionHandler }, // 5 - Bus fault (bus error)
-    Vector { handler: DefaultExceptionHandler }, // 6 - Usage fault (program error eg acces coprocessor)
+    Vector { handler: NMI },  // 2 - NMI (non maskable interrupt)
+    Vector { handler: HardFault }, // 3 - Hard fault
+
+    Vector { handler: MemManage }, // 4 - Memmanage fault (MPU violation or access to illegal location)
+    Vector { handler: BusFault }, // 5 - Bus fault (bus error)
+    Vector { handler: UsageFault }, // 6 - Usage fault (program error eg acces coprocessor)
     Vector { reserved: 0 }, // 7 - Reserved
+
     Vector { reserved: 0 }, // 8 - Reserved
     Vector { reserved: 0 }, // 9 - Reserved
     Vector { reserved: 0 }, // 10 - Reserved
-    Vector { handler: DefaultExceptionHandler }, // 11 - SVC (Supervisor call)
+    Vector { handler: SVCall }, // 11 - SVC (Supervisor call)
+    
     Vector { reserved: 0 }, // 12 - Debug monitor (BP, WP, external debug requests)
     Vector { reserved: 0 }, // 13 - Reserved
-    Vector { handler: DefaultExceptionHandler }, // 14 - PendSV (pendable service call)
-    Vector { handler: DefaultExceptionHandler }, // 15 - SysTick (System tick timer)
-    //Vector { handler: DefaultSystickHandler }, // 15 - SysTick (System tick timer)
+    Vector { handler: PendSV }, // 14 - PendSV (pendable service call)
+    //Vector { handler: DefaultExceptionHandler }, // 15 - SysTick (System tick timer)
+    Vector { handler: SysTick }, // 15 - SysTick (System tick timer)
 ];
 
 
 #[link_section = ".vector_table.custom_exceptions"]
 #[no_mangle]
-pub static CUSTOM_EXCEPTIONS: [Vector; 44] = [
-    Vector { handler: DefaultExceptionHandler }, // 16
-    Vector { handler: DefaultExceptionHandler }, // 17
-    Vector { handler: DefaultExceptionHandler }, // 18
-    Vector { handler: DefaultExceptionHandler }, // 19
-    Vector { handler: DefaultExceptionHandler }, // 21
-    Vector { handler: DefaultExceptionHandler }, // 22
-    Vector { handler: DefaultExceptionHandler }, // 23
-    Vector { handler: DefaultExceptionHandler }, // 24
-    Vector { handler: DefaultExceptionHandler }, // 25
-    Vector { handler: DefaultExceptionHandler }, // 26
-    Vector { handler: DefaultExceptionHandler }, // 27
-    Vector { handler: DefaultExceptionHandler }, // 28
-    Vector { handler: DefaultExceptionHandler }, // 29
-    Vector { handler: DefaultExceptionHandler }, // 30
-    Vector { handler: DefaultExceptionHandler }, // 31
-    Vector { handler: DefaultExceptionHandler }, // 32
-    Vector { handler: DefaultExceptionHandler }, // 33
-    Vector { handler: DefaultExceptionHandler }, // 34
-    Vector { handler: DefaultExceptionHandler }, // 35
-    Vector { handler: DefaultExceptionHandler }, // 36
-    Vector { handler: DefaultExceptionHandler }, // 37
-    Vector { handler: DefaultExceptionHandler }, // 38
-    Vector { handler: DefaultExceptionHandler }, // 39
-    Vector { handler: DefaultExceptionHandler }, // 40
-    Vector { handler: DefaultExceptionHandler }, // 41
-    Vector { handler: DefaultExceptionHandler }, // 42
-    Vector { handler: DefaultExceptionHandler }, // 43
-    Vector { handler: DefaultExceptionHandler }, // 44
-    Vector { handler: DefaultExceptionHandler }, // 45
-    Vector { handler: DefaultExceptionHandler }, // 46
-    Vector { handler: DefaultExceptionHandler }, // 47
-    Vector { handler: DefaultExceptionHandler }, // 48
-    Vector { handler: DefaultExceptionHandler }, // 49
-    Vector { handler: DefaultExceptionHandler }, // 50
-    Vector { handler: DefaultExceptionHandler }, // 51
-    Vector { handler: DefaultExceptionHandler }, // 52
-    Vector { handler: DefaultExceptionHandler }, // 53
-    Vector { handler: DefaultExceptionHandler }, // 54
-    Vector { handler: DefaultExceptionHandler }, // 55
-    Vector { handler: DefaultExceptionHandler }, // 56
-    Vector { handler: DefaultExceptionHandler }, // 57
-    Vector { handler: DefaultExceptionHandler }, // 58
-    Vector { handler: DefaultExceptionHandler }, // 59
-    Vector { handler: DefaultExceptionHandler }, // 60
-];
+pub static CUSTOM_EXCEPTIONS: [Vector; 256-16] = [Vector { handler: DefaultExceptionHandler}; 256-16];
 
 
 #[link_section = ".vector_table.reset_vector"]
 #[no_mangle]
 pub static RESET_VECTOR: unsafe extern "C" fn() -> ! = HandlerReset;
 
-
 // Reset Handler  first (and only) thing called when rebooting or starting up
 #[no_mangle]
 pub unsafe extern "C" fn HandlerReset() -> ! {
-	// configure clock
-	// HSI clock = 16 MHz
-	// HSE_VALUE <- 8 000 000 (8MHz - crystal frequency)
-	// PLL_M <- 8 (/8 - 1MHz PLL)
-	// MCK = (HS[EI]_CK / PLL_M) * PLL_N / PLL_P
-	//	MCK		APB1	APB2	PLL_M	PLL_N	PLL_P	PLL_Q
-	//	168		42		84		8		336		2		7
 
+    extern "C" {
+        static mut _vectab_begin: u8;
+        static mut _vectab_end: u8;
+        static mut _vectab_in_ram: u8;
+        static mut _data_flash: u8;
+        static mut _data_begin: u8;
+        static mut _data_end: u8;
+        static mut _bss_begin: u8;
+        static mut _bss_end: u8;
+        static mut _stack_end: u8;
+    }
+    
 	// configure HSI clock
     rcc_cr_seti(RCC_CR_HSION);
     while (rcc_cr_read() & RCC_CR_HSIRDY) == 0 {}
@@ -185,8 +150,12 @@ pub unsafe extern "C" fn HandlerReset() -> ! {
     rcc_cr_seti(!RCC_CR_HSION);
 
 	// rmap SRAM at 0
-    syscfg_memrmp_write(0b11);
-
+    syscfg_memrmp_write(0b11); 
+    
+    // copy vector table from FLASH to RAM
+    let count0 = &_vectab_end as *const u8 as usize - &_vectab_begin as *const u8 as usize;
+    ptr::copy_nonoverlapping(&_vectab_begin as *const u8, &mut _vectab_in_ram as *mut u8, count0);
+    
 	// copy data from FLASH to RAM
     let count1 = &_data_end as *const u8 as usize - &_data_begin as *const u8 as usize;
     ptr::copy_nonoverlapping(&_data_flash as *const u8, &mut _data_begin as *mut u8, count1);
@@ -199,6 +168,7 @@ pub unsafe extern "C" fn HandlerReset() -> ! {
 	// console configuration
     dcb_demcr_seti(DCB_DEMCR_TRCENA);
     itm_ter_seti(ITM_TRACE_EN_PORT0);
+    
 
     extern "Rust" {
         fn init();
@@ -220,13 +190,12 @@ pub extern "C" fn DefaultExceptionHandler() {
     loop {}
 }
 
-
+extern "Rust" {
+    fn systick_handler();
+}
 #[no_mangle]
 pub extern "C" fn DefaultSystickHandler() {
-    println!("Interrupt triggered");
-    extern "Rust" {
-        fn systick_handler();
-    }
+    //println!("Interrupt triggered");
     unsafe { systick_handler(); }
 }
 

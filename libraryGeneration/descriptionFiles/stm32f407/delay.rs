@@ -33,13 +33,13 @@
 use crate::stm32rustlib::rcc::*;
 use crate::stm32rustlib::tim::*;
 use crate::stm32rustlib::system::*;
-
+use crate::stm32rustlib::systick::*;
+use crate::println;
 
 const PSC_MS: u32 = APB1_CLK / 1_000;
 const PSC_US: u32 = APB1_CLK / 1_000_000;
 
-
-static mut time_ms: u32 = 0;
+static mut TIME_MS: u32 = 0;
 
 /**
  * This function must be called once before using any of the delay functions.
@@ -47,7 +47,31 @@ static mut time_ms: u32 = 0;
 #[inline(always)]
 pub fn delay_init_timers(){
     rcc_apb1enr_seti(RCC_APB1ENR_TIM2EN);
-    unsafe { time_ms = 0; } // safety measure
+    unsafe { TIME_MS = 0; } // safety measure
+    
+    println!("init timer");
+    
+    systick_rvr_write(MCK_CLK/1000-1);//RVR : Reload Value Register
+    //systick_rvr_write(18_750);//RVR : Reload Value Register
+    println!("rvr:{:#032b}",systick_rvr_read()); 
+
+    systick_cvr_write(0x00);
+    println!("cvr:{:#032b}",systick_cvr_read());
+
+    systick_csr_seti(SYSTICK_CSR_TICKINT);
+    systick_csr_seti(SYSTICK_CSR_CLKSOURCE);
+
+    systick_csr_seti(SYSTICK_CSR_ENABLE);
+    println!("csr:{:#032b}",systick_csr_read());
+}
+
+#[no_mangle]
+pub fn systick_handler(){
+    unsafe { TIME_MS += 1; }
+}
+
+pub fn millis() -> u32 {
+    unsafe { TIME_MS }
 }
 
 #[inline(always)]
@@ -57,7 +81,7 @@ pub fn delay_ms(ms: u32) {
     if ms == 0 { return ; }
     tim2_cr1_seti(!TIM_CEN);
     tim2_psc_write(PSC_MS - 1);
-    tim2_arr_write(ms);
+    tim2_arr_write(ms - 1);
     tim2_egr_write(TIM_UG);
     tim2_sr_write(0);
     tim2_cr1_seti(TIM_CEN);
@@ -75,7 +99,7 @@ pub fn delay_us(us: u32) {
     if us == 0 { return ; }
     tim2_cr1_seti(!TIM_CEN);
     tim2_psc_write(PSC_US - 1);
-    tim2_arr_write(us);
+    tim2_arr_write(us - 1);
     tim2_egr_write(TIM_UG);
     tim2_sr_write(0);
     tim2_cr1_seti(TIM_CEN);
