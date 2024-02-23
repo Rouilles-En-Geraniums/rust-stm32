@@ -39,25 +39,19 @@ use crate::stm32rustlib::gdb::*;
 
 #[macro_export]
 macro_rules! print {
-    ($s:expr) => {
-        $crate::stm32rustlib::geranium_print::print(format_args!($s))
-    };
-    ($($tt:tt)*) => {
-        $crate::stm32rustlib::geranium_print::print(format_args!($($tt)*))
-    };
+    ($($arg:tt)*) => {{
+        $crate::stm32rustlib::geranium_print::print(format_args!($($arg)*));
+    }};
 }
 
 #[macro_export]
 macro_rules! println {
     () => {
-        $crate::stm32rustlib::geranium_print::print(format_args!("\n"))
+        $crate::stm32rustlib::geranium_print::print("\n");
     };
-    ($s:expr) => {
-        $crate::stm32rustlib::geranium_print::print(format_args!(concat!($s, "\n")))
-    };
-    ($s:expr, $($tt:tt)*) => {
-        $crate::stm32rustlib::geranium_print::print(format_args!(concat!($s, "\n"), $($tt)*))
-    };
+    ($($arg:tt)*) => {{
+        $crate::stm32rustlib::geranium_print::println(format_args!($($arg)*));
+    }};
 }
 
 pub fn print(args: Arguments<'_>) {
