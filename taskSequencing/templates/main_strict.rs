@@ -33,12 +33,18 @@
 */
 
 extern crate geranium_rt;
+extern crate geranium_seq;
 use core::cell::RefCell;
 
 mod user_tasks;
 use user_tasks::*;
 use geranium_seq::sequencer::internal::strict::*;
 use geranium_seq::sequencer::task::Task;
+
+#[no_mangle]
+fn init(){
+    
+}
 
 #[no_mangle]
 fn main() {

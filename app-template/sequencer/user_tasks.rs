@@ -30,11 +30,25 @@
  *	GNU General Public License for more details.
 */
 
+use core::cell::UnsafeCell;
+
 use geranium_rt::println;
 use geranium_rt::stm32rustlib::gpio::*;
 use geranium_rt::stm32rustlib::rcc::*;
 use geranium_rt::stm32rustlib::various::{HIGH, LOW};
 use geranium_seq::sequencer::task::*;
+use geranium_seq::sequencer::shared_container::SharedContainer;
+
+struct Globals {
+    gcount: u32
+}
+impl Globals {
+    fn init(&mut self){
+        self.gcount = 0xFFFFFF;
+    }
+}
+
+static GLOBALS: SharedContainer<Globals> = SharedContainer(UnsafeCell::new(Globals { gcount: 0 }));
 
 const MY_LED: (char, u32) = ('D', 12); // Built-in green led
 
@@ -50,6 +64,11 @@ impl Task for LedOn {
         digital_write(MY_LED, HIGH);
         self.count += 1;
         println!("{:?}, count: {}", self, self.count);
+
+        let g: &mut Globals = GLOBALS.borrow_mut();
+        g.gcount -= 1;
+
+        println!("count: {}", g.gcount);
     }
 
     fn new() -> LedOn {
@@ -60,6 +79,8 @@ impl Task for LedOn {
         println!("init {:?}", self);
         rcc_ahb1enr_seti(RCC_AHB1ENR_GPIODEN);
         gpiod_moder_set(MY_LED.1 * 2, 2, GPIO_MODER_OUT);
+
+        GLOBALS.borrow_mut().init();
     }
 }
 
