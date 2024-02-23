@@ -1,0 +1,31 @@
+{
+"version": "v0.1",
+"type": "cooperative",
+"hyperperiod": 12,
+
+"tasks": [
+    {
+        "id": "task1",
+        "label": "Tache une",
+        "taskStruct": "Task1",
+        "duration": 3
+    },
+    {
+        "id": "task2",
+        "label": "Tache deux",
+        "taskStruct": "Task2",
+        "duration": 4
+    }
+],
+
+"jobs": [
+    {
+        "taskId": "task1",
+        "startTime": 0
+    },
+    {
+        "taskId": "task2",
+        "startTime": 4
+    }
+]
+}

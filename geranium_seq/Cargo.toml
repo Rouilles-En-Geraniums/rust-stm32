@@ -1,0 +1,15 @@
+[package]
+authors = ["RouillesEnGeraniumTM"]
+edition = "2021"
+readme = "README.md"
+name = "geranium_seq"
+version = "0.1.0"
+
+[dependencies]
+geranium_rt = { path = "../geranium_rt" }
+
+[profile.dev]
+panic = "abort"
+
+[profile.release]
+panic = "abort"

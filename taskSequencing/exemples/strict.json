@@ -1,0 +1,30 @@
+{
+    "version": "v0.1",
+    "type": "strict",
+    "hyperperiod": 12,
+    
+    "tasks": [
+        {
+            "id": "task1",
+            "label": "Tache une",
+            "taskStruct": "Task1"
+        },
+        {
+            "id": "task2",
+            "label": "Tache deux",
+            "taskStruct": "Task2"
+        }
+    ],
+    
+    "jobs": [
+        {
+            "taskId": "task1",
+            "startTime": 0
+        },
+        {
+            "taskId": "task2",
+            "startTime": 4
+        }
+    ]
+}
+    
