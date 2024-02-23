@@ -14,6 +14,11 @@ from your point of view the entry point is user_tasks.rs, as it's where the sche
 use geranium_rt::println;
 
 #[no_mangle]
+fn init(){
+    
+}
+
+#[no_mangle]
 fn main(){
     println!("Hello world (I am a placeholder)");
 }
