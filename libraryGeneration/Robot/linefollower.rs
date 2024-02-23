@@ -17,21 +17,21 @@ use geranium_rt::{print, println};
 //#define GPIO_QTR8_SENSOR _GPIONUM('D')
 //// From left to right
 //#define QTR8_PIN0 7 // PD7
-const QTR8_PIN0: (char,u32) = ('D', 7);
+const QTR8_PIN0: (char,u32) = ('D', 10);
 //#define QTR8_PIN1 5
 const QTR8_PIN1: (char,u32) = ('D', 5);
 //#define QTR8_PIN2 3
-const QTR8_PIN2: (char,u32) = ('D', 3);
+const QTR8_PIN2: (char,u32) = ('D', 7);
 //#define QTR8_PIN3 1
-const QTR8_PIN3: (char,u32) = ('D', 1);
+const QTR8_PIN3: (char,u32) = ('D', 5);
 //#define QTR8_PIN4 0
-const QTR8_PIN4: (char,u32) = ('D', 0);
+const QTR8_PIN4: (char,u32) = ('D', 4);
 //#define QTR8_PIN5 2
-const QTR8_PIN5: (char,u32) = ('D', 2);
+const QTR8_PIN5: (char,u32) = ('D', 6);
 //#define QTR8_PIN6 4
-const QTR8_PIN6: (char,u32) = ('D', 4);
+const QTR8_PIN6: (char,u32) = ('D', 8);
 //#define QTR8_PIN7 6
-const QTR8_PIN7: (char,u32) = ('D', 6);
+const QTR8_PIN7: (char,u32) = ('D', 9);
 
 //
 //#define QTR8_NUM_PINS 8
