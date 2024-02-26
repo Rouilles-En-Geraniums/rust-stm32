@@ -46,7 +46,7 @@ use core::arch::asm;
 
 
 const PSC: u32 = 1000;
-const PERIOD: u32 = APB1_CLK / 1000; // TODO : define APB1_CLK
+const PERIOD: u32 = APB1_CLK / 1000;
 const HALF_PERIOD: u32 = PERIOD / 2;
 
 const MY_LED: (char,u32) = ('D', 12);
