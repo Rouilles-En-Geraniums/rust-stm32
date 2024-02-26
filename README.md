@@ -11,7 +11,7 @@ If you came from the poster... the answer is 9!
 
 This project offers a method for cross-compiling Rust programs specifically for STM microcontrollers.
 
-This project was done as part of a university module at Université Toulouse III - Paul Sabatier: SECIL Master's Degree.
+This project was part of a university module at Université Toulouse III - Paul Sabatier: SECIL Master's Degree.
 
 It has been tested for the following operating systems :
 - Linux:
@@ -32,7 +32,7 @@ It is recommended to first install Rustup as it will make the installation of ot
 
 This project requires Rustc 1.7 or above.
 
-It is assumed that you have Python already installed on your machine. This project requires Python 3.9 or above.
+It is assumed that you have Python already installed on your machine. This project requires Python 3.9 or above. Jinja2 v3.1.3 was also used.
 
 ### Cross-compilation tools
 
@@ -40,7 +40,7 @@ It is assumed that you have Python already installed on your machine. This proje
 
 You need to add the cross-compilation rust compiler for the ARM cortex-M arcitecture that your target uses :
 
-STM32F407-G DISC1 have a Cortex-M4 which requires the thumbv7em-none-eabi target. It can be installed with :
+STM32F407-G DISC1 boards have a Cortex-M4 which require the thumbv7em-none-eabi target. It can be installed with :
 > `rustup target add thumbv7em-none-eabi`
 
 Other targets may be :
@@ -92,12 +92,12 @@ Or
   Extract the folder, place it where you want it to be installed, and add its installation location to your PATH.
 
 ##### STLink Driver
-
+ 
 - Download the STM32 STLink Driver Software and install it : https://www.st.com/en/development-tools/stsw-link009.html#get-software
 
-  Downloading this driver requires submitting your email address and waiting until you receieve the email (may take up to 5mins). Extract and follow the instructions once downloaded.
+  Downloading this driver requires submitting your email address and waiting until you receieve the email (this may take up to 5mins). Extract and follow the instructions once downloaded.
 
-  This Driver is necessary for openocd to access your STM32 Board through USB, as it will not be recognized otherwise.
+  This Driver is necessary for openocd to access your STM32 Board through USB, as it will not be recognized otherwise. 
 
 ##### GDB Multiarch (MSYS2)
 
@@ -161,20 +161,20 @@ Cargo will automatically change its compiler for the specified target when runni
 
 ### Linker script and lib.rs
 
-Link Scripts are very board-specific and may greatly vary. You may use the exisisting `memory.x` as an example. If you decide to use a different name for your Linker Script, you may need to edit various other files accordingly (automation is not supported).
+Linker Scripts are very board-specific and may greatly vary. You may use the exisisting `memory.x` as an example. If you decide to use a different name for your Linker Script, you may need to edit various other files accordingly (automation is not supported).
 
-Once the Linker Script done, you will need to write your own lib.rs file which defines everything that the board requires to work.
+Once the Linker Script is done, you will need to write your own lib.rs file which should contain everything that is required by the board to boot.
 
-STM32 Boards require a Vector Table for interruptions, as well as a Reset Handler that is the first code that is executed on boot or on restart. This function should initialize everything that your projects require such as :
-- The Vector Table for interruptions, as well as some handlers (such as the PanicHandler or the DefaultHandler) ;
-- Clocks ;
-- PLL ;
-- Flash ;
-- Ram ;
-- DBG Console ;
+STM32 Boards require a Vector Table for interruptions, as well as the Reset Handler function that is the first code that is executed on boot or on restart. This lib.rs file should initialize everything that your projects require such as :
+- the Vector Table for interruptions ;
+- various handlers (such as: PanicHandler, DefaultHandler, HardFaultHandler, etc...) ;
+- clocks frequencies and PLL ;
+- Flash configuration;
+- ROM to RAM manual copy ;
+- DBG Console configuration ;
 - ...
 
-Feel free to modify the existing lib.rs as you see fit.
+Feel free to reuse the existing lib.rs as you see fit.
 
 ### Openocd & GDB
 
@@ -189,9 +189,9 @@ Library generation is done within the `libraryGeneration/` folder. The `libgen/m
 
 ### Description files
 
-In order for the library generator to work, you must provide the proper register description through json files. The template json files provide an example of what these description files should look like.
+In order for the library generator to work, you must provide the proper register description through json files. The `template.json` files provide an example of what these description files should look like.
 
-There are two types of descriptions: simple and exhaustive. These refer to the complexity of the compenonts of the board. Some compononts are simple in the sense that every components posses the same registers (GPIOs for example), while some are complexe in the sense that the available registers vary based on the component (TIM1 vs TIM2 for example).
+There are two types of descriptions: simple and exhaustive. These refer to the complexity of the components of the board. Some components are simple in the sense that every sub-components possesses the same registers (GPIOs for example), while some are complexe in the sense that the available registers vary based on the sub-component (TIM1 vs TIM2 for example).
 
 The provided json files were mostly written based on the [ST RM0090 Reference manual](https://www.st.com/content/ccc/resource/technical/document/reference_manual/3d/6d/5a/66/b4/99/40/d4/DM00031020.pdf/files/DM00031020.pdf/jcr:content/translations/en.DM00031020.pdf). Similar manuals also exist for other boards on the ST website.
 
@@ -235,7 +235,7 @@ fn init() {
 
 #[no_mangle] // required macro for lib.rs to find where the main function is
 fn main() {
-    // additionnal init
+    // additional init
     loop {
         // code 
     }
@@ -258,19 +258,16 @@ pub unsafe extern "C" fn handler() {
 
 ...
 
-fn init() {
+fn initInterruption() {
     ...
-
-	nvic_handler_set(..., handler);
-
+    nvic_handler_set(..., handler);
     ...
 }
-
 ```
 
 
 
-Various examples can also be found in the `libraryGeneration/unitaryTest/` folder.
+Various examples can also be found in the `libraryGeneration/stm32f407gdiscExamples/` folder.
 
 
 ### Flashing and debugging
@@ -282,7 +279,7 @@ Various rules are provided within the Makefile, but here are some explanations a
     > `openocd -f openocd.cfg`
 
 #### logs :
-- due to how we implemented our print function, you will need to track what gets writting in the log file in a second terminal :
+- due to how we implemented our print function, you will need to track what gets written in the log file in a second terminal :
     > `tail -f stm32f4.log`
 
     The path of this file can be specified in the openocd.cfg file
@@ -291,7 +288,8 @@ Various rules are provided within the Makefile, but here are some explanations a
 - the first step is to build the project. For that, simply type :
     > `cargo build`
 
-    (You may also want to `cargo clean` before hand just in case, it often solves problems)
+    (You may also want to `cargo clean` beforehand just in case, it often solves problems).
+  
 - next, flash the board with your GDB :
     > `gdb -q target/targetname/debug/projectname`
     
@@ -310,5 +308,6 @@ Various rules are provided within the Makefile, but here are some explanations a
 
 Note : if you attempt to flash with `cargo build --release`, you may be unable to debug due to the compiler optimizing the executable.
 
-## Use the shceduler
-See the [scheduling documentation](./taskSequencing/README.md)
+## Use the scheduler
+
+This project also features a scheduler that you can use to respect real time constraints for your projects. See the [scheduling documentation](./taskSequencing/README.md).
