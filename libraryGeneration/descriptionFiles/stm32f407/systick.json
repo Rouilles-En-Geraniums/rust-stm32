@@ -1,0 +1,24 @@
+{
+    "exhaustive" : 0,
+    "component": "SYSTICK",
+    "arch": "STM32F407",
+    "licence": "GPL",
+    "components": [
+      { "name" : "SYSTICK", "address": "0xE000E010"}
+    ],
+
+    "registers" : [
+      { "name": "CSR", "offset": "0x00", "read": 1, "write": 1 },
+      { "name": "RVR", "offset": "0x04", "read": 1, "write": 1 },
+      { "name": "CVR", "offset": "0x08", "read": 1, "write": 1 },
+      { "name": "CALIB", "offset": "0x0C", "read": 1, "write": 0 }
+    ],
+    "constants" : [
+  
+      {"name": "SYSTICK_CSR_COUNTFLAG", "value": "1 << 16"},
+      {"name": "SYSTICK_CSR_CLKSOURCE", "value": "1 << 2"},
+      {"name": "SYSTICK_CSR_TICKINT", "value": "1 << 1"},
+      {"name": "SYSTICK_CSR_ENABLE", "value": "1 << 0"}  
+    ]
+  }
+  

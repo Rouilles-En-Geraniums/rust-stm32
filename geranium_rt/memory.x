@@ -12,13 +12,20 @@ EXTERN(RESET_VECTOR);
 EXTERN(EXCEPTIONS);
 EXTERN(CUSTOM_EXCEPTIONS);
 
-
-
+PROVIDE(NMI = DefaultExceptionHandler);
+PROVIDE(HardFault = DefaultExceptionHandler);
+PROVIDE(MemManage = DefaultExceptionHandler);
+PROVIDE(BusFault = DefaultExceptionHandler);
+PROVIDE(UsageFault = DefaultExceptionHandler);
+PROVIDE(SVCall = DefaultExceptionHandler);
+PROVIDE(PendSV = DefaultExceptionHandler);
+PROVIDE(SysTick = DefaultSystickHandler);
 
 SECTIONS
 {
 	.vector_table ORIGIN(FLASH) :
 	{
+		_vectab_begin = .; /* begin of vector table in flash (=0) */
 		/* First entry: initial Stack Pointer value */
 		LONG(ORIGIN(RAM) + LENGTH(RAM));
 
@@ -30,7 +37,7 @@ SECTIONS
 
 		/* The next ???? entries are custom exception vectors */
 		KEEP(*(.vector_table.custom_exceptions));
-
+		_vectab_end = .; /* end of vector table in flash (=size of vectab) */
 	} > FLASH
 
 	.text :
@@ -46,13 +53,15 @@ SECTIONS
 		*(.rodata*)
 		. = ALIGN(4);
 	} > FLASH
-
 	_data_flash = .;
+
+
+
 	.data : AT(_data_flash)
 	{
-		_vectab_in_ram = .;
-		*(.vector_table);
-		_data_begin = .;
+		_vectab_in_ram = .; /* begin of vector table to copy in RAM */
+		. += 0x400; /* . += (vectab_end - vectab_begin) ??*/
+		_data_begin = .; /* begin of data to copy in RAM */
 		*(.init)
 		*(.init*)
 		*(.fini)
@@ -63,6 +72,7 @@ SECTIONS
 		_data_end = .;
 	} > RAM
 
+	/* Un-initialized static variables */
 	.bss :
 	{
 		_bss_begin = .;
@@ -81,9 +91,9 @@ SECTIONS
 		. = . + _stack_size;
 	} > RAM
 
-	/*
+	
 	/DISCARD/ :
 	{
 		*(.ARM.exidx .ARM.exidx.*);
-	}*/
+	}
 }

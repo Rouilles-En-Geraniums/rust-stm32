@@ -46,7 +46,7 @@ use core::arch::asm;
 
 
 const PSC: u32 = 1000;
-const PERIOD: u32 = APB1_CLK / 1000; // TODO : define APB1_CLK
+const PERIOD: u32 = APB1_CLK / 1000;
 const HALF_PERIOD: u32 = PERIOD / 2;
 
 const MY_LED: (char,u32) = ('D', 12);
@@ -114,17 +114,20 @@ fn init_tim4_interrupt(){
 }
 
 
+#[no_mangle]
+fn init() {
+	rcc_ahb1enr_seti(RCC_AHB1ENR_GPIOAEN);
+	rcc_ahb1enr_seti(RCC_AHB1ENR_GPIODEN);
+	rcc_apb1enr_seti(RCC_APB1ENR_TIM4EN);
+	
+	gpiod_moder_set(MY_LED.1*2, 2, GPIO_MODER_OUT);
+	
+	init_tim4_interrupt();
+}
+
 
 #[no_mangle]
 fn main() {
-    rcc_ahb1enr_seti(RCC_AHB1ENR_GPIOAEN);
-    rcc_ahb1enr_seti(RCC_AHB1ENR_GPIODEN);
-    rcc_apb1enr_seti(RCC_APB1ENR_TIM4EN);
-
-    gpiod_moder_set(MY_LED.1*2, 2, GPIO_MODER_OUT);
-
-	init_tim4_interrupt();
-
     loop {
     }
 }
