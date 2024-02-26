@@ -12,8 +12,36 @@ from your point of view the entry point is user_tasks.rs, as it's where the sche
 */
 
 use geranium_rt::println;
+use core::arch::asm;
+
+struct Task {
+    pc: u32,
+    // sp: u32
+}
+
+static mut t:Task = Task {pc: 0};
+
+#[inline(never)]
+#[no_mangle]
+fn test_func() -> i32 {
+    let a = 10;
+    return a;
+}
+
+fn scheduler() -> () {
+
+}
 
 #[no_mangle]
 fn main(){
-    println!("Hello world (I am a placeholder)");
+    let r = test_func();
+    let mut sp_v: u32 = 0;
+    unsafe {
+        asm!("mov {sp_v}, sp",
+              sp_v = out(reg) sp_v,
+              // FIXME declare sp here
+             );
+
+    }
+    println!("sp: 0x{:x}", sp_v);
 }
