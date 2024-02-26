@@ -6,7 +6,7 @@ MEMORY
 }
 
 /* The entry point is the reset handler */
-ENTRY(HandlerReset);
+ENTRY(HandlerReset)
 
 EXTERN(RESET_VECTOR);
 EXTERN(EXCEPTIONS);
