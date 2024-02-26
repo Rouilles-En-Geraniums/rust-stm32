@@ -1,5 +1,3 @@
-#![no_std]
-#![no_main]
 /**
  *	Rust on STM32 Project by Rouilles en GeraniumTM
  *	Copyright (C) 2024 Université de Toulouse :
@@ -32,53 +30,9 @@
  *	GNU General Public License for more details.
 **/
 
+extern crate core;
 
-extern crate geranium_rt;
-
-use geranium_rt::stm32rustlib::gpio::*;
-use geranium_rt::stm32rustlib::rcc::*;
-use geranium_rt::stm32rustlib::various::*;
-use geranium_rt::stm32rustlib::tim::*;
-use geranium_rt::stm32rustlib::system::*;
-
-const MY_LED: (char, u32)  = ('D', 12); // Built-in green led
-
-const PSC: u32 = 1000;
-const PERIOD: u32 = APB1_CLK / 1000;
-
-pub fn init_timer() {
-    tim4_cr1_seti(!TIM_CEN);
-    tim4_psc_write(PSC - 1);
-    tim4_arr_write(PERIOD);
-    tim4_egr_write(TIM_UG);
-    tim4_sr_write(0);
-    tim4_cr1_seti(TIM_CEN);
-}
-
-
-#[no_mangle]
-fn init() {
-    rcc_ahb1enr_seti(RCC_AHB1ENR_GPIODEN);
-    rcc_apb1enr_seti(RCC_APB1ENR_TIM4EN);
-    
-    gpiod_moder_set(MY_LED.1*2, 2, GPIO_MODER_OUT);
-    
-    init_timer();
-    
-    digital_write(MY_LED, LOW);
-}
-
-
-#[no_mangle]
-fn main() {
-    loop {
-        while (tim4_sr_read() & TIM_UIF) == 0 {};
-
-        if digital_read(MY_LED) == LOW {
-			digital_write(MY_LED, HIGH);
-		} else {
-            digital_write(MY_LED, LOW);
-		}
-        tim4_sr_write(0);
-    }
-}
+use crate::core::ptr::read_volatile;
+use crate::core::ptr::write_volatile;
+use crate::stm32rustlib::various::*;
+{% include "address.rs" %}
