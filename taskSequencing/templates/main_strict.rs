@@ -33,6 +33,7 @@
 */
 
 extern crate geranium_rt;
+extern crate geranium_seq;
 use core::cell::RefCell;
 
 mod user_tasks;
