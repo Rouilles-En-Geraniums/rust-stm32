@@ -42,9 +42,6 @@ use crate::stm32rustlib::various::*;
 use crate::stm32rustlib::syscfg::*;
 use crate::stm32rustlib::gdb::*;
 
-use core::ptr::read_volatile;
-//use core::ptr::write_volatile;
-
 #[derive(Copy,Clone)]
 pub union Vector {
     reserved: u32,
