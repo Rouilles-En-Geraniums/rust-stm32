@@ -38,6 +38,7 @@ use geranium_rt::stm32rustlib::rcc::*;
 use geranium_rt::stm32rustlib::various::{HIGH, LOW};
 use geranium_seq::sequencer::task::*;
 use geranium_seq::sequencer::shared_container::SharedContainer;
+use core::cell::UnsafeCell; 
 
 struct Globals {
     gcount: u32
