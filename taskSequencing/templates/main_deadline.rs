@@ -42,6 +42,11 @@ use geranium_seq::sequencer::internal::deadline::*;
 use geranium_seq::sequencer::task::Task;
 
 #[no_mangle]
+fn init(){
+    
+}
+
+#[no_mangle]
 fn main() {
     // Start of Generated code
     let hyperperiod: u32 = {{hyperperiod}};
