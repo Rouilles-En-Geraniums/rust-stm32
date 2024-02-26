@@ -158,7 +158,9 @@ pub unsafe extern "C" fn HandlerReset() -> ! {
     
 	// copy data from FLASH to RAM
     let count1 = &_data_end as *const u8 as usize - &_data_begin as *const u8 as usize;
-    ptr::copy_nonoverlapping(&_data_flash as *const u8, &mut _data_begin as *mut u8, count1);
+    let offset = &_data_begin as *const u8 as usize - &_vectab_in_ram as *const u8 as usize;
+    let _data_flash_offseted = (&_data_flash as *const u8 as usize + offset) as *const u8;
+    ptr::copy_nonoverlapping(_data_flash_offseted, &mut _data_begin as *mut u8, count1);
 
 	// set to 0 BSS
     let count2 = &_bss_end as *const u8 as usize - &_bss_begin as *const u8 as usize;
