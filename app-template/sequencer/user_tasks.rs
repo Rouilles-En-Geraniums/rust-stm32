@@ -30,8 +30,6 @@
  *	GNU General Public License for more details.
 */
 
-use core::cell::UnsafeCell;
-
 use geranium_rt::println;
 use geranium_rt::stm32rustlib::gpio::*;
 use geranium_rt::stm32rustlib::rcc::*;

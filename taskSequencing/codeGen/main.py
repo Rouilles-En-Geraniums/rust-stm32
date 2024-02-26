@@ -37,12 +37,12 @@ def cmdlineParse():
     # Parser argument control section.
     parser.add_argument("json_file", help="json file containing ordonnancing")
     parser.add_argument("-o", "--output_path",
-    help="Where to put the generated rust file. Defaults to src/main.rs, change only if you know what you are doing.",
-    default="src/main.rs")
+                        help="Where to put the generated rust file. Defaults to src/main.rs, change only if you know what you are doing.",
+                        default="src/main.rs")
     parser.add_argument("-t", "--template_directory",
-    help="Where to look for templates. Defaults to ../taskSequencing/templates/, change only if you know what you are doing.",
-    default="../taskSequencing/templates/",
-    type=dir_path)
+                        help="Where to look for templates. Defaults to ../taskSequencing/templates/, change only if you know what you are doing.",
+                        default="../taskSequencing/templates/",
+                        type=dir_path)
 
     args = parser.parse_args()
 
@@ -102,7 +102,7 @@ def check_json_validity(json_data):
             for job in jobs:
                 for activation in job["activations"]:
                     if key not in activation:
-                        print(f"[ERROR] field '{key}' not in activation : '{ativation}' in job : '{job}'", file=sys.stderr)
+                        print(f"[ERROR] field '{key}' not in activation : '{activation}' in job : '{job}'", file=sys.stderr)
                         sys.exit(MANDATORY_KEY_ABSENT)
 
     # check if taskId reference a previously declared task id's

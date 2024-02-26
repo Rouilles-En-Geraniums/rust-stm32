@@ -6,7 +6,7 @@ use geranium_rt::stm32rustlib::seq::*;
 
 pub struct OrdoTask <'a>{
     pub task: &'a mut dyn Task,
-    pub duration: u32 // TODO check if wait is inclusive or exclusive
+    pub duration: u32
 }
 
 pub struct Activation<'a>{
